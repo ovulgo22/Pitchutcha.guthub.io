@@ -531,3 +531,194 @@ function initHorizontalScroll() {
 
 // Finalmente, inicializamos tudo quando o DOM está pronto.
 // document.addEventListener('DOMContentLoaded', init); // Já definido no topo
+/*
+==================================================================================================
+PROJETO: Pitchutcha - Uma Odisséia pela Computação
+ARQUIVO: script.js (Parte 4 - Final)
+DESCRIÇÃO: Adiciona funcionalidades finais, incluindo a integração do Locomotive Scroll com
+           o GSAP ScrollTrigger, um modal de busca client-side e microinterações.
+==================================================================================================
+
+FULL-STACK & DEVOPS MENTALITY:
+- A busca client-side é uma solução inteligente para sites estáticos. Criamos um "índice" em
+  JSON ou um objeto JS, que é leve e rápido para filtrar no navegador sem a necessidade de um
+  backend ou banco de dados.
+
+SENIOR CREATIVE DEVELOPER:
+- A integração entre Locomotive Scroll e GSAP ScrollTrigger usando `scrollerProxy` é uma
+  técnica avançada e essencial para construir sites modernos e premiados. Ela "ensina" o
+  ScrollTrigger a ouvir os eventos de rolagem da biblioteca de smooth scroll em vez dos
+  eventos nativos do navegador.
+- As microinterações nos botões com GSAP vão além de simples hovers em CSS, criando uma
+  experiência tátil e responsiva que transmite qualidade.
+==================================================================================================
+*/
+
+'use strict';
+
+// Ponto de entrada principal
+document.addEventListener('DOMContentLoaded', () => {
+    gsap.registerPlugin(ScrollTrigger);
+    init();
+});
+
+function init() {
+    initSmoothScrollAndGSAP(); // Função combinada para garantir a ordem de execução
+    initPreloader();
+    initHeaderScroll();
+    initFooterYear();
+    initHeroParallax();
+    initThemeToggle();
+    initCustomCursor();
+    initReadingProgress();
+    initVonNeumannAnimation();
+    initHorizontalScroll();
+    initSearchModal(); // Nova função
+    initMicrointeractions(); // Nova função
+}
+
+// ... (Mantenha as funções das partes anteriores aqui) ...
+// Abaixo estão as funções NOVAS e ATUALIZADAS.
+
+// -----------------------------------------------------------------------------------------------
+// FUNÇÃO ATUALIZADA: Integração do Smooth Scroll com GSAP
+// -----------------------------------------------------------------------------------------------
+function initSmoothScrollAndGSAP() {
+    /*
+    NOTA DE IMPLEMENTAÇÃO: Para usar o Locomotive Scroll, você precisaria:
+    1. Adicionar os arquivos CSS e JS da biblioteca no seu HTML.
+       <head>: <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+       <body> (final): <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    2. Descomentar o código abaixo.
+    */
+
+    /*
+    const scroller = new LocomotiveScroll({
+        el: document.querySelector('[data-scroll-container]'),
+        smooth: true,
+        lerp: 0.08
+    });
+
+    // 1. O ScrollerProxy "traduz" os eventos de rolagem do Locomotive para o ScrollTrigger.
+    ScrollTrigger.scrollerProxy("[data-scroll-container]", {
+        scrollTop(value) {
+            return arguments.length ? scroller.scrollTo(value, 0, 0) : scroller.scroll.instance.scroll.y;
+        },
+        getBoundingClientRect() {
+            return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+        },
+        pinType: document.querySelector("[data-scroll-container]").style.transform ? "transform" : "fixed"
+    });
+
+    // 2. Conecta o Locomotive Scroll à thread de atualização do ScrollTrigger.
+    scroller.on("scroll", ScrollTrigger.update);
+
+    // 3. Diz ao ScrollTrigger para usar o proxy que criamos para todas as suas animações.
+    ScrollTrigger.addEventListener("refresh", () => scroller.update());
+    ScrollTrigger.refresh();
+    */
+    
+    // Como o Locomotive Scroll não está ativo, vamos rodar as animações de scroll da GSAP normalmente.
+    initScrollAnimations();
+    console.info("Locomotive Scroll + GSAP Proxy não inicializado. Descomente o código em initSmoothScrollAndGSAP() para ativar.");
+}
+
+// -----------------------------------------------------------------------------------------------
+// 9. MODAL DE BUSCA
+// -----------------------------------------------------------------------------------------------
+function initSearchModal() {
+    const searchToggle = document.getElementById('search-toggle');
+    const searchModal = document.getElementById('search-modal');
+    const searchClose = document.getElementById('search-close');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    if (!searchModal) return;
+
+    // --- Criação do Índice de Busca (Exemplo) ---
+    // Em um projeto real, isso poderia ser gerado dinamicamente a partir de um CMS ou um script de build.
+    const searchIndex = [
+        { id: '#ferramentas-antigas', title: 'Ábaco e Anticítera', content: 'instrumentos de cálculo antigos suméria grécia' },
+        { id: '#babbage-lovelace', title: 'Charles Babbage & Ada Lovelace', content: 'máquina analítica diferencial primeiro algoritmo programa' },
+        { id: '#von-neumann', title: 'Arquitetura de von Neumann', content: 'programa armazenado software memória cpu' },
+        { id: '#transistor-ic', title: 'Transistor e Circuito Integrado', content: 'miniaturização bell labs microchip lei de moore' },
+        { id: '#gui-e-ux', title: 'Interface Gráfica (GUI)', content: 'xerox parc macintosh mouse janelas steve jobs' },
+        { id: '#internet-www', title: 'Internet e World Wide Web', content: 'arpanet tcp/ip tim berners-lee cern html http' },
+        { id: '#open-source', title: 'Código Aberto e Linux', content: 'richard stallman gnu linus torvalds software livre' },
+        { id: '#ai-ml', title: 'Inteligência Artificial e Machine Learning', content: 'redes neurais deep learning gpus big data ia generativa gpt' },
+        { id: '#next-frontiers', title: 'Computação Quântica', content: 'qubit superposição emaranhamento quântico' }
+    ];
+
+    const openSearch = () => {
+        searchModal.classList.add('is-visible');
+        searchInput.focus();
+    };
+
+    const closeSearch = () => {
+        searchModal.classList.remove('is-visible');
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+    };
+
+    const performSearch = (query) => {
+        if (query.length < 2) {
+            searchResults.innerHTML = '<li>Digite pelo menos 2 caracteres para buscar.</li>';
+            return;
+        }
+        
+        const lowerCaseQuery = query.toLowerCase();
+        const results = searchIndex.filter(item => 
+            item.title.toLowerCase().includes(lowerCaseQuery) ||
+            item.content.toLowerCase().includes(lowerCaseQuery)
+        );
+
+        if (results.length > 0) {
+            searchResults.innerHTML = results.map(item => 
+                `<li><a href="${item.id}">${item.title}</a></li>`
+            ).join('');
+            // Adiciona um event listener para fechar o modal ao clicar no link
+            searchResults.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSearch));
+        } else {
+            searchResults.innerHTML = '<li>Nenhum resultado encontrado.</li>';
+        }
+    };
+
+    searchToggle.addEventListener('click', openSearch);
+    searchClose.addEventListener('click', closeSearch);
+    searchInput.addEventListener('input', () => performSearch(searchInput.value));
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && searchModal.classList.contains('is-visible')) {
+            closeSearch();
+        }
+    });
+}
+
+// -----------------------------------------------------------------------------------------------
+// 10. MICROINTERAÇÕES COM GSAP
+// -----------------------------------------------------------------------------------------------
+function initMicrointeractions() {
+    const buttons = gsap.utils.toArray('.action-btn, .back-to-top');
+    
+    buttons.forEach(btn => {
+        const text = btn.querySelector('span'); // Se houver texto
+        
+        btn.addEventListener('mouseenter', () => {
+            gsap.to(btn, {
+                scale: 1.05,
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, {
+                scale: 1,
+                duration: 0.5,
+                ease: 'elastic.out(1, 0.3)'
+            });
+        });
+    });
+}
+
+// ... (Restante do seu código, como a função init, etc.)
+// A função `init` já foi modificada no topo para chamar as novas funções.
