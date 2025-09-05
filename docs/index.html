@@ -3,405 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pitchutcha - A Saga da Humanidade</title>
-    <meta name="description" content="Uma jornada interativa e animada através da história da humanidade, ciência e avanços tecnológicos, visualizada em um globo terrestre 3D detalhado.">
-    <meta name="keywords" content="História, Ciência, Tecnologia, Humanidade, Animação 3D, WebGL, Three.js, GSAP, Documentário Interativo">
-    <meta name="author" content="Gemini AI">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+    <title>Pitchutcha | Uma Jornada pela Humanidade e Ciência</title>
+    <meta name="description" content="Explore a incrível saga da existência, desde o Big Bang até o futuro da inteligência artificial. Pitchutcha é uma documentação interativa e visual que narra os avanços da ciência, tecnologia e da humanidade em um globo terrestre animado.">
+    <meta name="keywords" content="ciência, história, humanidade, tecnologia, cosmologia, medicina, animação web, 3D, WebGL, GSAP, Pitchutcha, interativo, educação, futuro, inovação, Terra, planeta">
+    <meta name="author" content="Pitchutcha Creative Team">
+    <link rel="canonical" href="https://[SEU-USUARIO].github.io/pitchutcha/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://[SEU-USUARIO].github.io/pitchutcha/">
+    <meta property="og:title" content="Pitchutcha | Uma Jornada pela Humanidade e Ciência">
+    <meta property="og:description" content="Uma experiência web imersiva e animada sobre a evolução do conhecimento humano.">
+    <meta property="og:image" content="https://[SEU-USUARIO].github.io/pitchutcha/assets/social-share.jpg"> <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://[SEU-USUARIO].github.io/pitchutcha/">
+    <meta property="twitter:title" content="Pitchutcha | Uma Jornada pela Humanidade e Ciência">
+    <meta property="twitter:description" content="Uma experiência web imersiva e animada sobre a evolução do conhecimento humano.">
+    <meta property="twitter:image" content="https://[SEU-USUARIO].github.io/pitchutcha/assets/social-share.jpg">
+
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --color-background: #00021a;
-            --color-text-primary: #e0e0e0;
-            --color-text-secondary: #a0a0b0;
-            --color-heading: #ffffff;
-            --color-accent: #33a0e0;
-            --color-accent-glow: rgba(51, 160, 224, 0.5);
-            --easing-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.164.1/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.164.1/examples/jsm/"
         }
+      }
+    </script>
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; background-color: var(--color-background); }
-        body { font-family: var(--font-family-body); color: var(--color-text-primary); background-color: var(--color-background); overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-        #preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: var(--color-background); display: flex; justify-content: center; align-items: center; z-index: 1000; flex-direction: column; gap: 20px; transition: opacity 1s var(--easing-cubic); }
-        .loader-logo { font-family: var(--font-family-headings); font-size: 3rem; font-weight: 900; color: var(--color-heading); letter-spacing: 2px; }
-        .loader-logo .accent { color: var(--color-accent); text-shadow: 0 0 15px var(--color-accent-glow); }
-        #progress-bar-container { width: 300px; height: 4px; background-color: rgba(255, 255, 255, 0.1); border-radius: 2px; overflow: hidden; }
-        #progress-bar { width: 0%; height: 100%; background-color: var(--color-accent); border-radius: 2px; transition: width 0.3s ease-out; box-shadow: 0 0 10px var(--color-accent-glow); }
-        #progress-text { margin-top: 10px; font-family: var(--font-family-headings); font-size: 0.9rem; color: var(--color-text-secondary); }
-
-        #globe-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; cursor: grab; }
-        #globe-container:active { cursor: grabbing; }
-
-        #main-content { position: relative; z-index: 10; width: 100%; display: flex; flex-direction: column; align-items: center; }
-        #main-header { position: fixed; top: 0; left: 0; width: 100%; padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; pointer-events: none; opacity: 0; transform: translateY(-20px); transition: opacity 1s ease, transform 1s ease; }
-        #main-header .site-title { font-family: var(--font-family-headings); font-weight: 700; font-size: 1.5rem; color: var(--color-heading); pointer-events: all; }
-        #scroll-progress-container { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); width: 2px; height: 200px; background: rgba(255, 255, 255, 0.1); z-index: 100; }
-        #scroll-progress-bar { width: 100%; height: 0%; background: var(--color-accent); box-shadow: 0 0 10px var(--color-accent-glow); }
-
-        .content-section { display: flex; justify-content: flex-start; align-items: center; min-height: 100vh; width: 100%; max-width: 1200px; padding: 5rem; }
-        .content-box { background-color: rgba(10, 20, 40, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 2.5rem; max-width: 500px; opacity: 0; transform: translateY(50px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
-        .content-section:nth-child(even) { justify-content: flex-end; }
-        .content-section h1, .content-section h2 { font-family: var(--font-family-headings); color: var(--color-heading); font-weight: 700; margin-bottom: 1rem; line-height: 1.2; text-transform: uppercase; letter-spacing: 1px; }
-        .content-section h1 { font-size: 3.5rem; font-weight: 900; color: var(--color-accent); text-shadow: 0 0 20px var(--color-accent-glow); }
-        .content-section h2 { font-size: 1.8rem; border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; }
-        .content-section p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: var(--color-text-primary); }
-        .content-section p:last-child { margin-bottom: 0; }
-        .content-section .highlight { color: var(--color-accent); font-weight: bold; }
-        #intro-section .content-box { max-width: 700px; text-align: center; background: transparent; border: none; backdrop-filter: none; box-shadow: none; }
-        #intro-section { display: flex; justify-content: center; align-items: center; text-align: center; }
-        #intro-section .subtitle { font-family: var(--font-family-headings); font-size: 1.2rem; color: var(--color-text-secondary); margin-top: 1rem; letter-spacing: 2px; }
-        
-        #markers-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
-        .location-marker { position: absolute; width: 20px; height: 20px; background: var(--color-accent); border-radius: 50%; border: 2px solid white; box-shadow: 0 0 15px var(--color-accent), 0 0 25px var(--color-accent-glow); transform: translate(-50%, -50%) scale(0); opacity: 0; transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; }
-        .location-marker::after { content: ''; position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; border-radius: 50%; background: var(--color-accent); transform: translate(-50%, -50%); animation: pulse 2s infinite ease-out; z-index: -1; }
-        @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; } 100% { transform: translate(-50%, -50%) scale(3); opacity: 0; } }
-
-        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } .location-marker::after { animation: none; } }
-        @media (max-width: 768px) { #main-header { padding: 1.5rem; } #main-header .site-title { font-size: 1.2rem; } #scroll-progress-container { display: none; } .content-section { padding: 2rem; justify-content: center; } .content-section:nth-child(even) { justify-content: center; } .content-box { width: 100%; max-width: 100%; padding: 1.5rem; } .content-section h1 { font-size: 2.5rem; } .content-section h2 { font-size: 1.5rem; } .content-section p { font-size: 1rem; line-height: 1.7; } }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div id="preloader">
-        <div class="loader-logo">PITCHUT<span class="accent">CHA</span></div>
-        <div id="progress-bar-container"><div id="progress-bar"></div></div>
-        <div id="progress-text">Inicializando a simulação... 0%</div>
+
+<body class="loading">
+
+    <div id="preloader" aria-live="polite" aria-label="Conteúdo carregando">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="orbit" cx="50" cy="50" r="45"/>
+                    <circle class="orbit" cx="50" cy="50" r="35"/>
+                    <circle class="orbit" cx="50" cy="50" r="25"/>
+                    <circle class="electron" cx="50" cy="5" r="5"/>
+                    <circle class="electron" cx="85" cy="50" r="5"/>
+                    <circle class="electron" cx="25" cy="50" r="5"/>
+                    <circle class="nucleus" cx="50" cy="50" r="10"/>
+                </svg>
+            </div>
+            <p class="loading-text" id="loading-status-text">Inicializando o universo...</p>
+        </div>
     </div>
 
-    <div id="globe-container"><div id="markers-container"></div></div>
-    <header id="main-header"><div class="site-title">Pitchutcha</div></header>
-    <div id="scroll-progress-container"><div id="scroll-progress-bar"></div></div>
+    <a href="#main-content" class="skip-to-content">Pular para o conteúdo principal</a>
 
-    <main id="main-content">
-        <section id="intro-section" class="content-section">
-            <div class="content-box">
-                <h1>PITCHUTCHA</h1>
-                <p class="subtitle">Uma exploração visual da consciência, da ciência e do nosso futuro coletivo.<br><br><span style="font-size: 0.9rem; color: var(--color-text-secondary);">Role para continuar ou clique e arraste o globo para explorar.</span></p>
+    <header id="main-header" role="banner">
+        <h1 class="site-title">
+            <a href="/" aria-label="Página inicial do Pitchutcha">Pitchutcha</a>
+        </h1>
+        </header>
+
+    <main id="main-content" role="main">
+
+        <section id="hero-globe" class="fullscreen-section" aria-label="Globo terrestre interativo">
+            <div id="globe-container">
+                </div>
+            <div class="hero-overlay">
+                <div class="hero-text-content">
+                    <h2 class="hero-title">A Odisséia do Conhecimento</h2>
+                    <p class="hero-subtitle">Uma crônica interativa da ascensão da humanidade e o poder da ciência.</p>
+                </div>
+                <div class="scroll-indicator" aria-hidden="true">
+                    <span>Explore a Jornada</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
         </section>
-        <section id="pale-blue-dot" class="content-section"> ... </section>
-        <section id="dawn-of-consciousness" class="content-section"> ... </section>
-        <section id="agricultural-revolution" class="content-section"> ... </section>
-        <section id="age-of-reason" class="content-section"> ... </section>
-        <section id="scientific-revolution" class="content-section"> ... </section>
-        <section id="industrial-revolution" class="content-section"> ... </section>
-        <section id="information-age" class="content-section"> ... </section>
-        <section id="future-frontiers" class="content-section"> ... </section>
 
-    </main>
+        <div id="narrative-journey">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+            <section id="chapter-cosmos" class="narrative-chapter" data-scroll-trigger="cosmos" aria-labelledby="cosmos-title">
+                <div class="chapter-content">
+                    <div class="chapter-header">
+                        <span class="chapter-number">I</span>
+                        <h3 id="cosmos-title" class="chapter-title">O Berço Cósmico</h3>
+                        <p class="chapter-subtitle">Do Big Bang à Formação da Terra</p>
+                    </div>
+                    <div class="chapter-body">
+                        <article>
+                            <h4>13.8 Bilhões de Anos Atrás</h4>
+                            <p>Tudo começa a partir de uma singularidade. O Big Bang não é uma explosão no espaço, mas a própria expansão do espaço. Em frações de segundo, as forças fundamentais da natureza — gravidade, eletromagnetismo, forças nucleares forte e fraca — se separam. O universo é uma sopa quente e densa de partículas elementares.</p>
+                            </article>
+                        <article>
+                            <h4>A Formação das Estrelas e Galáxias</h4>
+                            <p>Milhões de anos se passam. A gravidade começa a agrupar nuvens de hidrogênio e hélio. A pressão e a temperatura em seus núcleos se tornam tão intensas que a fusão nuclear é iniciada. As primeiras estrelas nascem, iluminando o cosmos. Essas estrelas se agrupam em galáxias, forjando elementos mais pesados em seus corações de fogo.</p>
+                             </article>
+                        <article>
+                            <h4>O Nascimento do Sistema Solar</h4>
+                            <p>Há cerca de 4.6 bilhões de anos, em um braço espiral da Via Láctea, uma nuvem de gás e poeira colapsa sob sua própria gravidade. No centro, o Sol se acende. O disco de matéria remanescente ao seu redor se aglutina, formando planetas, luas, asteroides. Entre eles, um mundo rochoso e aquoso: a Terra.</p>
+                            </article>
+                    </div>
+                </div>
+            </section>
 
-    <script type="x-shader/x-vertex" id="vertexShader">
-        varying vec3 vNormal;
-        void main() {
-            vNormal = normalize( normalMatrix * normal );
-            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-        }
-    </script>
-
-    <script type="x-shader/x-fragment" id="fragmentShader">
-        varying vec3 vNormal;
-        void main() {
-            float intensity = pow( 0.6 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), 2.0 );
-            gl_FragColor = vec4( 0.2, 0.6, 0.9, 1.0 ) * intensity;
-        }
-    </script>
-    
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-        const mainApp = {
-            // I. PROPRIEDADES DE ESTADO E OBJETOS THREE.JS
-            isLoaded: false,
-            isDragging: false,
-            previousMousePosition: { x: 0, y: 0 },
+            <section id="chapter-life" class="narrative-chapter" data-scroll-trigger="life" aria-labelledby="life-title">
+                <div class="chapter-content">
+                    <div class="chapter-header">
+                        <span class="chapter-number">II</span>
+                        <h3 id="life-title" class="chapter-title">A Centelha da Vida</h3>
+                        <p class="chapter-subtitle">Dos Primeiros Organismos à Explosão Cambriana</p>
+                    </div>
+                    <div class="chapter-body">
+                        <article>
+                            <h4>A Sopa Primordial</h4>
+                            <p>Em um oceano primitivo e volátil, moléculas orgânicas simples, bombardeadas pela energia de relâmpagos e radiação ultravioleta, se combinam para formar blocos de construção mais complexos: aminoácidos, nucleotídeos. A jornada para a vida começa. A hipótese do mundo de RNA sugere que o RNA, não o DNA, foi a molécula central da vida primitiva.</p>
+                        </article>
+                        <article>
+                            <h4>O Último Ancestral Comum Universal (LUCA)</h4>
+                            <p>Há cerca de 3.8 bilhões de anos, surge o primeiro organismo, ou uma comunidade de organismos, da qual toda a vida na Terra descende. Não era uma única célula como a conhecemos, mas um precursor, estabelecendo o código genético e os mecanismos metabólicos básicos que unem um fungo a um ser humano.</p>
+                            </article>
+                        <article>
+                            <h4>A Revolução do Oxigênio</h4>
+                            <p>Cianobactérias desenvolvem a fotossíntese, um processo revolucionário que libera oxigênio como subproduto. Este "resíduo" tóxico para a vida anaeróbica da época transforma a atmosfera terrestre, causando uma extinção em massa, mas pavimentando o caminho para formas de vida mais complexas e eficientes em energia, incluindo nós.</p>
+                            </article>
+                    </div>
+                </div>
+            </section>
             
-            scene: null,
-            camera: null,
-            renderer: null,
-            starField: null,
-            earthGroup: null, // Grupo para Terra, Nuvens, Atmosfera
-            earth: null,
-            clouds: null,
-            atmosphere: null,
-            
-            markers: [],
-            dom: {
-                globeContainer: document.getElementById('globe-container'),
-                markersContainer: document.getElementById('markers-container'),
-                mainContent: document.getElementById('main-content')
-            },
-            
-            config: {
-                EARTH_RADIUS: 5,
-                ROTATION_SPEED: 0.0002
-            },
+            <section id="chapter-humanity" class="narrative-chapter" data-scroll-trigger="humanity" aria-labelledby="humanity-title">
+                <div class="chapter-content">
+                    <div class="chapter-header">
+                        <span class="chapter-number">III</span>
+                        <h3 id="humanity-title" class="chapter-title">O Despertar da Consciência</h3>
+                        <p class="chapter-subtitle">A Evolução do Homo Sapiens e as Primeiras Civilizações</p>
+                    </div>
+                    <div class="chapter-body">
+                        <article>
+                            <h4>A Origem das Ferramentas e da Linguagem</h4>
+                            <p>Na savana africana, nossos ancestrais hominídeos começam a moldar a pedra. A ferramenta não é apenas uma extensão da mão; é uma extensão da mente. O pensamento abstrato necessário para criar e usar ferramentas está intrinsecamente ligado ao desenvolvimento da linguagem, permitindo a cooperação e a transmissão de conhecimento.</p>
+                        </article>
+                        <article>
+                            <h4>A Revolução Agrícola</h4>
+                            <p>Após milênios como caçadores-coletores, os humanos aprendem a domesticar plantas e animais. A agricultura permite o assentamento, o excedente de alimentos e o surgimento das primeiras aldeias e cidades. A sociedade se torna mais complexa, nascendo a especialização do trabalho, o comércio e a escrita cuneiforme para registrar transações.</p>
+                            </article>
+                        <article>
+                            <h4>A Era dos Impérios</h4>
+                            <p>Das cidades-estado surgem vastos impérios: Egito, Roma, Pérsia, Han. Eles constroem estradas, aquedutos e monumentos. Desenvolvem leis, filosofia, matemática e astronomia. O conhecimento é compilado em grandes bibliotecas, como a de Alexandria, um farol de saber no mundo antigo.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
-            // II. MÉTODOS DE INICIALIZAÇÃO
-            init() {
-                this.simulateLoading();
-            },
+            <section id="chapter-science" class="narrative-chapter" data-scroll-trigger="science" aria-labelledby="science-title">
+                <div class="chapter-content">
+                    <div class="chapter-header">
+                        <span class="chapter-number">IV</span>
+                        <h3 id="science-title" class="chapter-title">A Revolução Científica</h3>
+                        <p class="chapter-subtitle">Observação, Experimentação e as Leis do Universo</p>
+                    </div>
+                    <div class="chapter-body">
+                        <article>
+                            <h4>O Renascimento e o Heliocentrismo</h4>
+                            <p>Após a Idade Média, a Europa redescobre o conhecimento clássico. Artistas como Leonardo da Vinci estudam a anatomia com precisão científica. Astrônomos como Copérnico e Galileu desafiam o modelo geocêntrico milenar, colocando o Sol, e não a Terra, no centro do nosso sistema. A observação direta através do telescópio supera o dogma.</p>
+                        </article>
+                        <article>
+                            <h4>Newton e a Mecânica Clássica</h4>
+                            <p>Isaac Newton sintetiza séculos de descobertas em suas três leis do movimento e na lei da gravitação universal. Com o cálculo, que ele desenvolveu, o universo se torna compreensível, mecânico e previsível. As mesmas leis que regem a queda de uma maçã regem o movimento dos planetas.</p>
+                            </article>
+                         <article>
+                            <h4>Medicina e Biologia Modernas</h4>
+                            <p>A teoria dos germes de Pasteur e Koch revoluciona a medicina, levando a vacinas e antissépticos. Darwin e Wallace propõem a teoria da evolução por seleção natural, unificando a biologia. A descoberta da estrutura do DNA por Watson, Crick, Franklin e Wilkins revela o código da própria vida.</p>
+                            </article>
+                    </div>
+                </div>
+            </section>
 
-            simulateLoading() {
-                let progress = 0;
-                const preloader = document.getElementById('preloader');
-                const progressBar = document.getElementById('progress-bar');
-                const progressText = document.getElementById('progress-text');
-                const mainHeader = document.getElementById('main-header');
-                const interval = setInterval(() => {
-                    progress += Math.random() * 5;
-                    if (progress >= 100) {
-                        progress = 100;
-                        clearInterval(interval);
-                        this.setupScene();
-                        this.setupGSAP();
-                        gsap.to(preloader, { opacity: 0, duration: 1.5, ease: 'power3.inOut', onComplete: () => preloader.style.display = 'none' });
-                        gsap.to(mainHeader, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.5 });
-                        this.isLoaded = true;
-                    }
-                    progressBar.style.width = `${progress}%`;
-                    progressText.textContent = `Construindo o cosmos... ${Math.floor(progress)}%`;
-                }, 80);
-            },
+            <section id="chapter-technology" class="narrative-chapter" data-scroll-trigger="technology" aria-labelledby="technology-title">
+                <div class="chapter-content">
+                    <div class="chapter-header">
+                        <span class="chapter-number">V</span>
+                        <h3 id="technology-title" class="chapter-title">A Era das Máquinas</h3>
+                        <p class="chapter-subtitle">Do Vapor à Era Espacial e Digital</p>
+                    </div>
+                    <div class="chapter-body">
+                        <article>
+                            <h4>A Revolução Industrial</h4>
+                            <p>A invenção da máquina a vapor transforma a sociedade. Fábricas surgem, cidades crescem exponencialmente. A produção em massa, as ferrovias e o telégrafo encolhem o mundo. A humanidade aprende a dominar a energia em uma escala sem precedentes, para o bem e para o mal.</p>
+                        </article>
+                        <article>
+                            <h4>Eletricidade e a Era da Informação</h4>
+                            <p>Faraday, Maxwell, Tesla e Edison desvendam os segredos da eletricidade. A lâmpada ilumina a noite, motores elétricos impulsionam uma nova indústria. O rádio, o telefone e a televisão conectam o mundo. A invenção do transistor em 1947 é a semente da revolução digital.</p>
+                            </article>
+                         <article>
+                            <h4>A Corrida Espacial e a Chegada à Lua</h4>
+                            <p>A rivalidade da Guerra Fria impulsiona a exploração espacial. O Sputnik orbita a Terra, Yuri Gagarin se torna o primeiro humano no espaço. Em 1969, a missão Apollo 11 realiza um dos feitos mais audaciosos da história: a humanidade pisa na Lua, olhando para a Terra como um único e frágil mármore azul.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
-            setupScene() {
-                this.scene = new THREE.Scene();
-                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-                this.camera.position.z = 15;
+            <section id="chapter-future" class="narrative-chapter" data-scroll-trigger="future" aria-labelledby="future-title">
+                <div class="chapter-content">
+                    <div class="chapter-header">
+                        <span class="chapter-number">VI</span>
+                        <h3 id="future-title" class="chapter-title">O Horizonte Desconhecido</h3>
+                        <p class="chapter-subtitle">Inteligência Artificial, Biotecnologia e os Próximos Passos</p>
+                    </div>
+                    <div class="chapter-body">
+                        <article>
+                            <h4>A Revolução Digital e a Internet</h4>
+                            <p>O computador pessoal e a World Wide Web democratizam o acesso à informação e à computação. O mundo se torna interconectado em uma rede global. A Lei de Moore impulsiona um crescimento exponencial na capacidade de processamento, colocando supercomputadores nos nossos bolsos.</p>
+                        </article>
+                        <article>
+                            <h4>Inteligência Artificial e Aprendizado de Máquina</h4>
+                            <p>Redes neurais, inspiradas no cérebro humano, permitem que máquinas aprendam com dados. A IA está redefinindo indústrias, desde o diagnóstico médico até a condução autônoma. Enfrentamos questões profundas sobre a natureza da consciência, criatividade e o futuro do trabalho.</p>
+                             </article>
+                         <article>
+                            <h4>Biotecnologia e o Futuro da Vida</h4>
+                            <p>Com ferramentas como o CRISPR, agora podemos editar o genoma com uma precisão inimaginável. Isso abre portas para a cura de doenças genéticas, mas também levanta dilemas éticos complexos. A fusão da biologia com a tecnologia definirá o próximo capítulo da evolução, talvez uma evolução dirigida por nós mesmos.</p>
+                             </article>
+                    </div>
+                </div>
+            </section>
 
-                this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-                this.renderer.setSize(window.innerWidth, window.innerHeight);
-                this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-                this.dom.globeContainer.appendChild(this.renderer.domElement);
+        </div> </main>
 
-                this.createLights();
-                this.createStarfield();
-                
-                this.earthGroup = new THREE.Group();
-                this.scene.add(this.earthGroup);
+    <nav id="timeline-nav" aria-label="Navegação da linha do tempo">
+        <ul class="timeline-list">
+            <li class="timeline-item active" data-chapter="chapter-cosmos">
+                <a href="#chapter-cosmos" class="timeline-link">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-label">Cosmos</span>
+                </a>
+            </li>
+            <li class="timeline-item" data-chapter="chapter-life">
+                <a href="#chapter-life" class="timeline-link">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-label">Vida</span>
+                </a>
+            </li>
+            <li class="timeline-item" data-chapter="chapter-humanity">
+                <a href="#chapter-humanity" class="timeline-link">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-label">Humanidade</span>
+                </a>
+            </li>
+            <li class="timeline-item" data-chapter="chapter-science">
+                <a href="#chapter-science" class="timeline-link">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-label">Ciência</span>
+                </a>
+            </li>
+            <li class="timeline-item" data-chapter="chapter-technology">
+                <a href="#chapter-technology" class="timeline-link">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-label">Tecnologia</span>
+                </a>
+            </li>
+            <li class="timeline-item" data-chapter="chapter-future">
+                <a href="#chapter-future" class="timeline-link">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-label">Futuro</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-                this.createEarth();
-                this.createClouds();
-                this.createAtmosphere();
-                this.createMarkers();
 
-                this.addEventListeners();
-                this.animate();
-            },
+    <footer id="main-footer" role="contentinfo">
+        <div class="footer-content">
+            <p class="copyright">&copy; <span id="current-year"></span> Pitchutcha. Uma exploração criativa do conhecimento.</p>
+            <div class="social-links">
+                <a href="https://github.com/[SEU-USUARIO]/pitchutcha" target="_blank" rel="noopener noreferrer" aria-label="Ver o projeto no GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                </div>
+        </div>
+    </footer>
 
-            // III. MÉTODOS DE CRIAÇÃO DE OBJETOS
-            createLights() {
-                this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-                const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
-                dirLight.position.set(5, 3, 5);
-                this.scene.add(dirLight);
-            },
+    <script type="module" src="script.js"></script>
 
-            createStarfield() {
-                const geo = new THREE.BufferGeometry();
-                const vertices = [];
-                for (let i = 0; i < 10000; i++) {
-                    vertices.push( (Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000 );
-                }
-                geo.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-                this.starField = new THREE.Points(geo, new THREE.PointsMaterial({ size: 0.25, color: 0xffffff }));
-                this.scene.add(this.starField);
-            },
-
-            createEarth() {
-                const geo = new THREE.SphereGeometry(this.config.EARTH_RADIUS, 64, 64);
-                const mat = new THREE.MeshPhongMaterial({ color: 0x2266aa, specular: 0x333333, shininess: 25 });
-                this.earth = new THREE.Mesh(geo, mat);
-                this.earthGroup.add(this.earth);
-            },
-
-            createClouds() {
-                const canvas = document.createElement('canvas'); canvas.width = 1024; canvas.height = 512;
-                const ctx = canvas.getContext('2d');
-                ctx.fillStyle = 'rgba(0,0,0,0)'; ctx.fillRect(0,0,1024,512);
-                for (let i = 0; i < 1500; i++) {
-                    const x = Math.random()*1024, y = Math.random()*512, r=Math.random()*50+10;
-                    const grad = ctx.createRadialGradient(x,y,0,x,y,r);
-                    grad.addColorStop(0, 'rgba(255,255,255,0.4)'); grad.addColorStop(1, 'rgba(255,255,255,0)');
-                    ctx.fillStyle = grad; ctx.fillRect(0,0,1024,512);
-                }
-                const tex = new THREE.CanvasTexture(canvas);
-                const geo = new THREE.SphereGeometry(this.config.EARTH_RADIUS + 0.05, 64, 64);
-                const mat = new THREE.MeshPhongMaterial({ alphaMap: tex, transparent: true, opacity: 0.6 });
-                this.clouds = new THREE.Mesh(geo, mat);
-                this.earthGroup.add(this.clouds);
-            },
-
-            createAtmosphere() {
-                const geo = new THREE.SphereGeometry(this.config.EARTH_RADIUS + 0.5, 64, 64);
-                const mat = new THREE.ShaderMaterial({
-                    vertexShader: document.getElementById('vertexShader').textContent,
-                    fragmentShader: document.getElementById('fragmentShader').textContent,
-                    blending: THREE.AdditiveBlending,
-                    side: THREE.BackSide
-                });
-                this.atmosphere = new THREE.Mesh(geo, mat);
-                this.atmosphere.scale.set(1.1, 1.1, 1.1);
-                this.earthGroup.add(this.atmosphere);
-            },
-
-            createMarkers() {
-                const locations = [
-                    { id: 'dawn-of-consciousness', lat: 6.52, lon: 3.37 },
-                    { id: 'agricultural-revolution', lat: 33.88, lon: 44.36 },
-                    { id: 'age-of-reason', lat: 37.98, lon: 23.72 },
-                    { id: 'scientific-revolution', lat: 51.50, lon: -0.12 },
-                    { id: 'industrial-revolution', lat: 53.48, lon: -2.24 },
-                    { id: 'information-age', lat: 37.38, lon: -122.08 },
-                ];
-
-                locations.forEach(loc => {
-                    const div = document.createElement('div');
-                    div.className = 'location-marker';
-                    this.dom.markersContainer.appendChild(div);
-                    
-                    const phi = (90 - loc.lat) * (Math.PI / 180);
-                    const theta = (loc.lon + 180) * (Math.PI / 180);
-                    const radius = this.config.EARTH_RADIUS;
-                    const position = new THREE.Vector3(
-                        -(radius * Math.sin(phi) * Math.cos(theta)),
-                        (radius * Math.cos(phi)),
-                        (radius * Math.sin(phi) * Math.sin(theta))
-                    );
-                    this.markers.push({ ...loc, element: div, position });
-                });
-            },
-
-            // IV. LOOP DE ANIMAÇÃO E ATUALIZAÇÕES
-            animate() {
-                requestAnimationFrame(this.animate.bind(this));
-
-                if (!this.isDragging) {
-                    this.earthGroup.rotation.y += this.config.ROTATION_SPEED;
-                }
-                this.clouds.rotation.y += this.config.ROTATION_SPEED * 0.5;
-                this.starField.rotation.y -= this.config.ROTATION_SPEED * 0.25;
-
-                this.updateMarkers();
-                this.renderer.render(this.scene, this.camera);
-            },
-            
-            updateMarkers() {
-                this.markers.forEach(marker => {
-                    const worldPosition = this.earth.localToWorld(marker.position.clone());
-                    const screenPosition = worldPosition.project(this.camera);
-
-                    const cameraNormal = new THREE.Vector3(0,0,1).unproject(this.camera).sub(this.camera.position).normalize();
-                    const markerToCamera = worldPosition.clone().sub(this.camera.position).normalize();
-                    const dotProduct = markerToCamera.dot(cameraNormal);
-                    
-                    if (dotProduct > 0.3) {
-                        marker.element.style.visibility = 'visible';
-                        const x = (screenPosition.x * 0.5 + 0.5) * window.innerWidth;
-                        const y = (screenPosition.y * -0.5 + 0.5) * window.innerHeight;
-                        marker.element.style.left = `${x}px`;
-                        marker.element.style.top = `${y}px`;
-                    } else {
-                        marker.element.style.visibility = 'hidden';
-                    }
-                });
-            },
-
-            // V. EVENTOS E INTERAÇÃO
-            addEventListeners() {
-                window.addEventListener('resize', this.onWindowResize.bind(this));
-                this.dom.globeContainer.addEventListener('mousedown', this.onMouseDown.bind(this));
-                window.addEventListener('mousemove', this.onMouseMove.bind(this));
-                window.addEventListener('mouseup', this.onMouseUp.bind(this));
-            },
-
-            onWindowResize() {
-                this.camera.aspect = window.innerWidth / window.innerHeight;
-                this.camera.updateProjectionMatrix();
-                this.renderer.setSize(window.innerWidth, window.innerHeight);
-            },
-
-            onMouseDown(event) {
-                this.isDragging = true;
-                this.previousMousePosition.x = event.clientX;
-                this.previousMousePosition.y = event.clientY;
-            },
-
-            onMouseMove(event) {
-                if (!this.isDragging) return;
-                const deltaX = event.clientX - this.previousMousePosition.x;
-                const deltaY = event.clientY - this.previousMousePosition.y;
-
-                this.earthGroup.rotation.y += deltaX * 0.005;
-                this.earthGroup.rotation.x += deltaY * 0.005;
-                
-                // Limita a rotação vertical para evitar inversão
-                this.earthGroup.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, this.earthGroup.rotation.x));
-
-                this.previousMousePosition.x = event.clientX;
-                this.previousMousePosition.y = event.clientY;
-            },
-
-            onMouseUp() {
-                this.isDragging = false;
-            },
-            
-            // VI. ANIMAÇÕES DE SCROLL (GSAP)
-            setupGSAP() {
-                gsap.registerPlugin(ScrollTrigger);
-                gsap.utils.toArray('.content-box').forEach(box => {
-                    gsap.fromTo(box, { opacity: 0, y: 100 }, {
-                        opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-                        scrollTrigger: { trigger: box, start: 'top 85%', toggleActions: 'play none none reverse' }
-                    });
-                });
-
-                const tl = gsap.timeline({ scrollTrigger: { trigger: this.dom.mainContent, start: 'top top', end: '+=5000', scrub: 1.5 } });
-                
-                tl.to(this.camera.position, { z: 10, ease: 'power1.inOut' }, 0)
-                  .to(this.earthGroup.rotation, { y: Math.PI * 0.5 }, 0);
-
-                this.markers.forEach(marker => {
-                    const sectionId = `#${marker.id}`;
-                    tl.to(this.earthGroup.rotation, {
-                        y: -marker.lon * (Math.PI / 180) - (Math.PI * 0.5),
-                        x: marker.lat * (Math.PI / 180),
-                        ease: 'power2.inOut'
-                    }, sectionId);
-
-                    gsap.to(marker.element, {
-                        scrollTrigger: {
-                            trigger: sectionId, start: 'top center', end: 'bottom center',
-                            onEnter: () => gsap.to(marker.element, { opacity: 1, scale: 1, duration: 0.5 }),
-                            onLeave: () => gsap.to(marker.element, { opacity: 0, scale: 0, duration: 0.5 }),
-                            onEnterBack: () => gsap.to(marker.element, { opacity: 1, scale: 1, duration: 0.5 }),
-                            onLeaveBack: () => gsap.to(marker.element, { opacity: 0, scale: 0, duration: 0.5 })
-                        }
-                    });
-                });
-                
-                tl.to(this.camera.position, { z: 20, ease: 'power2.inOut' }, '#future-frontiers');
-                tl.to(this.earthGroup.rotation, { x: 0.1, y: Math.PI * 2.5, ease: 'power2.inOut' }, '#future-frontiers');
-
-                gsap.to(document.getElementById('scroll-progress-bar'), {
-                    height: '100%', ease: 'none',
-                    scrollTrigger: { trigger: this.dom.mainContent, start: 'top top', end: 'bottom bottom', scrub: true }
-                });
-            }
-        };
-
-        mainApp.init();
-
-    });
-    </script>
 </body>
 </html>
