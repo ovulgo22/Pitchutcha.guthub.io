@@ -1,0 +1,66 @@
+<div class="content-and-toc-wrapper">
+    <main class="main-content" id="main-content" tabindex="-1">
+        <article class="content-article">
+            <header class="article-header">
+                <div class="breadcrumbs"><a href="/">Início</a> / <a href="/fundacoes/">Fundações da Computação</a></div>
+                <h1 class="article-title" id="page-title">Arquitetura de Von Neumann</h1>
+                <p class="article-subtitle">O projeto conceitual que unificou dados e instruções na mesma memória, definindo o modelo para os computadores de propósito geral por mais de 75 anos.</p>
+            </header>
+
+            <section class="article-body">
+                <p>Proposta pelo matemático e físico John von Neumann em 1945, a arquitetura de Von Neumann (também conhecida como modelo de Von Neumann) foi um marco revolucionário no design de computadores. Pela primeira vez, um projeto descrevia um computador de programa armazenado, onde tanto as instruções do programa quanto os dados que ele operava residiriam no mesmo espaço de memória.</p>
+                
+                <h2 id="componentes-essenciais">Os Cinco Componentes Essenciais</h2>
+                <p>A arquitetura é elegantemente definida por cinco componentes principais, agrupados em três subsistemas:</p>
+                <ol>
+                    <li><strong>Unidade Central de Processamento (CPU):</strong> O "cérebro" da máquina, composto por:
+                        <ul>
+                            <li>A <strong>Unidade de Controle (CU)</strong>, que busca, decodifica e executa as instruções da memória.</li>
+                            <li>A <strong>Unidade Lógica e Aritmética (ALU)</strong>, que realiza as operações matemáticas (soma, subtração) e lógicas (E, OU, NÃO).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Unidade de Memória:</strong> Um espaço de armazenamento unificado que guarda tanto as instruções do programa quanto os dados. A CPU pode ler ou escrever em qualquer posição da memória a qualquer momento.</li>
+                    <li><strong>Dispositivos de Entrada/Saída (I/O):</strong> Mecanismos que permitem ao computador interagir com o mundo exterior, como teclados (entrada) e monitores (saída).</li>
+                </ol>
+                <p>Esses componentes são conectados por um conjunto de fios chamado <strong>barramento (bus)</strong>, que transporta dados, endereços de memória e sinais de controle entre eles.</p>
+
+                <div class="callout-box info">
+                    <p><strong>A Grande Ideia: O Programa Armazenado.</strong> Antes deste modelo, a "programação" de máquinas como o ENIAC era um processo físico e árduo, envolvendo a reconfiguração manual de cabos e interruptores. A ideia de tratar instruções como dados — algo que pode ser carregado da memória, modificado e escrito de volta — foi o que tornou os computadores verdadeiramente flexíveis e de propósito geral.</p>
+                </div>
+
+                <h2 id="gargalo-de-von-neumann">O Gargalo de Von Neumann</h2>
+                <p>Apesar de sua genialidade, a arquitetura tem uma limitação inerente conhecida como "gargalo de Von Neumann". Como a CPU é muito mais rápida do que a memória e ambos compartilham o mesmo barramento para buscar dados e instruções, a velocidade da conexão entre eles se torna um fator limitante para o desempenho geral do sistema.</p>
+                <p>A CPU frequentemente precisa esperar por dados ou instruções da memória, criando um "gargalo" que impede o processador de operar em sua capacidade máxima. Grande parte da evolução da arquitetura de computadores, como a criação de caches de memória, tem sido dedicada a mitigar esse problema.</p>
+
+                <h2 id="legado-e-alternativas">Legado e Alternativas</h2>
+                <p>Praticamente todos os computadores de hoje, de smartphones a supercomputadores, ainda seguem fundamentalmente o modelo de Von Neumann. No entanto, existem arquiteturas alternativas, como a <strong>Arquitetura de Harvard</strong>, que utiliza memórias e barramentos separados para dados e instruções. Esse modelo é frequentemente encontrado em sistemas embarcados e microcontroladores, onde a otimização de tarefas específicas é mais importante que a flexibilidade de propósito geral.</p>
+
+            </section>
+        </article>
+
+        <footer class="article-footer">
+            <nav class="article-pagination" aria-label="Navegação de artigos">
+                <a href="/fundacoes/teoria.html" class="pagination-link prev">
+                    <span class="pagination-label">Anterior</span>
+                    <span class="pagination-title">Teoria da Computação</span>
+                </a>
+                <a href="/hardware/cpu.html" class="pagination-link next">
+                    <span class="pagination-label">Próximo</span>
+                    <span class="pagination-title">CPU e Microprocessadores</span>
+                </a>
+            </nav>
+        </footer>
+    </main>
+    
+    <aside class="toc-sidebar" id="toc-sidebar">
+        <nav class="toc-nav" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+            <ul class="toc-list">
+                <li><a href="#page-title" class="toc-link is-active">Introdução</a></li>
+                <li><a href="#componentes-essenciais" class="toc-link">Cinco Componentes Essenciais</a></li>
+                <li><a href="#gargalo-de-von-neumann" class="toc-link">O Gargalo de Von Neumann</a></li>
+                <li><a href="#legado-e-alternativas" class="toc-link">Legado e Alternativas</a></li>
+            </ul>
+        </nav>
+    </aside>
+</div>
