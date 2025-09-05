@@ -1,0 +1,67 @@
+<div class="content-and-toc-wrapper">
+    <main class="main-content" id="main-content" tabindex="-1">
+        <article class="content-article">
+            <header class="article-header">
+                <div class="breadcrumbs"><a href="/">Início</a> / <a href="/hardware/">Hardware e Arquitetura</a></div>
+                <h1 class="article-title" id="page-title">Armazenamento (HDD, SSD)</h1>
+                <p class="article-subtitle">A base da hierarquia de memória, onde dados e programas são guardados permanentemente, mesmo quando o computador é desligado.</p>
+            </header>
+
+            <section class="article-body">
+                <p>Diferente da memória RAM, que é volátil (perde seus dados sem energia), o armazenamento secundário é não-volátil. Ele é responsável por guardar o sistema operacional, os aplicativos e os arquivos do usuário a longo prazo. As duas tecnologias mais comuns para isso são os Discos Rígidos (HDD) e as Unidades de Estado Sólido (SSD).</p>
+                
+                <h2 id="hdd">Disco Rígido (HDD - Hard Disk Drive)</h2>
+                <p>O HDD é a tecnologia de armazenamento magnético tradicional, que dominou o mercado por décadas. Ele funciona de maneira mecânica, semelhante a um toca-discos.</p>
+                
+                <h3>Como Funciona?</h3>
+                <p>Um HDD consiste em um ou mais discos metálicos, chamados <strong>pratos (platters)</strong>, cobertos por uma fina camada de material magnético. Esses pratos giram a milhares de rotações por minuto (RPM). Um braço atuador com uma <strong>cabeça de leitura/escrita</strong> se move sobre a superfície dos pratos para ler ou gravar dados, magnetizando ou desmagnetizando pequenas seções do disco para representar bits (0s e 1s).</p>
+                <ul>
+                    <li><strong>Vantagens:</strong> Baixo custo por gigabyte, altas capacidades de armazenamento.</li>
+                    <li><strong>Desvantagens:</strong> Lento devido às partes móveis (latência de busca e rotacional), frágil, consome mais energia e gera mais ruído.</li>
+                </ul>
+
+                <h2 id="ssd">Unidade de Estado Sólido (SSD - Solid-State Drive)</h2>
+                <p>O SSD é a tecnologia de armazenamento moderna, que não possui partes móveis. Ele utiliza chips de memória flash para guardar os dados, de forma semelhante a um pendrive, mas com muito mais velocidade e sofisticação.</p>
+
+                <h3>Como Funciona?</h3>
+                <p>Os dados em um SSD são armazenados em células de memória <strong>NAND flash</strong>. A gravação e a leitura são feitas eletronicamente, enviando cargas elétricas para "prender" ou "liberar" elétrons em portões flutuantes dentro das células. Como não há movimento mecânico, o acesso aos dados é quase instantâneo.</p>
+                <ul>
+                    <li><strong>Vantagens:</strong> Extremamente rápido em leitura e escrita, durável, silencioso, energeticamente eficiente.</li>
+                    <li><strong>Desvantagens:</strong> Custo mais alto por gigabyte, e as células de memória têm um número finito de ciclos de escrita (embora para o uso normal, isso raramente seja um problema hoje em dia).</li>
+                </ul>
+
+                <div class="callout-box info">
+                    <p><strong>NVMe: O Futuro da Velocidade.</strong> Enquanto os primeiros SSDs usavam a mesma interface SATA dos HDDs, os SSDs modernos usam o protocolo <strong>NVMe (Non-Volatile Memory Express)</strong>. Ele se conecta diretamente ao barramento PCIe da placa-mãe, o mesmo usado por placas de vídeo, eliminando gargalos e permitindo velocidades de transferência de dados drasticamente superiores.</p>
+                </div>
+
+                <h2 id="comparativo">HDD vs. SSD: Qual Escolher?</h2>
+                <p>Hoje, a maioria dos computadores modernos utiliza um SSD como unidade principal para o sistema operacional e programas, garantindo inicialização e carregamento rápidos. HDDs ainda são amplamente utilizados para armazenamento em massa de arquivos grandes (como vídeos, fotos e backups) em desktops e servidores, onde o baixo custo por terabyte é a prioridade.</p>
+            </section>
+        </article>
+
+        <footer class="article-footer">
+            <nav class="article-pagination" aria-label="Navegação de artigos">
+                <a href="/hardware/memoria.html" class="pagination-link prev">
+                    <span class="pagination-label">Anterior</span>
+                    <span class="pagination-title">Hierarquia de Memória</span>
+                </a>
+                <a href="/hardware/gpu.html" class="pagination-link next">
+                    <span class="pagination-label">Próximo</span>
+                    <span class="pagination-title">GPU e Computação Paralela</span>
+                </a>
+            </nav>
+        </footer>
+    </main>
+    
+    <aside class="toc-sidebar" id="toc-sidebar">
+        <nav class="toc-nav" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+            <ul class="toc-list">
+                <li><a href="#page-title" class="toc-link is-active">Introdução</a></li>
+                <li><a href="#hdd" class="toc-link">Disco Rígido (HDD)</a></li>
+                <li><a href="#ssd" class="toc-link">Unidade de Estado Sólido (SSD)</a></li>
+                <li><a href="#comparativo" class="toc-link">HDD vs. SSD: Qual Escolher?</a></li>
+            </ul>
+        </nav>
+    </aside>
+</div>
