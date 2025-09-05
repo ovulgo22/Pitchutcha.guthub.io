@@ -2,137 +2,254 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark light">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Pitchutcha: Uma Odisséia pela Computação</title>
-    
-    <meta name="description" content="Uma exploração profunda e interativa da história da computação, desde os primeiros ábacos até a inteligência artificial quântica. Um site projetado para inspirar, educar e vencer prêmios.">
-    <meta name="keywords" content="História da Computação, Ciência da Computação, Tecnologia, Inovação, Alan Turing, Ada Lovelace, ENIAC, Internet, Inteligência Artificial, Programação, Desenvolvimento, Pitchutcha">
-    <meta name="author" content="[Seu Nome/Estúdio]">
+    <title>Pitchutcha - A Enciclopédia da Computação</title>
+    <meta name="description" content="Explore a história completa, os conceitos fundamentais e os avanços revolucionários da ciência da computação. Pitchutcha é sua fonte definitiva de conhecimento, desde os primeiros ábacos até a computação quântica.">
+    <meta name="keywords" content="Computação, Ciência da Computação, História da Tecnologia, Programação, Desenvolvimento de Software, Inteligência Artificial, Redes de Computadores, Segurança da Informação, Alan Turing, Ada Lovelace, Algoritmos, Estrutura de Dados">
+    <meta name="author" content="Pitchutcha Project">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://[SEU-USUARIO].github.io/pitchutcha/">
 
-    <meta property="og:title" content="Pitchutcha: Uma Odisséia pela Computação">
-    <meta property="og:description" content="Uma jornada visual e textual através das eras que definiram o mundo digital.">
+    <meta property="og:title" content="Pitchutcha - A Enciclopédia da Computação">
+    <meta property="og:description" content="Uma jornada profunda e detalhada através das eras da computação, desvendando as mentes, as máquinas e as ideias que moldaram o nosso mundo digital.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://docs.github.com/pt/pages/getting-started-with-github-pages/creating-a-github-pages-site">
-    <meta property="og:image" content="https://www.instagram.com/reel/DLxZ-dhuVrr/">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://[SEU-USUARIO].github.io/pitchutcha/">
+    <meta property="og:image" content="https://[SEU-USUARIO].github.io/pitchutcha/assets/images/pitchutcha-og-image.png">
     <meta property="og:site_name" content="Pitchutcha">
+    <meta property="og:locale" content="pt_BR">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pitchutcha: Uma Odisséia pela Computação">
-    <meta name="twitter:description" content="Uma jornada visual e textual através das eras que definiram o mundo digital.">
-    <meta name="twitter:image" content="https://www.youtube.com/watch?v=g0LGrLxbgaE">
-    <meta name="twitter:creator" content="@[Seu Twitter]">
+    <meta name="twitter:title" content="Pitchutcha - A Enciclopédia da Computação">
+    <meta name="twitter:description" content="Explore a história, os conceitos e os avanços da ciência da computação. De ábacos à computação quântica.">
+    <meta name="twitter:image" content="https://[SEU-USUARIO].github.io/pitchutcha/assets/images/pitchutcha-twitter-image.png">
+    <meta name="twitter:creator" content="@[SEU-TWITTER]">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00ffff">
-    <meta name="msapplication-TileColor" content="#0a0a0a">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F0F0F0">
-
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    </head>
+<body data-theme="light">
 
-    <a href="#main-content" class="skip-to-content">Pular para o conteúdo principal</a>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-    <div class="search-modal" id="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-modal-title">
-        <button class="search-modal__close" id="search-close" aria-label="Fechar busca">&times;</button>
-        <div class="search-modal__content">
-            <h2 class="search-modal__title" id="search-modal-title">Pesquise na Odisséia</h2>
-            <div class="search-modal__input-wrapper">
-                <input type="search" id="search-input" placeholder="Digite termos como 'Alan Turing', 'Internet'...">
-            </div>
-            <div class="search-modal__results-wrapper">
-                <ul class="search-modal__results" id="search-results" aria-live="polite"></ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="preloader" id="preloader">
-        <div class="preloader__logo">PITCHUTCHA</div>
-        <div class="preloader__loader" aria-hidden="true">
-            <div class="loader-bar"></div>
-        </div>
-        <div class="preloader__status" id="preloader-status" aria-live="polite">Inicializando...</div>
-    </div>
-
-    <div id="main-container" data-scroll-container>
-        <header class="site-header" data-scroll-section>
-            <div class="header-container">
-                <a href="/" class="header__logo" aria-label="Página Inicial de Pitchutcha">
-                    <span>P</span><span>I</span><span>T</span><span>C</span><span>H</span><span>U</span><span>T</span><span>C</span><span>H</span><span>A</span>
+    <header class="main-header" id="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+                    <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path></svg>
+                    <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"></path></svg>
+                </button>
+                <a href="/" class="logo-link" aria-label="Página Inicial do Pitchutcha">
+                    <span class="logo-text">Pitchutcha</span>
                 </a>
-                <nav class="header__nav" aria-label="Navegação Principal">
+            </div>
+            
+            <div class="header-center" role="search">
+                <div class="search-wrapper">
+                    <label for="search-input" class="sr-only">Pesquisar na documentação</label>
+                    <input type="search" id="search-input" class="search-input" placeholder="Pesquisar em toda a enciclopédia...">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <nav class="header-nav" aria-label="Navegação secundária">
                     <ul>
-                        <li><a href="#alvorada" data-scroll-to>Alvorada</a></li>
-                        <li><a href="#revolucao" data-scroll-to>Revolução</a></li>
-                        <li><a href="#era-digital" data-scroll-to>Era Digital</a></li>
-                        <li><a href="#futuro" data-scroll-to>O Futuro</a></li>
+                        <li><a href="#sobre">Sobre o Projeto</a></li>
+                        <li><a href="#contribuir">Como Contribuir</a></li>
                     </ul>
                 </nav>
-                <div class="header__actions">
-                    <button class="action-btn" id="search-toggle" aria-label="Abrir busca" aria-controls="search-modal">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                    </button>
-                    <button class="action-btn" id="theme-toggle" aria-label="Alternar tema de cores">
-                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.31 0-6-2.69-6-6 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
-                    </button>
-                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema claro e escuro">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.42-1.42c.39-.39.39-1.02 0-1.41zm13.42 13.42c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.42-1.42c.39-.39.39-1.02 0-1.41zM19.42 5.99c.39-.39.39-1.02 0-1.41l-1.42-1.42c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0zM7.4 18.01c.39-.39.39-1.02 0-1.41l-1.42-1.42c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0z"></path></svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.31 0-6-2.69-6-6 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg>
+                </button>
+                <a href="https://github.com/[SEU-USUARIO]/pitchutcha" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="Ver código fonte no GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12 24 5.373 18.627 0 12 0z"></path></svg>
+                </a>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <main id="main-content">
-            <section class="hero" id="hero" data-scroll-section>
-                <div class="hero__background" aria-hidden="true">
-                    <div class="particles"></div>
-                </div>
-                <div class="hero__content">
-                    <h1 class="hero__title" aria-label="Computação">
-                        <span class="char-wrapper"><span class="char">C</span></span><span class="char-wrapper"><span class="char">o</span></span><span class="char-wrapper"><span class="char">m</span></span><span class="char-wrapper"><span class="char">p</span></span><span class="char-wrapper"><span class="char">u</span></span><span class="char-wrapper"><span class="char">t</span></span><span class="char-wrapper"><span class="char">a</span></span><span class="char-wrapper"><span class="char">ç</span></span><span class="char-wrapper"><span class="char">ã</span></span><span class="char-wrapper"><span class="char">o</span></span>
-                    </h1>
-                    <p class="hero__subtitle" data-scroll data-scroll-delay="0.1" data-scroll-speed="2">
-                        Uma odisséia interativa pela força que moldou o mundo moderno.
-                    </p>
-                </div>
-                <div class="hero__scroll-down">
-                    <span>Role para explorar</span>
-                    <div class="scroll-arrow" aria-hidden="true"></div>
-                </div>
-            </section>
-            
-            <section class="content-section intro-section" data-scroll-section>
-                <div class="container">
-                    <p class="chapter-marker" data-scroll data-scroll-class="is-inview">Prólogo</p>
-                    <h2 class="section-title" data-scroll data-scroll-class="is-inview">O Código do Universo</h2>
-                    <div class="prose" data-scroll data-scroll-class="is-inview">
-                        <p>Bem-vindo ao Pitchutcha. Este não é apenas um site; é um arquivo vivo, uma crônica da engenhosidade humana manifestada em silício e lógica. Aqui, viajaremos desde a poeira dos ábacos antigos até as fronteiras nebulosas da computação quântica e da consciência artificial.</p>
-                        <p>Nossa jornada não será apenas sobre máquinas, mas sobre as ideias e as pessoas por trás delas. Exploraremos como a necessidade de contar, calcular e comunicar nos levou a criar extensões de nossas próprias mentes, ferramentas que hoje definem a realidade. Cada linha de código, cada microchip, cada pixel na sua tela é o culminar de milênios de pensamento, experimentação e descoberta.</p>
-                        <p>Prepare-se para mergulhar fundo. A odisséia começa agora.</p>
+    <div class="main-container">
+        <aside class="sidebar" id="sidebar">
+            <nav class="sidebar-nav" aria-label="Navegação principal">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link active">Introdução ao Pitchutcha</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <details open>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">I. Fundações da Computação</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/fundacoes/historia-antiga" class="nav-link">História Antiga e Precursores</a></li>
+                                <li><a href="/fundacoes/pioneiros" class="nav-link">Os Pioneiros da Computação</a></li>
+                                <li class="nav-item-nested">
+                                    <details>
+                                        <summary class="nav-summary-nested">Figuras Históricas</summary>
+                                        <ul class="nav-sublist-nested">
+                                            <li><a href="/fundacoes/pioneiros/charles-babbage" class="nav-link">Charles Babbage</a></li>
+                                            <li><a href="/fundacoes/pioneiros/ada-lovelace" class="nav-link">Ada Lovelace</a></li>
+                                            <li><a href="/fundacoes/pioneiros/george-boole" class="nav-link">George Boole</a></li>
+                                            <li><a href="/fundacoes/pioneiros/alan-turing" class="nav-link">Alan Turing</a></li>
+                                            <li><a href="/fundacoes/pioneiros/john-von-neumann" class="nav-link">John von Neumann</a></li>
+                                            <li><a href="/fundacoes/pioneiros/grace-hopper" class="nav-link">Grace Hopper</a></li>
+                                            <li><a href="/fundacoes/pioneiros/claude-shannon" class="nav-link">Claude Shannon</a></li>
+                                        </ul>
+                                    </details>
+                                </li>
+                                <li><a href="/fundacoes/teoria-da-computacao" class="nav-link">Teoria da Computação</a></li>
+                                <li><a href="/fundacoes/maquina-de-turing" class="nav-link">A Máquina de Turing</a></li>
+                                <li><a href="/fundacoes/arquitetura-von-neumann" class="nav-link">Arquitetura de von Neumann</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">II. A Era dos Mainframes</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/mainframes/primeira-geracao" class="nav-link">1ª Geração: Válvulas</a></li>
+                                <li><a href="/mainframes/segunda-geracao" class="nav-link">2ª Geração: Transistores</a></li>
+                                <li><a href="/mainframes/terceira-geracao" class="nav-link">3ª Geração: Circuitos Integrados</a></li>
+                                <li><a href="/mainframes/ibm-system360" class="nav-link">O Impacto do IBM System/360</a></li>
+                                <li><a href="/mainframes/minicomputadores" class="nav-link">A Ascensão dos Minicomputadores</a></li>
+                                <li><a href="/mainframes/linguagens-iniciais" class="nav-link">Linguagens: FORTRAN, COBOL, LISP</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">III. A Revolução do PC</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/pc-revolution/microprocessadores" class="nav-link">A Invenção do Microprocessador</a></li>
+                                <li><a href="/pc-revolution/primeiros-pcs" class="nav-link">Os Primeiros Computadores Pessoais</a></li>
+                                <li><a href="/pc-revolution/apple-microsoft" class="nav-link">Apple vs. Microsoft: A Grande Rivalidade</a></li>
+                                <li><a href="/pc-revolution/interfaces-graficas" class="nav-link">A GUI (Interface Gráfica do Usuário)</a></li>
+                                <li class="nav-item-nested">
+                                    <details>
+                                        <summary class="nav-summary-nested">Sistemas Operacionais</summary>
+                                        <ul class="nav-sublist-nested">
+                                            <li><a href="/pc-revolution/os/unix" class="nav-link">UNIX e sua Filosofia</a></li>
+                                            <li><a href="/pc-revolution/os/ms-dos" class="nav-link">MS-DOS</a></li>
+                                            <li><a href="/pc-revolution/os/macos" class="nav-link">Mac OS Clássico</a></li>
+                                            <li><a href="/pc-revolution/os/windows" class="nav-link">Microsoft Windows</a></li>
+                                            <li><a href="/pc-revolution/os/linux" class="nav-link">O Surgimento do Linux</a></li>
+                                        </ul>
+                                    </details>
+                                </li>
+                                <li><a href="/pc-revolution/cultura-hacker" class="nav-link">A Cultura Hacker e os Clubes</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">IV. A Era da Internet e da Web</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/internet-era/arpanet" class="nav-link">As Origens: ARPANET</a></li>
+                                <li><a href="/internet-era/protocolos" class="nav-link">Protocolos Fundamentais: TCP/IP</a></li>
+                                <li><a href="/internet-era/world-wide-web" class="nav-link">A Invenção da World Wide Web</a></li>
+                                <li class="nav-item-nested">
+                                    <details>
+                                        <summary class="nav-summary-nested">Tecnologias da Web 1.0</summary>
+                                        <ul class="nav-sublist-nested">
+                                            <li><a href="/internet-era/web1/html" class="nav-link">HTML: A Linguagem da Web</a></li>
+                                            <li><a href="/internet-era/web1/http" class="nav-link">HTTP: O Protocolo de Transferência</a></li>
+                                            <li><a href="/internet-era/web1/urls" class="nav-link">URLs e Nomes de Domínio (DNS)</a></li>
+                                        </ul>
+                                    </details>
+                                </li>
+                                <li><a href="/internet-era/guerra-dos-browsers" class="nav-link">A Guerra dos Navegadores</a></li>
+                                <li><a href="/internet-era/bolha-com" class="nav-link">A Bolha da Internet (.com)</a></li>
+                                <li><a href="/internet-era/web-2" class="nav-link">O Advento da Web 2.0</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content" id="main-content" role="main" tabindex="-1">
+            <article class="content-article">
+                <header class="article-header">
+                    <div class="breadcrumbs">
+                        <a href="/">Início</a>
                     </div>
-                </div>
-            </section>
-            
-            </main> <footer class="site-footer-main" data-scroll-section data-scroll-section-id="footer">
-            </footer>
+                    <h1 class="article-title">Bem-vindo ao Pitchutcha</h1>
+                    <p class="article-subtitle">Uma jornada profunda e detalhada através das eras da computação, desvendando as mentes, as máquinas e as ideias que moldaram o nosso mundo digital.</p>
+                </header>
 
-    </div> <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    
-    <script src="script.js"></script>
+                <section class="article-body">
+                    <p>O Projeto Pitchutcha nasceu da ambição de criar um recurso centralizado, aberto e extremamente detalhado sobre a ciência da computação. Nossa missão é documentar não apenas o "como", mas o "porquê" e o "quem" por trás de cada avanço tecnológico, desde os conceitos matemáticos mais abstratos até as aplicações práticas que usamos todos os dias.</p>
+                    
+                    <div class="callout-box info">
+                        <div class="callout-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M11 7h2v2h-2V7zm0 4h2v6h-2v-6zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
+                        </div>
+                        <div class="callout-content">
+                            <p><strong>Navegue pelo Conhecimento:</strong> Utilize o menu lateral para explorar as diferentes eras e disciplinas da computação. A busca no topo da página permite encontrar tópicos específicos rapidamente.</p>
+                        </div>
+                    </div>
 
-</body>
-</html>
-
+                    <h2>Explore as Grandes Áreas</h2>
+                    <p>Para começar sua jornada, selecione uma das grandes áreas do conhecimento abaixo ou mergulhe diretamente em um tópico específico usando a navegação lateral.</p>
+                    
+                    <div class="quick-nav-grid">
+                        <a href="/fundacoes/" class="card-link">
+                            <div class="card">
+                                <div class="card-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 8v11h18V8L12 2zm0 2.236L18.053 8H5.947L12 4.236zM5 10h14v9H5v-9z M7 12v5h2v-5H7zm4 0v5h2v-5h-2zm4 0v5h2v-5h-2z"/></svg>
+                                </div>
+                                <h3 class="card-title">Fundações da Computação</h3>
+                                <p class="card-description">Descubra as mentes brilhantes e as teorias que formaram a base de tudo que conhecemos hoje.</p>
+                            </div>
+                        </a>
+                        <a href="/mainframes/" class="card-link">
+                            <div class="card">
+                                <div class="card-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18H4V6h16v12zM4 4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4zm2 4h4v2H6V8zm0 4h4v2H6v-2zm6-4h6v2h-6V8zm0 4h6v2h-6v-2z"/></svg>
+                                </div>
+                                <h3 class="card-title">A Era dos Mainframes</h3>
+                                <p class="card-description">Conheça as gigantescas máquinas que iniciaram a era do processamento de dados em larga escala.</p>
+                            </div>
+                        </a>
+                        <a href="/pc-revolution/" class="card-link">
+                            <div class="card">
+                                <div class="card-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+                                </div>
+                                <h3 class="card-title">A Revolução do PC</h3>
+                                <p class="card-description">Acompanhe a história da democratização da computação e a ascensão dos computadores pessoais.</p>
+                            </div>
+                        </a>
+                        <a href="/internet-era/" class="card-link">
+                            <div class="card">
+                                <div class="card-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                                </div>
+                                <h3 class="card-title">A Era da Internet e da Web</h3>
+                                <p class="card-description">Navegue pela criação da rede que conectou o mundo e transformou a sociedade para sempre.</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+                
