@@ -253,3 +253,306 @@
                     </div>
                 </section>
                 
+</section>
+            </article>
+
+            </main>
+    </div> <script>
+        // Pequeno script para popular o resto da sidebar para não sobrecarregar o HTML inicial
+        // No projeto final, isso pode ser gerado dinamicamente ou estar diretamente no HTML.
+        // Por agora, vamos injetar o HTML restante para manter a clareza.
+        (function() {
+            const navList = document.querySelector('.sidebar-nav .nav-list');
+            if (navList) {
+                const remainingNavHTML = `
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">V. A Era Móvel e da Nuvem</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/mobile-cloud/smartphones" class="nav-link">A Revolução dos Smartphones</a></li>
+                                <li><a href="/mobile-cloud/sistemas-operacionais-moveis" class="nav-link">Sistemas Operacionais Móveis (iOS, Android)</a></li>
+                                <li><a href="/mobile-cloud/app-stores" class="nav-link">O Ecossistema das App Stores</a></li>
+                                <li><a href="/mobile-cloud/cloud-computing" class="nav-link">O que é Computação em Nuvem?</a></li>
+                                <li class="nav-item-nested">
+                                    <details>
+                                        <summary class="nav-summary-nested">Modelos de Serviço em Nuvem</summary>
+                                        <ul class="nav-sublist-nested">
+                                            <li><a href="/mobile-cloud/iaas" class="nav-link">IaaS (Infrastructure as a Service)</a></li>
+                                            <li><a href="/mobile-cloud/paas" class="nav-link">PaaS (Platform as a Service)</a></li>
+                                            <li><a href="/mobile-cloud/saas" class="nav-link">SaaS (Software as a Service)</a></li>
+                                            <li><a href="/mobile-cloud/serverless" class="nav-link">Serverless e FaaS</a></li>
+                                        </ul>
+                                    </details>
+                                </li>
+                                <li><a href="/mobile-cloud/big-data" class="nav-link">Big Data e a Explosão de Dados</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">VI. IA, Machine Learning e Dados</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/ai-ml/historia-ia" class="nav-link">Uma Breve História da IA</a></li>
+                                <li><a href="/ai-ml/conceitos-ml" class="nav-link">Conceitos de Machine Learning</a></li>
+                                <li class="nav-item-nested">
+                                    <details>
+                                        <summary class="nav-summary-nested">Tipos de Aprendizado</summary>
+                                        <ul class="nav-sublist-nested">
+                                            <li><a href="/ai-ml/supervisionado" class="nav-link">Supervisionado</a></li>
+                                            <li><a href="/ai-ml/nao-supervisionado" class="nav-link">Não Supervisionado</a></li>
+                                            <li><a href="/ai-ml/reforco" class="nav-link">Por Reforço</a></li>
+                                        </ul>
+                                    </details>
+                                </li>
+                                <li><a href="/ai-ml/deep-learning" class="nav-link">Deep Learning e Redes Neurais</a></li>
+                                <li><a href="/ai-ml/llms" class="nav-link">Modelos de Linguagem Grandes (LLMs)</a></li>
+                                <li><a href="/ai-ml/etica-ia" class="nav-link">Ética e os Desafios da IA</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="nav-divider"><span class="sr-only">Disciplinas Fundamentais</span></li>
+
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">Hardware e Arquitetura</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/hardware/cpu" class="nav-link">CPU (Unidade Central de Processamento)</a></li>
+                                <li><a href="/hardware/cisc-risc" class="nav-link">CISC vs. RISC</a></li>
+                                <li><a href="/hardware/lei-de-moore" class="nav-link">A Lei de Moore</a></li>
+                                <li><a href="/hardware/gpu" class="nav-link">GPU (Unidade de Processamento Gráfico)</a></li>
+                                <li><a href="/hardware/memoria" class="nav-link">Hierarquia de Memória (RAM, Cache)</a></li>
+                                <li><a href="/hardware/armazenamento" class="nav-link">Armazenamento (HDD, SSD, NVMe)</a></li>
+                                <li><a href="/hardware/placa-mae" class="nav-link">A Placa-Mãe e os Barramentos</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">Engenharia de Software</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/engenharia-software/ciclo-de-vida" class="nav-link">Ciclo de Vida de Software</a></li>
+                                <li><a href="/engenharia-software/metodologias" class="nav-link">Metodologias (Ágil, Cascata)</a></li>
+                                <li><a href="/engenharia-software/paradigmas" class="nav-link">Paradigmas de Programação</a></li>
+                                <li><a href="/engenharia-software/design-patterns" class="nav-link">Padrões de Projeto (Design Patterns)</a></li>
+                                <li><a href="/engenharia-software/controle-versao" class="nav-link">Controle de Versão com Git</a></li>
+                                <li><a href="/engenharia-software/qa" class="nav-link">Testes e Garantia de Qualidade (QA)</a></li>
+                                <li><a href="/engenharia-software/devops" class="nav-link">DevOps e CI/CD</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">Linguagens de Programação</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/linguagens/arvore-genealogica" class="nav-link">A Árvore Genealógica das Linguagens</a></li>
+                                <li><a href="/linguagens/linguagens-mae" class="nav-link">Linguagens-Mãe (C, LISP, ALGOL)</a></li>
+                                <li><a href="/linguagens/orientadas-a-objetos" class="nav-link">Orientadas a Objetos (Java, C++, C#)</a></li>
+                                <li><a href="/linguagens/scripts" class="nav-link">Scripts (Python, JavaScript, Ruby)</a></li>
+                                <li><a href="/linguagens/funcionais" class="nav-link">Funcionais (Haskell, F#, Clojure)</a></li>
+                                <li><a href="/linguagens/sistemas" class="nav-link">De Sistemas (Rust, Go, Zig)</a></li>
+                                <li><a href="/linguagens/compiladores" class="nav-link">Compiladores e Interpretadores</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">Bancos de Dados</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/banco-de-dados/conceitos" class="nav-link">Conceitos Fundamentais</a></li>
+                                <li><a href="/banco-de-dados/modelo-relacional" class="nav-link">O Modelo Relacional e SQL</a></li>
+                                <li><a href="/banco-de-dados/nosql" class="nav-link">A Revolução NoSQL</a></li>
+                                <li class="nav-item-nested">
+                                    <details>
+                                        <summary class="nav-summary-nested">Tipos de NoSQL</summary>
+                                        <ul class="nav-sublist-nested">
+                                            <li><a href="/banco-de-dados/nosql/documento" class="nav-link">Documento (MongoDB)</a></li>
+                                            <li><a href="/banco-de-dados/nosql/chave-valor" class="nav-link">Chave-Valor (Redis)</a></li>
+                                            <li><a href="/banco-de-dados/nosql/colunar" class="nav-link">Colunar (Cassandra)</a></li>
+                                            <li><a href="/banco-de-dados/nosql/grafo" class="nav-link">Grafo (Neo4j)</a></li>
+                                        </ul>
+                                    </details>
+                                </li>
+                                <li><a href="/banco-de-dados/transacoes-acid" class="nav-link">Transações e o Teorema CAP</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">Redes e Segurança</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/redes-seguranca/modelo-osi" class="nav-link">O Modelo OSI e a Pilha TCP/IP</a></li>
+                                <li><a href="/redes-seguranca/protocolos" class="nav-link">Protocolos Essenciais da Internet</a></li>
+                                <li><a href="/redes-seguranca/criptografia" class="nav-link">Fundamentos da Criptografia</a></li>
+                                <li><a href="/redes-seguranca/chaves-publicas" class="nav-link">Chave Pública vs. Privada</a></li>
+                                <li><a href="/redes-seguranca/ameacas-comuns" class="nav-link">Ameaças e Vulnerabilidades Comuns</a></li>
+                                <li><a href="/redes-seguranca/defesa" class="nav-link">Estratégias de Defesa e Firewalls</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="nav-divider"><span class="sr-only">Tópicos Avançados e Futuro</span></li>
+
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">Computação Gráfica e IHC</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/grafica-ihc/pipeline-renderizacao" class="nav-link">Pipeline de Renderização 3D</a></li>
+                                <li><a href="/grafica-ihc/shaders" class="nav-link">Shaders e a GPU Programável</a></li>
+                                <li><a href="/grafica-ihc/ray-tracing" class="nav-link">Ray Tracing e Path Tracing</a></li>
+                                <li><a href="/grafica-ihc/ihc" class="nav-link">Interação Humano-Computador</a></li>
+                                <li><a href="/grafica-ihc/principios-design-ux" class="nav-link">Princípios de Design de UX/UI</a></li>
+                                <li><a href="/grafica-ihc/vr-ar" class="nav-link">Realidade Virtual e Aumentada</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">O Futuro da Computação</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/futuro/computacao-quantica" class="nav-link">Computação Quântica</a></li>
+                                <li><a href="/futuro/computacao-dna" class="nav-link">Computação de DNA</a></li>
+                                <li><a href="/futuro/computacao-neuromorfica" class="nav-link">Computação Neuromórfica</a></li>
+                                <li><a href="/futuro/iot" class="nav-link">Internet das Coisas (IoT)</a></li>
+                                <li><a href="/futuro/web3" class="nav-link">A Web3 e a Descentralização</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">
+                                <span class="nav-summary-title">Impactos Sociais e Ética</span>
+                            </summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/impactos/etica-tecnologia" class="nav-link">Ética na Tecnologia</a></li>
+                                <li><a href="/impactos/privacidade-dados" class="nav-link">Privacidade de Dados na Era Digital</a></li>
+                                <li><a href="/impactos/divisao-digital" class="nav-link">A Divisão Digital</a></li>
+                                <li><a href="/impactos/cultura-open-source" class="nav-link">A Cultura Open Source</a></li>
+                                <li><a href="/impactos/automacao-trabalho" class="nav-link">Automação e o Futuro do Trabalho</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                `;
+                // Insere o HTML restante no final da lista de navegação
+                navList.insertAdjacentHTML('beforeend', remainingNavHTML);
+            }
+        })();
+    </script>
+    
+    <div class="main-content-wrapper">
+        <main class="main-content" id="main-content" role="main" tabindex="-1">
+            <article class="content-article">
+                <section id="sobre" class="article-section">
+                    <h2 class="section-title">Sobre o Projeto Pitchutcha</h2>
+                    <p>Pitchutcha é mais do que um site de documentação; é um esforço colaborativo para construir a enciclopédia de ciência da computação mais abrangente e acessível do mundo. Acreditamos que o conhecimento sobre as ferramentas que moldam nosso mundo deve ser livre, detalhado e compreensível para todos, desde estudantes curiosos até profissionais experientes.</p>
+                    <p>Nossos princípios fundamentais são:</p>
+                    <ul>
+                        <li><strong>Profundidade e Precisão:</strong> Vamos além do superficial, conectando teorias, pessoas e eventos para criar uma narrativa coesa e precisa.</li>
+                        <li><strong>Código Aberto e Colaborativo:</strong> Todo o conteúdo e o código do site são abertos. Acreditamos no poder da comunidade para criar um recurso melhor para todos.</li>
+                        <li><strong>Acessibilidade Universal:</strong> O design e a estrutura são pensados desde o início para serem acessíveis a pessoas com diferentes habilidades e necessidades, seguindo as diretrizes do WCAG.</li>
+                        <li><strong>Design Focado na Leitura:</strong> A experiência do usuário é otimizada para longas sessões de leitura, com tipografia clara, temas adaptáveis e uma interface livre de distrações.</li>
+                    </ul>
+                </section>
+
+                <section id="contribuir" class="article-section">
+                    <h2 class="section-title">Como Contribuir</h2>
+                    <p>Este projeto é construído pela comunidade, para a comunidade. Existem muitas maneiras de ajudar, independentemente do seu nível de habilidade técnica:</p>
+                    <div class="contribution-steps">
+                        <div class="step">
+                            <h3 class="step-title">1. Reportando Erros e Sugerindo Melhorias</h3>
+                            <p>Encontrou um erro de digitação, uma informação imprecisa ou tem uma ideia para um novo tópico? <a href="https://github.com/[SEU-USUARIO]/pitchutcha/issues">Abra uma "Issue"</a> em nosso repositório no GitHub. Esta é uma das formas mais valiosas de contribuição.</p>
+                        </div>
+                        <div class="step">
+                            <h3 class="step-title">2. Escrevendo e Editando Conteúdo</h3>
+                            <p>Se você tem conhecimento em uma área específica, pode contribuir diretamente com o conteúdo. O processo é feito através de "Pull Requests" no GitHub. Consulte nosso <a href="/guias/guia-de-contribuicao">Guia de Contribuição</a> para aprender o passo a passo.</p>
+                        </div>
+                        <div class="step">
+                            <h3 class="step-title">3. Ajudando com o Código</h3>
+                            <p>Se você é um desenvolvedor, pode ajudar a melhorar o próprio site, seja corrigindo bugs, melhorando a acessibilidade, otimizando o CSS ou adicionando novas funcionalidades ao JavaScript. Explore as <a href="https://github.com/[SEU-USUARIO]/pitchutcha/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">issues para iniciantes</a>.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="article-footer">
+                    <div class="last-updated">
+                        Última atualização: <time datetime="2025-09-05">5 de Setembro de 2025</time>
+                    </div>
+                    <nav class="article-pagination" aria-label="Navegação de artigos">
+                        <a href="#" class="pagination-link prev" aria-label="Artigo anterior: Nenhum">
+                            </a>
+                        <a href="/fundacoes/historia-antiga" class="pagination-link next" aria-label="Próximo artigo: História Antiga e Precursores">
+                            <span class="pagination-label">Próximo</span>
+                            <span class="pagination-title">História Antiga e Precursores</span>
+                        </a>
+                    </nav>
+                </footer>
+            </article>
+        </main>
+        
+        <aside class="toc-sidebar" id="toc-sidebar">
+            <nav class="toc-nav" aria-labelledby="toc-heading">
+                <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+                <ul class="toc-list">
+                    <li><a href="#sobre" class="toc-link">Sobre o Projeto Pitchutcha</a></li>
+                    <li><a href="#contribuir" class="toc-link">Como Contribuir</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </div> <footer class="main-footer" id="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <span class="logo-text">Pitchutcha</span>
+                <p class="copyright">&copy; 2025 Pitchutcha Project. Todo o conteúdo está disponível sob a licença <a href="/licenca" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Navegação</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Início</a></li>
+                    <li><a href="/mapa-do-site">Mapa do Site</a></li>
+                    <li><a href="/guias/guia-de-contribuicao">Guia de Contribuição</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Comunidade</h4>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/[SEU-USUARIO]/pitchutcha" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="#">Código de Conduta</a></li>
+                    <li><a href="https://github.com/[SEU-USUARIO]/pitchutcha/discussions" target="_blank" rel="noopener noreferrer">Discussões</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <p>Construído com ❤️ pela comunidade e hospedado com orgulho no <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+
+</body>
+</html>
+
