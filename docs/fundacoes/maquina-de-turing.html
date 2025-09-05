@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>A Máquina de Turing | Pitchutcha</title>
+    <meta name="description" content="Entenda o que é a Máquina de Turing, o modelo matemático de um computador que define os limites da computabilidade e serve de base para a computação moderna.">
+    
+    <meta property="og:title" content="A Máquina de Turing | Pitchutcha">
+    <meta property="og:description" content="Entenda o que é a Máquina de Turing, o modelo matemático que define os limites da computabilidade.">
+    
+    <link rel="canonical" href="https://[SEU-USUARIO].github.io/pitchutcha/fundacoes/maquina-de-turing">
+    <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body data-theme="light">
+
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header class="main-header" id="main-header">
+        </header>
+
+    <div class="main-container">
+        
+        <aside class="sidebar" id="sidebar">
+            <nav class="sidebar-nav" aria-label="Navegação principal">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/" class="nav-link">Introdução ao Pitchutcha</a></li>
+                    <li class="nav-item">
+                        <details open>
+                            <summary class="nav-summary"><span class="nav-summary-title">I. Fundações da Computação</span></summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/fundacoes/historia-antiga" class="nav-link">História Antiga e Precursores</a></li>
+                                <li><a href="/fundacoes/pioneiros" class="nav-link">Os Pioneiros da Computação</a></li>
+                                <li><a href="/fundacoes/teoria-da-computacao" class="nav-link">Teoria da Computação</a></li>
+                                <li><a href="/fundacoes/maquina-de-turing" class="nav-link active">A Máquina de Turing</a></li>
+                                <li><a href="/fundacoes/arquitetura-von-neumann" class="nav-link">Arquitetura de von Neumann</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                    </ul>
+            </nav>
+        </aside>
+
+        <div class="content-and-toc-wrapper">
+            <main class="main-content" id="main-content" role="main" tabindex="-1">
+                <article class="content-article">
+                    <header class="article-header">
+                        <div class="breadcrumbs">
+                            <a href="/">Início</a> / <a href="#">Fundações da Computação</a>
+                        </div>
+                        <h1 class="article-title">A Máquina de Turing</h1>
+                        <p class="article-subtitle">Para responder à pergunta "o que é computável?", Alan Turing não precisou de um supercomputador. Ele precisou de uma ideia: um dispositivo teórico de simplicidade radical, mas com um poder computacional ilimitado.</p>
+                    </header>
+                    <section class="article-body">
+                        <p>Em seu revolucionário artigo de 1936, "On Computable Numbers, with an Application to the Entscheidungsproblem", Alan Turing introduziu um modelo matemático abstrato de um computador. Essa "máquina" não foi projetada para ser construída fisicamente; seu propósito era servir como uma ferramenta precisa para estudar os limites da computação e formalizar o conceito de algoritmo.</p>
+                        
+                        <h2 id="componentes">Os Componentes de uma Máquina de Turing</h2>
+                        <p>A genialidade da Máquina de Turing está em sua simplicidade. Ela consiste em apenas quatro componentes principais:</p>
+                        <ul>
+                            <li><strong>Uma Fita Infinita:</strong> A memória da máquina. A fita é dividida em células, cada uma podendo conter um único símbolo (por exemplo, '0', '1' ou um símbolo 'branco'). A fita é infinita para garantir que a memória nunca seja uma limitação.</li>
+                            <li><strong>Uma Cabeça de Leitura/Escrita:</strong> O processador. A cabeça pode se mover para a esquerda ou para a direita na fita, uma célula por vez. Ela pode ler o símbolo na célula atual, apagar ou escrever um novo símbolo.</li>
+                            <li><strong>Um Registrador de Estado:</strong> A "memória de curto prazo". A máquina está sempre em um de um conjunto finito de estados. O estado atual dita a próxima ação.</li>
+                            <li><strong>Uma Tabela de Ação (ou Função de Transição):</strong> O programa. É um conjunto de regras que diz à máquina o que fazer. Para cada combinação de <em>estado atual</em> e <em>símbolo lido</em>, a tabela especifica:
+                                <ol>
+                                    <li>O novo símbolo a ser escrito.</li>
+                                    <li>A direção para mover a cabeça (esquerda ou direita).</li>
+                                    <li>O novo estado para o qual a máquina deve transitar.</li>
+                                </ol>
+                            </li>
+                        </ul>
+                        <p>Se a máquina atinge um estado especial de "parada" (<em>halt state</em>), a computação termina.</p>
+
+                        <h2 id="funcionamento">Como Funciona: Um Exemplo Simples</h2>
+                        <p>Imagine uma Máquina de Turing projetada para uma tarefa muito simples: adicionar 1 a um número em notação unária. O número 3 seria representado como <code>..._111_...</code> na fita, onde <code>_</code> é o símbolo branco. Para adicionar 1, a máquina precisa simplesmente adicionar outro <code>1</code> ao final.</p>
+                        <p>O "programa" (tabela de ação) poderia ser:</p>
+                        <ol>
+                            <li><strong>Estado Inicial (q0):</strong> Se ler um '1', não escreva nada, mova para a direita e permaneça no estado q0. (Isso percorre todos os '1's).</li>
+                            <li><strong>Estado (q0):</strong> Se ler um símbolo branco '_', escreva um '1', mova para a direita e mude para o estado de parada (q_halt).</li>
+                        </ol>
+                        <p>Começando na primeira célula '1', a cabeça se moveria para a direita sobre todos os '1's. Ao encontrar o primeiro espaço em branco, ela o substituiria por um '1' e pararia. O resultado na fita seria <code>..._1111_...</code>, que representa o número 4. Este exemplo trivial ilustra como um conjunto simples de regras pode executar uma tarefa computacional.</p>
+
+                        <h2 id="tese-church-turing">A Tese de Church-Turing e a Universalidade</h2>
+                        <p>A verdadeira importância da Máquina de Turing não está em sua capacidade de realizar tarefas simples, mas em sua universalidade. Ela levou a uma das hipóteses mais importantes da ciência da computação:</p>
+                        <blockquote>
+                            <p><strong>A Tese de Church-Turing:</strong> Qualquer função que possa ser considerada "calculável" por um método algorítmico pode ser calculada por uma Máquina de Turing.</p>
+                        </blockquote>
+                        <p>Em outras palavras, se você pode descrever um processo de computação passo a passo, uma Máquina de Turing pode executá-lo. Isso significa que seu laptop, um supercomputador ou um smartphone, apesar de imensamente mais rápidos e complexos, não podem, fundamentalmente, resolver problemas que uma Máquina de Turing não possa. Eles apenas os resolvem mais rapidamente.</p>
+                        <p>Turing foi além e concebeu a <strong>Máquina de Turing Universal (UTM)</strong>. Esta é uma Máquina de Turing especial que, em vez de ter um programa fixo, recebe como entrada na sua fita a descrição de <em>outra</em> Máquina de Turing e os dados para essa máquina. A UTM então simula o comportamento da máquina descrita. Este é o conceito fundamental por trás do <strong>computador de programa armazenado</strong>, onde o software (a descrição da máquina) é tratado como dados, uma ideia que John von Neumann formalizaria mais tarde na arquitetura de computadores modernos.</p>
+                    </section>
+
+                    <footer class="article-footer">
+                        <div class="last-updated">Última atualização: <time datetime="2025-09-05">5 de Setembro de 2025</time></div>
+                        <nav class="article-pagination" aria-label="Navegação de artigos">
+                            <a href="/fundacoes/teoria-da-computacao" class="pagination-link prev" aria-label="Artigo anterior: Teoria da Computação">
+                                <span class="pagination-label">Anterior</span>
+                                <span class="pagination-title">Teoria da Computação</span>
+                            </a>
+                            <a href="/fundacoes/arquitetura-von-neumann" class="pagination-link next" aria-label="Próximo artigo: Arquitetura de von Neumann">
+                                <span class="pagination-label">Próximo</span>
+                                <span class="pagination-title">Arquitetura de von Neumann</span>
+                            </a>
+                        </nav>
+                    </footer>
+                </article>
+            </main>
+            
+            <aside class="toc-sidebar" id="toc-sidebar">
+                <nav class="toc-nav" aria-labelledby="toc-heading">
+                    <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+                    <ul class="toc-list">
+                        <li><a href="#componentes" class="toc-link">Os Componentes</a></li>
+                        <li><a href="#funcionamento" class="toc-link">Como Funciona</a></li>
+                        <li><a href="#tese-church-turing" class="toc-link">A Tese de Church-Turing</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+    </div>
+
+    <footer class="main-footer" id="main-footer">
+        </footer>
+
+    <script src="../script.js" defer></script>
+
+</body>
+</html>
