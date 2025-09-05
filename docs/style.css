@@ -428,3 +428,306 @@ a:hover {
     100% { transform: translateY(100%); }
 }
 
+/*
+==================================================================================================
+ARQUIVO: style.css (Parte 2 de várias)
+DESCRIÇÃO: Estilização do conteúdo principal, tipografia, elementos de prosa e rodapé.
+==================================================================================================
+
+UX/UI DESIGN & INFORMATION ARCHITECTURE:
+- O espaçamento vertical generoso (`padding` nas seções) é intencional. Ele cria "pausas" 
+  visuais, permitindo que o usuário processe cada capítulo como uma unidade distinta.
+- A hierarquia visual é reforçada com cor e estilo: `h2` é grande e imponente, `h3` usa a cor
+  primária para indicar um sub-tópico, e o marcador de capítulo é um elemento tipográfico sutil.
+- O tratamento de citações (`<aside class="quote">`) e figuras (`<figure>`) quebra a monotonia
+  do texto e destaca informações importantes ou visuais.
+
+CREATIVE DEVELOPMENT & ANIMATION:
+- A maioria dos elementos de conteúdo (títulos, parágrafos, etc.) começa com `opacity: 0` e um 
+  `transform: translateY`.
+- Uma classe `.is-inview` (a ser adicionada via JavaScript quando o elemento entra na tela) 
+  reverterá essas propriedades para `opacity: 1` e `transform: none`.
+- A propriedade `transition` no seletor base garante que essa mudança de estado seja suave e 
+  animada. Este é o padrão fundamental para as animações de revelação na rolagem.
+==================================================================================================
+*/
+
+
+/* 5. ESTRUTURA E ESTILO DO CONTEÚDO PRINCIPAL
+--------------------------------------------------------------------------------------------------*/
+
+main#page-content > section {
+    /* Espaçamento vertical massivo entre as seções/capítulos */
+    padding: var(--space-xxl) 0;
+    position: relative;
+}
+
+/* Variante de seção com fundo sutilmente diferente para ritmo visual */
+.dark-section {
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.chapter-marker {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: var(--space-md);
+}
+
+.section-title,
+.sub-section-title,
+.prose > *,
+.quote,
+figure,
+.interactive-list > li {
+    /* Estado inicial para animação de revelação */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity var(--duration-normal) var(--easing-cubic), transform var(--duration-normal) var(--easing-cubic);
+}
+
+/* Estado final quando o elemento está visível (classe adicionada via JS) */
+.is-inview {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Adicionando delays de transição para um efeito de cascata agradável */
+.prose > p:nth-child(2) { transition-delay: 0.1s; }
+.prose > p:nth-child(3) { transition-delay: 0.2s; }
+.prose > p:nth-child(4) { transition-delay: 0.3s; }
+
+
+/* Refinando o estilo dos títulos dentro do conteúdo */
+.section-title {
+    max-width: 25ch; /* Limita a largura para quebra de linha elegante */
+}
+
+.sub-section {
+    margin-top: var(--space-xl);
+}
+
+.sub-section-title {
+    color: var(--color-primary);
+    position: relative;
+    padding-left: var(--space-lg);
+}
+
+/* Adiciona um "marcador" gráfico ao lado do H3 */
+.sub-section-title::before {
+    content: '//';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    opacity: 0.5;
+}
+
+/* 6. ELEMENTOS DE PROSA (CONTEÚDO DE TEXTO)
+--------------------------------------------------------------------------------------------------*/
+.prose strong {
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.quote {
+    margin: var(--space-lg) 0;
+    padding-left: var(--space-md);
+    border-left: 3px solid var(--color-primary);
+}
+
+.quote blockquote p {
+    font-family: var(--font-display);
+    font-size: var(--font-size-lg);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-text);
+}
+
+.quote cite {
+    display: block;
+    margin-top: var(--space-sm);
+    font-style: normal;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+figure {
+    margin: var(--space-lg) auto;
+}
+
+figcaption {
+    margin-top: var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    text-align: center;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 7. COMPONENTES INTERATIVOS E LISTAS ESTILIZADAS
+--------------------------------------------------------------------------------------------------*/
+
+.interactive-list {
+    margin: var(--space-lg) 0;
+    counter-reset: interactive-counter; /* Inicia um contador para a lista */
+}
+
+.interactive-list li {
+    font-size: var(--font-size-md);
+    padding: var(--space-sm) 0;
+    padding-left: var(--space-lg);
+    position: relative;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.interactive-list li:first-child {
+    border-top: 1px solid var(--color-border);
+}
+
+/* Adicionando delays em cascata para a animação da lista */
+.interactive-list li:nth-child(2) { transition-delay: 0.15s; }
+.interactive-list li:nth-child(3) { transition-delay: 0.3s; }
+.interactive-list li:nth-child(4) { transition-delay: 0.45s; }
+
+
+.interactive-list li::before {
+    counter-increment: interactive-counter;
+    content: "0" counter(interactive-counter);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--color-primary);
+}
+
+.component-name {
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+/* Estilo base para o diagrama de Von Neumann */
+.interactive-diagram {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: var(--space-lg);
+    margin: var(--space-xl) auto;
+    border-radius: 8px;
+}
+
+.diagram-title {
+    text-align: center;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: var(--space-lg);
+    color: var(--color-text-secondary);
+}
+
+.diagram-content {
+    /* Layout será mais complexo e definido posteriormente ou via JS */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: var(--space-md);
+    text-align: center;
+}
+
+.diagram-box {
+    border: 1px solid var(--color-border);
+    padding: var(--space-md);
+    min-width: 150px;
+}
+
+.diagram-box strong {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+}
+
+.diagram-box-internal {
+    background-color: var(--color-background);
+    padding: var(--space-xs);
+    margin-top: var(--space-sm);
+    font-size: var(--font-size-xs);
+}
+
+/* 8. RODAPÉ PRINCIPAL (.site-footer-main)
+--------------------------------------------------------------------------------------------------*/
+.site-footer-main {
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-xl) 0 var(--space-md) 0;
+    position: relative;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.footer-heading {
+    font-size: var(--font-size-md);
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-column.about p {
+    font-size: var(--font-size-sm);
+    max-width: 40ch;
+    color: var(--color-text-secondary);
+}
+
+.footer-column ul li {
+    margin-bottom: var(--space-sm);
+}
+
+.footer-column ul a {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    transition: color var(--duration-fast) var(--easing-cubic), padding-left var(--duration-fast) var(--easing-cubic);
+}
+
+.footer-column ul a:hover {
+    color: var(--color-primary);
+    padding-left: var(--space-xs);
+}
+
+.back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-lg);
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.back-to-top svg {
+    transition: transform var(--duration-fast) var(--easing-cubic);
+}
+
+.back-to-top:hover svg {
+    transform: translateY(-4px);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-md);
+    text-align: center;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
