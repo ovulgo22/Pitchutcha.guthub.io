@@ -1,14 +1,35 @@
 /*
-==================================================================================================
-PROJETO: Pitchutcha - Uma Odisséia pela Computação (v2.0)
-ARQUIVO: style.css (FUNCIONALIDADE v2.0 + ESTÉTICA v1.0)
-DESCRIÇÃO: Folha de estilos principal. Unifica a identidade visual da v1.0 com os 
-           componentes e a estrutura aprimorada da v2.0.
-==================================================================================================
+====================================================================================
+PROJETO: Pitchutcha (v3.0 - Reestruturação GitHub Docs)
+ARQUIVO: style.css
+DESCRIÇÃO: Folha de estilos completa, recriada do zero para espelhar a
+           estética e funcionalidade do GitHub Docs.
+====================================================================================
 */
 
-/* 1. RESET MODERNO E CONFIGURAÇÕES GLOBAIS
---------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+[ ÍNDICE ]
+
+1. RESET E NORMALIZAÇÃO
+2. VARIÁVEIS GLOBAIS (DESIGN TOKENS)
+   - Tema Claro (Padrão)
+   - Tema Escuro
+3. ESTILOS GERAIS E TIPOGRAFIA BASE
+4. LAYOUT PRINCIPAL (GRID E RESPONSIVIDADE)
+5. COMPONENTES
+   - Cabeçalho (Site Header)
+   - Sidebar de Navegação
+   - Conteúdo Principal (Article)
+   - Sidebar de Tópicos (TOC)
+   - Componentes de Conteúdo (Callouts, Cards, KBD)
+   - Rodapé (Footer)
+6. CLASSES UTILITÁRIAS E DE ESTADO
+------------------------------------------------------------------*/
+
+
+/*==================================================================
+  1. RESET E NORMALIZAÇÃO
+==================================================================*/
 *,
 *::before,
 *::after {
@@ -18,124 +39,412 @@ DESCRIÇÃO: Folha de estilos principal. Unifica a identidade visual da v1.0 com
 }
 
 html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
-    font-size: 62.5%;
+    scroll-padding-top: 80px; /* Offset para o cabeçalho fixo */
 }
 
 body {
-    font-family: var(--font-body);
-    font-size: 1.6rem;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+    font-size: 16px;
     line-height: 1.6;
-    color: var(--color-text);
-    background-color: var(--color-background);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-img, picture, video, canvas, svg {
-    display: block;
+img, svg {
     max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-accent);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/*==================================================================
+  2. VARIÁVEIS GLOBAIS (DESIGN TOKENS)
+==================================================================*/
+
+/* TEMA CLARO (PADRÃO) */
+:root, [data-theme="light"] {
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono: 'Fira Code', monospace;
+    
+    --color-bg: #ffffff;
+    --color-bg-secondary: #f6f8fa;
+    --color-text-primary: #1f2328;
+    --color-text-secondary: #57606a;
+    --color-border: #d0d7de;
+    --color-accent: #0969da;
+    --color-accent-hover: #0a5cc9;
+    --color-shadow: rgba(140, 149, 159, 0.2);
+
+    --color-info-bg: #ddf4ff;
+    --color-info-border: #58a6ff;
+    --color-info-icon: #0969da;
+}
+
+/* TEMA ESCURO */
+[data-theme="dark"] {
+    --color-bg: #0d1117;
+    --color-bg-secondary: #161b22;
+    --color-text-primary: #c9d1d9;
+    --color-text-secondary: #8b949e;
+    --color-border: #30363d;
+    --color-accent: #58a6ff;
+    --color-accent-hover: #79c0ff;
+    --color-shadow: rgba(0, 0, 0, 0.4);
+
+    --color-info-bg: rgba(56, 139, 253, 0.1);
+    --color-info-border: #388bfd;
+    --color-info-icon: #58a6ff;
+}
+
+
+/*==================================================================
+  3. ESTILOS GERAIS E TIPOGRAFIA BASE
+==================================================================*/
+h1, h2, h3 {
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+}
+h1 { font-size: 2.25rem; margin-top: 0; }
+h2 { font-size: 1.75rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-top: 2.5rem; }
+h3 { font-size: 1.25rem; margin-top: 2rem; }
+
+p {
+    margin-bottom: 1rem;
+    max-width: 75ch;
 }
 
 ul, ol {
-    list-style: none;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
 }
 
-a, button {
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
+code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background-color: var(--color-bg-secondary);
+    padding: 0.2em 0.4em;
+    border-radius: 6px;
 }
 
-button {
-    font-family: inherit;
-    border: none;
-    background: none;
+pre {
+    font-family: var(--font-mono);
+    background-color: var(--color-bg-secondary);
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
 }
 
-
-/* 2. DESIGN SYSTEM (VARIÁVEIS CSS) - BASE v1.0
---------------------------------------------------------------------------------------------------*/
-:root {
-    /* Paleta de Cores (Dark Theme) */
-    --color-background: #0D0D0D;
-    --color-surface: #1A1A1A;
-    --color-primary: #00FFFF;
-    --color-secondary: #FF00FF;
-    --color-text: #E0E0E0;
-    --color-text-secondary: #A0A0A0;
-    --color-border: rgba(255, 255, 255, 0.1);
-
-    /* Tipografia */
-    --font-display: 'Orbitron', sans-serif;
-    --font-body: 'Roboto Mono', monospace;
-
-    /* Tamanhos de Fonte Fluidos */
-    --font-size-xs: clamp(1.2rem, 1vw + 1rem, 1.4rem);
-    --font-size-sm: clamp(1.4rem, 1.2vw + 1rem, 1.6rem);
-    --font-size-md: clamp(1.6rem, 1.5vw + 1rem, 1.8rem);
-    --font-size-lg: clamp(2.0rem, 2vw + 1rem, 2.4rem);
-    --font-size-xl: clamp(2.8rem, 4vw + 1rem, 4.8rem);
-    --font-size-xxl: clamp(4.0rem, 8vw + 1rem, 12rem);
-    
-    /* Espaçamento */
-    --space-xs: 0.8rem;
-    --space-sm: 1.6rem;
-    --space-md: 2.4rem;
-    --space-lg: 4.8rem;
-    --space-xl: 8.0rem;
-    --space-xxl: 12.8rem;
-
-    /* Layout */
-    --container-width: 1200px;
-    --container-padding: var(--space-md);
-
-    /* Animação e Transição */
-    --duration-fast: 0.2s;
-    --duration-normal: 0.5s;
-    --duration-slow: 1s;
-    --easing-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+/*==================================================================
+  4. LAYOUT PRINCIPAL
+==================================================================*/
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 60px; /* Altura do Header */
+    height: calc(100vh - 60px);
 }
 
-/* 3. ESTILOS DE ELEMENTOS GLOBAIS E UTILITÁRIOS
---------------------------------------------------------------------------------------------------*/
-h1, h2, h3, h4 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    color: var(--color-text);
-    line-height: 1.2;
-    letter-spacing: 0.5px;
+@media (min-width: 768px) {
+    .main-container {
+        grid-template-columns: 280px 1fr;
+    }
 }
-h1 { font-size: var(--font-size-xxl); }
-h2 { font-size: var(--font-size-xl); margin-bottom: var(--space-lg); }
-h3 { font-size: var(--font-size-lg); margin-bottom: var(--space-md); }
-h4 { font-size: var(--font-size-md); margin-bottom: var(--space-sm); }
-p {
-    margin-bottom: var(--space-md);
-    font-size: var(--font-size-md);
-    max-width: 75ch;
+
+@media (min-width: 1200px) {
+    .main-container {
+        grid-template-columns: 280px 1fr 240px;
+    }
 }
-a {
-    position: relative;
-    color: var(--color-primary);
-    transition: color var(--duration-fast) var(--easing-cubic);
+
+.content-and-toc-wrapper {
+    display: flex;
+    overflow-y: auto;
 }
-a:hover {
-    color: var(--color-text);
-}
-:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 4px;
-}
-.container {
+
+/*==================================================================
+  5. COMPONENTES
+==================================================================*/
+
+/* Cabeçalho (Site Header) */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: var(--container-width);
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 var(--container-padding);
+    height: 60px;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 100;
+    padding: 0 1rem;
 }
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-link {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+}
+.logo-link:hover { text-decoration: none; }
+
+.search-input {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+    color: var(--color-text-primary);
+    min-width: 250px;
+}
+
+.search-wrapper { position: relative; }
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    transform: translateY(-50%);
+    color: var(--color-text-secondary);
+    pointer-events: none;
+}
+
+.menu-toggle, .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-primary);
+    padding: 0.5rem;
+}
+
+.theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
+@media (min-width: 768px) {
+    .menu-toggle { display: none; }
+}
+@media (max-width: 767px) {
+    .header-center { display: none; }
+}
+
+/* Sidebar de Navegação */
+.sidebar {
+    background-color: var(--color-bg);
+    border-right: 1px solid var(--color-border);
+    padding: 1.5rem 1rem;
+    overflow-y: auto;
+}
+
+@media (max-width: 767px) {
+    .sidebar {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        bottom: 0;
+        width: 280px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 200;
+    }
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+}
+
+.nav-summary {
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+.nav-sublist {
+    list-style: none;
+    padding-left: 1rem;
+}
+.nav-link {
+    display: block;
+    color: var(--color-text-secondary);
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+.nav-link:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-secondary);
+    text-decoration: none;
+}
+.nav-link.active {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    padding: 2rem;
+    flex-grow: 1;
+}
+.content-article {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.article-header {
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+}
+.breadcrumbs {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+}
+.article-title {
+    margin-bottom: 0.5rem;
+}
+.article-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    font-weight: 400;
+}
+.article-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+/* Sidebar de Tópicos (TOC) */
+.toc-sidebar {
+    width: 240px;
+    padding: 2rem 1rem;
+    font-size: 0.875rem;
+    border-left: 1px solid var(--color-border);
+}
+
+@media (max-width: 1199px) {
+    .toc-sidebar {
+        display: none;
+    }
+}
+
+.toc-heading {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.toc-list {
+    list-style: none;
+    padding-left: 0;
+    border-left: 2px solid var(--color-border);
+}
+.toc-link {
+    display: block;
+    color: var(--color-text-secondary);
+    padding: 0.25rem 1rem;
+}
+.toc-link:hover {
+    color: var(--color-text-primary);
+    text-decoration: none;
+}
+.toc-link.is-active {
+    color: var(--color-accent);
+    font-weight: 600;
+    border-left-color: var(--color-accent);
+    transform: translateX(-2px);
+}
+
+/* Componentes de Conteúdo */
+.callout-box {
+    padding: 1rem;
+    border-left: 4px solid var(--color-info-border);
+    background-color: var(--color-info-bg);
+    border-radius: 6px;
+    margin: 1.5rem 0;
+}
+.callout-box p:last-child {
+    margin-bottom: 0;
+}
+.callout-box strong {
+    color: var(--color-text-primary);
+}
+kbd {
+    font-family: var(--font-mono);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-secondary);
+    font-size: 0.85em;
+}
+
+.quick-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+.card {
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 1rem;
+    height: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-link:hover { text-decoration: none; }
+.card-link:hover .card {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 12px var(--color-shadow);
+}
+.card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+.card-description {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+.article-pagination {
+    display: flex;
+    justify-content: flex-end;
+}
+.pagination-link {
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+}
+
+/* Rodapé */
+.site-footer {
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    border-top: 1px solid var(--color-border);
+}
+
+/*==================================================================
+  6. CLASSES UTILITÁRIAS E DE ESTADO
+==================================================================*/
 .sr-only {
   position: absolute;
   width: 1px;
@@ -147,222 +456,17 @@ a:hover {
   white-space: nowrap;
   border-width: 0;
 }
-
-
-/* 4. COMPONENTES v1.0 (PRELOADER, HEADER, HERO, CONTEÚDO, FOOTER)
---------------------------------------------------------------------------------------------------*/
-/* ... [Estilos do Preloader, Hero, Conteúdo, etc. da v1.0 entram aqui] ... */
-/* Por brevidade, vou focar nos estilos do Header e adicionar os novos da v2.0 */
-
-/* 4.1. CABEÇALHO PRINCIPAL (.site-header) - ATUALIZADO PARA V2.0 */
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: var(--space-md) 0;
-    z-index: 100;
-    background-color: rgba(13, 13, 13, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-border);
-    transition: transform var(--duration-normal) var(--easing-cubic);
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 1100;
+  border-radius: 6px;
+  transition: top 0.3s ease;
 }
-.site-header--hidden {
-    transform: translateY(-100%);
+.skip-link:focus {
+  top: 1rem;
 }
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-md);
-    width: 100%;
-    max-width: calc(var(--container-width) + var(--container-padding) * 2);
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-}
-.header-left, .header-right {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    flex-shrink: 0;
-}
-.header-center {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-}
-.header__logo {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 2.4rem;
-    letter-spacing: 2px;
-}
-.version-badge {
-    font-size: 0.5em;
-    color: var(--color-primary);
-    vertical-align: super;
-    margin-left: 2px;
-    font-weight: 400;
-}
-.header__nav ul {
-    display: flex;
-    gap: var(--space-lg);
-}
-.header__nav a {
-    font-family: var(--font-body);
-    font-size: var(--font-size-sm);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding-bottom: var(--space-xs);
-    border-bottom: 2px solid transparent;
-    transition: border-color var(--duration-fast) var(--easing-cubic), color var(--duration-fast) var(--easing-cubic);
-}
-.header__nav a:hover {
-    color: var(--color-primary);
-    border-bottom-color: var(--color-primary);
-}
-.action-btn {
-    color: var(--color-text-secondary);
-    transition: color var(--duration-fast) var(--easing-cubic), transform var(--duration-fast) var(--easing-cubic);
-}
-.action-btn:hover {
-    color: var(--color-primary);
-    transform: scale(1.1);
-}
-.action-btn svg {
-    width: 2.2rem;
-    height: 2.2rem;
-}
-
-/* 5. COMPONENTES V2.0 - PALETA DE COMANDOS E BOTÃO DE BUSCA
---------------------------------------------------------------------------------------------------*/
-
-/* 5.1 Botão de Busca no Header */
-.search-bar-button {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: var(--space-xs) var(--space-md);
-    width: 100%;
-    max-width: 400px;
-    text-align: left;
-    transition: border-color var(--duration-fast);
-}
-.search-bar-button:hover {
-    border-color: var(--color-primary);
-}
-.search-bar-button .search-icon {
-    color: var(--color-text-secondary);
-}
-.search-bar-text {
-    color: var(--color-text-secondary);
-    flex-grow: 1;
-}
-.search-bar-shortcut {
-    font-family: var(--font-body);
-    font-size: 1.2rem;
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    padding: 2px 6px;
-    border-radius: 4px;
-    color: var(--color-text-secondary);
-}
-
-/* 5.2 Paleta de Comandos (Modal) */
-.command-palette-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(13, 13, 13, 0.7);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-    padding-top: 15vh;
-    
-    /* Estado inicial (escondido) */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity var(--duration-fast) ease, visibility var(--duration-fast) ease;
-}
-.command-palette-overlay.is-active {
-    opacity: 1;
-    visibility: visible;
-}
-.command-palette {
-    width: 100%;
-    max-width: 600px;
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    overflow: hidden;
-    height: fit-content;
-    max-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-
-    /* Animação de entrada */
-    transform: scale(0.95);
-    transition: transform var(--duration-fast) var(--easing-cubic);
-}
-.command-palette-overlay.is-active .command-palette {
-    transform: scale(1);
-}
-.command-palette__search-wrapper {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    padding: var(--space-md);
-    border-bottom: 1px solid var(--color-border);
-}
-.command-palette__input {
-    flex-grow: 1;
-    background: none;
-    border: none;
-    outline: none;
-    color: var(--color-text);
-    font-size: 1.8rem;
-    font-family: var(--font-body);
-}
-.command-palette__close-button {
-    font-family: var(--font-body);
-    font-size: 1.2rem;
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    padding: 4px 8px;
-    border-radius: 4px;
-    color: var(--color-text-secondary);
-}
-.command-palette__results {
-    list-style: none;
-    padding: var(--space-sm);
-    margin: 0;
-    overflow-y: auto;
-}
-.command-palette__results li {
-    padding: var(--space-md);
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: var(--font-size-md);
-    transition: background-color var(--duration-fast), color var(--duration-fast);
-}
-.command-palette__results li:hover,
-.command-palette__results li.is-active {
-    background-color: var(--color-primary);
-    color: var(--color-background);
-}
-
-/* Aqui entrariam os demais estilos da v1.0 para:
-  - .hero
-  - .content-section, .prose, .quote, etc.
-  - .interactive-diagram
-  - .site-footer-main
-  - E os demais componentes que já havíamos criado.
-  Eles funcionariam normalmente com a nova estrutura.
-*/
