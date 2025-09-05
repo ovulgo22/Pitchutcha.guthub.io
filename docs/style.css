@@ -1,9 +1,9 @@
 /*
 ====================================================================================
-PROJETO: Pitchutcha (v3.0 - Reestruturação GitHub Docs)
+PROJETO: Pitchutcha (Versão Final)
 ARQUIVO: style.css
-DESCRIÇÃO: Folha de estilos completa, recriada do zero para espelhar a
-           estética e funcionalidade do GitHub Docs.
+DESCRIÇÃO: Folha de estilos completa com a estética do GitHub Docs.
+           Aplicada à nova arquitetura de conteúdo expandida.
 ====================================================================================
 */
 
@@ -12,8 +12,6 @@ DESCRIÇÃO: Folha de estilos completa, recriada do zero para espelhar a
 
 1. RESET E NORMALIZAÇÃO
 2. VARIÁVEIS GLOBAIS (DESIGN TOKENS)
-   - Tema Claro (Padrão)
-   - Tema Escuro
 3. ESTILOS GERAIS E TIPOGRAFIA BASE
 4. LAYOUT PRINCIPAL (GRID E RESPONSIVIDADE)
 5. COMPONENTES
@@ -241,9 +239,11 @@ pre {
     padding: 0.5rem;
 }
 
-.theme-toggle .icon-moon { display: none; }
+.theme-toggle .icon-moon, .menu-toggle .icon-close { display: none; }
 [data-theme="dark"] .theme-toggle .icon-sun { display: none; }
 [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+.menu-toggle.is-active .icon-menu { display: none; }
+.menu-toggle.is-active .icon-close { display: block; }
 
 @media (min-width: 768px) {
     .menu-toggle { display: none; }
@@ -258,6 +258,7 @@ pre {
     border-right: 1px solid var(--color-border);
     padding: 1.5rem 1rem;
     overflow-y: auto;
+    transition: transform 0.3s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
 @media (max-width: 767px) {
@@ -268,7 +269,6 @@ pre {
         bottom: 0;
         width: 280px;
         transform: translateX(-100%);
-        transition: transform 0.3s ease;
         z-index: 200;
     }
     .sidebar.is-open {
@@ -280,6 +280,7 @@ pre {
     font-weight: 600;
     cursor: pointer;
     padding: 0.5rem;
+    display: block;
 }
 .nav-sublist {
     list-style: none;
@@ -361,6 +362,7 @@ pre {
     display: block;
     color: var(--color-text-secondary);
     padding: 0.25rem 1rem;
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 .toc-link:hover {
     color: var(--color-text-primary);
@@ -425,13 +427,17 @@ kbd {
 
 .article-pagination {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 .pagination-link {
     border: 1px solid var(--color-border);
     padding: 0.75rem 1rem;
     border-radius: 6px;
+    max-width: 48%;
 }
+.pagination-link.next { text-align: right; }
+.pagination-label { font-size: 0.8rem; color: var(--color-text-secondary); }
+.pagination-title { color: var(--color-accent); font-weight: 600; }
 
 /* Rodapé */
 .site-footer {
@@ -470,3 +476,4 @@ kbd {
 .skip-link:focus {
   top: 1rem;
 }
+
