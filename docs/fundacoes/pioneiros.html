@@ -1,60 +1,147 @@
-<div class="content-and-toc-wrapper">
-    <main class="main-content" id="main-content" tabindex="-1">
-        <article class="content-article">
-            <header class="article-header">
-                <div class="breadcrumbs"><a href="/">Início</a> / <a href="/fundacoes/">Fundações da Computação</a></div>
-                <h1 class="article-title" id="page-title">Pioneiros da Computação</h1>
-                <p class="article-subtitle">Conheça as visionárias e os inventores cujas ideias e máquinas foram séculos à frente de seu tempo, definindo os princípios da computação moderna.</p>
-            </header>
-
-            <section class="article-body">
-                <p>A transição de simples ferramentas de cálculo para máquinas programáveis não aconteceu da noite para o dia. Foi um processo impulsionado por indivíduos excepcionais que ousaram imaginar um futuro onde as máquinas poderiam não apenas calcular, mas também "pensar" de forma lógica.</p>
-                
-                <h2 id="charles-babbage">Charles Babbage (1791-1871): O Pai do Computador</h2>
-                <p>O matemático e engenheiro inglês Charles Babbage é amplamente considerado o "pai do computador". Frustrado com os erros em tabelas matemáticas calculadas à mão, ele projetou duas máquinas revolucionárias.</p>
-                
-                <h3>A Máquina Diferencial e a Máquina Analítica</h3>
-                <p>Sua primeira invenção, a <strong>Máquina Diferencial</strong>, era projetada para automatizar o cálculo de polinômios. Embora uma versão completa nunca tenha sido construída em sua vida, o conceito de uma máquina a vapor para executar cálculos era inédito.</p>
-                <p>Mais ambiciosa ainda era a <strong>Máquina Analítica</strong>. Este projeto continha todos os elementos essenciais de um computador moderno: uma unidade de processamento (que ele chamou de "moinho"), uma memória ("armazenamento"), um leitor de instruções (usando cartões perfurados) e uma impressora. Era uma máquina de propósito geral, capaz de ser programada para executar qualquer cálculo imaginável.</p>
-
-                <h2 id="ada-lovelace">Ada Lovelace (1815-1852): A Primeira Programadora</h2>
-                <p>A matemática Ada Lovelace, filha do poeta Lord Byron, colaborou de perto com Babbage. Enquanto traduzia um artigo sobre a Máquina Analítica, ela adicionou notas extensas que eram mais longas que o próprio artigo original.</p>
-                
-                <div class="callout-box info">
-                    <p><strong>Mais que uma Tradutora:</strong> Nas suas notas, Lovelace não apenas descreveu a máquina, mas percebeu seu verdadeiro potencial. Ela viu que a máquina poderia manipular símbolos além de números, como notas musicais ou letras, antecipando a computação de propósito geral. Ela também escreveu o que é considerado o primeiro algoritmo destinado a ser processado por uma máquina, para calcular os números de Bernoulli, tornando-a a primeira programadora da história.</p>
-                </div>
-
-                <h2 id="alan-turing">Alan Turing (1912-1954): O Pai da Ciência da Computação</h2>
-                <p>Alan Turing, um matemático e lógico britânico, formalizou os conceitos de "algoritmo" e "computação" com sua invenção teórica, a <strong>Máquina de Turing</strong>. Este modelo abstrato de uma máquina de computação provou ser fundamental para o desenvolvimento da teoria da computação.</p>
-                
-                <h3>Decifrando o Enigma</h3>
-                <p>Durante a Segunda Guerra Mundial, o trabalho de Turing em Bletchley Park foi crucial para decifrar os códigos da máquina alemã Enigma. Ele projetou a "Bombe", uma máquina eletromecânica que acelerou drasticamente a quebra das cifras nazistas, um feito que muitos historiadores acreditam ter encurtado a guerra e salvado milhões de vidas. O trabalho de Turing estabeleceu as bases para a inteligência artificial e a ciência da computação como uma disciplina formal.</p>
-            </section>
-        </article>
-
-        <footer class="article-footer">
-            <nav class="article-pagination" aria-label="Navegação de artigos">
-                <a href="/fundacoes/historia.html" class="pagination-link prev">
-                    <span class="pagination-label">Anterior</span>
-                    <span class="pagination-title">História Antiga</span>
-                </a>
-                <a href="/fundacoes/teoria.html" class="pagination-link next">
-                    <span class="pagination-label">Próximo</span>
-                    <span class="pagination-title">Teoria da Computação</span>
-                </a>
-            </nav>
-        </footer>
-    </main>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pioneiros da Computação - Pitchutcha</title>
     
-    <aside class="toc-sidebar" id="toc-sidebar">
-        <nav class="toc-nav" aria-labelledby="toc-heading">
-            <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
-            <ul class="toc-list">
-                <li><a href="#page-title" class="toc-link is-active">Introdução</a></li>
-                <li><a href="#charles-babbage" class="toc-link">Charles Babbage</a></li>
-                <li><a href="#ada-lovelace" class="toc-link">Ada Lovelace</a></li>
-                <li><a href="#alan-turing" class="toc-link">Alan Turing</a></li>
-            </ul>
-        </nav>
-    </aside>
-</div>
+    <base href="https://ovulgo22.github.io/pitchutcha.github.io/">
+
+    <meta name="description" content="Conheça as visionárias e os inventores cujas ideias e máquinas foram séculos à frente de seu tempo, definindo os princípios da computação moderna.">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="light">
+
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="sidebar">
+                    <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path></svg>
+                    <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"></path></svg>
+                </button>
+                <a href="" class="logo-link" aria-label="Página Inicial do Pitchutcha">
+                    <span class="logo-text">Pitchutcha</span>
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="search-wrapper">
+                    <label for="search-input" class="sr-only">Pesquisar</label>
+                    <input type="search" id="search-input" class="search-input" placeholder="Pesquisar na documentação...">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.42-1.42c.39-.39.39-1.02 0-1.41zm13.42 13.42c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.42-1.42c.39-.39.39-1.02 0-1.41zM19.42 5.99c.39-.39.39-1.02 0-1.41l-1.42-1.42c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0zM7.4 18.01c.39-.39.39-1.02 0-1.41l-1.42-1.42c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0z"></path></svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.31 0-6-2.69-6-6 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg>
+                </button>
+                <a href="https://github.com/ovulgo22/pitchutcha.github.io" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="Ver código fonte no GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12 24 5.373 18.627 0 12 0z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar" id="sidebar">
+            <nav class="sidebar-nav" aria-label="Navegação principal">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="" class="nav-link">Introdução</a></li>
+                    <li class="nav-item">
+                        <details open>
+                            <summary class="nav-summary">Fundações da Computação</summary>
+                            <ul class="nav-sublist">
+                                <li><a href="fundacoes/historia.html" class="nav-link">História Antiga</a></li>
+                                <li><a href="fundacoes/pioneiros.html" class="nav-link active">Pioneiros (Babbage, Lovelace, Turing)</a></li>
+                                <li><a href="fundacoes/teoria.html" class="nav-link">Teoria da Computação</a></li>
+                                <li><a href="fundacoes/arquitetura-von-neumann.html" class="nav-link">Arquitetura de Von Neumann</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">Hardware e Arquitetura</summary>
+                            <ul class="nav-sublist">
+                                <li><a href="hardware/cpu.html" class="nav-link">CPU e Microprocessadores</a></li>
+                                <li><a href="hardware/memoria.html" class="nav-link">Hierarquia de Memória (RAM, Cache)</a></li>
+                                <li><a href="hardware/armazenamento.html" class="nav-link">Armazenamento (HDD, SSD)</a></li>
+                                <li><a href="hardware/gpu.html" class="nav-link">GPU e Computação Paralela</a></li>
+                                <li><a href="hardware/lei-de-moore.html" class="nav-link">A Lei de Moore</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li class="nav-item">
+                        <details>
+                            <summary class="nav-summary">Sistemas Operacionais</summary>
+                            <ul class="nav-sublist">
+                                <li><a href="so/conceitos.html" class="nav-link">Conceitos Fundamentais</a></li>
+                                <li><a href="so/gerenciamento-processos.html" class="nav-link">Gerenciamento de Processos</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="content-and-toc-wrapper">
+            <main class="main-content" id="main-content" tabindex="-1">
+                <article class="content-article">
+                    <header class="article-header">
+                        <div class="breadcrumbs"><a href="">Início</a> / <a href="fundacoes/">Fundações da Computação</a></div>
+                        <h1 class="article-title" id="page-title">Pioneiros da Computação</h1>
+                        <p class="article-subtitle">Conheça as visionárias e os inventores cujas ideias e máquinas foram séculos à frente de seu tempo, definindo os princípios da computação moderna.</p>
+                    </header>
+                    <section class="article-body">
+                        <p>A transição de simples ferramentas de cálculo para máquinas programáveis não aconteceu da noite para o dia. Foi um processo impulsionado por indivíduos excepcionais que ousaram imaginar um futuro onde as máquinas poderiam não apenas calcular, mas também "pensar" de forma lógica.</p>
+                        <h2 id="charles-babbage">Charles Babbage (1791-1871): O Pai do Computador</h2>
+                        <p>O matemático e engenheiro inglês Charles Babbage é amplamente considerado o "pai do computador". Frustrado com os erros em tabelas matemáticas calculadas à mão, ele projetou duas máquinas revolucionárias.</p>
+                        <h3>A Máquina Diferencial e a Máquina Analítica</h3>
+                        <p>Sua primeira invenção, a <strong>Máquina Diferencial</strong>, era projetada para automatizar o cálculo de polinômios. Embora uma versão completa nunca tenha sido construída em sua vida, o conceito de uma máquina a vapor para executar cálculos era inédito.</p>
+                        <p>Mais ambiciosa ainda era a <strong>Máquina Analítica</strong>. Este projeto continha todos os elementos essenciais de um computador moderno: uma unidade de processamento (que ele chamou de "moinho"), uma memória ("armazenamento"), um leitor de instruções (usando cartões perfurados) e uma impressora. Era uma máquina de propósito geral, capaz de ser programada para executar qualquer cálculo imaginável.</p>
+                        <h2 id="ada-lovelace">Ada Lovelace (1815-1852): A Primeira Programadora</h2>
+                        <p>A matemática Ada Lovelace, filha do poeta Lord Byron, colaborou de perto com Babbage. Enquanto traduzia um artigo sobre a Máquina Analítica, ela adicionou notas extensas que eram mais longas que o próprio artigo original.</p>
+                        <div class="callout-box info">
+                            <p><strong>Mais que uma Tradutora:</strong> Nas suas notas, Lovelace não apenas descreveu a máquina, mas percebeu seu verdadeiro potencial. Ela viu que a máquina poderia manipular símbolos além de números, como notas musicais ou letras, antecipando a computação de propósito geral. Ela também escreveu o que é considerado o primeiro algoritmo destinado a ser processado por uma máquina, para calcular os números de Bernoulli, tornando-a a primeira programadora da história.</p>
+                        </div>
+                        <h2 id="alan-turing">Alan Turing (1912-1954): O Pai da Ciência da Computação</h2>
+                        <p>Alan Turing, um matemático e lógico britânico, formalizou os conceitos de "algoritmo" e "computação" com sua invenção teórica, a <strong>Máquina de Turing</strong>. Este modelo abstrato de uma máquina de computação provou ser fundamental para o desenvolvimento da teoria da computação.</p>
+                        <h3>Decifrando o Enigma</h3>
+                        <p>Durante a Segunda Guerra Mundial, o trabalho de Turing em Bletchley Park foi crucial para decifrar os códigos da máquina alemã Enigma. Ele projetou a "Bombe", uma máquina eletromecânica que acelerou drasticamente a quebra das cifras nazistas, um feito que muitos historiadores acreditam ter encurtado a guerra e salvado milhões de vidas. O trabalho de Turing estabeleceu as bases para a inteligência artificial e a ciência da computação como uma disciplina formal.</p>
+                    </section>
+                </article>
+                <footer class="article-footer">
+                    <nav class="article-pagination" aria-label="Navegação de artigos">
+                        <a href="fundacoes/historia.html" class="pagination-link prev">
+                            <span class="pagination-label">Anterior</span>
+                            <span class="pagination-title">História Antiga</span>
+                        </a>
+                        <a href="fundacoes/teoria.html" class="pagination-link next">
+                            <span class="pagination-label">Próximo</span>
+                            <span class="pagination-title">Teoria da Computação</span>
+                        </a>
+                    </nav>
+                </footer>
+            </main>
+            <aside class="toc-sidebar" id="toc-sidebar">
+                <nav class="toc-nav" aria-labelledby="toc-heading">
+                    <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+                    <ul class="toc-list">
+                        <li><a href="#page-title" class="toc-link is-active">Introdução</a></li>
+                        <li><a href="#charles-babbage" class="toc-link">Charles Babbage</a></li>
+                        <li><a href="#ada-lovelace" class="toc-link">Ada Lovelace</a></li>
+                        <li><a href="#alan-turing" class="toc-link">Alan Turing</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+    </div>
+    
+    <script src="script.js" defer></script>
+</body>
+</html>
