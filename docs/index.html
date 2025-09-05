@@ -1,298 +1,702 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Pitchutcha | Uma Jornada pela Humanidade e Ciência</title>
-    <meta name="description" content="Explore a incrível saga da existência, desde o Big Bang até o futuro da inteligência artificial. Pitchutcha é uma documentação interativa e visual que narra os avanços da ciência, tecnologia e da humanidade em um globo terrestre animado.">
-    <meta name="keywords" content="ciência, história, humanidade, tecnologia, cosmologia, medicina, animação web, 3D, WebGL, GSAP, Pitchutcha, interativo, educação, futuro, inovação, Terra, planeta">
-    <meta name="author" content="Pitchutcha Creative Team">
-    <link rel="canonical" href="https://[SEU-USUARIO].github.io/pitchutcha/">
-
+    <title>Pitchutcha - A Saga da Computação</title>
+    
+    <!-- Meta Tags para SEO e Social Sharing -->
+    <meta name="description" content="Uma jornada interativa e detalhada pela história da computação, desde os primeiros conceitos até as tecnologias do futuro. Um projeto para os prêmios de design e desenvolvimento web.">
+    <meta name="keywords" content="Computação, História da Tecnologia, Inovação, CSS Design Awards, HTML, JavaScript, Animação Web, Design Interativo, Pitchutcha">
+    <meta name="author" content="Seu Nome ou Estúdio">
+    <meta property="og:title" content="Pitchutcha - A Saga da Computação">
+    <meta property="og:description" content="Explore a evolução da computação em uma experiência web imersiva e animada.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://[SEU-USUARIO].github.io/pitchutcha/">
-    <meta property="og:title" content="Pitchutcha | Uma Jornada pela Humanidade e Ciência">
-    <meta property="og:description" content="Uma experiência web imersiva e animada sobre a evolução do conhecimento humano.">
-    <meta property="og:image" content="https://[SEU-USUARIO].github.io/pitchutcha/assets/social-share.jpg"> <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://[SEU-USUARIO].github.io/pitchutcha/">
-    <meta property="twitter:title" content="Pitchutcha | Uma Jornada pela Humanidade e Ciência">
-    <meta property="twitter:description" content="Uma experiência web imersiva e animada sobre a evolução do conhecimento humano.">
-    <meta property="twitter:image" content="https://[SEU-USUARIO].github.io/pitchutcha/assets/social-share.jpg">
+    <meta property="og:image" content="https://placehold.co/1200x630/0a0a0a/ffffff?text=Pitchutcha">
+    <meta property="og:url" content="URL_DO_SEU_SITE_NO_GITHUB">
+    <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://unpkg.com/three@0.164.1/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@0.164.1/examples/jsm/"
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP (GreenSock Animation Platform) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Three.js (para animações 3D) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- ESTILOS GLOBAIS E CUSTOMIZADOS -->
+    <style>
+        /* ========== CONFIGURAÇÃO INICIAL E VARIÁVEIS CSS ========== */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-light: #f5f5f5;
+            --text-dark: #e5e5e5;
+            --text-light: #1a1a1a;
+            --accent-glow: rgba(168, 85, 247, 0.5); /* Roxo */
+            --border-color-dark: rgba(255, 255, 255, 0.1);
+            --border-color-light: rgba(0, 0, 0, 0.1);
+            --purple-accent: #a855f7;
+            --purple-accent-darker: #9333ea;
         }
-      }
-    </script>
 
-    <link rel="stylesheet" href="style.css">
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden; /* Evita scroll horizontal causado por animações */
+        }
+
+        /* ========== CLASSES PARA TEMA DARK E LIGHT ========== */
+        .dark body {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        .light body {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        /* ========== EFEITO DE GLOW NO CURSOR ========== */
+        #cursor-glow {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(168, 85, 247, 0) 60%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease-in-out;
+            z-index: -1;
+            opacity: 0;
+        }
+        
+        body:hover #cursor-glow {
+            opacity: 0.15;
+        }
+
+        /* ========== BARRA DE SCROLL CUSTOMIZADA ========== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        .light ::-webkit-scrollbar-track {
+            background: #e0e0e0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: var(--purple-accent);
+        }
+        .light ::-webkit-scrollbar-thumb:hover {
+            background: var(--purple-accent-darker);
+        }
+
+        /* ========== ESTILOS DA SIDEBAR DE NAVEGAÇÃO ========== */
+        #docs-sidebar {
+            transition: color 0.3s ease;
+        }
+        #docs-sidebar a {
+            position: relative;
+            transition: all 0.3s ease;
+            padding-left: 1rem;
+        }
+        #docs-sidebar a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 0;
+            background-color: var(--purple-accent);
+            transition: height 0.3s ease;
+        }
+        #docs-sidebar a.active, #docs-sidebar a:hover {
+            color: var(--purple-accent);
+            transform: translateX(5px);
+        }
+        #docs-sidebar a.active::before {
+            height: 100%;
+        }
+
+        /* ========== ANIMAÇÕES DE ENTRADA (CONTROLADAS PELO GSAP) ========== */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        /* ========== ESTILOS PARA CÓDIGOS ========== */
+        pre {
+            position: relative;
+            background-color: #1a1a1a;
+            border: 1px solid var(--border-color-dark);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+        .light pre {
+             background-color: #e5e5e5;
+             border: 1px solid var(--border-color-light);
+             color: #1a1a1a;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .copy-code-btn {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background-color: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.3s, background-color 0.3s;
+        }
+        pre:hover .copy-code-btn {
+            opacity: 1;
+        }
+        .copy-code-btn:hover {
+            background-color: var(--purple-accent);
+        }
+        .light .copy-code-btn {
+            background-color: rgba(0,0,0,0.1);
+            color: #1a1a1a;
+        }
+        .light .copy-code-btn:hover {
+             background-color: var(--purple-accent-darker);
+             color: white;
+        }
+
+
+        /* ========== ESTILOS DE CONTEÚDO ========== */
+        .content-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.05em;
+            background: linear-gradient(to right, #e5e5e5, var(--purple-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .light .content-section h1 {
+            background: linear-gradient(to right, #1a1a1a, var(--purple-accent-darker));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color-dark);
+        }
+        .light .content-section h2 {
+             border-bottom: 1px solid var(--border-color-light);
+        }
+        
+        .content-section p, .content-section ul, .content-section li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .content-section a {
+            color: var(--purple-accent);
+            text-decoration: none;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+        .content-section a:hover {
+            color: #c084fc;
+            text-decoration: underline;
+        }
+        .content-section ul {
+            list-style-position: inside;
+            list-style-type: disc;
+        }
+
+        /* ========== LINHA DO TEMPO ANIMADA ========== */
+        #timeline-container {
+            position: relative;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        #timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background-color: var(--purple-accent);
+            border-radius: 3px;
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            margin-bottom: 50px;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 50px;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 50px;
+        }
+        .timeline-content {
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color-dark);
+            background: rgba(10, 10, 10, 0.5);
+            backdrop-filter: blur(10px);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+        .light .timeline-content {
+            background: rgba(245, 245, 245, 0.5);
+            border-color: var(--border-color-light);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--bg-dark);
+            border: 4px solid var(--purple-accent);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .light .timeline-item::after {
+            background-color: var(--bg-light);
+        }
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--purple-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* REDUÇÃO DE MOVIMENTO PARA ACESSIBILIDADE */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .timeline-item { /* Desativar animações da timeline */
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
 </head>
+<body class="antialiased">
+    <!-- EFEITO DE GLOW NO CURSOR -->
+    <div id="cursor-glow"></div>
 
-<body class="loading">
+    <!-- CANVAS PARA ANIMAÇÃO 3D DO HERO -->
+    <div id="hero-canvas" class="fixed top-0 left-0 w-full h-full -z-10"></div>
 
-    <div id="preloader" aria-live="polite" aria-label="Conteúdo carregando">
-        <div class="preloader-content">
-            <div class="preloader-logo">
-                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <circle class="orbit" cx="50" cy="50" r="45"/>
-                    <circle class="orbit" cx="50" cy="50" r="35"/>
-                    <circle class="orbit" cx="50" cy="50" r="25"/>
-                    <circle class="electron" cx="50" cy="5" r="5"/>
-                    <circle class="electron" cx="85" cy="50" r="5"/>
-                    <circle class="electron" cx="25" cy="50" r="5"/>
-                    <circle class="nucleus" cx="50" cy="50" r="10"/>
-                </svg>
+    <!-- HEADER FIXO -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-wider">
+                PITCHUTCHA<span class="text-purple-500">.</span>
             </div>
-            <p class="loading-text" id="loading-status-text">Inicializando o universo...</p>
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/SEU_USUARIO/SEU_REPOSITORIO" target="_blank" class="hover:text-purple-400 transition-colors" title="Ver no GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <button id="theme-switcher" class="p-2 rounded-full hover:bg-white/10 transition-colors">
+                    <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <a href="#main-content" class="skip-to-content">Pular para o conteúdo principal</a>
-
-    <header id="main-header" role="banner">
-        <h1 class="site-title">
-            <a href="/" aria-label="Página inicial do Pitchutcha">Pitchutcha</a>
-        </h1>
-        </header>
-
-    <main id="main-content" role="main">
-
-        <section id="hero-globe" class="fullscreen-section" aria-label="Globo terrestre interativo">
-            <div id="globe-container">
-                </div>
-            <div class="hero-overlay">
-                <div class="hero-text-content">
-                    <h2 class="hero-title">A Odisséia do Conhecimento</h2>
-                    <p class="hero-subtitle">Uma crônica interativa da ascensão da humanidade e o poder da ciência.</p>
-                </div>
-                <div class="scroll-indicator" aria-hidden="true">
-                    <span>Explore a Jornada</span>
-                    <i class="fas fa-chevron-down"></i>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+        <!-- SEÇÃO HERO -->
+        <section id="hero" class="h-screen flex items-center justify-center text-center relative overflow-hidden">
+            <div class="z-10 p-4">
+                <h1 id="hero-title" class="text-5xl md:text-8xl font-black uppercase tracking-tighter" style="opacity: 0;">
+                    A Saga da <span class="text-purple-400">Computação</span>
+                </h1>
+                <p id="hero-subtitle" class="mt-4 text-lg md:text-2xl max-w-3xl mx-auto text-gray-300" style="opacity: 0;">
+                    Uma jornada interativa pela evolução da tecnologia que moldou nosso mundo. Do ábaco à inteligência artificial quântica.
+                </p>
+                <div id="scroll-indicator" class="absolute bottom-10 left-1/2 -translate-x-1/2" style="opacity: 0;">
+                    <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center p-1">
+                        <div class="w-1 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <div id="narrative-journey">
+        <!-- LAYOUT DA DOCUMENTAÇÃO -->
+        <div class="container mx-auto px-6 py-24">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- SIDEBAR DE NAVEGAÇÃO -->
+                <aside class="w-full lg:w-1/4 sticky top-24 self-start">
+                    <div class="p-4 rounded-lg border border-white/10">
+                        <h3 class="font-bold text-lg mb-4">Navegação</h3>
+                        <nav id="docs-sidebar" class="flex flex-col space-y-2 text-gray-400">
+                            <!-- Links serão gerados via JS -->
+                        </nav>
+                    </div>
+                </aside>
+                
+                <!-- CONTEÚDO DO ARTIGO -->
+                <article id="main-content" class="w-full lg:w-3/4">
+                    
+                    <!-- CONTEÚDO EXPANDIDO -->
+                    <section id="capitulo-1" class="content-section mb-20 reveal-up">
+                        <h1>Capítulo 1: A Alvorada da Computação</h1>
+                        <p>Muito antes do silício e dos circuitos integrados, a necessidade humana de calcular e registrar informações plantou as sementes da revolução digital. Esta é a história dos primeiros sonhadores e de suas incríveis máquinas analógicas, os verdadeiros ancestrais do computador moderno.</p>
+                        <h2 id="o-abaco">O Ábaco: O Primeiro Calculador</h2>
+                        <p>O ábaco, surgido na Mesopotâmia por volta de 2400 a.C., é um dos primeiros dispositivos de computação conhecidos. Sua estrutura de contas deslizantes em hastes permitia realizar operações aritméticas com uma velocidade surpreendente, sendo uma extensão da mente para a matemática.</p>
+                        <h2 id="mecanismo-antikythera">O Mecanismo de Antikythera: Um Computador Astronômico</h2>
+                        <p>Descoberto em um naufrágio grego, o Mecanismo de Antikythera (c. 100 a.C.) chocou o mundo da ciência. Este dispositivo de bronze, com suas mais de 30 engrenagens complexas, era um computador analógico projetado para prever posições astronômicas e eclipses, uma sofisticação inigualável por mais de um milênio.</p>
+                        <h2 id="pascal-babbage">Pascal e Babbage: A Era das Máquinas Mecânicas</h2>
+                        <p>O século XIX viu Charles Babbage conceber suas máquinas visionárias. A <strong>Máquina Diferencial</strong> foi projetada para tabular polinômios, enquanto a <strong>Máquina Analítica</strong> era um salto conceitual gigantesco: uma máquina programável de propósito geral. Ela possuía memória, processador e lia instruções de cartões perfurados. Ada Lovelace, colaboradora de Babbage, escreveu os primeiros algoritmos para a máquina, tornando-a a primeira programadora da história.</p>
+                    </section>
+                    <section id="capitulo-2" class="content-section mb-20 reveal-up">
+                        <h1>Capítulo 2: A Revolução Eletrônica</h1>
+                        <p>A Segunda Guerra Mundial acelerou drasticamente o desenvolvimento da computação. A necessidade de decifrar códigos e calcular trajetórias balísticas levou à criação das primeiras máquinas eletrônicas, monstros de válvulas e relés que inauguraram a era digital.</p>
+                        <h2 id="colossus-eniac">Colossus e ENIAC: Os Primeiros Gigantes</h2>
+                        <p>O <strong>Colossus</strong>, britânico, foi o primeiro computador eletrônico programável, crucial para decifrar códigos nazistas. Nos EUA, o <strong>ENIAC</strong> (1945), com mais de 17.000 válvulas, era uma máquina colossal usada para cálculos militares, programada manualmente com cabos e interruptores.</p>
+                        <h2 id="von-neumann">A Arquitetura de Von Neumann</h2>
+                        <p>O matemático John von Neumann propôs que programas e dados fossem armazenados na mesma memória. Essa arquitetura eliminou a necessidade de reconfiguração física, tornando os computadores flexíveis e poderosos, um padrão que define as máquinas até hoje.</p>
+                        <h2 id="transistor-circuitos-integrados">O Transistor e os Circuitos Integrados</h2>
+                        <p>A invenção do transistor em 1947 substituiu as frágeis válvulas. Eles eram menores, mais rápidos e confiáveis. A revolução seguinte foi o <strong>circuito integrado</strong> (ou "chip"), que permitiu que milhões de transistores fossem fabricados em uma única pastilha de silício, abrindo caminho para a Lei de Moore e a miniaturização exponencial.</p>
+                    </section>
+                    <section id="capitulo-3" class="content-section mb-20 reveal-up">
+                        <h1>Capítulo 3: A Ascensão do Computador Pessoal</h1>
+                        <p>A miniaturização permitiu que a computação saísse dos laboratórios e entrasse em lares e escritórios, uma era definida por visionários, garagens na Califórnia e a invenção da interface gráfica.</p>
+                        <h2 id="xerox-parc">Xerox PARC: O Berço da Revolução</h2>
+                        <p>O centro de pesquisa da Xerox em Palo Alto (PARC) foi um caldeirão de inovação nos anos 70. Lá nasceram a interface gráfica (GUI), o mouse, a programação orientada a objetos e a rede Ethernet. Uma visita de Steve Jobs ao PARC em 1979 mudaria o curso da história.</p>
+                        <h2 id="apple-microsoft">Apple vs. Microsoft: A Batalha pela Mesa de Trabalho</h2>
+                        <p>Inspirado pelo PARC, Steve Jobs liderou o desenvolvimento do <strong>Macintosh</strong> em 1984, o primeiro PC de sucesso com GUI. Enquanto isso, a Microsoft lançou o <strong>Windows</strong>, trazendo uma interface gráfica para os PCs compatíveis com a IBM. A rivalidade entre as duas empresas definiria a computação pessoal pelas décadas seguintes.</p>
+                    </section>
 
-            <section id="chapter-cosmos" class="narrative-chapter" data-scroll-trigger="cosmos" aria-labelledby="cosmos-title">
-                <div class="chapter-content">
-                    <div class="chapter-header">
-                        <span class="chapter-number">I</span>
-                        <h3 id="cosmos-title" class="chapter-title">O Berço Cósmico</h3>
-                        <p class="chapter-subtitle">Do Big Bang à Formação da Terra</p>
-                    </div>
-                    <div class="chapter-body">
-                        <article>
-                            <h4>13.8 Bilhões de Anos Atrás</h4>
-                            <p>Tudo começa a partir de uma singularidade. O Big Bang não é uma explosão no espaço, mas a própria expansão do espaço. Em frações de segundo, as forças fundamentais da natureza — gravidade, eletromagnetismo, forças nucleares forte e fraca — se separam. O universo é uma sopa quente e densa de partículas elementares.</p>
-                            </article>
-                        <article>
-                            <h4>A Formação das Estrelas e Galáxias</h4>
-                            <p>Milhões de anos se passam. A gravidade começa a agrupar nuvens de hidrogênio e hélio. A pressão e a temperatura em seus núcleos se tornam tão intensas que a fusão nuclear é iniciada. As primeiras estrelas nascem, iluminando o cosmos. Essas estrelas se agrupam em galáxias, forjando elementos mais pesados em seus corações de fogo.</p>
-                             </article>
-                        <article>
-                            <h4>O Nascimento do Sistema Solar</h4>
-                            <p>Há cerca de 4.6 bilhões de anos, em um braço espiral da Via Láctea, uma nuvem de gás e poeira colapsa sob sua própria gravidade. No centro, o Sol se acende. O disco de matéria remanescente ao seu redor se aglutina, formando planetas, luas, asteroides. Entre eles, um mundo rochoso e aquoso: a Terra.</p>
-                            </article>
-                    </div>
-                </div>
-            </section>
+                    <!-- NOVOS CAPÍTULOS -->
+                    <section id="capitulo-4" class="content-section mb-20 reveal-up">
+                        <h1>Capítulo 4: A Era da Conectividade</h1>
+                        <p>Com os computadores se tornando comuns, o próximo passo era conectá-los. O que começou como um projeto militar experimental explodiu em uma rede global que redefiniu a comunicação, o comércio e a própria sociedade: a Internet.</p>
+                        <h2 id="arpanet-www">Da ARPANET à World Wide Web</h2>
+                        <p>A semente da internet foi a <strong>ARPANET</strong>, uma rede criada pelo Departamento de Defesa dos EUA nos anos 60 para ser descentralizada e resiliente. O protocolo <strong>TCP/IP</strong> se tornou o padrão para a comunicação entre redes, formando a base da internet moderna. A grande virada para o público veio em 1991, quando Tim Berners-Lee, no CERN, inventou a <strong>World Wide Web</strong>, junto com suas três tecnologias fundamentais:</p>
+                        <ul>
+                            <li><strong>HTML:</strong> A linguagem para criar páginas web.</li>
+                            <li><strong>URL:</strong> O sistema de endereçamento para encontrar documentos.</li>
+                            <li><strong>HTTP:</strong> O protocolo para transferir esses documentos.</li>
+                        </ul>
+                        <p>De repente, a internet tinha uma face gráfica e navegável, acessível a todos através de um "browser" (navegador).</p>
+                    </section>
+                    
+                    <!-- LINHA DO TEMPO INTERATIVA -->
+                    <section id="timeline" class="mb-20">
+                        <div id="timeline-container">
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h3 class="timeline-year">1969</h3>
+                                    <p>A ARPANET, precursora da internet, entra em operação, conectando quatro universidades americanas.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h3 class="timeline-year">1983</h3>
+                                    <p>O protocolo TCP/IP é padronizado, criando uma "rede de redes" verdadeiramente unificada.</p>
+                                </div>
+                            </div>
+                             <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h3 class="timeline-year">1991</h3>
+                                    <p>Tim Berners-Lee lança a World Wide Web, tornando a internet acessível ao público.</p>
+                                </div>
+                            </div>
+                             <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h3 class="timeline-year">1993</h3>
+                                    <p>O navegador Mosaic é lançado, popularizando a web com sua capacidade de exibir imagens junto com o texto.</p>
+                                </div>
+                            </div>
+                             <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h3 class="timeline-year">1998</h3>
+                                    <p>O Google é fundado, organizando a vastidão de informações da web e mudando a forma como a encontramos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-            <section id="chapter-life" class="narrative-chapter" data-scroll-trigger="life" aria-labelledby="life-title">
-                <div class="chapter-content">
-                    <div class="chapter-header">
-                        <span class="chapter-number">II</span>
-                        <h3 id="life-title" class="chapter-title">A Centelha da Vida</h3>
-                        <p class="chapter-subtitle">Dos Primeiros Organismos à Explosão Cambriana</p>
-                    </div>
-                    <div class="chapter-body">
-                        <article>
-                            <h4>A Sopa Primordial</h4>
-                            <p>Em um oceano primitivo e volátil, moléculas orgânicas simples, bombardeadas pela energia de relâmpagos e radiação ultravioleta, se combinam para formar blocos de construção mais complexos: aminoácidos, nucleotídeos. A jornada para a vida começa. A hipótese do mundo de RNA sugere que o RNA, não o DNA, foi a molécula central da vida primitiva.</p>
-                        </article>
-                        <article>
-                            <h4>O Último Ancestral Comum Universal (LUCA)</h4>
-                            <p>Há cerca de 3.8 bilhões de anos, surge o primeiro organismo, ou uma comunidade de organismos, da qual toda a vida na Terra descende. Não era uma única célula como a conhecemos, mas um precursor, estabelecendo o código genético e os mecanismos metabólicos básicos que unem um fungo a um ser humano.</p>
-                            </article>
-                        <article>
-                            <h4>A Revolução do Oxigênio</h4>
-                            <p>Cianobactérias desenvolvem a fotossíntese, um processo revolucionário que libera oxigênio como subproduto. Este "resíduo" tóxico para a vida anaeróbica da época transforma a atmosfera terrestre, causando uma extinção em massa, mas pavimentando o caminho para formas de vida mais complexas e eficientes em energia, incluindo nós.</p>
-                            </article>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="chapter-humanity" class="narrative-chapter" data-scroll-trigger="humanity" aria-labelledby="humanity-title">
-                <div class="chapter-content">
-                    <div class="chapter-header">
-                        <span class="chapter-number">III</span>
-                        <h3 id="humanity-title" class="chapter-title">O Despertar da Consciência</h3>
-                        <p class="chapter-subtitle">A Evolução do Homo Sapiens e as Primeiras Civilizações</p>
-                    </div>
-                    <div class="chapter-body">
-                        <article>
-                            <h4>A Origem das Ferramentas e da Linguagem</h4>
-                            <p>Na savana africana, nossos ancestrais hominídeos começam a moldar a pedra. A ferramenta não é apenas uma extensão da mão; é uma extensão da mente. O pensamento abstrato necessário para criar e usar ferramentas está intrinsecamente ligado ao desenvolvimento da linguagem, permitindo a cooperação e a transmissão de conhecimento.</p>
-                        </article>
-                        <article>
-                            <h4>A Revolução Agrícola</h4>
-                            <p>Após milênios como caçadores-coletores, os humanos aprendem a domesticar plantas e animais. A agricultura permite o assentamento, o excedente de alimentos e o surgimento das primeiras aldeias e cidades. A sociedade se torna mais complexa, nascendo a especialização do trabalho, o comércio e a escrita cuneiforme para registrar transações.</p>
-                            </article>
-                        <article>
-                            <h4>A Era dos Impérios</h4>
-                            <p>Das cidades-estado surgem vastos impérios: Egito, Roma, Pérsia, Han. Eles constroem estradas, aquedutos e monumentos. Desenvolvem leis, filosofia, matemática e astronomia. O conhecimento é compilado em grandes bibliotecas, como a de Alexandria, um farol de saber no mundo antigo.</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
+                    <section id="capitulo-5" class="content-section mb-20 reveal-up">
+                        <h1>Capítulo 5: A Revolução do Código Aberto</h1>
+                        <p>Paralelamente ao crescimento da internet comercial, um movimento filosófico e técnico ganhava força. A ideia de que o software deveria ser livre para ser usado, modificado e distribuído por qualquer pessoa — o código aberto (open source) — mudou fundamentalmente a forma como a tecnologia é desenvolvida.</p>
+                        <h2 id="gnu-linux">GNU e Linux: Os Pilares</h2>
+                        <p>Richard Stallman iniciou o projeto <strong>GNU</strong> em 1983 com a missão de criar um sistema operacional completamente livre. A peça que faltava era o "kernel", o núcleo do sistema. Em 1991, o estudante finlandês Linus Torvalds criou o <strong>Linux</strong> e o disponibilizou publicamente. A combinação do kernel Linux com as ferramentas GNU criou um sistema operacional poderoso e livre, que hoje domina servidores, supercomputadores e o mundo Android.</p>
+                        <pre><code>// Exemplo simples de um comando no terminal Linux
+# Listar arquivos no diretório atual com detalhes
+ls -la</code></pre>
+                        <h2 id="github">GitHub e a Colaboração em Massa</h2>
+                        <p>O lançamento do <strong>Git</strong> por Linus Torvalds em 2005 e, posteriormente, do <strong>GitHub</strong> em 2008, revolucionou a colaboração. O GitHub tornou o controle de versão distribuído acessível e social, permitindo que milhões de desenvolvedores ao redor do mundo trabalhassem juntos em projetos complexos, acelerando a inovação a um ritmo sem precedentes.</p>
+                    </section>
 
-            <section id="chapter-science" class="narrative-chapter" data-scroll-trigger="science" aria-labelledby="science-title">
-                <div class="chapter-content">
-                    <div class="chapter-header">
-                        <span class="chapter-number">IV</span>
-                        <h3 id="science-title" class="chapter-title">A Revolução Científica</h3>
-                        <p class="chapter-subtitle">Observação, Experimentação e as Leis do Universo</p>
-                    </div>
-                    <div class="chapter-body">
-                        <article>
-                            <h4>O Renascimento e o Heliocentrismo</h4>
-                            <p>Após a Idade Média, a Europa redescobre o conhecimento clássico. Artistas como Leonardo da Vinci estudam a anatomia com precisão científica. Astrônomos como Copérnico e Galileu desafiam o modelo geocêntrico milenar, colocando o Sol, e não a Terra, no centro do nosso sistema. A observação direta através do telescópio supera o dogma.</p>
-                        </article>
-                        <article>
-                            <h4>Newton e a Mecânica Clássica</h4>
-                            <p>Isaac Newton sintetiza séculos de descobertas em suas três leis do movimento e na lei da gravitação universal. Com o cálculo, que ele desenvolveu, o universo se torna compreensível, mecânico e previsível. As mesmas leis que regem a queda de uma maçã regem o movimento dos planetas.</p>
-                            </article>
-                         <article>
-                            <h4>Medicina e Biologia Modernas</h4>
-                            <p>A teoria dos germes de Pasteur e Koch revoluciona a medicina, levando a vacinas e antissépticos. Darwin e Wallace propõem a teoria da evolução por seleção natural, unificando a biologia. A descoberta da estrutura do DNA por Watson, Crick, Franklin e Wilkins revela o código da própria vida.</p>
-                            </article>
-                    </div>
-                </div>
-            </section>
-
-            <section id="chapter-technology" class="narrative-chapter" data-scroll-trigger="technology" aria-labelledby="technology-title">
-                <div class="chapter-content">
-                    <div class="chapter-header">
-                        <span class="chapter-number">V</span>
-                        <h3 id="technology-title" class="chapter-title">A Era das Máquinas</h3>
-                        <p class="chapter-subtitle">Do Vapor à Era Espacial e Digital</p>
-                    </div>
-                    <div class="chapter-body">
-                        <article>
-                            <h4>A Revolução Industrial</h4>
-                            <p>A invenção da máquina a vapor transforma a sociedade. Fábricas surgem, cidades crescem exponencialmente. A produção em massa, as ferrovias e o telégrafo encolhem o mundo. A humanidade aprende a dominar a energia em uma escala sem precedentes, para o bem e para o mal.</p>
-                        </article>
-                        <article>
-                            <h4>Eletricidade e a Era da Informação</h4>
-                            <p>Faraday, Maxwell, Tesla e Edison desvendam os segredos da eletricidade. A lâmpada ilumina a noite, motores elétricos impulsionam uma nova indústria. O rádio, o telefone e a televisão conectam o mundo. A invenção do transistor em 1947 é a semente da revolução digital.</p>
-                            </article>
-                         <article>
-                            <h4>A Corrida Espacial e a Chegada à Lua</h4>
-                            <p>A rivalidade da Guerra Fria impulsiona a exploração espacial. O Sputnik orbita a Terra, Yuri Gagarin se torna o primeiro humano no espaço. Em 1969, a missão Apollo 11 realiza um dos feitos mais audaciosos da história: a humanidade pisa na Lua, olhando para a Terra como um único e frágil mármore azul.</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section id="chapter-future" class="narrative-chapter" data-scroll-trigger="future" aria-labelledby="future-title">
-                <div class="chapter-content">
-                    <div class="chapter-header">
-                        <span class="chapter-number">VI</span>
-                        <h3 id="future-title" class="chapter-title">O Horizonte Desconhecido</h3>
-                        <p class="chapter-subtitle">Inteligência Artificial, Biotecnologia e os Próximos Passos</p>
-                    </div>
-                    <div class="chapter-body">
-                        <article>
-                            <h4>A Revolução Digital e a Internet</h4>
-                            <p>O computador pessoal e a World Wide Web democratizam o acesso à informação e à computação. O mundo se torna interconectado em uma rede global. A Lei de Moore impulsiona um crescimento exponencial na capacidade de processamento, colocando supercomputadores nos nossos bolsos.</p>
-                        </article>
-                        <article>
-                            <h4>Inteligência Artificial e Aprendizado de Máquina</h4>
-                            <p>Redes neurais, inspiradas no cérebro humano, permitem que máquinas aprendam com dados. A IA está redefinindo indústrias, desde o diagnóstico médico até a condução autônoma. Enfrentamos questões profundas sobre a natureza da consciência, criatividade e o futuro do trabalho.</p>
-                             </article>
-                         <article>
-                            <h4>Biotecnologia e o Futuro da Vida</h4>
-                            <p>Com ferramentas como o CRISPR, agora podemos editar o genoma com uma precisão inimaginável. Isso abre portas para a cura de doenças genéticas, mas também levanta dilemas éticos complexos. A fusão da biologia com a tecnologia definirá o próximo capítulo da evolução, talvez uma evolução dirigida por nós mesmos.</p>
-                             </article>
-                    </div>
-                </div>
-            </section>
-
-        </div> </main>
-
-    <nav id="timeline-nav" aria-label="Navegação da linha do tempo">
-        <ul class="timeline-list">
-            <li class="timeline-item active" data-chapter="chapter-cosmos">
-                <a href="#chapter-cosmos" class="timeline-link">
-                    <span class="timeline-dot"></span>
-                    <span class="timeline-label">Cosmos</span>
-                </a>
-            </li>
-            <li class="timeline-item" data-chapter="chapter-life">
-                <a href="#chapter-life" class="timeline-link">
-                    <span class="timeline-dot"></span>
-                    <span class="timeline-label">Vida</span>
-                </a>
-            </li>
-            <li class="timeline-item" data-chapter="chapter-humanity">
-                <a href="#chapter-humanity" class="timeline-link">
-                    <span class="timeline-dot"></span>
-                    <span class="timeline-label">Humanidade</span>
-                </a>
-            </li>
-            <li class="timeline-item" data-chapter="chapter-science">
-                <a href="#chapter-science" class="timeline-link">
-                    <span class="timeline-dot"></span>
-                    <span class="timeline-label">Ciência</span>
-                </a>
-            </li>
-            <li class="timeline-item" data-chapter="chapter-technology">
-                <a href="#chapter-technology" class="timeline-link">
-                    <span class="timeline-dot"></span>
-                    <span class="timeline-label">Tecnologia</span>
-                </a>
-            </li>
-            <li class="timeline-item" data-chapter="chapter-future">
-                <a href="#chapter-future" class="timeline-link">
-                    <span class="timeline-dot"></span>
-                    <span class="timeline-label">Futuro</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-
-    <footer id="main-footer" role="contentinfo">
-        <div class="footer-content">
-            <p class="copyright">&copy; <span id="current-year"></span> Pitchutcha. Uma exploração criativa do conhecimento.</p>
-            <div class="social-links">
-                <a href="https://github.com/[SEU-USUARIO]/pitchutcha" target="_blank" rel="noopener noreferrer" aria-label="Ver o projeto no GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                </div>
+                    <section id="capitulo-6" class="content-section mb-20 reveal-up">
+                        <h1>Capítulo 6: A Era da Mobilidade e da Nuvem</h1>
+                        <p>No início do século 21, o computador deixou a mesa de trabalho e foi para o nosso bolso. A convergência da internet onipresente, hardware miniaturizado e interfaces de toque intuitivas deu início à era móvel, enquanto a computação em nuvem fornecia a infraestrutura invisível para alimentar tudo.</p>
+                        <h2 id="iphone-android">O Smartphone Moderno: iPhone e Android</h2>
+                        <p>O lançamento do <strong>iPhone</strong> pela Apple em 2007 foi um momento sísmico. Ele combinou um telefone, um iPod e um comunicador de internet em um único dispositivo com uma interface multitoque revolucionária. Pouco depois, o <strong>Android</strong> do Google surgiu como uma plataforma aberta, levando a uma explosão de dispositivos de diferentes fabricantes e tornando os smartphones acessíveis globalmente. A "App Store" e a "Play Store" criaram um novo ecossistema para software.</p>
+                        <h2 id="cloud-computing">Computação em Nuvem</h2>
+                        <p>A <strong>computação em nuvem</strong>, popularizada por serviços como Amazon Web Services (AWS), Microsoft Azure e Google Cloud, abstraiu a necessidade de infraestrutura física. Empresas e desenvolvedores podiam agora alugar poder de computação, armazenamento e serviços sob demanda pela internet. Isso reduziu drasticamente a barreira de entrada para startups e permitiu que aplicações escalassem para milhões de usuários globalmente com facilidade.</p>
+                    </section>
+                </article>
+            </div>
         </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-8 border-t border-white/10 mt-20">
+        <p class="text-gray-500">
+            &copy; <span id="current-year"></span> Pitchutcha. Um projeto concebido para a web criativa.
+        </p>
     </footer>
 
-    <script type="module" src="script.js"></script>
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ========== LÓGICA DE INICIALIZAÇÃO ==========
+            const body = document.body;
+            const header = document.getElementById('main-header');
+            const themeSwitcher = document.getElementById('theme-switcher');
+            const sunIcon = document.getElementById('theme-icon-sun');
+            const moonIcon = document.getElementById('theme-icon-moon');
+            const cursorGlow = document.getElementById('cursor-glow');
 
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // ========== LÓGICA DO TEMA (DARK/LIGHT) ==========
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                } else {
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
+                    moonIcon.classList.add('hidden');
+                    sunIcon.classList.remove('hidden');
+                }
+            };
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            applyTheme(currentTheme);
+            themeSwitcher.addEventListener('click', () => {
+                const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+            
+            // ========== EFEITOS DE UI ==========
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-black/30', 'backdrop-blur-md');
+                } else {
+                    header.classList.remove('bg-black/30', 'backdrop-blur-md');
+                }
+            });
+            window.addEventListener('mousemove', (e) => {
+                gsap.to(cursorGlow, { duration: 0.5, x: e.clientX, y: e.clientY, ease: 'power2.out' });
+            });
+
+            // ========== GERAÇÃO E LÓGICA DA SIDEBAR ==========
+            const mainContent = document.getElementById('main-content');
+            const sidebarNav = document.getElementById('docs-sidebar');
+            const headings = mainContent.querySelectorAll('h1, h2');
+            sidebarNav.innerHTML = ''; // Limpa a sidebar antes de gerar
+            headings.forEach(heading => {
+                const link = document.createElement('a');
+                link.href = `#${heading.id}`;
+                link.textContent = heading.textContent;
+                link.className = 'block py-1 text-sm';
+                if (heading.tagName === 'H2') {
+                    link.classList.add('pl-4');
+                }
+                sidebarNav.appendChild(link);
+            });
+
+            // ========== LÓGICA PARA COPIAR CÓDIGO ==========
+            document.querySelectorAll('pre').forEach(pre => {
+                const code = pre.querySelector('code');
+                if (code) {
+                    const button = document.createElement('button');
+                    button.className = 'copy-code-btn';
+                    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+                    button.setAttribute('aria-label', 'Copiar código');
+                    pre.appendChild(button);
+
+                    button.addEventListener('click', () => {
+                        const originalText = button.innerHTML;
+                        const textToCopy = code.innerText;
+
+                        const textArea = document.createElement('textarea');
+                        textArea.value = textToCopy;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+
+                        button.innerHTML = 'Copiado!';
+                        setTimeout(() => {
+                            button.innerHTML = originalText;
+                        }, 2000);
+                    });
+                }
+            });
+            
+            // ========== ANIMAÇÕES COM GSAP & SCROLLTRIGGER ==========
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animação do Hero
+            const heroTl = gsap.timeline();
+            heroTl.to('#hero-title', { opacity: 1, y: -20, duration: 1, ease: 'power3.out' })
+                  .to('#hero-subtitle', { opacity: 1, y: -10, duration: 0.8, ease: 'power3.out' }, "-=0.7")
+                  .to('#scroll-indicator', { opacity: 1, duration: 1, ease: 'power3.out' }, "-=0.5");
+
+            // Animação de revelação das seções de conteúdo
+            gsap.utils.toArray('.reveal-up').forEach(el => {
+                gsap.fromTo(el, { opacity: 0, y: 50 }, {
+                    opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+                    scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+                });
+            });
+            
+            // Animação da Linha do Tempo
+            const timelineItems = gsap.utils.toArray('.timeline-item');
+            timelineItems.forEach(item => {
+                const isOdd = timelineItems.indexOf(item) % 2 !== 0;
+                gsap.from(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 80%',
+                    },
+                    opacity: 0,
+                    x: isOdd ? 100 : -100,
+                    duration: 1,
+                    ease: 'power3.out',
+                });
+            });
+
+            // Scroll Spy da Sidebar
+            headings.forEach(heading => {
+                ScrollTrigger.create({
+                    trigger: heading,
+                    start: 'top 50%',
+                    end: 'bottom 50%',
+                    onToggle: self => {
+                        const link = sidebarNav.querySelector(`a[href="#${heading.id}"]`);
+                        if (link) {
+                           if (self.isActive) {
+                                sidebarNav.querySelectorAll('a').forEach(l => l.classList.remove('active'));
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        }
+                    }
+                });
+            });
+
+
+            // ========== ANIMAÇÃO 3D DO HERO COM THREE.JS ==========
+            let scene, camera, renderer, particles;
+            function initThreeJS() {
+                const container = document.getElementById('hero-canvas');
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 5;
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                container.appendChild(renderer.domElement);
+                
+                const particleCount = 5000;
+                const positions = new Float32Array(particleCount * 3);
+                for(let i = 0; i < particleCount * 3; i++) {
+                    positions[i] = (Math.random() - 0.5) * 10;
+                }
+                const particlesGeometry = new THREE.BufferGeometry();
+                particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                
+                const particlesMaterial = new THREE.PointsMaterial({ size: 0.008, color: 0xa855f7 });
+                particles = new THREE.Points(particlesGeometry, particlesMaterial);
+                scene.add(particles);
+                animate();
+            }
+
+            let mouseX = 0, mouseY = 0;
+            document.addEventListener('mousemove', (event) => {
+                mouseX = event.clientX - window.innerWidth / 2;
+                mouseY = event.clientY - window.innerHeight / 2;
+            });
+
+            function animate() {
+                requestAnimationFrame(animate);
+                particles.rotation.y += 0.0002;
+                particles.rotation.x += 0.0001;
+                const targetRotationX = mouseY * 0.0001;
+                const targetRotationY = mouseX * 0.0001;
+                particles.rotation.x += (targetRotationX - particles.rotation.x) * 0.05;
+                particles.rotation.y += (targetRotationY - particles.rotation.y) * 0.05;
+                renderer.render(scene, camera);
+            }
+            
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+            window.addEventListener('resize', onWindowResize, false);
+            initThreeJS();
+        });
+    </script>
 </body>
 </html>
