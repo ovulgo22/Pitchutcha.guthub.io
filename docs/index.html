@@ -2,8 +2,12 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+
     <title>Pitchutcha: Uma Odisséia pela Computação</title>
+    
     <meta name="description" content="Uma exploração profunda e interativa da história da computação, desde os primeiros ábacos até a inteligência artificial quântica. Um site projetado para inspirar, educar e vencer prêmios.">
     <meta name="keywords" content="História da Computação, Ciência da Computação, Tecnologia, Inovação, Alan Turing, Ada Lovelace, ENIAC, Internet, Inteligência Artificial, Programação, Desenvolvimento, Pitchutcha">
     <meta name="author" content="[Seu Nome/Estúdio]">
@@ -22,7 +26,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Pitchutcha: Uma Odisséia pela Computação">
     <meta name="twitter:description" content="Uma jornada visual e textual através das eras que definiram o mundo digital.">
-    <meta name="twitter:image" content="https://www.youtube.com/watch?v=-rIaUaes4Ec">
+    <meta name="twitter:image" content="https://www.youtube.com/watch?v=g0LGrLxbgaE">
     <meta name="twitter:creator" content="@[Seu Twitter]">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -31,27 +35,41 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00ffff">
     <meta name="msapplication-TileColor" content="#0a0a0a">
-    <meta name="theme-color" content="#0a0a0a">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F0F0F0">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
+    <a href="#main-content" class="skip-to-content">Pular para o conteúdo principal</a>
+
+    <div class="search-modal" id="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-modal-title">
+        <button class="search-modal__close" id="search-close" aria-label="Fechar busca">&times;</button>
+        <div class="search-modal__content">
+            <h2 class="search-modal__title" id="search-modal-title">Pesquise na Odisséia</h2>
+            <div class="search-modal__input-wrapper">
+                <input type="search" id="search-input" placeholder="Digite termos como 'Alan Turing', 'Internet'...">
+            </div>
+            <div class="search-modal__results-wrapper">
+                <ul class="search-modal__results" id="search-results" aria-live="polite"></ul>
+            </div>
+        </div>
+    </div>
+
     <div class="preloader" id="preloader">
         <div class="preloader__logo">PITCHUTCHA</div>
-        <div class="preloader__loader">
+        <div class="preloader__loader" aria-hidden="true">
             <div class="loader-bar"></div>
         </div>
-        <div class="preloader__status" id="preloader-status">Inicializando o motor quântico... 0%</div>
+        <div class="preloader__status" id="preloader-status" aria-live="polite">Inicializando...</div>
     </div>
 
     <div id="main-container" data-scroll-container>
-
         <header class="site-header" data-scroll-section>
             <div class="header-container">
                 <a href="/" class="header__logo" aria-label="Página Inicial de Pitchutcha">
@@ -66,34 +84,24 @@
                     </ul>
                 </nav>
                 <div class="header__actions">
-                    <button class="action-btn" id="search-toggle" aria-label="Abrir busca">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <button class="action-btn" id="search-toggle" aria-label="Abrir busca" aria-controls="search-modal">
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
                     </button>
                     <button class="action-btn" id="theme-toggle" aria-label="Alternar tema de cores">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.31 0-6-2.69-6-6 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.31 0-6-2.69-6-6 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
                     </button>
                 </div>
             </div>
         </header>
 
-        <main id="page-content">
-
+        <main id="main-content">
             <section class="hero" id="hero" data-scroll-section>
-                <div class="hero__background" data-scroll data-scroll-speed="-4">
+                <div class="hero__background" aria-hidden="true">
                     <div class="particles"></div>
                 </div>
                 <div class="hero__content">
                     <h1 class="hero__title" aria-label="Computação">
-                        <span class="char-wrapper"><span class="char">C</span></span>
-                        <span class="char-wrapper"><span class="char">o</span></span>
-                        <span class="char-wrapper"><span class="char">m</span></span>
-                        <span class="char-wrapper"><span class="char">p</span></span>
-                        <span class="char-wrapper"><span class="char">u</span></span>
-                        <span class="char-wrapper"><span class="char">t</span></span>
-                        <span class="char-wrapper"><span class="char">a</span></span>
-                        <span class="char-wrapper"><span class="char">ç</span></span>
-                        <span class="char-wrapper"><span class="char">ã</span></span>
-                        <span class="char-wrapper"><span class="char">o</span></span>
+                        <span class="char-wrapper"><span class="char">C</span></span><span class="char-wrapper"><span class="char">o</span></span><span class="char-wrapper"><span class="char">m</span></span><span class="char-wrapper"><span class="char">p</span></span><span class="char-wrapper"><span class="char">u</span></span><span class="char-wrapper"><span class="char">t</span></span><span class="char-wrapper"><span class="char">a</span></span><span class="char-wrapper"><span class="char">ç</span></span><span class="char-wrapper"><span class="char">ã</span></span><span class="char-wrapper"><span class="char">o</span></span>
                     </h1>
                     <p class="hero__subtitle" data-scroll data-scroll-delay="0.1" data-scroll-speed="2">
                         Uma odisséia interativa pela força que moldou o mundo moderno.
@@ -101,10 +109,10 @@
                 </div>
                 <div class="hero__scroll-down">
                     <span>Role para explorar</span>
-                    <div class="scroll-arrow"></div>
+                    <div class="scroll-arrow" aria-hidden="true"></div>
                 </div>
             </section>
-
+            
             <section class="content-section intro-section" data-scroll-section>
                 <div class="container">
                     <p class="chapter-marker" data-scroll data-scroll-class="is-inview">Prólogo</p>
@@ -116,405 +124,15 @@
                     </div>
                 </div>
             </section>
+            
+            </main> <footer class="site-footer-main" data-scroll-section data-scroll-section-id="footer">
+            </footer>
 
-            <section class="content-section timeline-section" id="alvorada" data-scroll-section>
-                <div class="container">
-                    <p class="chapter-marker" data-scroll data-scroll-class="is-inview">Capítulo I</p>
-                    <h2 class="section-title" data-scroll data-scroll-class="is-inview">A Alvorada da Computação</h2>
-                    <div class="prose" data-scroll data-scroll-class="is-inview">
-                        <p>Antes dos computadores eletrônicos, antes mesmo da eletricidade, a computação existia como um conceito, uma necessidade. A história da computação é a história da humanidade buscando ordem no caos, padrões na natureza e ferramentas para ampliar nosso intelecto. Esta era é definida por dispositivos mecânicos, lógica abstrata e a genialidade visionária de pioneiros que sonhavam com máquinas que poderiam "pensar".</p>
-                    </div>
-
-                    <article class="sub-section" id="ferramentas-antigas">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">Os Primeiros Instrumentos de Cálculo</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>A necessidade de contar é tão antiga quanto a própria civilização. Comércio, astronomia, construção - todos exigiam mais do que os dedos das mãos poderiam oferecer. O primeiro grande salto foi a abstração: representar números com símbolos ou objetos.</p>
-                            <p>O <strong>Ábaco</strong>, surgido na Suméria por volta de 2700-2300 a.C., é talvez o primeiro computador digital. Embora simples, ele externaliza a memória de trabalho, permitindo que um operador realize cálculos complexos de adição, subtração, multiplicação e divisão com velocidade e precisão notáveis. Diferentes culturas desenvolveram suas próprias versões: o suanpan chinês, o soroban japonês, o schoty russo. Todos compartilham o mesmo princípio fundamental: representar valores decimais através da posição de contas.</p>
-                            
-                            <figure data-scroll data-scroll-class="is-inview">
-                                <img src="https://www.shutterstock.com/pt/search/%C3%A1baco" alt="Um ábaco de madeira tradicional, mostrando contas em posições que representam um número.">
-                                <figcaption>O ábaco: um dispositivo de computação digital com milênios de história, ainda em uso em algumas partes do mundo.</figcaption>
-                            </figure>
-
-                            <p>Paralelamente, na Grécia Antiga, a <strong>Máquina de Anticítera</strong> (c. 100 a.C.) representa um salto conceitual monumental. Descoberto em um naufrágio, este dispositivo de engrenagens de bronze é considerado o primeiro computador analógico conhecido. Ele não contava, mas modelava. Suas engrenagens complexas calculavam as posições do sol, da lua e dos planetas, previam eclipses e até mesmo as datas dos Jogos Olímpicos. Era um cosmos mecanizado, uma prova de que a lógica matemática podia ser incorporada em uma máquina para prever fenômenos naturais.</p>
-                        </div>
-                    </article>
-
-                    <article class="sub-section" id="logica-e-algoritmos">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">O Nascimento da Lógica e dos Algoritmos</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>Uma máquina só pode computar se houver um processo, um conjunto de regras a seguir. A formalização desses processos é a base da ciência da computação. O matemático grego <strong>Euclides</strong> (c. 300 a.C.), em sua obra "Os Elementos", descreveu um método passo a passo para encontrar o maior divisor comum de dois números. Hoje, chamamos isso de <strong>Algoritmo de Euclides</strong> - um dos algoritmos mais antigos ainda em uso.</p>
-                            
-                            <aside class="quote" data-scroll data-scroll-class="is-inview">
-                                <blockquote>
-                                    <p>"Um algoritmo é uma sequência finita de instruções bem definidas e não ambíguas, cada uma das quais pode ser executada mecanicamente num período de tempo finito e com uma quantidade de esforço finita."</p>
-                                </blockquote>
-                                <cite>Definição Moderna de um Conceito Antigo</cite>
-                            </aside>
-
-                            <p>Séculos depois, no século IX, o matemático persa <strong>Muhammad ibn Musa al-Khwarizmi</strong> revolucionou a matemática. Ele introduziu o sistema de numeração hindu-arábico na Europa e desenvolveu métodos sistemáticos para resolver equações lineares e quadráticas. O seu nome, latinizado, deu origem ao termo "algoritmo", e o título de seu livro, "Al-Jabr", nos deu a palavra "álgebra". Seu trabalho transformou a matemática de um exercício puramente teórico para uma ferramenta prática de resolução de problemas.</p>
-                        </div>
-                    </article>
-                    
-                    </div> </section> </main>
-
-        </div> <script src="script.js"></script>
+    </div> <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <script src="script.js"></script>
 
 </body>
 </html>
-                    <article class="sub-section" id="pioneiros-mecanicos">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">Os Arquitetos Mecânicos: Pascal e Leibniz</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>No século XVII, a Renascença e a Revolução Científica criaram um ambiente onde a automação do cálculo se tornou uma obsessão para as mentes mais brilhantes. O filósofo e matemático <strong>Blaise Pascal</strong>, em 1642, inventou a "Pascaline" para ajudar seu pai, um coletor de impostos. Esta foi uma das primeiras calculadoras mecânicas verdadeiramente funcionais, capaz de realizar adição e subtração diretamente, e multiplicação e divisão através de repetições.</p>
-                            <p>Algumas décadas depois, o polímata <strong>Gottfried Wilhelm Leibniz</strong> foi além. Ele não apenas aprimorou a calculadora de Pascal, criando a "Roda de Leibniz" (Stepped Reckoner) em 1673, que podia multiplicar e dividir diretamente, mas também fez uma contribuição ainda mais fundamental: o sistema de numeração binário. Leibniz viu no binário uma beleza quase mística, representando todos os números usando apenas 1 e 0. Ele não poderia saber, mas seu sistema se tornaria a linguagem universal de todos os computadores digitais séculos mais tarde.</p>
-                        </div>
-                    </article>
 
-                    <article class="sub-section" id="babbage-lovelace">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">A Máquina Analítica: O Sonho de Babbage e a Visão de Lovelace</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>No coração da Revolução Industrial britânica, um homem concebeu um salto tão grande que levaria um século para ser totalmente compreendido. <strong>Charles Babbage</strong>, um matemático e engenheiro, estava frustrado com os erros em tabelas matemáticas calculadas à mão. Seu primeiro projeto, a <strong>Máquina Diferencial</strong> (1822), foi projetado para automatizar o cálculo de polinômios, mas era apenas um aquecimento.</p>
-                            <p>Sua verdadeira obra-prima foi a <strong>Máquina Analítica</strong> (1837). Este foi o primeiro projeto de um computador de uso geral. Pela primeira vez na história, todos os componentes de um computador moderno estavam presentes, ainda que em forma mecânica:</p>
-                            
-                            <ul class="interactive-list">
-                                <li data-scroll data-scroll-class="is-inview" data-component="mill"><span class="component-name">O Moinho (The Mill):</span> A unidade central de processamento (CPU), onde as operações aritméticas eram realizadas.</li>
-                                <li data-scroll data-scroll-class="is-inview" data-component="store"><span class="component-name">O Armazém (The Store):</span> A memória, capaz de armazenar 1.000 números de 50 dígitos.</li>
-                                <li data-scroll data-scroll-class="is-inview" data-component="reader"><span class="component-name">O Leitor (The Reader):</span> O dispositivo de entrada, que usava cartões perfurados (inspirados no Tear de Jacquard) para inserir instruções e dados.</li>
-                                <li data-scroll data-scroll-class="is-inview" data-component="printer"><span class="component-name">A Impressora (The Printer):</span> O dispositivo de saída, para registrar os resultados.</li>
-                            </ul>
-
-                            <p>Babbage estava projetando, em latão e vapor, a arquitetura fundamental da computação. No entanto, a tecnologia da época não conseguiu acompanhar sua visão, e a Máquina Analítica nunca foi construída em sua totalidade durante sua vida.</p>
-
-                            <figure data-scroll data-scroll-class="is-inview">
-                                <img src="https://pt.wikipedia.org/wiki/M%C3%A1quina_anal%C3%ADtica" alt="Um diagrama complexo e detalhado da Máquina Analítica de Charles Babbage, mostrando milhares de engrenagens e eixos interligados.">
-                                <figcaption>O projeto da Máquina Analítica: um computador digital completo, um século antes de seu tempo.</figcaption>
-                            </figure>
-                            
-                            <p>Mas a visão de Babbage não estava completa sem sua intérprete mais brilhante: <strong>Augusta Ada King, Condessa de Lovelace</strong>. Filha do poeta Lord Byron e uma talentosa matemática, Ada Lovelace traduziu um artigo sobre a Máquina Analítica e adicionou suas próprias notas, que acabaram sendo três vezes mais longas que o texto original.</p>
-                            <p>Nessas notas, ela não apenas descreveu como a máquina funcionaria, mas também escreveu o que é considerado o primeiro algoritmo destinado a ser processado por uma máquina, para calcular os números de Bernoulli. Mais importante ainda, Ada viu o que nem Babbage havia articulado completamente: que a máquina poderia ir além de simples números. Ela previu que a Máquina Analítica poderia manipular símbolos, compor música ou criar arte se as regras corretas fossem fornecidas. Ela entendeu o potencial para a computação de uso geral.</p>
-
-                            <aside class="quote" data-scroll data-scroll-class="is-inview">
-                                <blockquote>
-                                    <p>"A Máquina Analítica não tem pretensões de originar nada. Ela pode fazer qualquer coisa que saibamos como ordenar que ela execute... Seu papel é nos ajudar a disponibilizar aquilo que já conhecemos."</p>
-                                </blockquote>
-                                <cite>Ada Lovelace, sobre a natureza da computação</cite>
-                            </aside>
-
-                        </div>
-                    </article>
-
-                </div> </section> <section class="content-section dark-section" id="revolucao" data-scroll-section>
-                <div class="container">
-                    <p class="chapter-marker" data-scroll data-scroll-class="is-inview">Capítulo II</p>
-                    <h2 class="section-title" data-scroll data-scroll-class="is-inview">A Revolução Eletrônica</h2>
-                    <div class="prose" data-scroll data-scroll-class="is-inview">
-                        <p>As engrenagens de Babbage deram lugar aos interruptores silenciosos e velozes dos elétrons. O século XX testemunhou a fusão da lógica matemática abstrata com a engenharia elétrica, um casamento que deu à luz o computador moderno. Impulsionada por duas guerras mundiais e uma explosão de inovação teórica, a computação deixou o reino da mecânica para se tornar uma força eletrônica que mudaria o mundo em uma velocidade inimaginável.</p>
-                    </div>
-
-                    <article class="sub-section" id="fundamentos-teoricos">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">A Lógica Booleana e a Máquina Universal de Turing</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>Antes que um computador eletrônico pudesse ser construído, precisávamos de uma linguagem para a eletricidade "pensar". <strong>George Boole</strong>, em meados do século XIX, forneceu essa linguagem com sua <strong>Álgebra Booleana</strong>. Ele demonstrou que a lógica podia ser tratada algebricamente, reduzindo proposições complexas a valores de verdadeiro/falso (ou 1/0). Para os engenheiros do século XX, isso foi uma revelação: os estados "verdadeiro" e "falso" podiam ser representados por um circuito elétrico "ligado" ou "desligado". Toda a lógica humana podia, em teoria, ser mapeada em circuitos.</p>
-                            
-                            <p>O próximo passo gigante veio de <strong>Alan Turing</strong>, um dos maiores gênios do século. Em seu artigo seminal de 1936, "On Computable Numbers", ele introduziu um conceito teórico de uma máquina que poderia, em princípio, computar qualquer coisa que fosse computável. A <strong>Máquina de Turing</strong> não era um projeto físico, mas um experimento mental: uma fita infinitamente longa, uma cabeça de leitura/escrita e um conjunto de regras simples. Ele provou que tal máquina poderia simular qualquer outra máquina de computação.</p>
-                            <p>Essa ideia, a da <strong>Máquina de Turing Universal</strong>, é a base teórica de todo computador que você já usou. Significa que, em vez de construir uma máquina para cada problema específico, poderíamos construir uma única máquina e simplesmente dar-lhe "programas" (conjuntos de instruções) diferentes para resolver problemas diferentes. O hardware poderia ser separado do software. A computação, como a conhecemos, nasceu desse conceito.</p>
-                        </div>
-                    </article>
-                    
-                    <article class="sub-section" id="primeiros-computadores">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">Os Titãs de Válvulas: Do Atanasoff-Berry ao ENIAC</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>A Segunda Guerra Mundial foi o catalisador que transformou a teoria em realidade. A necessidade de quebrar códigos criptografados e calcular tabelas de balística para artilharia exigia uma velocidade de cálculo sobre-humana.</p>
-                            <p>O <strong>Atanasoff-Berry Computer (ABC)</strong>, desenvolvido entre 1937-1942 por John Atanasoff e Clifford Berry, é agora considerado o primeiro computador digital eletrônico. Ele foi pioneiro em várias inovações, incluindo o uso de aritmética binária, memória regenerativa e a separação entre memória e computação. Embora não fosse programável, foi um passo fundamental.</p>
-                            <p>Na Grã-Bretanha, a urgência da guerra levou à criação do <strong>Colossus</strong>, projetado por Tommy Flowers e outros em Bletchley Park para decifrar as mensagens alemãs da cifra de Lorenz. Colossus foi o primeiro computador eletrônico programável do mundo, entrando em operação em 1944. Sua existência foi mantida em segredo por décadas, mas seu impacto no esforço de guerra foi imenso.</p>
-                            
-                            </div>
-                    </article>
-
-                </div> </section> </main>
-
-        <footer class="site-footer-main" data-scroll-section data-scroll-section-id="footer">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-column about">
-                        <h4 class="footer-heading">Pitchutcha</h4>
-                        <p>Uma odisséia interativa pela história da computação, projetada para inspirar, educar e empurrar os limites da web.</p>
-                        <a href="#" class="back-to-top" data-scroll-to="#hero">
-                            Voltar ao Topo
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 11.5V0.5M6 0.5L1 5.5M6 0.5L11 5.5" stroke="currentColor" stroke-width="1.5"/></svg>
-                        </a>
-                    </div>
-                    <div class="footer-column links">
-                        <h4 class="footer-heading">Navegação</h4>
-                        <ul>
-                            <li><a href="#alvorada" data-scroll-to>A Alvorada da Computação</a></li>
-                            <li><a href="#revolucao" data-scroll-to>A Revolução Eletrônica</a></li>
-                            <li><a href="#era-digital" data-scroll-to>A Era Digital</a></li>
-                            <li><a href="#futuro" data-scroll-to>O Futuro da Computação</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column social">
-                        <h4 class="footer-heading">Conecte-se</h4>
-                        <ul>
-                            <li><a href="https://www.youtube.com/watch?v=fiqTP3dKgH8" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                            <li><a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoicHQifQ%3D%3D%22%7D" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-                            <li><a href="https://pt.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; <span id="current-year">2025</span> [Seu Nome/Estúdio]. Todos os direitos reservados. Um projeto de código aberto.</p>
-                </div>
-            </div>
-        </footer>
-
-    </div> <script src="script.js"></script>
-
-</body>
-</html>
-                    <p>Nos Estados Unidos, o <strong>ENIAC (Electronic Numerical Integrator and Computer)</strong> foi concluído em 1945. Frequentemente citado como o primeiro computador eletrônico de uso geral, era uma besta colossal: 17.468 válvulas termiônicas, 70.000 resistores, 10.000 capacitores, pesando 30 toneladas e ocupando uma sala inteira. Sua finalidade inicial era calcular tabelas de tiro de artilharia. Embora incrivelmente rápido para a época, "programá-lo" era um processo manual e árduo que envolvia a reconfiguração de cabos e interruptores, podendo levar dias.</p>
-                            
-                            <figure data-scroll data-scroll-class="is-inview">
-                                <img src="https://www.gettyimages.pt/fotos/eniac" alt="Uma fotografia em preto e branco do ENIAC, mostrando uma sala enorme cheia de painéis de metal do chão ao teto, com feixes de cabos grossos conectando diferentes seções.">
-                                <figcaption>O ENIAC: um gigante eletrônico que provou a viabilidade da computação em larga escala, mas também suas limitações de programação.</figcaption>
-                            </figure>
-                        </div>
-                    </article>
-
-                    <article class="sub-section" id="von-neumann">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">A Arquitetura de von Neumann: O Nascimento do Software</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>O problema de reprogramação do ENIAC evidenciou uma falha fundamental. O matemático <strong>John von Neumann</strong>, trabalhando no projeto sucessor do ENIAC, o EDVAC, formalizou uma ideia que se tornaria a base de quase todos os computadores modernos: o <strong>conceito de programa armazenado</strong>.</p>
-                            <p>A genialidade da <strong>Arquitetura de von Neumann</strong> reside em sua simplicidade e poder. Ela propõe que as instruções do programa e os dados que ele manipula sejam armazenados na mesma memória. Isso significava que um computador poderia alterar seu programa tão facilmente quanto alterava seus dados. A programação deixou de ser um problema de hardware (fios e cabos) e tornou-se um problema de software (símbolos na memória). Esta foi a invenção do software como o conhecemos.</p>
-                            
-                            <figure class="interactive-diagram" id="von-neumann-diagram" data-scroll data-scroll-class="is-inview">
-                                <div class="diagram-title">Diagrama Simplificado da Arquitetura de von Neumann</div>
-                                <div class="diagram-content">
-                                    <div class="diagram-box cpu">
-                                        <strong>Unidade Central de Processamento (CPU)</strong>
-                                        <div class="diagram-box-internal control-unit">Unidade de Controle</div>
-                                        <div class="diagram-box-internal alu">Unidade Lógica e Aritmética</div>
-                                    </div>
-                                    <div class="diagram-arrow bidirectional"></div>
-                                    <div class="diagram-box memory">
-                                        <strong>Unidade de Memória</strong>
-                                        <div class="memory-content">(Instruções e Dados)</div>
-                                    </div>
-                                    <div class="diagram-arrow unidirectional"></div>
-                                    <div class="diagram-box io-devices">
-                                        <strong>Dispositivos de Entrada/Saída</strong>
-                                    </div>
-                                </div>
-                                <figcaption>Os componentes chave: CPU (cérebro), Memória (armazenamento unificado) e E/S (comunicação), interligados por um barramento.</figcaption>
-                            </figure>
-                        </div>
-                    </article>
-
-                    <article class="sub-section" id="transistor-ic">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">A Miniaturização: O Transistor e o Circuito Integrado</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>As válvulas termiônicas eram grandes, consumiam muita energia, geravam imenso calor e queimavam com frequência. A computação não poderia escalar com elas. A revolução seguinte não foi conceitual, mas física. Em 1947, nos Laboratórios Bell, John Bardeen, Walter Brattain e William Shockley inventaram o <strong>transistor</strong>.</p>
-                            <p>Este pequeno dispositivo semicondutor podia fazer tudo que uma válvula fazia – amplificar sinais elétricos e atuar como um interruptor – mas era minúsculo, mais rápido, mais confiável e consumia uma fração da energia. Foi o interruptor de luz que permitiu que a era digital realmente começasse. A computação podia finalmente sair dos laboratórios governamentais e entrar no mundo dos negócios.</p>
-                            <p>O próximo passo lógico foi: por que conectar transistores individuais quando poderíamos construí-los juntos? No final dos anos 50, <strong>Jack Kilby</strong> da Texas Instruments e <strong>Robert Noyce</strong> da Fairchild Semiconductor inventaram, de forma independente, o <strong>circuito integrado (CI)</strong>. A ideia era fabricar um circuito eletrônico completo, com múltiplos transistores, resistores e capacitores, em uma única peça de material semicondutor, geralmente silício. Nasceu o "microchip". Esta invenção pavimentou o caminho para a produção em massa de eletrônicos complexos e deu origem à Lei de Moore, a observação de que o número de transistores em um CI dobrava aproximadamente a cada dois anos.</p>
-                        </div>
-                    </article>
-                </div> </section> <section class="content-section" id="era-digital" data-scroll-section>
-                <div class="container">
-                    <p class="chapter-marker" data-scroll data-scroll-class="is-inview">Capítulo III</p>
-                    <h2 class="section-title" data-scroll data-scroll-class="is-inview">A Era Digital e a Conexão Global</h2>
-                    <div class="prose" data-scroll data-scroll-class="is-inview">
-                        <p>Com os blocos de construção miniaturizados do transistor e do circuito integrado, a computação estava pronta para encolher de tamanho e explodir em impacto. Esta era testemunhou a ascensão do computador pessoal, a invenção de interfaces amigáveis que qualquer um poderia usar e o nascimento de uma rede global que conectaria a humanidade de maneiras sem precedentes. A computação deixou de ser uma ferramenta para especialistas e se tornou uma extensão do indivíduo.</p>
-                    </div>
-
-                    <article class="sub-section" id="microprocessador-pc">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">O Computador em um Chip e a Revolução do PC</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>Em 1971, a Intel lançou o <strong>Intel 4004</strong>, o primeiro microprocessador comercialmente disponível. Pela primeira vez, uma Unidade Central de Processamento (CPU) inteira foi fabricada em um único chip. Este foi o culminar da jornada de miniaturização. O "cérebro" do computador estava agora acessível e barato.</p>
-                            <p>Isso desencadeou uma tempestade de criatividade entre hobbyistas e engenheiros. Revistas como a "Popular Electronics" tornaram-se o epicentro da revolução. Em 1975, a capa da revista apresentou o <strong>Altair 8800</strong>, um kit de computador baseado no microprocessador Intel 8080. Ele não tinha teclado ou monitor; a entrada era feita por interruptores e a saída por luzes piscantes. Mesmo assim, vendeu milhares de unidades, inspirando dois jovens entusiastas, Bill Gates e Paul Allen, a criar um interpretador BASIC para ele, fundando uma empresa chamada Microsoft.</p>
-                            <p>A verdadeira democratização veio com máquinas prontas para o uso. Em 1977, a "trindade" de computadores pessoais foi lançada: o <strong>Apple II</strong>, o <strong>Commodore PET</strong> e o <strong>TRS-80</strong>. O Apple II, em particular, com seus gráficos coloridos e design amigável (obra de Steve Wozniak e da visão de marketing de Steve Jobs), capturou a imaginação do público e estabeleceu a Apple como uma força dominante. Em 1981, a gigante IBM entrou no mercado com o <strong>IBM PC</strong>. Sua arquitetura aberta permitiu que outras empresas, como a Compaq, criassem "clones", levando a uma competição acirrada, preços mais baixos e a solidificação do PC como uma ferramenta de negócios padrão.</p>
-                        </div>
-                    </article>
-
-                    <article class="sub-section" id="gui-e-ux">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">A Interface Gráfica: Do Xerox PARC ao Macintosh</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>Até o final dos anos 70, interagir com um computador significava digitar comandos enigmáticos em uma tela preta (a interface de linha de comando, ou CLI). A computação ainda era inacessível para a maioria. A mudança de paradigma veio de um lugar inesperado: o <strong>Xerox PARC (Palo Alto Research Center)</strong>.</p>
-                            <p>Os engenheiros do PARC desenvolveram o <strong>Xerox Alto</strong> (1973), um computador que incorporava conceitos radicais: uma tela de bitmap que tratava a tela como uma grade de pixels, uma <strong>Interface Gráfica do Usuário (GUI)</strong> com janelas, ícones e menus, e um dispositivo de apontamento para interagir com ela: o <strong>mouse</strong>. O PARC também inventou a rede Ethernet e a impressão a laser. Era o projeto do escritório do futuro.</p>
-                            <p>Embora a Xerox não tenha comercializado com sucesso essas invenções, um jovem Steve Jobs as viu durante uma visita ao PARC em 1979 e entendeu imediatamente seu potencial revolucionário. A Apple licenciou as ideias e as refinou, primeiro em seu malfadado computador <strong>Lisa</strong> (1983) e depois, de forma triunfante, no <strong>Apple Macintosh</strong> (1984). Com seu famoso comercial "1984" e uma interface incrivelmente intuitiva, o Macintosh popularizou a GUI e estabeleceu um novo padrão para a interação humano-computador. A computação não era mais sobre lembrar comandos; era sobre explorar um "desktop" virtual. A Experiência do Usuário (UX) tornou-se um campo de batalha para a inovação.</p>
-
-                            <aside class="quote" data-scroll data-scroll-class="is-inview">
-                                <blockquote>
-                                    <p>"A melhor maneira de prever o futuro é inventá-lo."</p>
-                                </blockquote>
-                                <cite>Alan Kay, um dos pioneiros do Xerox PARC</cite>
-                            </aside>
-
-                        </div>
-                    </article>
-
-                    </div> </section> </main> </div> <script src="script.js"></script>
-
-</body>
-</html>
-                    <article class="sub-section" id="internet-www">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">A Rede das Redes: O Nascimento da Internet e da World Wide Web</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>Com milhões de computadores agora em mesas de escritórios e residências, o próximo passo lógico era conectá-los. A semente dessa conexão global foi plantada décadas antes, no auge da Guerra Fria. A <strong>ARPANET</strong>, um projeto da Agência de Projetos de Pesquisa Avançada (ARPA) do Departamento de Defesa dos EUA, foi lançada em 1969. Seu objetivo era criar uma rede de comunicação descentralizada que pudesse sobreviver a uma falha em qualquer um de seus nós - uma necessidade em um cenário de possível guerra nuclear.</p>
-                            <p>A tecnologia chave que tornou a ARPANET possível foi a <strong>comutação de pacotes (packet switching)</strong>, onde os dados eram divididos em pequenos blocos (pacotes), enviados pela rede por rotas potencialmente diferentes e remontados no destino. Para garantir que redes diferentes pudessem se comunicar, Vint Cerf e Bob Kahn desenvolveram o <strong>Protocolo de Controle de Transmissão/Protocolo de Internet (TCP/IP)</strong> no início dos anos 80. Este se tornou o esperanto do mundo digital, a linguagem universal que permitiu que redes acadêmicas, governamentais e comerciais se interligassem para formar a <strong>Internet</strong>.</p>
-                            
-                            <p>No entanto, a Internet ainda era um domínio de especialistas, usada principalmente para e-mail, transferência de arquivos e acesso a terminais remotos. Faltava uma camada de usabilidade. Essa camada foi inventada por um físico britânico no CERN, o centro europeu de pesquisa nuclear. <strong>Tim Berners-Lee</strong>, em 1989, propôs um sistema para gerenciar e compartilhar informações entre pesquisadores. Ele inventou as três tecnologias fundamentais que formam a base da web que usamos hoje:</p>
-
-                            <ul class="interactive-list tech-pillars">
-                                <li data-scroll data-scroll-class="is-inview" data-tech="html"><span class="tech-name">HTML (HyperText Markup Language):</span> A linguagem para estruturar documentos com texto, imagens e, crucialmente, links para outros documentos.</li>
-                                <li data-scroll data-scroll-class="is-inview" data-tech="url"><span class="tech-name">URL (Uniform Resource Locator):</span> Um sistema de endereço único para localizar qualquer recurso na rede.</li>
-                                <li data-scroll data-scroll-class="is-inview" data-tech="http"><span class="tech-name">HTTP (Hypertext Transfer Protocol):</span> O protocolo que permite que um navegador "peça" e um servidor "entregue" uma página da web.</li>
-                            </ul>
-
-                            <p>Em 1991, ele lançou o primeiro servidor web e o primeiro site do mundo. Crucialmente, Berners-Lee e o CERN decidiram não patentear suas invenções, oferecendo-as livremente ao mundo. Esta decisão foi fundamental para o crescimento explosivo da <strong>World Wide Web</strong>. A Internet era a infraestrutura de rodovias; a Web era os carros, lojas e casas que a tornaram um lugar para se estar.</p>
-                        </div>
-                    </article>
-
-                    <article class="sub-section" id="open-source">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">A Revolução do Código Aberto: GNU, Linux e a Força da Colaboração</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>Enquanto a revolução do PC era impulsionada por empresas de software proprietário como Microsoft e Apple, um movimento filosófico e técnico paralelo estava ganhando força. Em 1983, <strong>Richard Stallman</strong>, um programador do MIT, lançou o <strong>Projeto GNU</strong>. Sua missão era criar um sistema operacional completo que fosse "software livre" - livre no sentido de "liberdade de expressão", não de "cerveja grátis". Ele fundou a Free Software Foundation (FSF) para defender os direitos dos usuários de executar, estudar, modificar e compartilhar software.</p>
-                            <p>O projeto GNU recriou com sucesso quase todas as partes de um sistema operacional Unix, exceto uma peça central: o kernel, que gerencia os recursos de hardware do sistema. Essa peça faltante chegou em 1991, de um estudante finlandês chamado <strong>Linus Torvalds</strong>. Como um projeto pessoal, ele criou um kernel e o chamou de <strong>Linux</strong>. Ele o compartilhou na Internet, e a resposta foi massiva. Programadores de todo o mundo começaram a contribuir, aprimorá-lo e adaptá-lo.</p>
-                            <p>A combinação do kernel Linux com as ferramentas do sistema GNU criou um sistema operacional poderoso, estável e totalmente livre: o <strong>GNU/Linux</strong>. Este modelo de desenvolvimento colaborativo e aberto, mais tarde apelidado de "código aberto" (open source), provou ser extraordinariamente eficaz. Hoje, ele é a espinha dorsal invisível do mundo digital, alimentando a grande maioria dos servidores web, supercomputadores, o sistema operacional Android e inúmeros outros dispositivos. A revolução do código aberto demonstrou que a colaboração distribuída e transparente poderia produzir software de classe mundial.</p>
-                        </div>
-                    </article>
-                </div> </section> <section class="content-section dark-section" id="futuro" data-scroll-section>
-                <div class="container">
-                    <p class="chapter-marker" data-scroll data-scroll-class="is-inview">Capítulo IV</p>
-                    <h2 class="section-title" data-scroll data-scroll-class="is-inview">A Era da Onipresença e da Inteligência</h2>
-                    <div class="prose" data-scroll data-scroll-class="is-inview">
-                        <p>No final do século XX, a computação era uma atividade que se fazia em um lugar específico: a mesa de um escritório, o laboratório de uma universidade. O século XXI dissolveu essas fronteiras. Impulsionada pela Lei de Moore, pela conectividade onipresente e por novos paradigmas de interface, a computação vazou de suas caixas beges para preencher todos os espaços de nossas vidas. Ela está em nossos bolsos, em nossas paredes, em nossos carros. E, cada vez mais, ela não apenas executa comandos, mas aprende, prevê e cria.</p>
-                    </div>
-
-                    <article class="sub-section" id="web2-mobile">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">A Web Social e a Revolução Móvel</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>A explosão inicial da web nos anos 90, impulsionada por navegadores como Netscape e Internet Explorer, culminou na <strong>bolha "ponto-com"</strong> do final da década. Após o estouro da bolha, a web renasceu com um novo foco: o usuário como participante, não apenas como consumidor. Este ethos, apelidado de <strong>Web 2.0</strong>, deu origem a plataformas que prosperavam com o conteúdo gerado pelo usuário: blogs (Blogger), enciclopédias colaborativas (Wikipedia), e as primeiras redes sociais (Friendster, MySpace).</p>
-                            <p>O verdadeiro catalisador para a computação onipresente, no entanto, foi a convergência da internet com um dispositivo pessoal poderoso. Em 2007, Steve Jobs apresentou o <strong>iPhone</strong>. Não foi o primeiro smartphone, mas foi o primeiro a acertar em cheio na experiência do usuário, combinando um telefone, um iPod e um comunicador de internet em uma interface de toque revolucionária. A App Store, lançada no ano seguinte, criou um ecossistema maciço para desenvolvedores, desencadeando uma explosão de inovação em software.</p>
-                            
-                            <figure data-scroll data-scroll-class="is-inview">
-                                <img src="https://www.gettyimages.com.br/fotos/iphone-1" alt="O iPhone original, exibindo sua tela de toque com uma grade de ícones coloridos, um design que se tornou icônico para a era dos smartphones.">
-                                <figcaption>O iPhone (2007): o dispositivo que colocou a internet e um supercomputador no bolso de bilhões de pessoas, redefinindo indústrias inteiras.</figcaption>
-                            </figure>
-                            
-                            <p>A revolução móvel, liderada pelo iPhone e pelo Android do Google, mudou fundamentalmente o comportamento humano. A computação tornou-se pessoal, contextual e sempre ativa. GPS, câmeras de alta qualidade e sensores transformaram o telefone em um portal para o mundo físico, dando origem à economia de aplicativos, mídias sociais baseadas em localização e uma cultura de conectividade constante.</p>
-                        </div>
-                    </article>
-
-                    <article class="sub-section" id="cloud-big-data">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">A Nuvem e o Dilúvio de Dados</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>Para onde foram todos os dados gerados por esses bilhões de dispositivos? Eles foram para a <strong>Nuvem (Cloud Computing)</strong>. Em vez de empresas e indivíduos gerenciarem seus próprios servidores, gigantes da tecnologia como Amazon (com Amazon Web Services - AWS), Google e Microsoft construíram data centers em escala planetária. Eles começaram a alugar poder de computação, armazenamento e serviços sob demanda pela internet.</p>
-                            <p>Isso democratizou o acesso à infraestrutura de supercomputação. Uma startup em uma garagem agora podia acessar a mesma capacidade de computação que uma corporação multinacional, pagando apenas pelo que usava. A nuvem tornou-se o motor invisível que alimenta o streaming de vídeo, as redes sociais, os jogos online e quase todos os serviços digitais modernos. Ela também concentrou a vasta quantidade de dados que a humanidade estava gerando, criando um novo desafio e uma nova oportunidade: o <strong>Big Data</strong>. O volume, a velocidade e a variedade de dados tornaram-se tão grandes que exigiram novas ferramentas e técnicas para serem analisados, abrindo a porta para a próxima grande revolução: a Inteligência Artificial em escala.</p>
-                        </div>
-                    </article>
-                    
-                    </div> </section> </main> </div> <script src="script.js"></script>
-
-</body>
-</html>
-                    <article class="sub-section" id="ai-ml">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">A Renascença da Inteligência Artificial</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>A ideia de criar máquinas inteligentes é quase tão antiga quanto a própria computação. Pioneiros como Alan Turing exploraram o conceito de "máquinas pensantes", e o campo da <strong>Inteligência Artificial (IA)</strong> foi formalmente fundado em 1956. No entanto, após décadas de promessas e subsequentes "invernos da IA" (períodos de desinteresse e corte de financiamento), uma convergência de três fatores no século XXI desencadeou uma explosão de progresso sem precedentes.</p>
-                            
-                            <div class="factors-triptych">
-                                <div class="factor" data-scroll data-scroll-class="is-inview">
-                                    <h4>1. Big Data</h4>
-                                    <p>O dilúvio de dados da internet, redes sociais e sensores IoT forneceu o "alimento" necessário para treinar algoritmos famintos por informação em uma escala antes inimaginável.</p>
-                                </div>
-                                <div class="factor" data-scroll data-scroll-class="is-inview" data-scroll-delay="0.1">
-                                    <h4>2. Hardware Poderoso</h4>
-                                    <p>A descoberta de que as <strong>Unidades de Processamento Gráfico (GPUs)</strong>, projetadas para jogos, eram perfeitas para os cálculos paralelos massivos do <strong>Machine Learning (Aprendizado de Máquina)</strong>, forneceu o "músculo" computacional.</p>
-                                </div>
-                                <div class="factor" data-scroll data-scroll-class="is-inview" data-scroll-delay="0.2">
-                                    <h4>3. Avanços Algorítmicos</h4>
-                                    <p>O refinamento de técnicas de <strong>Redes Neurais Profundas (Deep Learning)</strong> permitiu que as máquinas aprendessem padrões complexos a partir de dados brutos, levando a avanços revolucionários.</p>
-                                </div>
-                            </div>
-
-                            <p>Essa "tempestade perfeita" transformou a IA de um campo acadêmico para uma tecnologia de uso geral. Hoje, ela está por toda parte: no reconhecimento facial do seu celular, nos sistemas de recomendação da Netflix e Spotify, nos assistentes de voz como Siri e Alexa, na tradução em tempo real do Google Translate e, mais recentemente, em modelos de <strong>IA Generativa</strong> capazes de criar texto (GPT-4), imagens (Midjourney, DALL-E 2) e código com uma fluência surpreendente. Estamos ensinando as máquinas não apenas a calcular, mas a perceber, entender e criar.</p>
-                        </div>
-                    </article>
-
-                    <article class="sub-section" id="next-frontiers">
-                        <h3 class="sub-section-title" data-scroll data-scroll-class="is-inview">As Próximas Fronteiras: Quântica, Interfaces e Realidades</h3>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>Para onde vamos a partir daqui? A jornada da computação está longe de terminar. Várias fronteiras estão sendo ativamente exploradas, cada uma com o potencial de redefinir fundamentalmente nosso mundo mais uma vez.</p>
-                            
-                            <h4>Computação Quântica</h4>
-                            <p>Talvez a mudança mais radical no horizonte seja a <strong>computação quântica</strong>. Em vez de bits clássicos (0 ou 1), os computadores quânticos usam <strong>qubits</strong>. Graças aos princípios da mecânica quântica, como a <strong>superposição</strong> e o <strong>emaranhamento</strong>, um qubit pode ser 0, 1 ou ambos ao mesmo tempo. Isso permite que computadores quânticos explorem um vasto número de possibilidades simultaneamente. Embora ainda em sua infância, a computação quântica promete resolver problemas intratáveis para os supercomputadores mais poderosos de hoje, revolucionando a descoberta de medicamentos, a ciência dos materiais, a logística global e a criptografia.</p>
-
-                            <h4>Interfaces Cérebro-Computador (BCIs)</h4>
-                            <p>A fronteira final da interação é a eliminação da interface. As <strong>Interfaces Cérebro-Computador</strong> buscam criar um canal de comunicação direto entre o cérebro humano e os dispositivos digitais. Com aplicações médicas profundas para ajudar pessoas com paralisia a se comunicarem e controlarem próteses, as BCIs também levantam questões filosóficas sobre o futuro do aprimoramento humano e a fusão da consciência com a inteligência artificial.</p>
-                            
-                            <h4>Computação Espacial e o Metaverso</h4>
-                            <p>Se a revolução móvel colocou a computação em nossos bolsos, a <strong>computação espacial</strong> busca colocá-la no mundo ao nosso redor. Usando <strong>Realidade Aumentada (AR)</strong> e <strong>Realidade Virtual (VR)</strong>, o objetivo é mesclar o mundo digital e o físico, transformando a internet de uma rede de páginas que "olhamos" para um universo de espaços que "habitamos". Este conceito, frequentemente chamado de <strong>Metaverso</strong>, representa uma nova plataforma computacional onde a interação, o trabalho e o lazer podem se tornar experiências totalmente imersivas.</p>
-                        </div>
-                    </article>
-
-                    <div class="epilogue" data-scroll-section>
-                        <div class="prose" data-scroll data-scroll-class="is-inview">
-                            <p>Do ábaco ao qubit, a história da computação é uma odisséia ininterrupta de abstração e engenhosidade. É a história de como transformamos areia em pensamento, lógica em linguagem e conexão em comunidade. Cada passo, desde as engrenagens de Babbage até as redes neurais de hoje, foi uma tentativa de responder a uma pergunta fundamental: como podemos ampliar nosso alcance, nosso entendimento e nosso potencial?</p>
-                            <p>Esta jornada não tem um destino final. É uma espiral ascendente de inovação. As ferramentas que criamos, por sua vez, nos recriam, abrindo novas possibilidades e novos desafios. A odisséia continua.</p>
-                        </div>
-                    </div>
-
-                </div> </section> </main> <footer class="site-footer-main" data-scroll-section data-scroll-section-id="footer">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-column about">
-                        <h4 class="footer-heading">Pitchutcha</h4>
-                        <p>Uma odisséia interativa pela história da computação, projetada para inspirar, educar e empurrar os limites da web.</p>
-                        <a href="#" class="back-to-top" data-scroll-to="#hero">
-                            Voltar ao Topo
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 11.5V0.5M6 0.5L1 5.5M6 0.5L11 5.5" stroke="currentColor" stroke-width="1.5"/></svg>
-                        </a>
-                    </div>
-                    <div class="footer-column links">
-                        <h4 class="footer-heading">Navegação</h4>
-                        <ul>
-                            <li><a href="#alvorada" data-scroll-to>A Alvorada da Computação</a></li>
-                            <li><a href="#revolucao" data-scroll-to>A Revolução Eletrônica</a></li>
-                            <li><a href="#era-digital" data-scroll-to>A Era Digital</a></li>
-                            <li><a href="#futuro" data-scroll-to>O Futuro da Computação</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column social">
-                        <h4 class="footer-heading">Conecte-se</h4>
-                        <ul>
-                            <li><a href="https://www.youtube.com/watch?v=fiqTP3dKgH8" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                            <li><a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoicHQifQ%3D%3D%22%7D" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-                            <li><a href="https://pt.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; <span id="current-year">2025</span> [Seu Nome/Estúdio]. Todos os direitos reservados. Um projeto de código aberto.</p>
-                </div>
-            </div>
-        </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-<script src="script.js"></script>
-
-</body>
-<div class="search-modal" id="search-modal">
-    <button class="search-modal__close" id="search-close" aria-label="Fechar busca">&times;</button>
-    <div class="search-modal__content">
-        <h2 class="search-modal__title">Pesquise na Odisséia</h2>
-        <div class="search-modal__input-wrapper">
-            <input type="search" id="search-input" placeholder="Digite termos como 'Alan Turing', 'Internet'...">
-        </div>
-        <div class="search-modal__results-wrapper">
-            <ul class="search-modal__results" id="search-results">
-                </ul>
-        </div>
-    </div>
-</div>
-</html>
