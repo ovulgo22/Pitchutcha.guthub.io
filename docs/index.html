@@ -8,7 +8,18 @@
     <base href="https://ovulgo22.github.io/pitchutcha.github.io/">
 
     <meta name="description" content="Explore a história completa, os conceitos fundamentais e os avanços revolucionários da ciência da computação.">
+    <meta name="author" content="ovulgo22">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ovulgo22.github.io/pitchutcha.github.io/">
+    <meta property="og:url" content="https://ovulgo22.github.io/pitchutcha.github.io/">
+    <meta property="og:title" content="Pitchutcha - A Enciclopédia da Computação">
+    <meta property="og:description" content="Uma jornada profunda através das eras da computação, desvendando as mentes, as máquinas e as ideias que moldaram nosso mundo digital.">
+    <meta property="og:image" content="https://ovulgo22.github.io/pitchutcha.github.io/assets/images/pitchutcha-og-image.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body data-theme="light">
@@ -18,11 +29,33 @@
     <header class="site-header">
         <div class="header-container">
             <div class="header-left">
-                <a href="/" class="logo-link" aria-label="Página Inicial do Pitchutcha">
+                <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="sidebar">
+                    <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path></svg>
+                    <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"></path></svg>
+                </button>
+                <a href="" class="logo-link" aria-label="Página Inicial do Pitchutcha">
                     <span class="logo-text">Pitchutcha</span>
                 </a>
             </div>
+            
+            <div class="header-center">
+                <div class="search-wrapper">
+                    <label for="search-input" class="sr-only">Pesquisar</label>
+                    <input type="search" id="search-input" class="search-input" placeholder="Pesquisar na documentação...">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+                </div>
             </div>
+
+            <div class="header-right">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.42-1.42c.39-.39.39-1.02 0-1.41zm13.42 13.42c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.42-1.42c.39-.39.39-1.02 0-1.41zM19.42 5.99c.39-.39.39-1.02 0-1.41l-1.42-1.42c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0zM7.4 18.01c.39-.39.39-1.02 0-1.41l-1.42-1.42c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0z"></path></svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.31 0-6-2.69-6-6 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg>
+                </button>
+                <a href="https://github.com/ovulgo22/pitchutcha.github.io" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="Ver código fonte no GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12 24 5.373 18.627 0 12 0z"></path></svg>
+                </a>
+            </div>
+        </div>
     </header>
 
     <div class="main-container">
@@ -42,6 +75,7 @@
                             </ul>
                         </details>
                     </li>
+
                     <li class="nav-item">
                         <details>
                             <summary class="nav-summary">Hardware e Arquitetura</summary>
@@ -54,13 +88,14 @@
                             </ul>
                         </details>
                     </li>
+
                     <li class="nav-item">
                         <details>
                             <summary class="nav-summary">Sistemas Operacionais</summary>
                             <ul class="nav-sublist">
                                 <li><a href="so/conceitos.html" class="nav-link">Conceitos Fundamentais</a></li>
                                 <li><a href="so/gerenciamento-processos.html" class="nav-link">Gerenciamento de Processos</a></li>
-                                </ul>
+                            </ul>
                         </details>
                     </li>
                 </ul>
@@ -70,7 +105,44 @@
         <div class="content-and-toc-wrapper">
             <main class="main-content" id="main-content" tabindex="-1">
                 <article class="content-article">
-                    </article>
+                    <header class="article-header">
+                        <div class="breadcrumbs"><a href="">Início</a></div>
+                        <h1 class="article-title" id="titulo-principal">Bem-vindo ao Pitchutcha</h1>
+                        <p class="article-subtitle">Uma enciclopédia aberta sobre a ciência da computação, desde os fundamentos teóricos até as tecnologias de ponta.</p>
+                    </header>
+
+                    <section class="article-body">
+                        <p>Este projeto é um esforço colaborativo para documentar e explicar os conceitos que formam a base do nosso mundo digital. Navegue pelos tópicos na barra lateral para começar sua jornada.</p>
+                        
+                        <div class="callout-box info">
+                            <p><strong>Dica:</strong> Use a barra de pesquisa no topo para encontrar rapidamente o que você procura.</p>
+                        </div>
+
+                        <h2 id="comece-por-aqui">Comece por aqui</h2>
+                        <p>Se você é novo no assunto, sugerimos começar por um dos nossos pilares de conteúdo:</p>
+                        
+                        <div class="quick-nav-grid">
+                            <a href="fundacoes/pioneiros.html" class="card-link">
+                                <div class="card">
+                                    <h3 class="card-title">Pioneiros da Computação</h3>
+                                    <p class="card-description">Conheça as mentes brilhantes como Ada Lovelace, Alan Turing e Grace Hopper.</p>
+                                </div>
+                            </a>
+                            <a href="hardware/cpu.html" class="card-link">
+                                <div class="card">
+                                    <h3 class="card-title">Como funciona uma CPU</h3>
+                                    <p class="card-description">Mergulhe na arquitetura que alimenta todos os dispositivos modernos.</p>
+                                </div>
+                            </a>
+                             <a href="so/conceitos.html" class="card-link">
+                                <div class="card">
+                                    <h3 class="card-title">Sistemas Operacionais</h3>
+                                    <p class="card-description">Descubra o software que gerencia todo o hardware do seu computador.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </section>
+                </article>
 
                 <footer class="article-footer">
                     <nav class="article-pagination" aria-label="Navegação de artigos">
@@ -83,10 +155,16 @@
             </main>
             
             <aside class="toc-sidebar" id="toc-sidebar">
-                </aside>
+                <nav class="toc-nav" aria-labelledby="toc-heading">
+                    <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+                    <ul class="toc-list">
+                        <li><a href="#titulo-principal" class="toc-link is-active">Introdução</a></li>
+                        <li><a href="#comece-por-aqui" class="toc-link">Comece por aqui</a></li>
+                    </ul>
+                </nav>
+            </aside>
         </div>
     </div>
     <script src="script.js" defer></script>
 </body>
 </html>
-
