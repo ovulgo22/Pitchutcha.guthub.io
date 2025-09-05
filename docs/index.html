@@ -4,56 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="generator" content="Pitchutcha Project v2.0">
-    <meta name="theme-color" data-theme="light" content="#FFFFFF">
-    <meta name="theme-color" data-theme="dark" content="#121212">
 
-    <title>Pitchutcha v2.0 - A Enciclopédia da Computação</title>
-    <meta name="description" content="Versão 2.0 do Pitchutcha. Explore a história, os conceitos e os avanços da ciência da computação, agora com novas seções sobre IA, DevOps, Acessibilidade, Desenvolvimento Criativo e muito mais.">
-    <meta name="keywords" content="Computação, Ciência da Computação, Programação, DevOps, Inteligência Artificial, Acessibilidade, WebGL, Creative Coding, Alan Turing, História da Tecnologia, Algoritmos">
+    <title>Pitchutcha - A Enciclopédia da Computação</title>
+    <meta name="description" content="Explore a história completa, os conceitos fundamentais e os avanços revolucionários da ciência da computação.">
     <meta name="author" content="Pitchutcha Project">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://ovulgo22.github.io/pitchutcha/">
-
-    <meta property="og:title" content="Pitchutcha v2.0 - A Enciclopédia da Computação">
-    <meta property="og:description" content="Uma jornada profunda através das eras da computação. A v2.0 expande nosso universo de conhecimento com seções dedicadas às mais modernas disciplinas da tecnologia.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ovulgo22.github.io/pitchutcha/">
-    <meta property="og:image" content="https://ovulgo22.github.io/pitchutcha/assets/images/pitchutcha-og-image-v2.png"> <meta property="og:site_name" content="Pitchutcha">
-    <meta property="og:locale" content="pt_BR">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pitchutcha v2.0 - A Enciclopédia da Computação">
-    <meta name="twitter:description" content="Explore a história e o futuro da computação com nossa nova versão expandida.">
-    <meta name="twitter:image" content="https://ovulgo22.github.io/pitchutcha/assets/images/pitchutcha-twitter-image-v2.png"> <meta name="twitter:creator" content="@ovulgo22"> <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
-    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-    <link rel="manifest" href="manifest.webmanifest">
+    
+    <link rel="canonical" href="https://pitchutcha.github.io/">
+    <meta property="og:url" content="https://pitchutcha.github.io/">
+    <meta property="og:title" content="Pitchutcha - A Enciclopédia da Computação">
+    <meta property="og:description" content="Uma jornada profunda através das eras da computação, desvendando as mentes, as máquinas e as ideias que moldaram nosso mundo digital.">
+    <meta property="og:image" content="https://pitchutcha.github.io/assets/images/pitchutcha-og-image.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="light">
+<body data-theme="light"> <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
-
-    <div class="command-palette-overlay" id="command-palette-overlay" hidden>
-        <div class="command-palette" id="command-palette" role="dialog" aria-modal="true" aria-labelledby="command-palette-label">
-            <h2 id="command-palette-label" class="sr-only">Paleta de Comandos</h2>
-            <div class="command-palette__search-wrapper">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
-                <input type="text" id="command-palette-input" class="command-palette__input" placeholder="Digite um comando ou busque...">
-                <button class="command-palette__close-button" id="command-palette-close" aria-label="Fechar paleta de comandos">ESC</button>
-            </div>
-            <ul class="command-palette__results" id="command-palette-results" role="listbox">
-                </ul>
-        </div>
-    </div>
-
-    <header class="main-header" id="main-header">
+    <header class="site-header">
         <div class="header-container">
             <div class="header-left">
                 <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="sidebar">
@@ -61,30 +32,24 @@
                     <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"></path></svg>
                 </button>
                 <a href="/" class="logo-link" aria-label="Página Inicial do Pitchutcha">
-                    <span class="logo-text">Pitchutcha <sup class="version-badge">2.0</sup></span>
+                    <span class="logo-text">Pitchutcha</span>
                 </a>
             </div>
             
             <div class="header-center">
-                <button class="search-bar-button" id="open-command-palette-button">
+                <div class="search-wrapper">
+                    <label for="search-input" class="sr-only">Pesquisar</label>
+                    <input type="search" id="search-input" class="search-input" placeholder="Pesquisar na documentação...">
                     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
-                    <span class="search-bar-text">Pesquisar...</span>
-                    <span class="search-bar-shortcut">⌘K</span>
-                </button>
+                </div>
             </div>
 
             <div class="header-right">
-                <nav class="header-nav" aria-label="Navegação secundária">
-                    <ul>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#changelog">Changelog</a></li> <li><a href="#contribuir">Contribuir</a></li>
-                    </ul>
-                </nav>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema claro e escuro">
-                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.42-1.42c.39-.39.39-1.02 0-1.41zm13.42 13.42c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.42-1.42c.39-.39.39-1.02 0-1.41zM19.42 5.99c.39-.39.39-1.02 0-1.41l-1.42-1.42c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0zM7.4 18.01c.39-.39.39-1.02 0-1.41l-1.42-1.42c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0z"></path></svg>
-                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.31 0-6-2.69-6-6 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.42-1.42c.39-.39.39-1.02 0-1.41zm13.42 13.42c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.42-1.42c.39-.39.39-1.02 0-1.41zM19.42 5.99c.39-.39.39-1.02 0-1.41l-1.42-1.42c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0zM7.4 18.01c.39-.39.39-1.02 0-1.41l-1.42-1.42c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.42 1.42c.39.39 1.02.39 1.41 0z"></path></svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.31 0-6-2.69-6-6 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg>
                 </button>
-                <a href="https://github.com/ovulgo22/pitchutcha" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="Ver código fonte no GitHub">
+                <a href="https://github.com/pitchutcha/pitchutcha.github.io" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="Ver código fonte no GitHub">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12 24 5.373 18.627 0 12 0z"></path></svg>
                 </a>
             </div>
@@ -92,390 +57,94 @@
     </header>
 
     <div class="main-container">
-        
         <aside class="sidebar" id="sidebar">
             <nav class="sidebar-nav" aria-label="Navegação principal">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="/" class="nav-link active">Introdução ao Pitchutcha 2.0</a></li>
-
+                    <li class="nav-item"><a href="/" class="nav-link active">Introdução</a></li>
+                    <li class="nav-item">
+                        <details open>
+                            <summary class="nav-summary">Fundações da Computação</summary>
+                            <ul class="nav-sublist">
+                                <li><a href="/fundacoes/historia" class="nav-link">História Antiga</a></li>
+                                <li><a href="/fundacoes/pioneiros" class="nav-link">Pioneiros da Computação</a></li>
+                                <li><a href="/fundacoes/teoria" class="nav-link">Teoria da Computação</a></li>
+                            </ul>
+                        </details>
+                    </li>
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">I. Fundações da Computação</span></summary>
+                            <summary class="nav-summary">Hardware e Arquitetura</summary>
                             <ul class="nav-sublist">
-                                <li><a href="/fundacoes/historia-antiga" class="nav-link">História Antiga e Precursores</a></li>
-                                <li><a href="/fundacoes/pioneiros" class="nav-link">Os Pioneiros da Computação</a></li>
-                                <li><a href="/fundacoes/teoria-da-computacao" class="nav-link">Teoria da Computação</a></li>
-                                <li><a href="/fundacoes/maquina-de-turing" class="nav-link">A Máquina de Turing</a></li>
-                                <li><a href="/fundacoes/arquitetura-von-neumann" class="nav-link">Arquitetura de von Neumann</a></li>
+                                <li><a href="/hardware/cpu" class="nav-link">CPU</a></li>
+                                <li><a href="/hardware/memoria" class="nav-link">Hierarquia de Memória</a></li>
+                                <li><a href="/hardware/gpu" class="nav-link">GPU</a></li>
                             </ul>
                         </details>
                     </li>
-
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">II. A Era dos Mainframes</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/mainframes/primeira-geracao" class="nav-link">1ª Geração: Válvulas</a></li>
-                                <li><a href="/mainframes/segunda-geracao" class="nav-link">2ª Geração: Transistores</a></li>
-                                <li><a href="/mainframes/terceira-geracao" class="nav-link">3ª Geração: Circuitos Integrados</a></li>
-                                <li><a href="/mainframes/ibm-system360" class="nav-link">O Impacto do IBM System/360</a></li>
-                                <li><a href="/mainframes/minicomputadores" class="nav-link">A Ascensão dos Minicomputadores</a></li>
-                                <li><a href="/mainframes/linguagens-iniciais" class="nav-link">Linguagens: FORTRAN, COBOL, LISP</a></li>
-                            </ul>
-                        </details>
-                    </li>
-<li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">III. A Revolução do PC</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/pc-revolution/microprocessadores" class="nav-link">A Invenção do Microprocessador</a></li>
-                                <li><a href="/pc-revolution/primeiros-pcs" class="nav-link">Os Primeiros Computadores Pessoais</a></li>
-                                <li><a href="/pc-revolution/apple-microsoft" class="nav-link">Apple vs. Microsoft: A Grande Rivalidade</a></li>
-                                <li><a href="/pc-revolution/interfaces-graficas" class="nav-link">A GUI (Interface Gráfica do Usuário)</a></li>
-                                <li class="nav-item-nested">
-                                    <details>
-                                        <summary class="nav-summary-nested">Sistemas Operacionais</summary>
-                                        <ul class="nav-sublist-nested">
-                                            <li><a href="/pc-revolution/os/unix" class="nav-link">UNIX e sua Filosofia</a></li>
-                                            <li><a href="/pc-revolution/os/ms-dos" class="nav-link">MS-DOS</a></li>
-                                            <li><a href="/pc-revolution/os/macos" class="nav-link">Mac OS Clássico</a></li>
-                                            <li><a href="/pc-revolution/os/windows" class="nav-link">Microsoft Windows</a></li>
-                                            <li><a href="/pc-revolution/os/linux" class="nav-link">O Surgimento do Linux</a></li>
-                                        </ul>
-                                    </details>
-                                </li>
-                                <li><a href="/pc-revolution/cultura-hacker" class="nav-link">A Cultura Hacker e os Clubes</a></li>
-                            </ul>
-                        </details>
-                    </li>
-
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">IV. A Era da Internet e da Web</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/internet-era/arpanet" class="nav-link">As Origens: ARPANET</a></li>
-                                <li><a href="/internet-era/protocolos" class="nav-link">Protocolos Fundamentais: TCP/IP, DNS, HTTP</a></li>
-                                <li><a href="/internet-era/world-wide-web" class="nav-link">A Invenção da World Wide Web</a></li>
-                                <li><a href="/internet-era/guerra-dos-browsers" class="nav-link">A Guerra dos Navegadores</a></li>
-                                <li><a href="/internet-era/web-2" class="nav-link">O Advento da Web 2.0 (AJAX, Redes Sociais)</a></li>
-                                <li class="nav-item-nested">
-                                    <details>
-                                        <summary class="nav-summary-nested">Evolução do Front-End</summary>
-                                        <ul class="nav-sublist-nested">
-                                            <li><a href="/internet-era/frontend/html5-css3" class="nav-link">HTML5 e CSS3</a></li>
-                                            <li><a href="/internet-era/frontend/js-frameworks" class="nav-link">Frameworks JS (React, Angular, Vue)</a></li>
-                                            <li><a href="/internet-era/frontend/build-tools" class="nav-link">Build Tools e Bundlers</a></li>
-                                        </ul>
-                                    </details>
-                                </li>
-                                <li class="nav-item-nested">
-                                    <details>
-                                        <summary class="nav-summary-nested">Evolução do Back-End</summary>
-                                        <ul class="nav-sublist-nested">
-                                            <li><a href="/internet-era/backend/server-side-languages" class="nav-link">Linguagens (PHP, Node.js, Python)</a></li>
-                                            <li><a href="/internet-era/backend/apis" class="nav-link">A Ascensão das APIs (REST, GraphQL)</a></li>
-                                            <li><a href="/internet-era/backend/serverless" class="nav-link">Arquitetura Serverless</a></li>
-                                        </ul>
-                                    </details>
-                                </li>
-                            </ul>
-                        </details>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">V. A Era Móvel e da Nuvem</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/mobile-cloud/smartphones" class="nav-link">A Revolução dos Smartphones</a></li>
-                                <li><a href="/mobile-cloud/sistemas-operacionais-moveis" class="nav-link">Sistemas Operacionais Móveis (iOS, Android)</a></li>
-                                <li><a href="/mobile-cloud/app-stores" class="nav-link">O Ecossistema das App Stores</a></li>
-                                <li><a href="/mobile-cloud/cloud-computing" class="nav-link">Fundamentos da Computação em Nuvem</a></li>
-                                <li class="nav-item-nested">
-                                    <details>
-                                        <summary class="nav-summary-nested">Modelos e Provedores</summary>
-                                        <ul class="nav-sublist-nested">
-                                            <li><a href="/mobile-cloud/modelos/iaas-paas-saas" class="nav-link">IaaS, PaaS, SaaS</a></li>
-                                            <li><a href="/mobile-cloud/modelos/provedores" class="nav-link">Grandes Provedores (AWS, Azure, GCP)</a></li>
-                                            <li><a href="/mobile-cloud/modelos/kubernetes" class="nav-link">Orquestração com Kubernetes</a></li>
-                                        </ul>
-                                    </details>
-                                </li>
-                                <li><a href="/mobile-cloud/big-data" class="nav-link">Big Data e a Explosão de Dados</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">VI. IA, Machine Learning e Dados</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/ai-ml/historia-ia" class="nav-link">Uma Breve História da IA</a></li>
-                                <li><a href="/ai-ml/conceitos-ml" class="nav-link">Conceitos de Machine Learning</a></li>
-                                <li><a href="/ai-ml/deep-learning" class="nav-link">Deep Learning e Redes Neurais</a></li>
-                                <li class="nav-item-nested">
-                                    <details>
-                                        <summary class="nav-summary-nested">Aplicações e Domínios</summary>
-                                        <ul class="nav-sublist-nested">
-                                            <li><a href="/ai-ml/dominios/nlp" class="nav-link">Processamento de Linguagem Natural</a></li>
-                                            <li><a href="/ai-ml/dominios/computer-vision" class="nav-link">Visão Computacional</a></li>
-                                            <li><a href="/ai-ml/dominios/reinforcement-learning" class="nav-link">Aprendizado por Reforço</a></li>
-                                        </ul>
-                                    </details>
-                                </li>
-                                <li><a href="/ai-ml/llms" class="nav-link">A Revolução dos LLMs (GPT, BERT)</a></li>
-                                <li><a href="/ai-ml/mlops" class="nav-link">MLOps: Engenharia para IA</a></li>
-                                <li><a href="/ai-ml/etica-ia" class="nav-link">Ética e os Desafios da IA</a></li>
-                            </ul>
-                        </details>
-                    </li>
-
-                    <li class="nav-divider"><span class="sr-only">Disciplinas Fundamentais</span></li>
-
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">Hardware e Arquitetura</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/hardware/cpu" class="nav-link">CPU e Microarquiteturas (CISC, RISC)</a></li>
-                                <li><a href="/hardware/gpu" class="nav-link">GPU e Computação Paralela</a></li>
-                                <li><a href="/hardware/memoria" class="nav-link">Hierarquia de Memória (Cache, RAM, SSD)</a></li>
-                                <li><a href="/hardware/soc" class="nav-link">System on a Chip (SoC) e a Era ARM</a></li>
-                                <li><a href="/hardware/emerging" class="nav-link">Hardware Emergente (TPUs, Processadores Quânticos)</a></li>
-                            </ul>
-                        </details>
-                    </li>
-
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">Redes e Segurança</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/redes-seguranca/modelo-osi" class="nav-link">Modelo OSI e Pilha TCP/IP</a></li>
-                                <li><a href="/redes-seguranca/protocolos-modernos" class="nav-link">Protocolos Modernos (HTTP/3, QUIC)</a></li>
-                                <li><a href="/redes-seguranca/wireless" class="nav-link">Redes Sem Fio (Wi-Fi 6, 5G)</a></li>
-                                <li><a href="/redes-seguranca/criptografia" class="nav-link">Fundamentos da Criptografia</a></li>
-                                <li><a href="/redes-seguranca/cybersecurity" class="nav-link">Ameaças e Defesas Cibernéticas</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">Engenharia de Software</span></summary>
-                            <ul class="nav-sublist">
-                                <li class="nav-item-nested">
-                                    <details>
-                                        <summary class="nav-summary-nested">Paradigmas de Programação</summary>
-                                        <ul class="nav-sublist-nested">
-                                            <li><a href="/engenharia-software/paradigmas/procedural" class="nav-link">Procedural</a></li>
-                                            <li><a href="/engenharia-software/paradigmas/oop" class="nav-link">Orientado a Objetos</a></li>
-                                            <li><a href="/engenharia-software/paradigmas/functional" class="nav-link">Funcional</a></li>
-                                        </ul>
-                                    </details>
-                                </li>
-                                <li class="nav-item-nested">
-                                    <details>
-                                        <summary class="nav-summary-nested">Arquiteturas de Software</summary>
-                                        <ul class="nav-sublist-nested">
-                                            <li><a href="/engenharia-software/arquiteturas/monolith" class="nav-link">Monolito</a></li>
-                                            <li><a href="/engenharia-software/arquiteturas/microservices" class="nav-link">Microsserviços</a></li>
-                                            <li><a href="/engenharia-software/arquiteturas/serverless" class="nav-link">Serverless</a></li>
-                                            <li><a href="/engenharia-software/arquiteturas/event-driven" class="nav-link">Orientada a Eventos</a></li>
-                                        </ul>
-                                    </details>
-                                </li>
-                                <li><a href="/engenharia-software/design-patterns" class="nav-link">Padrões de Projeto (Design Patterns)</a></li>
-                                <li><a href="/engenharia-software/solid" class="nav-link">Princípios SOLID</a></li>
-                                <li><a href="/engenharia-software/agile" class="nav-link">Metodologias Ágeis (Scrum, Kanban)</a></li>
-                                <li><a href="/engenharia-software/qa" class="nav-link">Testes e Garantia de Qualidade</a></li>
-                            </ul>
-                        </details>
-                    </li>
-
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">Bancos de Dados</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/banco-de-dados/modelo-relacional" class="nav-link">O Modelo Relacional e SQL</a></li>
-                                <li><a href="/banco-de-dados/nosql" class="nav-link">A Revolução NoSQL</a></li>
-                                <li><a href="/banco-de-dados/newsql" class="nav-link">NewSQL e Bancos de Dados Distribuídos</a></li>
-                                <li><a href="/banco-de-dados/data-warehousing" class="nav-link">Data Warehousing e Data Lakes</a></li>
-                                <li><a href="/banco-de-dados/vector-db" class="nav-link">Bancos de Dados Vetoriais para IA</a></li>
-                            </ul>
-                        </details>
-                    </li>
-
-<li class="nav-divider"><span class="sr-only">Disciplinas Especializadas</span></li>
-
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">DevOps e Cloud Native</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/devops/cultura-devops" class="nav-link">Cultura e Filosofia DevOps</a></li>
-                                <li><a href="/devops/ci-cd" class="nav-link">CI/CD: Automação e Entrega Contínua</a></li>
-                                <li><a href="/devops/iac" class="nav-link">Infraestrutura como Código (IaC)</a></li>
-                                <li><a href="/devops/containers" class="nav-link">Containers e Orquestração (Docker, K8s)</a></li>
-                                <li><a href="/devops/observability" class="nav-link">Observabilidade (Logs, Métricas, Traces)</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">Desenvolvimento Criativo</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/creative-dev/introducao" class="nav-link">O que é um Creative Developer?</a></li>
-                                <li><a href="/creative-dev/webgl-webgpu" class="nav-link">Gráficos na Web (WebGL, WebGPU)</a></li>
-                                <li><a href="/creative-dev/shaders" class="nav-link">A Magia dos Shaders (GLSL)</a></li>
-                                <li><a href="/creative-dev/frameworks" class="nav-link">Frameworks (Three.js, p5.js)</a></li>
-                                <li><a href="/creative-dev/instalacoes" class="nav-link">Arte Generativa e Instalações Interativas</a></li>
-                            </ul>
-                        </details>
-                    </li>
-
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">Acessibilidade (A11y)</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/a11y/introducao" class="nav-link">Princípios da Acessibilidade Web</a></li>
-                                <li><a href="/a11y/wcag" class="nav-link">Entendendo as Diretrizes WCAG</a></li>
-                                <li><a href="/a11y/aria" class="nav-link">WAI-ARIA para Aplicações Ricas</a></li>
-                                <li><a href="/a11y/leitores-de-tela" class="nav-link">Como Leitores de Tela Funcionam</a></li>
-                                <li><a href="/a11y/design-inclusivo" class="nav-link">Design e Interações Inclusivas</a></li>
-                            </ul>
-                        </details>
-                    </li>
-
-                    <li class="nav-divider"><span class="sr-only">Futuro e Sociedade</span></li>
-
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">O Futuro da Computação</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/futuro/computacao-quantica" class="nav-link">Computação Quântica</a></li>
-                                <li><a href="/futuro/computacao-neuromorfica" class="nav-link">Computação Neuromórfica</a></li>
-                                <li><a href="/futuro/iot" class="nav-link">Internet das Coisas (IoT) e Edge Computing</a></li>
-                                <li><a href="/futuro/web3" class="nav-link">Web3, Blockchain e Descentralização</a></li>
-                                <li><a href="/futuro/interfaces-cerebro-maquina" class="nav-link">Interfaces Cérebro-Máquina</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <details>
-                            <summary class="nav-summary"><span class="nav-summary-title">Impactos Sociais e Ética</span></summary>
-                            <ul class="nav-sublist">
-                                <li><a href="/impactos/privacidade-dados" class="nav-link">Privacidade na Era Digital</a></li>
-                                <li><a href="/impactos/vies-algoritmico" class="nav-link">Viés Algorítmico e Justiça</a></li>
-                                <li><a href="/impactos/cultura-open-source" class="nav-link">A Cultura Open Source</a></li>
-                                <li><a href="/impactos/sustentabilidade-ti" class="nav-link">Sustentabilidade em TI</a></li>
-                                <li><a href="/impactos/divisao-digital" class="nav-link">A Divisão Digital</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                </ul>
+                    </ul>
             </nav>
         </aside>
 
         <div class="content-and-toc-wrapper">
-            <main class="main-content" id="main-content" role="main" tabindex="-1">
+            <main class="main-content" id="main-content" tabindex="-1">
                 <article class="content-article">
                     <header class="article-header">
                         <div class="breadcrumbs"><a href="/">Início</a></div>
-                        <h1 class="article-title">Bem-vindo ao Pitchutcha 2.0</h1>
-                        <p class="article-subtitle">A enciclopédia definitiva da computação, agora expandida e aprimorada com novas seções, mais profundidade e uma experiência de usuário mais rica para explorar o universo da tecnologia.</p>
+                        <h1 class="article-title">Bem-vindo ao Pitchutcha</h1>
+                        <p class="article-subtitle">Uma enciclopédia aberta sobre a ciência da computação, desde os fundamentos teóricos até as tecnologias de ponta.</p>
                     </header>
+
                     <section class="article-body">
-                        <p>O Projeto Pitchutcha evoluiu. A Versão 2.0 aprofunda nosso compromisso de documentar a ciência da computação de forma aberta e detalhada, agora cobrindo desde as práticas mais modernas de DevOps e IA até as fronteiras do desenvolvimento criativo e da acessibilidade digital.</p>
+                        <p>Este projeto é um esforço colaborativo para documentar e explicar os conceitos que formam a base do nosso mundo digital. Navegue pelos tópicos na barra lateral para começar sua jornada.</p>
                         
-                        <h2>Explore as Grandes Áreas</h2>
+                        <div class="callout-box info">
+                            <p><strong>Dica:</strong> Use a barra de pesquisa no topo para encontrar rapidamente o que você procura. Você também pode usar o atalho <kbd>Ctrl</kbd> + <kbd>K</kbd>.</p>
+                        </div>
+
+                        <h2>Comece por aqui</h2>
+                        <p>Se você é novo no assunto, sugerimos começar por um dos nossos pilares de conteúdo:</p>
+                        
                         <div class="quick-nav-grid">
-                           </div>
-
-                        <section id="featured-article" class="article-section featured-section">
-                            <h2 class="section-title">Artigo em Destaque</h2>
-                            <div class="featured-card">
-                                <img src="assets/images/featured-von-neumann.png" alt="Diagrama da Arquitetura de von Neumann mostrando a CPU, Memória e I/O." class="featured-card__image">
-                                <div class="featured-card__content">
-                                    <h3 class="featured-card__title">A Arquitetura de von Neumann: O Projeto do Computador Moderno</h3>
-                                    <p class="featured-card__description">Mergulhe no documento de 1945 que se tornou o projeto para quase todas as máquinas digitais já construídas, entendendo o conceito revolucionário do programa armazenado e o ciclo de instrução que move o mundo digital.</p>
-                                    <a href="/fundacoes/arquitetura-von-neumann" class="button button--primary">Ler artigo completo</a>
+                            <a href="/fundacoes/pioneiros" class="card-link">
+                                <div class="card">
+                                    <h3 class="card-title">Pioneiros da Computação</h3>
+                                    <p class="card-description">Conheça as mentes brilhantes como Ada Lovelace, Alan Turing e Grace Hopper.</p>
                                 </div>
-                            </div>
-                        </section>
-
-                        <section id="changelog" class="article-section">
-                            <h2 class="section-title">Atualizações Recentes</h2>
-                            <ul class="changelog-list">
-                                <li class="changelog-item">
-                                    <time class="changelog-item__date" datetime="2025-09-05">05 SET 2025</time>
-                                    <div class="changelog-item__content">
-                                        <h3 class="changelog-item__title">Lançamento da Versão 2.0</h3>
-                                        <p>Lançamento do Pitchutcha 2.0 com uma arquitetura de informação massivamente expandida, incluindo novas seções sobre DevOps, Acessibilidade e Desenvolvimento Criativo.</p>
-                                    </div>
-                                </li>
-                                <li class="changelog-item">
-                                    <time class="changelog-item__date" datetime="2025-08-22">22 AGO 2025</time>
-                                    <div class="changelog-item__content">
-                                        <h3 class="changelog-item__title">Novo Artigo: A Filosofia Unix</h3>
-                                        <p>Adicionado um mergulho profundo na história e nos princípios do UNIX, o sistema operacional que influenciou macOS, Linux e a internet. <a href="/pc-revolution/os/unix">Leia mais...</a></p>
-                                    </div>
-                                </li>
-                                <li class="changelog-item">
-                                    <time class="changelog-item__date" datetime="2025-08-15">15 AGO 2025</time>
-                                    <div class="changelog-item__content">
-                                        <h3 class="changelog-item__title">Novo Artigo: O Impacto do IBM System/360</h3>
-                                        <p>Adicionada uma análise detalhada da família de computadores que redefiniu a indústria de tecnologia e introduziu o conceito de compatibilidade de software. <a href="/mainframes/ibm-system360">Leia mais...</a></p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </section>
-
-                        <section id="sobre" class="article-section">
-                           </section>
-                        <section id="contribuir" class="article-section">
-                           </section>
-                    </article>
+                            </a>
+                            <a href="/hardware/cpu" class="card-link">
+                                <div class="card">
+                                    <h3 class="card-title">Como funciona uma CPU</h3>
+                                    <p class="card-description">Mergulhe na arquitetura que alimenta todos os dispositivos modernos.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </section>
                 </article>
+
+                <footer class="article-footer">
+                    <nav class="article-pagination" aria-label="Navegação de artigos">
+                        <a href="/fundacoes/historia" class="pagination-link next">
+                            <span class="pagination-label">Próximo</span>
+                            <span class="pagination-title">História Antiga e Precursores</span>
+                        </a>
+                    </nav>
+                </footer>
             </main>
             
             <aside class="toc-sidebar" id="toc-sidebar">
                 <nav class="toc-nav" aria-labelledby="toc-heading">
                     <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
                     <ul class="toc-list">
-                        <li><a href="#featured-article" class="toc-link">Artigo em Destaque</a></li>
-                        <li><a href="#changelog" class="toc-link">Atualizações Recentes</a></li>
-                        <li><a href="#sobre" class="toc-link">Sobre o Projeto</a></li>
-                        <li><a href="#contribuir" class="toc-link">Como Contribuir</a></li>
+                        <li><a href="#comece-por-aqui" class="toc-link">Comece por aqui</a></li>
                     </ul>
                 </nav>
             </aside>
         </div>
     </div>
 
-    <footer class="main-footer" id="main-footer">
+    <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-column">
-                <span class="logo-text">Pitchutcha <sup class="version-badge">2.0</sup></span>
-                <p class="copyright">&copy; 2025 Pitchutcha Project. Conteúdo sob a licença <a href="/licenca" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Navegação</h4>
-                <ul class="footer-links">
-                    <li><a href="/">Início</a></li>
-                    <li><a href="/mapa-do-site">Mapa do Site</a></li>
-                    <li><a href="/guias/guia-de-contribuicao">Guia de Contribuição</a></li>
-                    <li><a href="/guias/style-guide">Guia de Estilo</a></li> </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Comunidade</h4>
-                <ul class="footer-links">
-                    <li><a href="https://github.com/ovulgo22/pitchutcha" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                    <li><a href="https://x.com/ovulgo22" target="_blank" rel="noopener noreferrer">Twitter / X</a></li> <li><a href="#">Código de Conduta</a></li>
-                    <li><a href="https://github.com/ovulgo22/pitchutcha/discussions" target="_blank" rel="noopener noreferrer">Discussões</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <p>Construído pela comunidade e hospedado no <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
-            </div>
+            <p>&copy; 2025 Pitchutcha Project. Distribuído sob a licença MIT.</p>
         </div>
     </footer>
 
@@ -483,4 +152,3 @@
 
 </body>
 </html>
-
