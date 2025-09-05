@@ -16,23 +16,15 @@
 
     <style>
         :root {
-            /* Paleta de Cores e Variáveis de Design */
             --color-background: #00021a;
             --color-text-primary: #e0e0e0;
             --color-text-secondary: #a0a0b0;
             --color-heading: #ffffff;
-            --color-accent: #33a0e0; /* Um azul vibrante que remete à Terra */
+            --color-accent: #33a0e0;
             --color-accent-glow: rgba(51, 160, 224, 0.5);
-
-            /* Tipografia */
-            --font-family-headings: 'Montserrat', sans-serif;
-            --font-family-body: 'Lora', serif;
-
-            /* Easing para transições suaves */
             --easing-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
-        /* 1. Reset e Configurações Globais */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -53,292 +45,129 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* 2. Preloader (Tela de Carregamento) */
         #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background-color: var(--color-background);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            flex-direction: column;
-            gap: 20px;
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; flex-direction: column; gap: 20px;
             transition: opacity 1s var(--easing-cubic);
         }
 
         .loader-logo {
-            font-family: var(--font-family-headings);
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--color-heading);
-            letter-spacing: 2px;
+            font-family: var(--font-family-headings); font-size: 3rem; font-weight: 900;
+            color: var(--color-heading); letter-spacing: 2px;
         }
         
-        .loader-logo .accent {
-            color: var(--color-accent);
-            text-shadow: 0 0 15px var(--color-accent-glow);
-        }
+        .loader-logo .accent { color: var(--color-accent); text-shadow: 0 0 15px var(--color-accent-glow); }
 
-        #progress-bar-container {
-            width: 300px;
-            height: 4px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            overflow: hidden;
-        }
+        #progress-bar-container { width: 300px; height: 4px; background-color: rgba(255, 255, 255, 0.1); border-radius: 2px; overflow: hidden; }
+        #progress-bar { width: 0%; height: 100%; background-color: var(--color-accent); border-radius: 2px; transition: width 0.3s ease-out; box-shadow: 0 0 10px var(--color-accent-glow); }
+        #progress-text { margin-top: 10px; font-family: var(--font-family-headings); font-size: 0.9rem; color: var(--color-text-secondary); }
 
-        #progress-bar {
-            width: 0%;
-            height: 100%;
-            background-color: var(--color-accent);
-            border-radius: 2px;
-            transition: width 0.3s ease-out;
-            box-shadow: 0 0 10px var(--color-accent-glow);
-        }
+        #globe-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
+        #main-content { position: relative; z-index: 10; width: 100%; display: flex; flex-direction: column; align-items: center; }
         
-        #progress-text {
-            margin-top: 10px;
-            font-family: var(--font-family-headings);
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
-        }
-
-        /* 3. Estrutura Principal e Layout */
-        #globe-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-        }
-
-        #main-content {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        /* 4. Elementos da Interface (UI) */
         #main-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 2rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            pointer-events: none; /* Permite cliques "através" do header */
-            opacity: 0;
-            transform: translateY(-20px);
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center;
+            z-index: 100; pointer-events: none; opacity: 0; transform: translateY(-20px);
             transition: opacity 1s ease, transform 1s ease;
         }
 
-        #main-header .site-title {
-            font-family: var(--font-family-headings);
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--color-heading);
-            pointer-events: all; /* Habilita eventos apenas no título */
-        }
+        #main-header .site-title { font-family: var(--font-family-headings); font-weight: 700; font-size: 1.5rem; color: var(--color-heading); pointer-events: all; }
 
-        #scroll-progress-container {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 2px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 100;
-        }
+        #scroll-progress-container { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); width: 2px; height: 200px; background: rgba(255, 255, 255, 0.1); z-index: 100; }
+        #scroll-progress-bar { width: 100%; height: 0%; background: var(--color-accent); box-shadow: 0 0 10px var(--color-accent-glow); }
 
-        #scroll-progress-bar {
-            width: 100%;
-            height: 0%;
-            background: var(--color-accent);
-            box-shadow: 0 0 10px var(--color-accent-glow);
-        }
-
-        /* 5. Seções de Conteúdo */
-        .content-section {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            min-height: 100vh; /* Cada seção ocupa pelo menos a altura da tela */
-            width: 100%;
-            max-width: 1200px;
-            padding: 5rem;
-        }
-
+        .content-section { display: flex; justify-content: flex-start; align-items: center; min-height: 100vh; width: 100%; max-width: 1200px; padding: 5rem; }
         .content-box {
             background-color: rgba(10, 20, 40, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2.5rem;
-            max-width: 500px; /* Largura máxima da caixa de texto */
-            opacity: 0; /* Controlado via JS/GSAP */
-            transform: translateY(50px); /* Controlado via JS/GSAP */
+            border-radius: 15px; padding: 2.5rem; max-width: 500px;
+            opacity: 0; transform: translateY(50px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        /* Posicionamento alternado das caixas de conteúdo */
-        .content-section:nth-child(even) {
-            justify-content: flex-end;
-        }
+        .content-section:nth-child(even) { justify-content: flex-end; }
         
-        .content-section h1, .content-section h2 {
-            font-family: var(--font-family-headings);
-            color: var(--color-heading);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .content-section h1, .content-section h2 { font-family: var(--font-family-headings); color: var(--color-heading); font-weight: 700; margin-bottom: 1rem; line-height: 1.2; text-transform: uppercase; letter-spacing: 1px; }
+        .content-section h1 { font-size: 3.5rem; font-weight: 900; color: var(--color-accent); text-shadow: 0 0 20px var(--color-accent-glow); }
+        .content-section h2 { font-size: 1.8rem; border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; }
+        .content-section p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: var(--color-text-primary); }
+        .content-section p:last-child { margin-bottom: 0; }
+        .content-section .highlight { color: var(--color-accent); font-weight: bold; }
+
+        #intro-section .content-box { max-width: 700px; text-align: center; background: transparent; border: none; backdrop-filter: none; box-shadow: none; }
+        #intro-section { display: flex; justify-content: center; align-items: center; text-align: center; }
+        #intro-section .subtitle { font-family: var(--font-family-headings); font-size: 1.2rem; color: var(--color-text-secondary); margin-top: 1rem; letter-spacing: 2px; }
+        
+        /* NOVO: Estilos para os Marcadores Geográficos */
+        #markers-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+        .location-marker {
+            position: absolute;
+            width: 20px; height: 20px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 15px var(--color-accent), 0 0 25px var(--color-accent-glow);
+            transform: translate(-50%, -50%) scale(0); /* Inicia invisível e pequeno */
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            pointer-events: none;
         }
 
-        .content-section h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--color-accent);
-            text-shadow: 0 0 20px var(--color-accent-glow);
-        }
-        
-        .content-section h2 {
-            font-size: 1.8rem;
-            border-bottom: 2px solid var(--color-accent);
-            padding-bottom: 0.5rem;
-        }
-
-        .content-section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: var(--color-text-primary);
-        }
-        
-        .content-section p:last-child {
-            margin-bottom: 0;
-        }
-        
-        .content-section .highlight {
-            color: var(--color-accent);
-            font-weight: bold;
+        .location-marker::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: var(--color-accent);
+            transform: translate(-50%, -50%);
+            animation: pulse 2s infinite ease-out;
+            z-index: -1;
         }
 
-        /* Estilos especiais para a seção de introdução */
-        #intro-section .content-box {
-            max-width: 700px;
-            text-align: center;
-            background: transparent;
-            border: none;
-            backdrop-filter: none;
-            box-shadow: none;
-        }
-        
-        #intro-section {
-             display: flex;
-             justify-content: center;
-             align-items: center;
-             text-align: center;
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+            100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
         }
 
-        #intro-section .subtitle {
-            font-family: var(--font-family-headings);
-            font-size: 1.2rem;
-            color: var(--color-text-secondary);
-            margin-top: 1rem;
-            letter-spacing: 2px;
-        }
-        
-        /* 6. Acessibilidade */
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+            .location-marker::after { animation: none; }
         }
         
-        /* 7. Responsividade */
         @media (max-width: 768px) {
-            #main-header {
-                padding: 1.5rem;
-            }
-            
-            #main-header .site-title {
-                font-size: 1.2rem;
-            }
-            
-            #scroll-progress-container {
-                display: none; /* Esconde a barra de scroll em telas menores */
-            }
-
-            .content-section {
-                padding: 2rem;
-                justify-content: center; /* Centraliza em mobile */
-            }
-
-            .content-section:nth-child(even) {
-                justify-content: center; /* Centraliza em mobile */
-            }
-            
-            .content-box {
-                width: 100%;
-                max-width: 100%;
-                padding: 1.5rem;
-            }
-
-            .content-section h1 {
-                font-size: 2.5rem;
-            }
-
-            .content-section h2 {
-                font-size: 1.5rem;
-            }
-
-            .content-section p {
-                font-size: 1rem;
-                line-height: 1.7;
-            }
+            #main-header { padding: 1.5rem; }
+            #main-header .site-title { font-size: 1.2rem; }
+            #scroll-progress-container { display: none; }
+            .content-section { padding: 2rem; justify-content: center; }
+            .content-section:nth-child(even) { justify-content: center; }
+            .content-box { width: 100%; max-width: 100%; padding: 1.5rem; }
+            .content-section h1 { font-size: 2.5rem; }
+            .content-section h2 { font-size: 1.5rem; }
+            .content-section p { font-size: 1rem; line-height: 1.7; }
         }
-
     </style>
 </head>
 <body>
 
     <div id="preloader">
         <div class="loader-logo">PITCHUT<span class="accent">CHA</span></div>
-        <div id="progress-bar-container">
-            <div id="progress-bar"></div>
-        </div>
+        <div id="progress-bar-container"><div id="progress-bar"></div></div>
         <div id="progress-text">Inicializando a simulação... 0%</div>
     </div>
 
-    <div id="globe-container"></div>
-
-    <header id="main-header">
-        <div class="site-title">Pitchutcha</div>
-        </header>
-
-    <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+    <div id="globe-container">
+        <div id="markers-container"></div>
     </div>
 
-    <main id="main-content">
+    <header id="main-header"><div class="site-title">Pitchutcha</div></header>
+    <div id="scroll-progress-container"><div id="scroll-progress-bar"></div></div>
 
+    <main id="main-content">
         <section id="intro-section" class="content-section">
             <div class="content-box">
                 <h1>PITCHUTCHA</h1>
@@ -350,358 +179,282 @@
         <section id="pale-blue-dot" class="content-section">
             <div class="content-box">
                 <h2>Capítulo I: O Pálido Ponto Azul</h2>
-                <p>Nossa jornada começa aqui, em um grão de poeira suspenso em um raio de sol. Há <span class="highlight">4,5 bilhões de anos</span>, a Terra se formou a partir de uma nebulosa solar. Por éons, foi uma rocha estéril e bombardeada. Mas nas profundezas de seus oceanos primordiais, algo extraordinário estava para acontecer.</p>
-                <p>A vida surgiu. Simples, microscópica, tenaz. Essa primeira centelha daria início à mais grandiosa história já contada, transformando a química inerte em biologia, silêncio em sinfonia, e uma rocha sem nome em nosso único lar.</p>
+                <p>Nossa jornada começa aqui, em um grão de poeira suspenso em um raio de sol. Há <span class="highlight">4,5 bilhões de anos</span>, a Terra se formou. Nas profundezas de seus oceanos primordiais, algo extraordinário aconteceu: a vida surgiu, dando início à mais grandiosa história já contada.</p>
             </div>
         </section>
 
         <section id="dawn-of-consciousness" class="content-section">
             <div class="content-box">
                 <h2>Capítulo II: O Despertar da Consciência</h2>
-                <p>Milhões de anos de evolução se passaram. Nas savanas da África, um primata bípede começou a olhar para as estrelas e a se perguntar. O <span class="highlight">Homo sapiens</span> emergiu. Não éramos os mais fortes ou os mais rápidos, mas possuíamos uma ferramenta sem precedentes: uma mente capaz de pensamento abstrato, linguagem e cooperação em massa.</p>
-                <p>Com o domínio do fogo, a criação das primeiras ferramentas de pedra e o desenvolvimento da arte rupestre, não estávamos mais apenas sobrevivendo. Estávamos começando a impor nossa vontade ao mundo, a registrar nossa história e a construir as fundações da civilização.</p>
+                <p>Nas savanas da África, o <span class="highlight">Homo sapiens</span> emergiu. Com o domínio do fogo, a criação de ferramentas e o desenvolvimento da linguagem, não estávamos mais apenas sobrevivendo. Estávamos começando a construir as fundações da civilização.</p>
             </div>
         </section>
 
         <section id="agricultural-revolution" class="content-section">
             <div class="content-box">
                 <h2>Capítulo III: A Semente da Civilização</h2>
-                <p>Por volta de <span class="highlight">10.000 a.C.</span>, uma das mudanças mais fundamentais da história humana ocorreu. Deixamos de ser caçadores-coletores nômades e aprendemos a cultivar a terra e a domesticar animais. A Revolução Agrícola permitiu a criação de assentamentos permanentes, o excedente de alimentos e o surgimento de populações maiores.</p>
-                <p>Nasceram as primeiras aldeias, que se tornaram cidades, que se tornaram impérios. A especialização do trabalho floresceu: surgiram artesãos, sacerdotes, soldados e escribas. A complexidade social aumentou exponencialmente, e com ela, a invenção da escrita, da matemática e do governo organizado no Crescente Fértil, no Egito e em outras partes do mundo.</p>
+                <p>Por volta de <span class="highlight">10.000 a.C.</span>, a Revolução Agrícola no Crescente Fértil permitiu a criação de assentamentos permanentes, o excedente de alimentos e o surgimento das primeiras cidades. A complexidade social aumentou, e com ela, a invenção da escrita e da matemática.</p>
             </div>
         </section>
 
         <section id="age-of-reason" class="content-section">
             <div class="content-box">
                 <h2>Capítulo IV: O Florescer da Razão</h2>
-                <p>Na Grécia Antiga, por volta do século V a.C., uma nova forma de investigação do mundo nasceu: a <span class="highlight">filosofia</span>. Pensadores como Sócrates, Platão e Aristóteles não buscavam mais explicações apenas nos mitos, mas na lógica, na observação e no debate racional. Eles lançaram as bases para a política, a ética, a lógica e a ciência ocidentais.</p>
-                <p>Simultaneamente, em outras partes do globo, grandes avanços ocorriam. Na Índia, conceitos como o zero eram desenvolvidos. Na China, a Bússola, a pólvora e a impressão já estavam mudando a sociedade. O conhecimento viajava, ainda que lentamente, através de rotas comerciais como a Rota da Seda, conectando mentes e culturas.</p>
+                <p>Na Grécia Antiga, por volta do século V a.C., uma nova forma de investigação do mundo nasceu: a <span class="highlight">filosofia</span>. Pensadores como Platão e Aristóteles lançaram as bases para a ciência ocidental, buscando explicações na lógica e na observação, e não apenas nos mitos.</p>
             </div>
         </section>
 
         <section id="scientific-revolution" class="content-section">
             <div class="content-box">
                 <h2>Capítulo V: Decifrando o Cosmos</h2>
-                <p>Entre os séculos XVI e XVIII, uma mudança sísmica abalou nossa compreensão do universo. A Terra, que se acreditava ser o centro de tudo, foi destronada. <span class="highlight">Copérnico</span>, <span class="highlight">Kepler</span> e <span class="highlight">Galileu</span> nos mostraram um sistema solar heliocêntrico, observando os céus com uma nova ferramenta revolucionária: o telescópio.</p>
-                <p>O ápice dessa revolução veio com <span class="highlight">Isaac Newton</span>, que formulou as leis do movimento e da gravitação universal. O universo não era mais um domínio de deuses caprichosos, mas um mecanismo de relógio grandioso, governado por leis matemáticas precisas e cognoscíveis. O método científico — observação, hipótese, experimentação — tornou-se a ferramenta mais poderosa da humanidade para adquirir conhecimento.</p>
+                <p>Entre os séculos XVI e XVIII na Europa, <span class="highlight">Copérnico</span>, <span class="highlight">Galileu</span> e <span class="highlight">Newton</span> mudaram nossa compreensão do universo. O método científico tornou-se a ferramenta mais poderosa da humanidade para adquirir conhecimento, revelando um cosmos governado por leis matemáticas.</p>
+            </div>
+        </section>
+
+        <section id="industrial-revolution" class="content-section">
+            <div class="content-box">
+                <h2>Capítulo VI: A Máquina a Vapor do Progresso</h2>
+                <p>A partir do final do século XVIII, principalmente na <span class="highlight">Grã-Bretanha</span>, a Revolução Industrial remodelou a sociedade humana de forma irreversível. A invenção da máquina a vapor e a mecanização da produção levaram a um crescimento urbano sem precedentes e a uma nova estrutura de classes.</p>
+                <p>A ciência e a engenharia se uniram, produzindo ferrovias, navios a vapor e o telégrafo, que encolheram o mundo e aceleraram o ritmo da vida e da inovação a um nível nunca antes imaginado.</p>
             </div>
         </section>
         
-        </main>
+        <section id="information-age" class="content-section">
+            <div class="content-box">
+                <h2>Capítulo VII: A Rede Global de Silício</h2>
+                <p>No final do século XX, uma nova revolução, silenciosa mas igualmente transformadora, começou nos laboratórios da Califórnia e em outros centros tecnológicos. A invenção do <span class="highlight">transistor</span>, do microchip e, finalmente, da <span class="highlight">Internet</span>, deu início à Era da Informação.</p>
+                <p>O conhecimento humano, antes restrito a livros e bibliotecas, tornou-se instantaneamente acessível em escala global. A computação e a conectividade redefiniram a economia, a política, a cultura e a própria natureza da interação humana.</p>
+            </div>
+        </section>
+
+        <section id="future-frontiers" class="content-section">
+            <div class="content-box">
+                <h2>Capítulo VIII: As Próximas Fronteiras</h2>
+                <p>Hoje, nos encontramos no limiar de transformações ainda mais profundas. A <span class="highlight">Inteligência Artificial</span> promete aumentar nossa capacidade intelectual, a <span class="highlight">engenharia genética</span> nos dá o poder de reescrever o código da vida, e a exploração espacial nos chama para além do nosso pálido ponto azul.</p>
+                <p>Os desafios são imensos – mudanças climáticas, desigualdade, questões éticas – mas nossa jornada até aqui prova que a curiosidade, a engenhosidade e a colaboração são as ferramentas mais poderosas que possuímos para moldar um futuro melhor.</p>
+            </div>
+        </section>
+
+    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 
     <script>
-document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
 
-    // -------------------------------------------------------------------
-    // I. CONFIGURAÇÃO INICIAL E VARIÁVEIS GLOBAIS
-    // -------------------------------------------------------------------
+            // I. CONFIGURAÇÃO E VARIÁVEIS
+            let scene, camera, renderer, starField, earth, clouds;
+            const markers = [];
+            const globeContainer = document.getElementById('globe-container');
+            const markersContainer = document.getElementById('markers-container');
+            const mainContent = document.getElementById('main-content');
+            const EARTH_RADIUS = 5;
 
-    let scene, camera, renderer, starField, earth, clouds;
+            // II. LÓGICA DO PRELOADER (igual à anterior)
+            function simulateLoading() { /* ...código do preloader inalterado... */ 
+                let progress = 0;
+                const preloader = document.getElementById('preloader');
+                const progressBar = document.getElementById('progress-bar');
+                const progressText = document.getElementById('progress-text');
+                const mainHeader = document.getElementById('main-header');
+                const interval = setInterval(() => {
+                    progress += Math.random() * 5;
+                    if (progress > 100) {
+                        progress = 100;
+                        clearInterval(interval);
+                        init();
+                        gsap.to(preloader, { opacity: 0, duration: 1.5, ease: 'power3.inOut', onComplete: () => preloader.style.display = 'none' });
+                        gsap.to(mainHeader, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.5 });
+                    }
+                    progressBar.style.width = progress + '%';
+                    progressText.textContent = `Desdobrando o espaço-tempo... ${Math.floor(progress)}%`;
+                }, 80);
+            }
+            simulateLoading();
 
-    // Seletores do DOM para evitar repetições
-    const preloader = document.getElementById('preloader');
-    const progressBar = document.getElementById('progress-bar');
-    const progressText = document.getElementById('progress-text');
-    const mainHeader = document.getElementById('main-header');
-    const globeContainer = document.getElementById('globe-container');
-    const scrollProgressBar = document.getElementById('scroll-progress-bar');
-    const mainContent = document.getElementById('main-content');
+            // III. INICIALIZAÇÃO DO MUNDO 3D (THREE.JS)
+            function initThreeJS() {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+                camera.position.z = 15;
 
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                globeContainer.appendChild(renderer.domElement);
 
-    // -------------------------------------------------------------------
-    // II. LÓGICA DO PRELOADER
-    // -------------------------------------------------------------------
+                scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+                const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+                dirLight.position.set(5, 3, 5);
+                scene.add(dirLight);
 
-    function simulateLoading() {
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += Math.random() * 5;
-            if (progress > 100) {
-                progress = 100;
-                clearInterval(interval);
-                // Quando o carregamento termina, inicializa o site e esconde o preloader
-                init();
+                const starGeometry = new THREE.BufferGeometry();
+                const starCount = 10000;
+                const posArray = new Float32Array(starCount * 3);
+                for (let i = 0; i < starCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 2000; }
+                starGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+                starField = new THREE.Points(starGeometry, new THREE.PointsMaterial({ size: 0.25, color: 0xffffff }));
+                scene.add(starField);
                 
-                // Animação de fade-out do preloader
-                gsap.to(preloader, {
-                    opacity: 0,
-                    duration: 1.5,
-                    ease: 'power3.inOut',
-                    onComplete: () => preloader.style.display = 'none'
-                });
+                const earthGeometry = new THREE.SphereGeometry(EARTH_RADIUS, 64, 64);
+                const earthMaterial = new THREE.MeshPhongMaterial({ color: 0x2266aa, specular: 0x333333, shininess: 25 });
+                earth = new THREE.Mesh(earthGeometry, earthMaterial);
+                scene.add(earth);
 
-                // Animação de fade-in do header
-                gsap.to(mainHeader, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: 'power3.out',
-                    delay: 0.5
-                });
+                const cloudGeometry = new THREE.SphereGeometry(EARTH_RADIUS + 0.05, 64, 64);
+                const cloudMaterial = new THREE.MeshPhongMaterial({ alphaMap: createProceduralCloudTexture(), transparent: true, opacity: 0.6 });
+                clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
+                scene.add(clouds);
 
+                createMarkers();
+                animate();
+                window.addEventListener('resize', onWindowResize, false);
             }
-            progressBar.style.width = progress + '%';
-            progressText.textContent = `Desdobrando o espaço-tempo... ${Math.floor(progress)}%`;
-        }, 80); // Intervalo para simular o carregamento
-    }
-
-    // Inicia a simulação de carregamento assim que o DOM estiver pronto
-    simulateLoading();
-
-
-    // -------------------------------------------------------------------
-    // III. INICIALIZAÇÃO DO MUNDO 3D (THREE.JS)
-    // -------------------------------------------------------------------
-
-    function initThreeJS() {
-        // 1. Cena
-        scene = new THREE.Scene();
-
-        // 2. Câmera
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 15; // Posição inicial da câmera
-
-        // 3. Renderizador
-        renderer = new THREE.WebGLRenderer({
-            antialias: true,
-            alpha: true // Fundo transparente para ver o background do CSS
-        });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Para telas de alta resolução
-        globeContainer.appendChild(renderer.domElement);
-
-        // 4. Luzes
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Luz suave geral
-        scene.add(ambientLight);
-
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2); // Simula o Sol
-        directionalLight.position.set(5, 3, 5);
-        scene.add(directionalLight);
-
-        // 5. Campo de Estrelas (Starfield)
-        const starGeometry = new THREE.BufferGeometry();
-        const starCount = 10000;
-        const posArray = new Float32Array(starCount * 3);
-
-        for (let i = 0; i < starCount * 3; i++) {
-            // Gera posições aleatórias dentro de uma esfera gigante
-            posArray[i] = (Math.random() - 0.5) * 2000;
-        }
-
-        starGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const starMaterial = new THREE.PointsMaterial({
-            size: 0.25,
-            color: 0xffffff
-        });
-        starField = new THREE.Points(starGeometry, starMaterial);
-        scene.add(starField);
-        
-        // 6. Planeta Terra
-        // Em um projeto real, usaríamos texturas de alta resolução.
-        // Aqui, criamos um material simples mas plausível.
-        const earthGeometry = new THREE.SphereGeometry(5, 64, 64); // Raio 5, com alta segmentação
-        const earthMaterial = new THREE.MeshPhongMaterial({
-            color: 0x2266aa,      // Cor base dos oceanos
-            specular: 0x333333,   // Brilho especular
-            shininess: 25,        // Intensidade do brilho
-            // map: textureLoader.load('earth_day.jpg'), // Exemplo com textura
-            // bumpMap: textureLoader.load('earth_bump.jpg'), // Exemplo com relevo
-            // bumpScale: 0.1
-        });
-        earth = new THREE.Mesh(earthGeometry, earthMaterial);
-        scene.add(earth);
-
-        // 7. Camada de Nuvens
-        const cloudGeometry = new THREE.SphereGeometry(5.1, 64, 64); // Um pouco maior que a Terra
-        const cloudMaterial = new THREE.MeshPhongMaterial({
-            // map: textureLoader.load('earth_clouds.png'), // Exemplo com textura
-            alphaMap: createProceduralCloudTexture(), // Usando textura procedural
-            transparent: true,
-            opacity: 0.6
-        });
-        clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
-        scene.add(clouds);
-
-        // 8. Loop de Animação
-        animate();
-
-        // 9. Responsividade
-        window.addEventListener('resize', onWindowResize, false);
-    }
-
-    // Função para criar uma textura de nuvens procedural usando Canvas
-    function createProceduralCloudTexture() {
-        const canvas = document.createElement('canvas');
-        canvas.width = 1024;
-        canvas.height = 512;
-        const context = canvas.getContext('2d');
-        
-        // Fundo transparente
-        context.fillStyle = 'rgba(0, 0, 0, 0)';
-        context.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Desenha "manchas" brancas aleatórias para simular nuvens
-        for (let i = 0; i < 1500; i++) {
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height;
-            const radius = Math.random() * 50 + 10;
-            const grad = context.createRadialGradient(x, y, 0, x, y, radius);
-            grad.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
-            grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
-            context.fillStyle = grad;
-            context.fillRect(0, 0, canvas.width, canvas.height);
-        }
-        
-        return new THREE.CanvasTexture(canvas);
-    }
-
-
-    // Loop de renderização principal
-    function animate() {
-        requestAnimationFrame(animate);
-
-        // Rotação sutil constante
-        if (earth) earth.rotation.y += 0.0002;
-        if (clouds) clouds.rotation.y += 0.0003;
-        if (starField) starField.rotation.y -= 0.00005;
-
-        renderer.render(scene, camera);
-    }
-
-    // Função para lidar com o redimensionamento da janela
-    function onWindowResize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-
-    // -------------------------------------------------------------------
-    // IV. ORQUESTRAÇÃO DE ANIMAÇÕES (GSAP & SCROLLTRIGGER)
-    // -------------------------------------------------------------------
-
-    function initGSAPAnimations() {
-        gsap.registerPlugin(ScrollTrigger);
-
-        // 1. Animação de fade-in para as caixas de conteúdo
-        gsap.utils.toArray('.content-box').forEach(box => {
-            gsap.fromTo(box, {
-                opacity: 0,
-                y: 100
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: box,
-                    start: 'top 85%', // Inicia quando a caixa está a 85% do topo da viewport
-                    end: 'bottom 20%',
-                    toggleActions: 'play none none reverse' // Anima ao entrar, reverte ao sair
+            
+            // IV. FUNÇÕES DE APOIO E LÓGICA DOS MARCADORES
+            function createProceduralCloudTexture() { /* ...código inalterado... */
+                const canvas = document.createElement('canvas'); canvas.width = 1024; canvas.height = 512;
+                const context = canvas.getContext('2d');
+                context.fillStyle = 'rgba(0, 0, 0, 0)'; context.fillRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < 1500; i++) {
+                    const x = Math.random() * canvas.width; const y = Math.random() * canvas.height;
+                    const radius = Math.random() * 50 + 10;
+                    const grad = context.createRadialGradient(x, y, 0, x, y, radius);
+                    grad.addColorStop(0, 'rgba(255, 255, 255, 0.4)'); grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                    context.fillStyle = grad; context.fillRect(0, 0, canvas.width, canvas.height);
                 }
-            });
-        });
+                return new THREE.CanvasTexture(canvas);
+            }
 
-        // 2. Timeline principal de Scrollytelling (A Mágica Acontece Aqui)
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: mainContent,
-                start: 'top top',
-                end: 'bottom bottom',
-                scrub: 1.5 // Conexão suave entre scroll e animação
+            function latLonToVector3(lat, lon, radius) {
+                const phi = (90 - lat) * (Math.PI / 180);
+                const theta = (lon + 180) * (Math.PI / 180);
+                const x = -(radius * Math.sin(phi) * Math.cos(theta));
+                const z = (radius * Math.sin(phi) * Math.sin(theta));
+                const y = (radius * Math.cos(phi));
+                return new THREE.Vector3(x, y, z);
+            }
+
+            function createMarkers() {
+                const locations = [
+                    { id: 'dawn-of-consciousness', lat: 6.52, lon: 3.37, name: "África" }, // Lagos, Nigéria (representativo)
+                    { id: 'agricultural-revolution', lat: 33.88, lon: 44.36, name: "Crescente Fértil" }, // Bagdá, Iraque
+                    { id: 'age-of-reason', lat: 37.98, lon: 23.72, name: "Grécia" }, // Atenas
+                    { id: 'scientific-revolution', lat: 51.50, lon: -0.12, name: "Europa" }, // Londres, UK
+                    { id: 'industrial-revolution', lat: 53.48, lon: -2.24, name: "Grã-Bretanha" }, // Manchester, UK
+                    { id: 'information-age', lat: 37.38, lon: -122.08, name: "Vale do Silício" }, // Mountain View, CA
+                ];
+
+                locations.forEach(loc => {
+                    const markerDiv = document.createElement('div');
+                    markerDiv.classList.add('location-marker');
+                    markerDiv.id = `marker-${loc.id}`;
+                    markersContainer.appendChild(markerDiv);
+
+                    markers.push({
+                        ...loc,
+                        element: markerDiv,
+                        position: latLonToVector3(loc.lat, loc.lon, EARTH_RADIUS)
+                    });
+                });
+            }
+
+            // V. LOOP DE ANIMAÇÃO E REDIMENSIONAMENTO
+            function animate() {
+                requestAnimationFrame(animate);
+
+                earth.rotation.y += 0.0002;
+                clouds.rotation.y += 0.0003;
+                starField.rotation.y -= 0.00005;
+
+                // ATUALIZADO: Lógica de projeção dos marcadores
+                markers.forEach(marker => {
+                    const worldPosition = earth.localToWorld(marker.position.clone());
+                    const screenPosition = worldPosition.project(camera);
+
+                    const cameraNormal = new THREE.Vector3(0,0,1).unproject(camera).sub(camera.position).normalize();
+                    const markerToCamera = worldPosition.clone().sub(camera.position).normalize();
+                    const dotProduct = markerToCamera.dot(cameraNormal);
+                    
+                    if (dotProduct > 0.3) { // 0.3 é um threshold para só mostrar quando não está muito na borda
+                        marker.element.style.visibility = 'visible';
+                        const x = (screenPosition.x * 0.5 + 0.5) * window.innerWidth;
+                        const y = (screenPosition.y * -0.5 + 0.5) * window.innerHeight;
+                        marker.element.style.left = `${x}px`;
+                        marker.element.style.top = `${y}px`;
+                    } else {
+                        marker.element.style.visibility = 'hidden';
+                    }
+                });
+
+                renderer.render(scene, camera);
+            }
+
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+
+            // VI. ORQUESTRAÇÃO DE ANIMAÇÕES (GSAP & SCROLLTRIGGER)
+            function initGSAPAnimations() {
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.utils.toArray('.content-box').forEach(box => {
+                    gsap.fromTo(box, { opacity: 0, y: 100 }, {
+                        opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+                        scrollTrigger: { trigger: box, start: 'top 85%', toggleActions: 'play none none reverse' }
+                    });
+                });
+
+                const tl = gsap.timeline({ scrollTrigger: { trigger: mainContent, start: 'top top', end: '+=5000', scrub: 1.5 } });
+                
+                tl.to(camera.position, { z: 10, ease: 'power1.inOut' }, 0)
+                  .to(earth.rotation, { y: Math.PI * 0.5 }, 0);
+
+                // Sincronizando com as seções e marcadores
+                markers.forEach(marker => {
+                    const sectionId = `#${marker.id}`;
+                    
+                    // Animação do Globo para focar no marcador
+                    tl.to(earth.rotation, {
+                        y: -marker.lon * (Math.PI / 180) - (Math.PI * 0.5), // Ajusta rotação Y para longitude
+                        x: marker.lat * (Math.PI / 180),  // Ajusta rotação X para latitude
+                        ease: 'power2.inOut'
+                    }, sectionId);
+
+                    // Animação para mostrar/esconder o marcador
+                    gsap.to(marker.element, {
+                        scrollTrigger: {
+                            trigger: sectionId,
+                            start: 'top center',
+                            end: 'bottom center',
+                            toggleClass: { targets: marker.element, className: "visible" }, // Classe CSS pode controlar melhor
+                            onEnter: () => gsap.to(marker.element, { opacity: 1, scale: 1, duration: 0.5 }),
+                            onLeave: () => gsap.to(marker.element, { opacity: 0, scale: 0, duration: 0.5 }),
+                            onEnterBack: () => gsap.to(marker.element, { opacity: 1, scale: 1, duration: 0.5 }),
+                            onLeaveBack: () => gsap.to(marker.element, { opacity: 0, scale: 0, duration: 0.5 })
+                        }
+                    });
+                });
+                
+                // Animação de zoom out no final
+                tl.to(camera.position, { z: 20, ease: 'power2.inOut' }, '#future-frontiers');
+                tl.to(earth.rotation, { x: 0.1, y: Math.PI * 2.5, ease: 'power2.inOut' }, '#future-frontiers');
+
+                gsap.to(document.getElementById('scroll-progress-bar'), {
+                    height: '100%', ease: 'none',
+                    scrollTrigger: { trigger: mainContent, start: 'top top', end: 'bottom bottom', scrub: true }
+                });
+            }
+
+            // VII. FUNÇÃO DE INICIALIZAÇÃO PRINCIPAL
+            function init() {
+                initThreeJS();
+                initGSAPAnimations();
             }
         });
-
-        // -- Animação da Intro para o Capítulo I --
-        tl.to(camera.position, { z: 10, ease: 'power1.inOut' }, 0); // Zoom in
-        tl.to(earth.rotation, { y: Math.PI * 0.5 }, 0); // Rotação inicial
-
-        // -- Capítulo II: Foco na África --
-        tl.to(earth.rotation, { 
-            y: Math.PI * 1.8, // Gira o globo para mostrar a África
-            x: Math.PI * 0.1, // Inclina um pouco
-            ease: 'power2.inOut'
-        }, 'dawn-of-consciousness'); // Usa um label de posição na timeline
-
-        // -- Capítulo III: Foco no Crescente Fértil --
-        tl.to(earth.rotation, {
-            y: Math.PI * 2.1, // Gira para o Oriente Médio
-            x: Math.PI * 0.15,
-            ease: 'power2.inOut'
-        }, 'agricultural-revolution');
-
-        // -- Capítulo IV: Foco no Mediterrâneo (Grécia) --
-        tl.to(camera.position, { z: 8, ease: 'power2.inOut' }, 'age-of-reason'); // Zoom para mais perto
-        tl.to(earth.rotation, {
-            y: Math.PI * 1.9,
-            x: Math.PI * 0.2,
-            ease: 'power2.inOut'
-        }, 'age-of-reason');
-
-        // -- Capítulo V: Foco na Europa --
-        tl.to(earth.rotation, {
-            y: Math.PI * 1.8,
-            x: Math.PI * 0.25, // Inclina para mostrar mais a Europa
-            ease: 'power2.inOut'
-        }, 'scientific-revolution');
-        tl.to(camera.position, { z: 9, ease: 'power2.inOut' }, 'scientific-revolution'); // Afasta um pouco para contexto
-
-
-        // Adiciona marcadores de trigger para sincronizar as labels da timeline com as seções
-        // Isso é crucial para que a rotação aconteça quando a seção correspondente estiver na tela
-        ScrollTrigger.create({
-            trigger: '#dawn-of-consciousness',
-            start: 'top center',
-            end: 'bottom center',
-            onToggle: self => self.isActive && tl.play('dawn-of-consciousness')
-        });
-        ScrollTrigger.create({
-            trigger: '#agricultural-revolution',
-            start: 'top center',
-            end: 'bottom center',
-            onToggle: self => self.isActive && tl.play('agricultural-revolution')
-        });
-        ScrollTrigger.create({
-            trigger: '#age-of-reason',
-            start: 'top center',
-            end: 'bottom center',
-            onToggle: self => self.isActive && tl.play('age-of-reason')
-        });
-        ScrollTrigger.create({
-            trigger: '#scientific-revolution',
-            start: 'top center',
-            end: 'bottom center',
-            onToggle: self => self.isActive && tl.play('scientific-revolution')
-        });
-
-        // 3. Animação da Barra de Progresso do Scroll
-        gsap.to(scrollProgressBar, {
-            height: '100%',
-            ease: 'none',
-            scrollTrigger: {
-                trigger: mainContent,
-                start: 'top top',
-                end: 'bottom bottom',
-                scrub: true
-            }
-        });
-    }
-
-    // -------------------------------------------------------------------
-    // V. FUNÇÃO DE INICIALIZAÇÃO PRINCIPAL
-    // -------------------------------------------------------------------
-    function init() {
-        initThreeJS();
-        initGSAPAnimations();
-    }
-
-});
     </script>
-
 </body>
 </html>
