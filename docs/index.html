@@ -25,145 +25,56 @@
             --easing-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; background-color: var(--color-background); }
+        body { font-family: var(--font-family-body); color: var(--color-text-primary); background-color: var(--color-background); overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-        html {
-            scroll-behavior: smooth;
-            background-color: var(--color-background);
-        }
-
-        body {
-            font-family: var(--font-family-body);
-            color: var(--color-text-primary);
-            background-color: var(--color-background);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-color: var(--color-background);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 1000; flex-direction: column; gap: 20px;
-            transition: opacity 1s var(--easing-cubic);
-        }
-
-        .loader-logo {
-            font-family: var(--font-family-headings); font-size: 3rem; font-weight: 900;
-            color: var(--color-heading); letter-spacing: 2px;
-        }
-        
+        #preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: var(--color-background); display: flex; justify-content: center; align-items: center; z-index: 1000; flex-direction: column; gap: 20px; transition: opacity 1s var(--easing-cubic); }
+        .loader-logo { font-family: var(--font-family-headings); font-size: 3rem; font-weight: 900; color: var(--color-heading); letter-spacing: 2px; }
         .loader-logo .accent { color: var(--color-accent); text-shadow: 0 0 15px var(--color-accent-glow); }
-
         #progress-bar-container { width: 300px; height: 4px; background-color: rgba(255, 255, 255, 0.1); border-radius: 2px; overflow: hidden; }
         #progress-bar { width: 0%; height: 100%; background-color: var(--color-accent); border-radius: 2px; transition: width 0.3s ease-out; box-shadow: 0 0 10px var(--color-accent-glow); }
         #progress-text { margin-top: 10px; font-family: var(--font-family-headings); font-size: 0.9rem; color: var(--color-text-secondary); }
 
-        #globe-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
+        #globe-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; cursor: grab; }
+        #globe-container:active { cursor: grabbing; }
+
         #main-content { position: relative; z-index: 10; width: 100%; display: flex; flex-direction: column; align-items: center; }
-        
-        #main-header {
-            position: fixed; top: 0; left: 0; width: 100%;
-            padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center;
-            z-index: 100; pointer-events: none; opacity: 0; transform: translateY(-20px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
+        #main-header { position: fixed; top: 0; left: 0; width: 100%; padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; pointer-events: none; opacity: 0; transform: translateY(-20px); transition: opacity 1s ease, transform 1s ease; }
         #main-header .site-title { font-family: var(--font-family-headings); font-weight: 700; font-size: 1.5rem; color: var(--color-heading); pointer-events: all; }
-
         #scroll-progress-container { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); width: 2px; height: 200px; background: rgba(255, 255, 255, 0.1); z-index: 100; }
         #scroll-progress-bar { width: 100%; height: 0%; background: var(--color-accent); box-shadow: 0 0 10px var(--color-accent-glow); }
 
         .content-section { display: flex; justify-content: flex-start; align-items: center; min-height: 100vh; width: 100%; max-width: 1200px; padding: 5rem; }
-        .content-box {
-            background-color: rgba(10, 20, 40, 0.7);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px; padding: 2.5rem; max-width: 500px;
-            opacity: 0; transform: translateY(50px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
+        .content-box { background-color: rgba(10, 20, 40, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 2.5rem; max-width: 500px; opacity: 0; transform: translateY(50px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
         .content-section:nth-child(even) { justify-content: flex-end; }
-        
         .content-section h1, .content-section h2 { font-family: var(--font-family-headings); color: var(--color-heading); font-weight: 700; margin-bottom: 1rem; line-height: 1.2; text-transform: uppercase; letter-spacing: 1px; }
         .content-section h1 { font-size: 3.5rem; font-weight: 900; color: var(--color-accent); text-shadow: 0 0 20px var(--color-accent-glow); }
         .content-section h2 { font-size: 1.8rem; border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; }
         .content-section p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: var(--color-text-primary); }
         .content-section p:last-child { margin-bottom: 0; }
         .content-section .highlight { color: var(--color-accent); font-weight: bold; }
-
         #intro-section .content-box { max-width: 700px; text-align: center; background: transparent; border: none; backdrop-filter: none; box-shadow: none; }
         #intro-section { display: flex; justify-content: center; align-items: center; text-align: center; }
         #intro-section .subtitle { font-family: var(--font-family-headings); font-size: 1.2rem; color: var(--color-text-secondary); margin-top: 1rem; letter-spacing: 2px; }
         
-        /* NOVO: Estilos para os Marcadores Geográficos */
         #markers-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
-        .location-marker {
-            position: absolute;
-            width: 20px; height: 20px;
-            background: var(--color-accent);
-            border-radius: 50%;
-            border: 2px solid white;
-            box-shadow: 0 0 15px var(--color-accent), 0 0 25px var(--color-accent-glow);
-            transform: translate(-50%, -50%) scale(0); /* Inicia invisível e pequeno */
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            pointer-events: none;
-        }
+        .location-marker { position: absolute; width: 20px; height: 20px; background: var(--color-accent); border-radius: 50%; border: 2px solid white; box-shadow: 0 0 15px var(--color-accent), 0 0 25px var(--color-accent-glow); transform: translate(-50%, -50%) scale(0); opacity: 0; transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; }
+        .location-marker::after { content: ''; position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; border-radius: 50%; background: var(--color-accent); transform: translate(-50%, -50%); animation: pulse 2s infinite ease-out; z-index: -1; }
+        @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; } 100% { transform: translate(-50%, -50%) scale(3); opacity: 0; } }
 
-        .location-marker::after {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            background: var(--color-accent);
-            transform: translate(-50%, -50%);
-            animation: pulse 2s infinite ease-out;
-            z-index: -1;
-        }
-
-        @keyframes pulse {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
-            100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-            .location-marker::after { animation: none; }
-        }
-        
-        @media (max-width: 768px) {
-            #main-header { padding: 1.5rem; }
-            #main-header .site-title { font-size: 1.2rem; }
-            #scroll-progress-container { display: none; }
-            .content-section { padding: 2rem; justify-content: center; }
-            .content-section:nth-child(even) { justify-content: center; }
-            .content-box { width: 100%; max-width: 100%; padding: 1.5rem; }
-            .content-section h1 { font-size: 2.5rem; }
-            .content-section h2 { font-size: 1.5rem; }
-            .content-section p { font-size: 1rem; line-height: 1.7; }
-        }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } .location-marker::after { animation: none; } }
+        @media (max-width: 768px) { #main-header { padding: 1.5rem; } #main-header .site-title { font-size: 1.2rem; } #scroll-progress-container { display: none; } .content-section { padding: 2rem; justify-content: center; } .content-section:nth-child(even) { justify-content: center; } .content-box { width: 100%; max-width: 100%; padding: 1.5rem; } .content-section h1 { font-size: 2.5rem; } .content-section h2 { font-size: 1.5rem; } .content-section p { font-size: 1rem; line-height: 1.7; } }
     </style>
 </head>
 <body>
-
     <div id="preloader">
         <div class="loader-logo">PITCHUT<span class="accent">CHA</span></div>
         <div id="progress-bar-container"><div id="progress-bar"></div></div>
         <div id="progress-text">Inicializando a simulação... 0%</div>
     </div>
 
-    <div id="globe-container">
-        <div id="markers-container"></div>
-    </div>
-
+    <div id="globe-container"><div id="markers-container"></div></div>
     <header id="main-header"><div class="site-title">Pitchutcha</div></header>
     <div id="scroll-progress-container"><div id="scroll-progress-bar"></div></div>
 
@@ -171,69 +82,17 @@
         <section id="intro-section" class="content-section">
             <div class="content-box">
                 <h1>PITCHUTCHA</h1>
-                <p class="subtitle">Uma exploração visual da consciência, da ciência e do nosso futuro coletivo.</p>
-                <p style="margin-top: 2rem; color: var(--color-text-secondary);">Role para baixo e inicie a jornada.</p>
+                <p class="subtitle">Uma exploração visual da consciência, da ciência e do nosso futuro coletivo.<br><br><span style="font-size: 0.9rem; color: var(--color-text-secondary);">Role para continuar ou clique e arraste o globo para explorar.</span></p>
             </div>
         </section>
-
-        <section id="pale-blue-dot" class="content-section">
-            <div class="content-box">
-                <h2>Capítulo I: O Pálido Ponto Azul</h2>
-                <p>Nossa jornada começa aqui, em um grão de poeira suspenso em um raio de sol. Há <span class="highlight">4,5 bilhões de anos</span>, a Terra se formou. Nas profundezas de seus oceanos primordiais, algo extraordinário aconteceu: a vida surgiu, dando início à mais grandiosa história já contada.</p>
-            </div>
-        </section>
-
-        <section id="dawn-of-consciousness" class="content-section">
-            <div class="content-box">
-                <h2>Capítulo II: O Despertar da Consciência</h2>
-                <p>Nas savanas da África, o <span class="highlight">Homo sapiens</span> emergiu. Com o domínio do fogo, a criação de ferramentas e o desenvolvimento da linguagem, não estávamos mais apenas sobrevivendo. Estávamos começando a construir as fundações da civilização.</p>
-            </div>
-        </section>
-
-        <section id="agricultural-revolution" class="content-section">
-            <div class="content-box">
-                <h2>Capítulo III: A Semente da Civilização</h2>
-                <p>Por volta de <span class="highlight">10.000 a.C.</span>, a Revolução Agrícola no Crescente Fértil permitiu a criação de assentamentos permanentes, o excedente de alimentos e o surgimento das primeiras cidades. A complexidade social aumentou, e com ela, a invenção da escrita e da matemática.</p>
-            </div>
-        </section>
-
-        <section id="age-of-reason" class="content-section">
-            <div class="content-box">
-                <h2>Capítulo IV: O Florescer da Razão</h2>
-                <p>Na Grécia Antiga, por volta do século V a.C., uma nova forma de investigação do mundo nasceu: a <span class="highlight">filosofia</span>. Pensadores como Platão e Aristóteles lançaram as bases para a ciência ocidental, buscando explicações na lógica e na observação, e não apenas nos mitos.</p>
-            </div>
-        </section>
-
-        <section id="scientific-revolution" class="content-section">
-            <div class="content-box">
-                <h2>Capítulo V: Decifrando o Cosmos</h2>
-                <p>Entre os séculos XVI e XVIII na Europa, <span class="highlight">Copérnico</span>, <span class="highlight">Galileu</span> e <span class="highlight">Newton</span> mudaram nossa compreensão do universo. O método científico tornou-se a ferramenta mais poderosa da humanidade para adquirir conhecimento, revelando um cosmos governado por leis matemáticas.</p>
-            </div>
-        </section>
-
-        <section id="industrial-revolution" class="content-section">
-            <div class="content-box">
-                <h2>Capítulo VI: A Máquina a Vapor do Progresso</h2>
-                <p>A partir do final do século XVIII, principalmente na <span class="highlight">Grã-Bretanha</span>, a Revolução Industrial remodelou a sociedade humana de forma irreversível. A invenção da máquina a vapor e a mecanização da produção levaram a um crescimento urbano sem precedentes e a uma nova estrutura de classes.</p>
-                <p>A ciência e a engenharia se uniram, produzindo ferrovias, navios a vapor e o telégrafo, que encolheram o mundo e aceleraram o ritmo da vida e da inovação a um nível nunca antes imaginado.</p>
-            </div>
-        </section>
-        
-        <section id="information-age" class="content-section">
-            <div class="content-box">
-                <h2>Capítulo VII: A Rede Global de Silício</h2>
-                <p>No final do século XX, uma nova revolução, silenciosa mas igualmente transformadora, começou nos laboratórios da Califórnia e em outros centros tecnológicos. A invenção do <span class="highlight">transistor</span>, do microchip e, finalmente, da <span class="highlight">Internet</span>, deu início à Era da Informação.</p>
-                <p>O conhecimento humano, antes restrito a livros e bibliotecas, tornou-se instantaneamente acessível em escala global. A computação e a conectividade redefiniram a economia, a política, a cultura e a própria natureza da interação humana.</p>
-            </div>
-        </section>
-
-        <section id="future-frontiers" class="content-section">
-            <div class="content-box">
-                <h2>Capítulo VIII: As Próximas Fronteiras</h2>
-                <p>Hoje, nos encontramos no limiar de transformações ainda mais profundas. A <span class="highlight">Inteligência Artificial</span> promete aumentar nossa capacidade intelectual, a <span class="highlight">engenharia genética</span> nos dá o poder de reescrever o código da vida, e a exploração espacial nos chama para além do nosso pálido ponto azul.</p>
-                <p>Os desafios são imensos – mudanças climáticas, desigualdade, questões éticas – mas nossa jornada até aqui prova que a curiosidade, a engenhosidade e a colaboração são as ferramentas mais poderosas que possuímos para moldar um futuro melhor.</p>
-            </div>
-        </section>
+        <section id="pale-blue-dot" class="content-section"> ... </section>
+        <section id="dawn-of-consciousness" class="content-section"> ... </section>
+        <section id="agricultural-revolution" class="content-section"> ... </section>
+        <section id="age-of-reason" class="content-section"> ... </section>
+        <section id="scientific-revolution" class="content-section"> ... </section>
+        <section id="industrial-revolution" class="content-section"> ... </section>
+        <section id="information-age" class="content-section"> ... </section>
+        <section id="future-frontiers" class="content-section"> ... </section>
 
     </main>
 
@@ -241,19 +100,58 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 
+    <script type="x-shader/x-vertex" id="vertexShader">
+        varying vec3 vNormal;
+        void main() {
+            vNormal = normalize( normalMatrix * normal );
+            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        }
+    </script>
+
+    <script type="x-shader/x-fragment" id="fragmentShader">
+        varying vec3 vNormal;
+        void main() {
+            float intensity = pow( 0.6 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), 2.0 );
+            gl_FragColor = vec4( 0.2, 0.6, 0.9, 1.0 ) * intensity;
+        }
+    </script>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
 
-            // I. CONFIGURAÇÃO E VARIÁVEIS
-            let scene, camera, renderer, starField, earth, clouds;
-            const markers = [];
-            const globeContainer = document.getElementById('globe-container');
-            const markersContainer = document.getElementById('markers-container');
-            const mainContent = document.getElementById('main-content');
-            const EARTH_RADIUS = 5;
+        const mainApp = {
+            // I. PROPRIEDADES DE ESTADO E OBJETOS THREE.JS
+            isLoaded: false,
+            isDragging: false,
+            previousMousePosition: { x: 0, y: 0 },
+            
+            scene: null,
+            camera: null,
+            renderer: null,
+            starField: null,
+            earthGroup: null, // Grupo para Terra, Nuvens, Atmosfera
+            earth: null,
+            clouds: null,
+            atmosphere: null,
+            
+            markers: [],
+            dom: {
+                globeContainer: document.getElementById('globe-container'),
+                markersContainer: document.getElementById('markers-container'),
+                mainContent: document.getElementById('main-content')
+            },
+            
+            config: {
+                EARTH_RADIUS: 5,
+                ROTATION_SPEED: 0.0002
+            },
 
-            // II. LÓGICA DO PRELOADER (igual à anterior)
-            function simulateLoading() { /* ...código do preloader inalterado... */ 
+            // II. MÉTODOS DE INICIALIZAÇÃO
+            init() {
+                this.simulateLoading();
+            },
+
+            simulateLoading() {
                 let progress = 0;
                 const preloader = document.getElementById('preloader');
                 const progressBar = document.getElementById('progress-bar');
@@ -261,124 +159,152 @@
                 const mainHeader = document.getElementById('main-header');
                 const interval = setInterval(() => {
                     progress += Math.random() * 5;
-                    if (progress > 100) {
+                    if (progress >= 100) {
                         progress = 100;
                         clearInterval(interval);
-                        init();
+                        this.setupScene();
+                        this.setupGSAP();
                         gsap.to(preloader, { opacity: 0, duration: 1.5, ease: 'power3.inOut', onComplete: () => preloader.style.display = 'none' });
                         gsap.to(mainHeader, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.5 });
+                        this.isLoaded = true;
                     }
-                    progressBar.style.width = progress + '%';
-                    progressText.textContent = `Desdobrando o espaço-tempo... ${Math.floor(progress)}%`;
+                    progressBar.style.width = `${progress}%`;
+                    progressText.textContent = `Construindo o cosmos... ${Math.floor(progress)}%`;
                 }, 80);
-            }
-            simulateLoading();
+            },
 
-            // III. INICIALIZAÇÃO DO MUNDO 3D (THREE.JS)
-            function initThreeJS() {
-                scene = new THREE.Scene();
-                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-                camera.position.z = 15;
+            setupScene() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+                this.camera.position.z = 15;
 
-                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-                globeContainer.appendChild(renderer.domElement);
+                this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                this.dom.globeContainer.appendChild(this.renderer.domElement);
 
-                scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+                this.createLights();
+                this.createStarfield();
+                
+                this.earthGroup = new THREE.Group();
+                this.scene.add(this.earthGroup);
+
+                this.createEarth();
+                this.createClouds();
+                this.createAtmosphere();
+                this.createMarkers();
+
+                this.addEventListeners();
+                this.animate();
+            },
+
+            // III. MÉTODOS DE CRIAÇÃO DE OBJETOS
+            createLights() {
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
                 const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
                 dirLight.position.set(5, 3, 5);
-                scene.add(dirLight);
+                this.scene.add(dirLight);
+            },
 
-                const starGeometry = new THREE.BufferGeometry();
-                const starCount = 10000;
-                const posArray = new Float32Array(starCount * 3);
-                for (let i = 0; i < starCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 2000; }
-                starGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-                starField = new THREE.Points(starGeometry, new THREE.PointsMaterial({ size: 0.25, color: 0xffffff }));
-                scene.add(starField);
-                
-                const earthGeometry = new THREE.SphereGeometry(EARTH_RADIUS, 64, 64);
-                const earthMaterial = new THREE.MeshPhongMaterial({ color: 0x2266aa, specular: 0x333333, shininess: 25 });
-                earth = new THREE.Mesh(earthGeometry, earthMaterial);
-                scene.add(earth);
-
-                const cloudGeometry = new THREE.SphereGeometry(EARTH_RADIUS + 0.05, 64, 64);
-                const cloudMaterial = new THREE.MeshPhongMaterial({ alphaMap: createProceduralCloudTexture(), transparent: true, opacity: 0.6 });
-                clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
-                scene.add(clouds);
-
-                createMarkers();
-                animate();
-                window.addEventListener('resize', onWindowResize, false);
-            }
-            
-            // IV. FUNÇÕES DE APOIO E LÓGICA DOS MARCADORES
-            function createProceduralCloudTexture() { /* ...código inalterado... */
-                const canvas = document.createElement('canvas'); canvas.width = 1024; canvas.height = 512;
-                const context = canvas.getContext('2d');
-                context.fillStyle = 'rgba(0, 0, 0, 0)'; context.fillRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < 1500; i++) {
-                    const x = Math.random() * canvas.width; const y = Math.random() * canvas.height;
-                    const radius = Math.random() * 50 + 10;
-                    const grad = context.createRadialGradient(x, y, 0, x, y, radius);
-                    grad.addColorStop(0, 'rgba(255, 255, 255, 0.4)'); grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                    context.fillStyle = grad; context.fillRect(0, 0, canvas.width, canvas.height);
+            createStarfield() {
+                const geo = new THREE.BufferGeometry();
+                const vertices = [];
+                for (let i = 0; i < 10000; i++) {
+                    vertices.push( (Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000 );
                 }
-                return new THREE.CanvasTexture(canvas);
-            }
+                geo.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+                this.starField = new THREE.Points(geo, new THREE.PointsMaterial({ size: 0.25, color: 0xffffff }));
+                this.scene.add(this.starField);
+            },
 
-            function latLonToVector3(lat, lon, radius) {
-                const phi = (90 - lat) * (Math.PI / 180);
-                const theta = (lon + 180) * (Math.PI / 180);
-                const x = -(radius * Math.sin(phi) * Math.cos(theta));
-                const z = (radius * Math.sin(phi) * Math.sin(theta));
-                const y = (radius * Math.cos(phi));
-                return new THREE.Vector3(x, y, z);
-            }
+            createEarth() {
+                const geo = new THREE.SphereGeometry(this.config.EARTH_RADIUS, 64, 64);
+                const mat = new THREE.MeshPhongMaterial({ color: 0x2266aa, specular: 0x333333, shininess: 25 });
+                this.earth = new THREE.Mesh(geo, mat);
+                this.earthGroup.add(this.earth);
+            },
 
-            function createMarkers() {
+            createClouds() {
+                const canvas = document.createElement('canvas'); canvas.width = 1024; canvas.height = 512;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = 'rgba(0,0,0,0)'; ctx.fillRect(0,0,1024,512);
+                for (let i = 0; i < 1500; i++) {
+                    const x = Math.random()*1024, y = Math.random()*512, r=Math.random()*50+10;
+                    const grad = ctx.createRadialGradient(x,y,0,x,y,r);
+                    grad.addColorStop(0, 'rgba(255,255,255,0.4)'); grad.addColorStop(1, 'rgba(255,255,255,0)');
+                    ctx.fillStyle = grad; ctx.fillRect(0,0,1024,512);
+                }
+                const tex = new THREE.CanvasTexture(canvas);
+                const geo = new THREE.SphereGeometry(this.config.EARTH_RADIUS + 0.05, 64, 64);
+                const mat = new THREE.MeshPhongMaterial({ alphaMap: tex, transparent: true, opacity: 0.6 });
+                this.clouds = new THREE.Mesh(geo, mat);
+                this.earthGroup.add(this.clouds);
+            },
+
+            createAtmosphere() {
+                const geo = new THREE.SphereGeometry(this.config.EARTH_RADIUS + 0.5, 64, 64);
+                const mat = new THREE.ShaderMaterial({
+                    vertexShader: document.getElementById('vertexShader').textContent,
+                    fragmentShader: document.getElementById('fragmentShader').textContent,
+                    blending: THREE.AdditiveBlending,
+                    side: THREE.BackSide
+                });
+                this.atmosphere = new THREE.Mesh(geo, mat);
+                this.atmosphere.scale.set(1.1, 1.1, 1.1);
+                this.earthGroup.add(this.atmosphere);
+            },
+
+            createMarkers() {
                 const locations = [
-                    { id: 'dawn-of-consciousness', lat: 6.52, lon: 3.37, name: "África" }, // Lagos, Nigéria (representativo)
-                    { id: 'agricultural-revolution', lat: 33.88, lon: 44.36, name: "Crescente Fértil" }, // Bagdá, Iraque
-                    { id: 'age-of-reason', lat: 37.98, lon: 23.72, name: "Grécia" }, // Atenas
-                    { id: 'scientific-revolution', lat: 51.50, lon: -0.12, name: "Europa" }, // Londres, UK
-                    { id: 'industrial-revolution', lat: 53.48, lon: -2.24, name: "Grã-Bretanha" }, // Manchester, UK
-                    { id: 'information-age', lat: 37.38, lon: -122.08, name: "Vale do Silício" }, // Mountain View, CA
+                    { id: 'dawn-of-consciousness', lat: 6.52, lon: 3.37 },
+                    { id: 'agricultural-revolution', lat: 33.88, lon: 44.36 },
+                    { id: 'age-of-reason', lat: 37.98, lon: 23.72 },
+                    { id: 'scientific-revolution', lat: 51.50, lon: -0.12 },
+                    { id: 'industrial-revolution', lat: 53.48, lon: -2.24 },
+                    { id: 'information-age', lat: 37.38, lon: -122.08 },
                 ];
 
                 locations.forEach(loc => {
-                    const markerDiv = document.createElement('div');
-                    markerDiv.classList.add('location-marker');
-                    markerDiv.id = `marker-${loc.id}`;
-                    markersContainer.appendChild(markerDiv);
-
-                    markers.push({
-                        ...loc,
-                        element: markerDiv,
-                        position: latLonToVector3(loc.lat, loc.lon, EARTH_RADIUS)
-                    });
+                    const div = document.createElement('div');
+                    div.className = 'location-marker';
+                    this.dom.markersContainer.appendChild(div);
+                    
+                    const phi = (90 - loc.lat) * (Math.PI / 180);
+                    const theta = (loc.lon + 180) * (Math.PI / 180);
+                    const radius = this.config.EARTH_RADIUS;
+                    const position = new THREE.Vector3(
+                        -(radius * Math.sin(phi) * Math.cos(theta)),
+                        (radius * Math.cos(phi)),
+                        (radius * Math.sin(phi) * Math.sin(theta))
+                    );
+                    this.markers.push({ ...loc, element: div, position });
                 });
-            }
+            },
 
-            // V. LOOP DE ANIMAÇÃO E REDIMENSIONAMENTO
-            function animate() {
-                requestAnimationFrame(animate);
+            // IV. LOOP DE ANIMAÇÃO E ATUALIZAÇÕES
+            animate() {
+                requestAnimationFrame(this.animate.bind(this));
 
-                earth.rotation.y += 0.0002;
-                clouds.rotation.y += 0.0003;
-                starField.rotation.y -= 0.00005;
+                if (!this.isDragging) {
+                    this.earthGroup.rotation.y += this.config.ROTATION_SPEED;
+                }
+                this.clouds.rotation.y += this.config.ROTATION_SPEED * 0.5;
+                this.starField.rotation.y -= this.config.ROTATION_SPEED * 0.25;
 
-                // ATUALIZADO: Lógica de projeção dos marcadores
-                markers.forEach(marker => {
-                    const worldPosition = earth.localToWorld(marker.position.clone());
-                    const screenPosition = worldPosition.project(camera);
+                this.updateMarkers();
+                this.renderer.render(this.scene, this.camera);
+            },
+            
+            updateMarkers() {
+                this.markers.forEach(marker => {
+                    const worldPosition = this.earth.localToWorld(marker.position.clone());
+                    const screenPosition = worldPosition.project(this.camera);
 
-                    const cameraNormal = new THREE.Vector3(0,0,1).unproject(camera).sub(camera.position).normalize();
-                    const markerToCamera = worldPosition.clone().sub(camera.position).normalize();
+                    const cameraNormal = new THREE.Vector3(0,0,1).unproject(this.camera).sub(this.camera.position).normalize();
+                    const markerToCamera = worldPosition.clone().sub(this.camera.position).normalize();
                     const dotProduct = markerToCamera.dot(cameraNormal);
                     
-                    if (dotProduct > 0.3) { // 0.3 é um threshold para só mostrar quando não está muito na borda
+                    if (dotProduct > 0.3) {
                         marker.element.style.visibility = 'visible';
                         const x = (screenPosition.x * 0.5 + 0.5) * window.innerWidth;
                         const y = (screenPosition.y * -0.5 + 0.5) * window.innerHeight;
@@ -388,18 +314,49 @@
                         marker.element.style.visibility = 'hidden';
                     }
                 });
+            },
 
-                renderer.render(scene, camera);
-            }
+            // V. EVENTOS E INTERAÇÃO
+            addEventListeners() {
+                window.addEventListener('resize', this.onWindowResize.bind(this));
+                this.dom.globeContainer.addEventListener('mousedown', this.onMouseDown.bind(this));
+                window.addEventListener('mousemove', this.onMouseMove.bind(this));
+                window.addEventListener('mouseup', this.onMouseUp.bind(this));
+            },
 
-            function onWindowResize() {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
+            onWindowResize() {
+                this.camera.aspect = window.innerWidth / window.innerHeight;
+                this.camera.updateProjectionMatrix();
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+            },
 
-            // VI. ORQUESTRAÇÃO DE ANIMAÇÕES (GSAP & SCROLLTRIGGER)
-            function initGSAPAnimations() {
+            onMouseDown(event) {
+                this.isDragging = true;
+                this.previousMousePosition.x = event.clientX;
+                this.previousMousePosition.y = event.clientY;
+            },
+
+            onMouseMove(event) {
+                if (!this.isDragging) return;
+                const deltaX = event.clientX - this.previousMousePosition.x;
+                const deltaY = event.clientY - this.previousMousePosition.y;
+
+                this.earthGroup.rotation.y += deltaX * 0.005;
+                this.earthGroup.rotation.x += deltaY * 0.005;
+                
+                // Limita a rotação vertical para evitar inversão
+                this.earthGroup.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, this.earthGroup.rotation.x));
+
+                this.previousMousePosition.x = event.clientX;
+                this.previousMousePosition.y = event.clientY;
+            },
+
+            onMouseUp() {
+                this.isDragging = false;
+            },
+            
+            // VI. ANIMAÇÕES DE SCROLL (GSAP)
+            setupGSAP() {
                 gsap.registerPlugin(ScrollTrigger);
                 gsap.utils.toArray('.content-box').forEach(box => {
                     gsap.fromTo(box, { opacity: 0, y: 100 }, {
@@ -408,29 +365,22 @@
                     });
                 });
 
-                const tl = gsap.timeline({ scrollTrigger: { trigger: mainContent, start: 'top top', end: '+=5000', scrub: 1.5 } });
+                const tl = gsap.timeline({ scrollTrigger: { trigger: this.dom.mainContent, start: 'top top', end: '+=5000', scrub: 1.5 } });
                 
-                tl.to(camera.position, { z: 10, ease: 'power1.inOut' }, 0)
-                  .to(earth.rotation, { y: Math.PI * 0.5 }, 0);
+                tl.to(this.camera.position, { z: 10, ease: 'power1.inOut' }, 0)
+                  .to(this.earthGroup.rotation, { y: Math.PI * 0.5 }, 0);
 
-                // Sincronizando com as seções e marcadores
-                markers.forEach(marker => {
+                this.markers.forEach(marker => {
                     const sectionId = `#${marker.id}`;
-                    
-                    // Animação do Globo para focar no marcador
-                    tl.to(earth.rotation, {
-                        y: -marker.lon * (Math.PI / 180) - (Math.PI * 0.5), // Ajusta rotação Y para longitude
-                        x: marker.lat * (Math.PI / 180),  // Ajusta rotação X para latitude
+                    tl.to(this.earthGroup.rotation, {
+                        y: -marker.lon * (Math.PI / 180) - (Math.PI * 0.5),
+                        x: marker.lat * (Math.PI / 180),
                         ease: 'power2.inOut'
                     }, sectionId);
 
-                    // Animação para mostrar/esconder o marcador
                     gsap.to(marker.element, {
                         scrollTrigger: {
-                            trigger: sectionId,
-                            start: 'top center',
-                            end: 'bottom center',
-                            toggleClass: { targets: marker.element, className: "visible" }, // Classe CSS pode controlar melhor
+                            trigger: sectionId, start: 'top center', end: 'bottom center',
                             onEnter: () => gsap.to(marker.element, { opacity: 1, scale: 1, duration: 0.5 }),
                             onLeave: () => gsap.to(marker.element, { opacity: 0, scale: 0, duration: 0.5 }),
                             onEnterBack: () => gsap.to(marker.element, { opacity: 1, scale: 1, duration: 0.5 }),
@@ -439,22 +389,19 @@
                     });
                 });
                 
-                // Animação de zoom out no final
-                tl.to(camera.position, { z: 20, ease: 'power2.inOut' }, '#future-frontiers');
-                tl.to(earth.rotation, { x: 0.1, y: Math.PI * 2.5, ease: 'power2.inOut' }, '#future-frontiers');
+                tl.to(this.camera.position, { z: 20, ease: 'power2.inOut' }, '#future-frontiers');
+                tl.to(this.earthGroup.rotation, { x: 0.1, y: Math.PI * 2.5, ease: 'power2.inOut' }, '#future-frontiers');
 
                 gsap.to(document.getElementById('scroll-progress-bar'), {
                     height: '100%', ease: 'none',
-                    scrollTrigger: { trigger: mainContent, start: 'top top', end: 'bottom bottom', scrub: true }
+                    scrollTrigger: { trigger: this.dom.mainContent, start: 'top top', end: 'bottom bottom', scrub: true }
                 });
             }
+        };
 
-            // VII. FUNÇÃO DE INICIALIZAÇÃO PRINCIPAL
-            function init() {
-                initThreeJS();
-                initGSAPAnimations();
-            }
-        });
+        mainApp.init();
+
+    });
     </script>
 </body>
 </html>
