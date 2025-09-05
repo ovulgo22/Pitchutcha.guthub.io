@@ -1,0 +1,66 @@
+<div class="content-and-toc-wrapper">
+    <main class="main-content" id="main-content" tabindex="-1">
+        <article class="content-article">
+            <header class="article-header">
+                <div class="breadcrumbs"><a href="/">Início</a> / <a href="/hardware/">Hardware e Arquitetura</a></div>
+                <h1 class="article-title" id="page-title">CPU e Microprocessadores</h1>
+                <p class="article-subtitle">Uma análise profunda do "cérebro" do computador, o componente responsável por executar as instruções que dão vida ao software.</p>
+            </header>
+
+            <section class="article-body">
+                <p>A Unidade Central de Processamento (CPU, do inglês Central Processing Unit) é o principal componente de hardware que executa as instruções de um programa de computador. Ela realiza as operações lógicas, aritméticas e de entrada/saída (I/O) fundamentais especificadas pelas instruções. Em termos simples, se o software são as ideias, a CPU é quem "pensa" e as executa.</p>
+                
+                <h2 id="ciclo-de-instrucao">O Ciclo de Instrução</h2>
+                <p>O trabalho de uma CPU pode ser resumido em um ciclo contínuo de três etapas principais, conhecido como o <strong>Ciclo de Instrução (ou Ciclo Fetch-Decode-Execute)</strong>:</p>
+                <ol>
+                    <li><strong>Busca (Fetch):</strong> A Unidade de Controle (CU) busca a próxima instrução da memória RAM, utilizando o endereço armazenado em um registrador especial chamado Contador de Programa (PC).</li>
+                    <li><strong>Decodificação (Decode):</strong> A instrução, que está em formato de código de máquina (binário), é decodificada pela CU para entender qual operação deve ser realizada.</li>
+                    <li><strong>Execução (Execute):</strong> A CU envia sinais para os componentes relevantes da CPU, como a Unidade Lógica e Aritmética (ALU), para realizar a operação. O resultado pode ser armazenado em registradores internos ou escrito de volta na memória.</li>
+                </ol>
+                <p>Este ciclo se repete bilhões de vezes por segundo em um processador moderno.</p>
+
+                <h2 id="microprocessador">A Revolução do Microprocessador</h2>
+                <p>Nos primórdios da computação, as CPUs eram construídas com componentes discretos, como válvulas ou transistores, ocupando salas inteiras. A grande revolução veio com a invenção do <strong>microprocessador</strong>.</p>
+                
+                <div class="callout-box info">
+                    <p><strong>O Intel 4004:</strong> Lançado em 1971, o Intel 4004 é amplamente considerado o primeiro microprocessador comercialmente disponível. Ele integrou todos os componentes de uma CPU (ALU, CU, registradores) em um único chip de silício. Embora primitivo para os padrões de hoje (operava a 740 KHz), foi uma inovação monumental que abriu o caminho para os computadores pessoais.</p>
+                </div>
+
+                <h2 id="nucleos-e-threads">Núcleos e Threads: O Poder da Paralelização</h2>
+                <p>Para aumentar o desempenho, os engenheiros de hardware começaram a colocar múltiplas CPUs completas, chamadas de <strong>núcleos (cores)</strong>, dentro de um único chip. Um processador dual-core tem duas CPUs, um quad-core tem quatro, e assim por diante. Isso permite que o computador execute múltiplas tarefas de forma verdadeiramente paralela.</p>
+                <p>A tecnologia <strong>Hyper-Threading</strong> (ou SMT - Simultaneous Multithreading) vai um passo além. Ela permite que um único núcleo físico se apresente ao sistema operacional como dois núcleos lógicos (threads). Isso otimiza o uso dos recursos do núcleo, permitindo que ele trabalhe em duas tarefas simultaneamente, melhorando a eficiência em cargas de trabalho multitarefa.</p>
+
+                <h2 id="velocidade-do-clock">Velocidade do Clock e IPC</h2>
+                <p>A velocidade de uma CPU é frequentemente medida em Gigahertz (GHz), que representa a <strong>velocidade do clock</strong>. O clock é um sinal eletrônico que sincroniza as operações do processador. Um clock de 3 GHz significa que o ciclo de clock ocorre 3 bilhões de vezes por segundo.</p>
+                <p>No entanto, a velocidade do clock por si só não conta a história toda. Outro fator crucial é o <strong>IPC (Instruções Por Ciclo)</strong>, que mede quantas instruções um processador consegue executar em um único ciclo de clock. Um processador com um clock mais baixo, mas um IPC mais alto, pode ser mais rápido que um processador com um clock mais alto e um IPC baixo. A eficiência da arquitetura do processador é o que determina o IPC.</p>
+
+            </section>
+        </article>
+
+        <footer class="article-footer">
+            <nav class="article-pagination" aria-label="Navegação de artigos">
+                <a href="/fundacoes/arquitetura-von-neumann.html" class="pagination-link prev">
+                    <span class="pagination-label">Anterior</span>
+                    <span class="pagination-title">Arquitetura de Von Neumann</span>
+                </a>
+                <a href="/hardware/memoria.html" class="pagination-link next">
+                    <span class="pagination-label">Próximo</span>
+                    <span class="pagination-title">Hierarquia de Memória</span>
+                </a>
+            </nav>
+        </footer>
+    </main>
+    
+    <aside class="toc-sidebar" id="toc-sidebar">
+        <nav class="toc-nav" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+            <ul class="toc-list">
+                <li><a href="#page-title" class="toc-link is-active">Introdução</a></li>
+                <li><a href="#ciclo-de-instrucao" class="toc-link">O Ciclo de Instrução</a></li>
+                <li><a href="#microprocessador" class="toc-link">A Revolução do Microprocessador</a></li>
+                <li><a href="#nucleos-e-threads" class="toc-link">Núcleos e Threads</a></li>
+                <li><a href="#velocidade-do-clock" class="toc-link">Velocidade do Clock e IPC</a></li>
+            </ul>
+        </nav>
+    </aside>
+</div>
