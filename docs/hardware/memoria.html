@@ -1,0 +1,64 @@
+<div class="content-and-toc-wrapper">
+    <main class="main-content" id="main-content" tabindex="-1">
+        <article class="content-article">
+            <header class="article-header">
+                <div class="breadcrumbs"><a href="/">Início</a> / <a href="/hardware/">Hardware e Arquitetura</a></div>
+                <h1 class="article-title" id="page-title">Hierarquia de Memória (RAM, Cache)</h1>
+                <p class="article-subtitle">Um sistema de armazenamento organizado em camadas para balancear velocidade, custo e capacidade, garantindo que a CPU tenha acesso rápido aos dados de que mais precisa.</p>
+            </header>
+
+            <section class="article-body">
+                <p>Uma CPU moderna pode executar bilhões de ciclos por segundo. Se ela tivesse que esperar pela lenta memória principal toda vez que precisasse de um dado, seu poder de processamento seria desperdiçado. A solução para este problema é a hierarquia de memória, um princípio de design que organiza a memória em múltiplos níveis.</p>
+                <p>A regra geral é: quanto mais próxima da CPU, mais rápida, menor e mais cara (por byte) é a memória.</p>
+                
+                <h2 id="niveis-da-hierarquia">Os Níveis da Hierarquia</h2>
+                <p>A hierarquia de memória é tipicamente visualizada como uma pirâmide:</p>
+                <ol>
+                    <li><strong>Registradores da CPU:</strong> No topo absoluto da pirâmide. São pequenas áreas de memória extremamente rápidas localizadas dentro da própria CPU. Armazenam os dados que estão sendo ativamente manipulados pela ALU. O acesso é praticamente instantâneo.</li>
+                    <li><strong>Memória Cache (L1, L2, L3):</strong> Uma camada de memória SRAM (RAM estática) rápida e pequena que serve como um buffer entre a CPU e a memória principal. Ela armazena cópias dos dados e instruções mais frequentemente usados da RAM.
+                        <ul>
+                            <li><strong>Cache L1:</strong> A menor e mais rápida, dividida para dados e instruções.</li>
+                            <li><strong>Cache L2:</strong> Maior e um pouco mais lenta que a L1.</li>
+                            <li><strong>Cache L3:</strong> A maior e mais "lenta" das caches, compartilhada por todos os núcleos da CPU.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Memória Principal (RAM):</strong> A memória de trabalho do computador, tipicamente DRAM (RAM dinâmica). É muito maior que a cache, mas significativamente mais lenta. Armazena os programas e dados que estão em uso ativo.</li>
+                    <li><strong>Armazenamento Secundário (SSD/HDD):</strong> A base da pirâmide. É onde os dados e programas são armazenados permanentemente (memória não-volátil). É a maior e mais lenta de todas as camadas.</li>
+                </ol>
+
+                <div class="callout-box info">
+                    <p><strong>O Princípio da Localidade:</strong> A eficácia da memória cache baseia-se em um princípio chamado "localidade de referência". Ele observa que os programas tendem a acessar repetidamente o mesmo conjunto de locais de memória (localidade temporal) e locais de memória próximos uns dos outros (localidade espacial). A cache explora esse comportamento para prever e pré-carregar os dados que a CPU provavelmente precisará em seguida.</p>
+                </div>
+
+                <h2 id="funcionamento-da-cache">Como a Cache Funciona</h2>
+                <p>Quando a CPU precisa de um dado, ela primeiro verifica a cache L1. Se o dado estiver lá (um "cache hit"), ele é acessado rapidamente. Se não estiver (um "cache miss"), a CPU procura na L2, depois na L3. Se o dado não for encontrado em nenhuma das caches, a CPU finalmente o busca na lenta memória RAM.</p>
+                <p>Quando um dado é trazido da RAM, uma cópia dele é colocada na cache. Se a cache estiver cheia, um algoritmo de substituição (como o LRU - Least Recently Used) decide qual dado antigo deve ser descartado para dar lugar ao novo. Um "cache hit rate" (taxa de acertos) alto é crucial para o desempenho do sistema.</p>
+
+            </section>
+        </article>
+
+        <footer class="article-footer">
+            <nav class="article-pagination" aria-label="Navegação de artigos">
+                <a href="/hardware/cpu.html" class="pagination-link prev">
+                    <span class="pagination-label">Anterior</span>
+                    <span class="pagination-title">CPU e Microprocessadores</span>
+                </a>
+                <a href="/hardware/armazenamento.html" class="pagination-link next">
+                    <span class="pagination-label">Próximo</span>
+                    <span class="pagination-title">Armazenamento (HDD, SSD)</span>
+                </a>
+            </nav>
+        </footer>
+    </main>
+    
+    <aside class="toc-sidebar" id="toc-sidebar">
+        <nav class="toc-nav" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+            <ul class="toc-list">
+                <li><a href="#page-title" class="toc-link is-active">Introdução</a></li>
+                <li><a href="#niveis-da-hierarquia" class="toc-link">Níveis da Hierarquia</a></li>
+                <li><a href="#funcionamento-da-cache" class="toc-link">Como a Cache Funciona</a></li>
+            </ul>
+        </nav>
+    </aside>
+</div>
