@@ -1,0 +1,74 @@
+<div class="content-and-toc-wrapper">
+    <main class="main-content" id="main-content" tabindex="-1">
+        <article class="content-article">
+            <header class="article-header">
+                <div class="breadcrumbs"><a href="">Início</a> / <a href="so/">Sistemas Operacionais</a></div>
+                <h1 class="article-title" id="page-title">Gerenciamento de Processos</h1>
+                <p class="article-subtitle">Como o Sistema Operacional cria a ilusão de que múltiplos programas estão rodando simultaneamente em uma única CPU.</p>
+            </header>
+
+            <section class="article-body">
+                <p>Quando você abre um navegador, um editor de texto e um player de música ao mesmo tempo, cada um desses programas roda como um <strong>processo</strong>. O gerenciamento de processos é a tarefa do SO de administrar a criação, execução e finalização desses processos, distribuindo o tempo da CPU entre eles de forma justa e eficiente.</p>
+                
+                <h2 id="o-que-e-um-processo">O Que é um Processo?</h2>
+                <p>Um processo é mais do que apenas o código de um programa. É uma instância de um programa em execução, contendo seu estado atual e recursos alocados. O SO armazena todas as informações sobre um processo em uma estrutura de dados chamada <strong>Bloco de Controle de Processo (PCB)</strong>. O PCB inclui:</p>
+                <ul>
+                    <li>O estado atual do processo (pronto, executando, etc.).</li>
+                    <li>O valor dos registradores da CPU.</li>
+                    <li>Informações sobre a memória alocada.</li>
+                    <li>Uma lista de arquivos abertos e outros recursos.</li>
+                </ul>
+
+                <h2 id="estados-de-um-processo">Os Estados de um Processo</h2>
+                <p>Durante sua vida, um processo passa por vários estados:</p>
+                <ol>
+                    <li><strong>Novo (New):</strong> O processo está sendo criado.</li>
+                    <li><strong>Pronto (Ready):</strong> O processo está na memória e pronto para ser executado, aguardando sua vez de usar a CPU.</li>
+                    <li><strong>Executando (Running):</strong> O processo está atualmente utilizando a CPU para executar suas instruções.</li>
+                    <li><strong>Bloqueado (Blocked/Waiting):</strong> O processo está esperando por um evento externo, como o término de uma operação de leitura do disco ou a chegada de dados da rede. Ele não pode usar a CPU mesmo que ela esteja livre.</li>
+                    <li><strong>Terminado (Terminated):</strong> O processo concluiu sua execução e seus recursos estão sendo liberados pelo SO.</li>
+                </ol>
+
+                <h2 id="escalonador-e-troca-de-contexto">O Escalonador e a Troca de Contexto</h2>
+                <p>O componente do SO responsável por decidir qual processo no estado "Pronto" deve receber a CPU é chamado de <strong>escalonador (scheduler)</strong>. Em sistemas multitarefa, o escalonador alterna a CPU entre os processos centenas de vezes por segundo.</p>
+                <p>Essa ação de alternar a CPU de um processo para outro é chamada de <strong>troca de contexto (context switch)</strong>. Para isso, o SO deve:</p>
+                <ol>
+                    <li>Salvar o contexto do processo A (todos os valores dos registradores da CPU) em seu PCB.</li>
+                    <li>Carregar o contexto do processo B a partir do PCB dele para os registradores da CPU.</li>
+                    <li>Continuar a execução a partir do ponto em que o processo B parou.</li>
+                </ol>
+
+                <div class="callout-box info">
+                    <p><strong>A Ilusão da Simultaneidade:</strong> A troca de contexto acontece tão rápido que, para um usuário humano, parece que todos os programas estão rodando ao mesmo tempo. Na realidade, em uma CPU de núcleo único, apenas um processo está verdadeiramente em execução em um determinado instante no tempo. Este conceito é chamado de <strong>concorrência</strong>.</p>
+                </div>
+                
+                <p>Embora a troca de contexto seja essencial para a multitarefa, ela tem um custo (overhead), pois nenhum trabalho útil é realizado durante a troca. O design de um bom escalonador busca maximizar o uso da CPU e minimizar a latência, proporcionando uma experiência de usuário fluida e responsiva.</p>
+            </section>
+        </article>
+
+        <footer class="article-footer">
+            <nav class="article-pagination" aria-label="Navegação de artigos">
+                <a href="so/conceitos.html" class="pagination-link prev">
+                    <span class="pagination-label">Anterior</span>
+                    <span class="pagination-title">Conceitos Fundamentais</span>
+                </a>
+                <a href="so/gerenciamento-memoria.html" class="pagination-link next">
+                    <span class="pagination-label">Próximo</span>
+                    <span class="pagination-title">Gerenciamento de Memória</span>
+                </a>
+            </nav>
+        </footer>
+    </main>
+    
+    <aside class="toc-sidebar" id="toc-sidebar">
+        <nav class="toc-nav" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+            <ul class="toc-list">
+                <li><a href="#page-title" class="toc-link is-active">Introdução</a></li>
+                <li><a href="#o-que-e-um-processo" class="toc-link">O Que é um Processo?</a></li>
+                <li><a href="#estados-de-um-processo" class="toc-link">Estados de um Processo</a></li>
+                <li><a href="#escalonador-e-troca-de-contexto" class="toc-link">Escalonador e Troca de Contexto</a></li>
+            </ul>
+        </nav>
+    </aside>
+</div>
