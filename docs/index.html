@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitchutcha - A Saga da Humanidade</title>
+    <meta name="description" content="Uma jornada interativa e animada através da história da humanidade, ciência e avanços tecnológicos, visualizada em um globo terrestre 3D detalhado.">
+    <meta name="keywords" content="História, Ciência, Tecnologia, Humanidade, Animação 3D, WebGL, Three.js, GSAP, Documentário Interativo">
+    <meta name="author" content="Gemini AI">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta de Cores e Variáveis de Design */
+            --color-background: #00021a;
+            --color-text-primary: #e0e0e0;
+            --color-text-secondary: #a0a0b0;
+            --color-heading: #ffffff;
+            --color-accent: #33a0e0; /* Um azul vibrante que remete à Terra */
+            --color-accent-glow: rgba(51, 160, 224, 0.5);
+
+            /* Tipografia */
+            --font-family-headings: 'Montserrat', sans-serif;
+            --font-family-body: 'Lora', serif;
+
+            /* Easing para transições suaves */
+            --easing-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* 1. Reset e Configurações Globais */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--color-background);
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* 2. Preloader (Tela de Carregamento) */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--color-background);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            flex-direction: column;
+            gap: 20px;
+            transition: opacity 1s var(--easing-cubic);
+        }
+
+        .loader-logo {
+            font-family: var(--font-family-headings);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--color-heading);
+            letter-spacing: 2px;
+        }
+        
+        .loader-logo .accent {
+            color: var(--color-accent);
+            text-shadow: 0 0 15px var(--color-accent-glow);
+        }
+
+        #progress-bar-container {
+            width: 300px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        #progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--color-accent);
+            border-radius: 2px;
+            transition: width 0.3s ease-out;
+            box-shadow: 0 0 10px var(--color-accent-glow);
+        }
+        
+        #progress-text {
+            margin-top: 10px;
+            font-family: var(--font-family-headings);
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* 3. Estrutura Principal e Layout */
+        #globe-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        #main-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* 4. Elementos da Interface (UI) */
+        #main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            pointer-events: none; /* Permite cliques "através" do header */
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        #main-header .site-title {
+            font-family: var(--font-family-headings);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--color-heading);
+            pointer-events: all; /* Habilita eventos apenas no título */
+        }
+
+        #scroll-progress-container {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 100;
+        }
+
+        #scroll-progress-bar {
+            width: 100%;
+            height: 0%;
+            background: var(--color-accent);
+            box-shadow: 0 0 10px var(--color-accent-glow);
+        }
+
+        /* 5. Seções de Conteúdo */
+        .content-section {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh; /* Cada seção ocupa pelo menos a altura da tela */
+            width: 100%;
+            max-width: 1200px;
+            padding: 5rem;
+        }
+
+        .content-box {
+            background-color: rgba(10, 20, 40, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2.5rem;
+            max-width: 500px; /* Largura máxima da caixa de texto */
+            opacity: 0; /* Controlado via JS/GSAP */
+            transform: translateY(50px); /* Controlado via JS/GSAP */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Posicionamento alternado das caixas de conteúdo */
+        .content-section:nth-child(even) {
+            justify-content: flex-end;
+        }
+        
+        .content-section h1, .content-section h2 {
+            font-family: var(--font-family-headings);
+            color: var(--color-heading);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content-section h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            text-shadow: 0 0 20px var(--color-accent-glow);
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-primary);
+        }
+        
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .content-section .highlight {
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        /* Estilos especiais para a seção de introdução */
+        #intro-section .content-box {
+            max-width: 700px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            backdrop-filter: none;
+            box-shadow: none;
+        }
+        
+        #intro-section {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             text-align: center;
+        }
+
+        #intro-section .subtitle {
+            font-family: var(--font-family-headings);
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
+            margin-top: 1rem;
+            letter-spacing: 2px;
+        }
+        
+        /* 6. Acessibilidade */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+        
+        /* 7. Responsividade */
+        @media (max-width: 768px) {
+            #main-header {
+                padding: 1.5rem;
+            }
+            
+            #main-header .site-title {
+                font-size: 1.2rem;
+            }
+            
+            #scroll-progress-container {
+                display: none; /* Esconde a barra de scroll em telas menores */
+            }
+
+            .content-section {
+                padding: 2rem;
+                justify-content: center; /* Centraliza em mobile */
+            }
+
+            .content-section:nth-child(even) {
+                justify-content: center; /* Centraliza em mobile */
+            }
+            
+            .content-box {
+                width: 100%;
+                max-width: 100%;
+                padding: 1.5rem;
+            }
+
+            .content-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .content-section p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-logo">PITCHUT<span class="accent">CHA</span></div>
+        <div id="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+        <div id="progress-text">Inicializando a simulação... 0%</div>
+    </div>
+
+    <div id="globe-container"></div>
+
+    <header id="main-header">
+        <div class="site-title">Pitchutcha</div>
+        </header>
+
+    <div id="scroll-progress-container">
+        <div id="scroll-progress-bar"></div>
+    </div>
+
+    <main id="main-content">
+
+        <section id="intro-section" class="content-section">
+            <div class="content-box">
+                <h1>PITCHUTCHA</h1>
+                <p class="subtitle">Uma exploração visual da consciência, da ciência e do nosso futuro coletivo.</p>
+                <p style="margin-top: 2rem; color: var(--color-text-secondary);">Role para baixo e inicie a jornada.</p>
+            </div>
+        </section>
+
+        <section id="pale-blue-dot" class="content-section">
+            <div class="content-box">
+                <h2>Capítulo I: O Pálido Ponto Azul</h2>
+                <p>Nossa jornada começa aqui, em um grão de poeira suspenso em um raio de sol. Há <span class="highlight">4,5 bilhões de anos</span>, a Terra se formou a partir de uma nebulosa solar. Por éons, foi uma rocha estéril e bombardeada. Mas nas profundezas de seus oceanos primordiais, algo extraordinário estava para acontecer.</p>
+                <p>A vida surgiu. Simples, microscópica, tenaz. Essa primeira centelha daria início à mais grandiosa história já contada, transformando a química inerte em biologia, silêncio em sinfonia, e uma rocha sem nome em nosso único lar.</p>
+            </div>
+        </section>
+
+        <section id="dawn-of-consciousness" class="content-section">
+            <div class="content-box">
+                <h2>Capítulo II: O Despertar da Consciência</h2>
+                <p>Milhões de anos de evolução se passaram. Nas savanas da África, um primata bípede começou a olhar para as estrelas e a se perguntar. O <span class="highlight">Homo sapiens</span> emergiu. Não éramos os mais fortes ou os mais rápidos, mas possuíamos uma ferramenta sem precedentes: uma mente capaz de pensamento abstrato, linguagem e cooperação em massa.</p>
+                <p>Com o domínio do fogo, a criação das primeiras ferramentas de pedra e o desenvolvimento da arte rupestre, não estávamos mais apenas sobrevivendo. Estávamos começando a impor nossa vontade ao mundo, a registrar nossa história e a construir as fundações da civilização.</p>
+            </div>
+        </section>
+
+        <section id="agricultural-revolution" class="content-section">
+            <div class="content-box">
+                <h2>Capítulo III: A Semente da Civilização</h2>
+                <p>Por volta de <span class="highlight">10.000 a.C.</span>, uma das mudanças mais fundamentais da história humana ocorreu. Deixamos de ser caçadores-coletores nômades e aprendemos a cultivar a terra e a domesticar animais. A Revolução Agrícola permitiu a criação de assentamentos permanentes, o excedente de alimentos e o surgimento de populações maiores.</p>
+                <p>Nasceram as primeiras aldeias, que se tornaram cidades, que se tornaram impérios. A especialização do trabalho floresceu: surgiram artesãos, sacerdotes, soldados e escribas. A complexidade social aumentou exponencialmente, e com ela, a invenção da escrita, da matemática e do governo organizado no Crescente Fértil, no Egito e em outras partes do mundo.</p>
+            </div>
+        </section>
+
+        <section id="age-of-reason" class="content-section">
+            <div class="content-box">
+                <h2>Capítulo IV: O Florescer da Razão</h2>
+                <p>Na Grécia Antiga, por volta do século V a.C., uma nova forma de investigação do mundo nasceu: a <span class="highlight">filosofia</span>. Pensadores como Sócrates, Platão e Aristóteles não buscavam mais explicações apenas nos mitos, mas na lógica, na observação e no debate racional. Eles lançaram as bases para a política, a ética, a lógica e a ciência ocidentais.</p>
+                <p>Simultaneamente, em outras partes do globo, grandes avanços ocorriam. Na Índia, conceitos como o zero eram desenvolvidos. Na China, a Bússola, a pólvora e a impressão já estavam mudando a sociedade. O conhecimento viajava, ainda que lentamente, através de rotas comerciais como a Rota da Seda, conectando mentes e culturas.</p>
+            </div>
+        </section>
+
+        <section id="scientific-revolution" class="content-section">
+            <div class="content-box">
+                <h2>Capítulo V: Decifrando o Cosmos</h2>
+                <p>Entre os séculos XVI e XVIII, uma mudança sísmica abalou nossa compreensão do universo. A Terra, que se acreditava ser o centro de tudo, foi destronada. <span class="highlight">Copérnico</span>, <span class="highlight">Kepler</span> e <span class="highlight">Galileu</span> nos mostraram um sistema solar heliocêntrico, observando os céus com uma nova ferramenta revolucionária: o telescópio.</p>
+                <p>O ápice dessa revolução veio com <span class="highlight">Isaac Newton</span>, que formulou as leis do movimento e da gravitação universal. O universo não era mais um domínio de deuses caprichosos, mas um mecanismo de relógio grandioso, governado por leis matemáticas precisas e cognoscíveis. O método científico — observação, hipótese, experimentação — tornou-se a ferramenta mais poderosa da humanidade para adquirir conhecimento.</p>
+            </div>
+        </section>
+        
+        </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+    <script>
+        // O código JavaScript principal começará aqui na próxima resposta.
+        // Ele cuidará do preloader, da criação da cena 3D com Three.js,
+        // e da orquestração das animações com GSAP e ScrollTrigger.
+    </script>
+
+</body>
+</html>
