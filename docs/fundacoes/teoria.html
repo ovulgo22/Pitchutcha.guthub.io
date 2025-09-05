@@ -1,0 +1,71 @@
+<div class="content-and-toc-wrapper">
+    <main class="main-content" id="main-content" tabindex="-1">
+        <article class="content-article">
+            <header class="article-header">
+                <div class="breadcrumbs"><a href="/">Início</a> / <a href="/fundacoes/">Fundações da Computação</a></div>
+                <h1 class="article-title" id="page-title">Teoria da Computação</h1>
+                <p class="article-subtitle">Explorando as questões fundamentais: O que pode ser computado? Com que eficiência? E quais são os limites do que as máquinas podem resolver?</p>
+            </header>
+
+            <section class="article-body">
+                <p>A Teoria da Computação é o ramo da ciência da computação e da matemática que lida com o que pode ser resolvido por um modelo de computação, usando um algoritmo. Ela nos dá as ferramentas para entender a natureza fundamental dos problemas e os limites do poder computacional.</p>
+                
+                <h2 id="tres-ramos">Os Três Ramos Principais</h2>
+                <p>Esta disciplina é geralmente dividida em três grandes áreas:</p>
+                <ol>
+                    <li><strong>Teoria dos Autômatos:</strong> Estuda os modelos matemáticos abstratos de máquinas de computar, como as máquinas de estado finito.</li>
+                    <li><strong>Teoria da Computabilidade:</strong> Classifica os problemas entre aqueles que são "solucionáveis" (decidíveis) e aqueles que são "insolucionáveis" (indecidíveis).</li>
+                    <li><strong>Teoria da Complexidade:</strong> Analisa a quantidade de recursos (tempo e espaço/memória) necessários para resolver um problema.</li>
+                </ol>
+
+                <h2 id="computabilidade">Computabilidade e o Problema da Parada</h2>
+                <p>Uma das primeiras e mais importantes descobertas da teoria da computabilidade foi feita por Alan Turing. Ele provou matematicamente que certos problemas são impossíveis de serem resolvidos por qualquer computador, não importa quão poderoso ele seja.</p>
+                
+                <div class="callout-box info">
+                    <p><strong>O Problema da Parada (The Halting Problem):</strong> Turing demonstrou que é impossível criar um algoritmo geral que possa determinar, para qualquer programa de computador e qualquer entrada, se o programa irá eventualmente parar (terminar sua execução) ou continuar a rodar para sempre. Este foi o primeiro problema a ser provado como "indecidível".</p>
+                </div>
+                <p>Essa descoberta estabeleceu um limite fundamental para o poder da computação e mostrou que existem fronteiras lógicas que não podemos cruzar com algoritmos.</p>
+
+
+                <h2 id="complexidade">Complexidade: P vs NP</h2>
+                <p>Enquanto a computabilidade pergunta "Podemos resolver isso?", a teoria da complexidade pergunta "Com que rapidez podemos resolver isso?". Ela classifica os problemas com base em sua dificuldade.</p>
+                <p>Uma das maiores questões em aberto em toda a ciência da computação reside aqui: o problema de <strong>P versus NP</strong>.</p>
+                <ul>
+                    <li><strong>Classe P:</strong> Contém problemas que podem ser <strong>resolvidos</strong> rapidamente por um computador (em tempo polinomial).</li>
+                    <li><strong>Classe NP:</strong> Contém problemas cujas soluções, uma vez encontradas, podem ser <strong>verificadas</strong> rapidamente.</li>
+                </ul>
+                <p>Todo problema em P também está em NP. A grande questão, que vale um prêmio de um milhão de dólares, é se P é igual a NP. Em outras palavras, se um problema pode ter sua solução verificada rapidamente, isso significa que ele também pode ser resolvido rapidamente? A maioria dos cientistas da computação acredita que P ≠ NP, mas ninguém conseguiu provar isso ainda.</p>
+
+                <h2 id="importancia-da-teoria">A Importância da Teoria</h2>
+                <p>Embora pareça abstrata, a teoria da computação tem implicações práticas imensas. Ela informa o design de linguagens de programação, a otimização de algoritmos, a segurança da criptografia e nos ajuda a entender quais problemas vale a pena tentar resolver com computadores e quais podem ser fundamentalmente intratáveis.</p>
+
+            </section>
+        </article>
+
+        <footer class="article-footer">
+            <nav class="article-pagination" aria-label="Navegação de artigos">
+                <a href="/fundacoes/pioneiros.html" class="pagination-link prev">
+                    <span class="pagination-label">Anterior</span>
+                    <span class="pagination-title">Pioneiros da Computação</span>
+                </a>
+                <a href="/fundacoes/arquitetura-von-neumann.html" class="pagination-link next">
+                    <span class="pagination-label">Próximo</span>
+                    <span class="pagination-title">Arquitetura de Von Neumann</span>
+                </a>
+            </nav>
+        </footer>
+    </main>
+    
+    <aside class="toc-sidebar" id="toc-sidebar">
+        <nav class="toc-nav" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+            <ul class="toc-list">
+                <li><a href="#page-title" class="toc-link is-active">Introdução</a></li>
+                <li><a href="#tres-ramos" class="toc-link">Os Três Ramos Principais</a></li>
+                <li><a href="#computabilidade" class="toc-link">Computabilidade</a></li>
+                <li><a href="#complexidade" class="toc-link">Complexidade: P vs NP</a></li>
+                <li><a href="#importancia-da-teoria" class="toc-link">A Importância da Teoria</a></li>
+            </ul>
+        </nav>
+    </aside>
+</div>
