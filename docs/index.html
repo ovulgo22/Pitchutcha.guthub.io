@@ -36,7 +36,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-    </head>
+</head>
 <body data-theme="light">
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
@@ -44,7 +44,7 @@
     <header class="main-header" id="main-header">
         <div class="header-container">
             <div class="header-left">
-                <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+                <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="sidebar">
                     <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path></svg>
                     <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"></path></svg>
                 </button>
@@ -80,18 +80,15 @@
     </header>
 
     <div class="main-container">
+        
         <aside class="sidebar" id="sidebar">
             <nav class="sidebar-nav" aria-label="Navegação principal">
                 <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link active">Introdução ao Pitchutcha</a>
-                    </li>
+                    <li class="nav-item"><a href="/" class="nav-link active">Introdução ao Pitchutcha</a></li>
 
                     <li class="nav-item">
                         <details open>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">I. Fundações da Computação</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">I. Fundações da Computação</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/fundacoes/historia-antiga" class="nav-link">História Antiga e Precursores</a></li>
                                 <li><a href="/fundacoes/pioneiros" class="nav-link">Os Pioneiros da Computação</a></li>
@@ -118,9 +115,7 @@
 
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">II. A Era dos Mainframes</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">II. A Era dos Mainframes</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/mainframes/primeira-geracao" class="nav-link">1ª Geração: Válvulas</a></li>
                                 <li><a href="/mainframes/segunda-geracao" class="nav-link">2ª Geração: Transistores</a></li>
@@ -134,9 +129,7 @@
 
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">III. A Revolução do PC</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">III. A Revolução do PC</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/pc-revolution/microprocessadores" class="nav-link">A Invenção do Microprocessador</a></li>
                                 <li><a href="/pc-revolution/primeiros-pcs" class="nav-link">Os Primeiros Computadores Pessoais</a></li>
@@ -161,9 +154,7 @@
 
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">IV. A Era da Internet e da Web</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">IV. A Era da Internet e da Web</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/internet-era/arpanet" class="nav-link">As Origens: ARPANET</a></li>
                                 <li><a href="/internet-era/protocolos" class="nav-link">Protocolos Fundamentais: TCP/IP</a></li>
@@ -184,92 +175,10 @@
                             </ul>
                         </details>
                     </li>
-                </ul>
-            </nav>
-        </aside>
-
-        <main class="main-content" id="main-content" role="main" tabindex="-1">
-            <article class="content-article">
-                <header class="article-header">
-                    <div class="breadcrumbs">
-                        <a href="/">Início</a>
-                    </div>
-                    <h1 class="article-title">Bem-vindo ao Pitchutcha</h1>
-                    <p class="article-subtitle">Uma jornada profunda e detalhada através das eras da computação, desvendando as mentes, as máquinas e as ideias que moldaram o nosso mundo digital.</p>
-                </header>
-
-                <section class="article-body">
-                    <p>O Projeto Pitchutcha nasceu da ambição de criar um recurso centralizado, aberto e extremamente detalhado sobre a ciência da computação. Nossa missão é documentar não apenas o "como", mas o "porquê" e o "quem" por trás de cada avanço tecnológico, desde os conceitos matemáticos mais abstratos até as aplicações práticas que usamos todos os dias.</p>
                     
-                    <div class="callout-box info">
-                        <div class="callout-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M11 7h2v2h-2V7zm0 4h2v6h-2v-6zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
-                        </div>
-                        <div class="callout-content">
-                            <p><strong>Navegue pelo Conhecimento:</strong> Utilize o menu lateral para explorar as diferentes eras e disciplinas da computação. A busca no topo da página permite encontrar tópicos específicos rapidamente.</p>
-                        </div>
-                    </div>
-
-                    <h2>Explore as Grandes Áreas</h2>
-                    <p>Para começar sua jornada, selecione uma das grandes áreas do conhecimento abaixo ou mergulhe diretamente em um tópico específico usando a navegação lateral.</p>
-                    
-                    <div class="quick-nav-grid">
-                        <a href="/fundacoes/" class="card-link">
-                            <div class="card">
-                                <div class="card-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 8v11h18V8L12 2zm0 2.236L18.053 8H5.947L12 4.236zM5 10h14v9H5v-9z M7 12v5h2v-5H7zm4 0v5h2v-5h-2zm4 0v5h2v-5h-2z"/></svg>
-                                </div>
-                                <h3 class="card-title">Fundações da Computação</h3>
-                                <p class="card-description">Descubra as mentes brilhantes e as teorias que formaram a base de tudo que conhecemos hoje.</p>
-                            </div>
-                        </a>
-                        <a href="/mainframes/" class="card-link">
-                            <div class="card">
-                                <div class="card-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18H4V6h16v12zM4 4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4zm2 4h4v2H6V8zm0 4h4v2H6v-2zm6-4h6v2h-6V8zm0 4h6v2h-6v-2z"/></svg>
-                                </div>
-                                <h3 class="card-title">A Era dos Mainframes</h3>
-                                <p class="card-description">Conheça as gigantescas máquinas que iniciaram a era do processamento de dados em larga escala.</p>
-                            </div>
-                        </a>
-                        <a href="/pc-revolution/" class="card-link">
-                            <div class="card">
-                                <div class="card-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
-                                </div>
-                                <h3 class="card-title">A Revolução do PC</h3>
-                                <p class="card-description">Acompanhe a história da democratização da computação e a ascensão dos computadores pessoais.</p>
-                            </div>
-                        </a>
-                        <a href="/internet-era/" class="card-link">
-                            <div class="card">
-                                <div class="card-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                                </div>
-                                <h3 class="card-title">A Era da Internet e da Web</h3>
-                                <p class="card-description">Navegue pela criação da rede que conectou o mundo e transformou a sociedade para sempre.</p>
-                            </div>
-                        </a>
-                    </div>
-                </section>
-                
-</section>
-            </article>
-
-            </main>
-    </div> <script>
-        // Pequeno script para popular o resto da sidebar para não sobrecarregar o HTML inicial
-        // No projeto final, isso pode ser gerado dinamicamente ou estar diretamente no HTML.
-        // Por agora, vamos injetar o HTML restante para manter a clareza.
-        (function() {
-            const navList = document.querySelector('.sidebar-nav .nav-list');
-            if (navList) {
-                const remainingNavHTML = `
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">V. A Era Móvel e da Nuvem</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">V. A Era Móvel e da Nuvem</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/mobile-cloud/smartphones" class="nav-link">A Revolução dos Smartphones</a></li>
                                 <li><a href="/mobile-cloud/sistemas-operacionais-moveis" class="nav-link">Sistemas Operacionais Móveis (iOS, Android)</a></li>
@@ -293,9 +202,7 @@
 
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">VI. IA, Machine Learning e Dados</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">VI. IA, Machine Learning e Dados</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/ai-ml/historia-ia" class="nav-link">Uma Breve História da IA</a></li>
                                 <li><a href="/ai-ml/conceitos-ml" class="nav-link">Conceitos de Machine Learning</a></li>
@@ -320,9 +227,7 @@
 
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">Hardware e Arquitetura</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">Hardware e Arquitetura</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/hardware/cpu" class="nav-link">CPU (Unidade Central de Processamento)</a></li>
                                 <li><a href="/hardware/cisc-risc" class="nav-link">CISC vs. RISC</a></li>
@@ -337,9 +242,7 @@
 
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">Engenharia de Software</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">Engenharia de Software</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/engenharia-software/ciclo-de-vida" class="nav-link">Ciclo de Vida de Software</a></li>
                                 <li><a href="/engenharia-software/metodologias" class="nav-link">Metodologias (Ágil, Cascata)</a></li>
@@ -354,9 +257,7 @@
 
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">Linguagens de Programação</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">Linguagens de Programação</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/linguagens/arvore-genealogica" class="nav-link">A Árvore Genealógica das Linguagens</a></li>
                                 <li><a href="/linguagens/linguagens-mae" class="nav-link">Linguagens-Mãe (C, LISP, ALGOL)</a></li>
@@ -371,9 +272,7 @@
 
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">Bancos de Dados</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">Bancos de Dados</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/banco-de-dados/conceitos" class="nav-link">Conceitos Fundamentais</a></li>
                                 <li><a href="/banco-de-dados/modelo-relacional" class="nav-link">O Modelo Relacional e SQL</a></li>
@@ -396,9 +295,7 @@
                     
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">Redes e Segurança</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">Redes e Segurança</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/redes-seguranca/modelo-osi" class="nav-link">O Modelo OSI e a Pilha TCP/IP</a></li>
                                 <li><a href="/redes-seguranca/protocolos" class="nav-link">Protocolos Essenciais da Internet</a></li>
@@ -414,9 +311,7 @@
 
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">Computação Gráfica e IHC</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">Computação Gráfica e IHC</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/grafica-ihc/pipeline-renderizacao" class="nav-link">Pipeline de Renderização 3D</a></li>
                                 <li><a href="/grafica-ihc/shaders" class="nav-link">Shaders e a GPU Programável</a></li>
@@ -430,9 +325,7 @@
                     
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">O Futuro da Computação</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">O Futuro da Computação</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/futuro/computacao-quantica" class="nav-link">Computação Quântica</a></li>
                                 <li><a href="/futuro/computacao-dna" class="nav-link">Computação de DNA</a></li>
@@ -445,9 +338,7 @@
                     
                     <li class="nav-item">
                         <details>
-                            <summary class="nav-summary">
-                                <span class="nav-summary-title">Impactos Sociais e Ética</span>
-                            </summary>
+                            <summary class="nav-summary"><span class="nav-summary-title">Impactos Sociais e Ética</span></summary>
                             <ul class="nav-sublist">
                                 <li><a href="/impactos/etica-tecnologia" class="nav-link">Ética na Tecnologia</a></li>
                                 <li><a href="/impactos/privacidade-dados" class="nav-link">Privacidade de Dados na Era Digital</a></li>
@@ -457,73 +348,85 @@
                             </ul>
                         </details>
                     </li>
-                `;
-                // Insere o HTML restante no final da lista de navegação
-                navList.insertAdjacentHTML('beforeend', remainingNavHTML);
-            }
-        })();
-    </script>
-    
-    <div class="main-content-wrapper">
-        <main class="main-content" id="main-content" role="main" tabindex="-1">
-            <article class="content-article">
-                <section id="sobre" class="article-section">
-                    <h2 class="section-title">Sobre o Projeto Pitchutcha</h2>
-                    <p>Pitchutcha é mais do que um site de documentação; é um esforço colaborativo para construir a enciclopédia de ciência da computação mais abrangente e acessível do mundo. Acreditamos que o conhecimento sobre as ferramentas que moldam nosso mundo deve ser livre, detalhado e compreensível para todos, desde estudantes curiosos até profissionais experientes.</p>
-                    <p>Nossos princípios fundamentais são:</p>
-                    <ul>
-                        <li><strong>Profundidade e Precisão:</strong> Vamos além do superficial, conectando teorias, pessoas e eventos para criar uma narrativa coesa e precisa.</li>
-                        <li><strong>Código Aberto e Colaborativo:</strong> Todo o conteúdo e o código do site são abertos. Acreditamos no poder da comunidade para criar um recurso melhor para todos.</li>
-                        <li><strong>Acessibilidade Universal:</strong> O design e a estrutura são pensados desde o início para serem acessíveis a pessoas com diferentes habilidades e necessidades, seguindo as diretrizes do WCAG.</li>
-                        <li><strong>Design Focado na Leitura:</strong> A experiência do usuário é otimizada para longas sessões de leitura, com tipografia clara, temas adaptáveis e uma interface livre de distrações.</li>
-                    </ul>
-                </section>
-
-                <section id="contribuir" class="article-section">
-                    <h2 class="section-title">Como Contribuir</h2>
-                    <p>Este projeto é construído pela comunidade, para a comunidade. Existem muitas maneiras de ajudar, independentemente do seu nível de habilidade técnica:</p>
-                    <div class="contribution-steps">
-                        <div class="step">
-                            <h3 class="step-title">1. Reportando Erros e Sugerindo Melhorias</h3>
-                            <p>Encontrou um erro de digitação, uma informação imprecisa ou tem uma ideia para um novo tópico? <a href="https://github.com/[SEU-USUARIO]/pitchutcha/issues">Abra uma "Issue"</a> em nosso repositório no GitHub. Esta é uma das formas mais valiosas de contribuição.</p>
-                        </div>
-                        <div class="step">
-                            <h3 class="step-title">2. Escrevendo e Editando Conteúdo</h3>
-                            <p>Se você tem conhecimento em uma área específica, pode contribuir diretamente com o conteúdo. O processo é feito através de "Pull Requests" no GitHub. Consulte nosso <a href="/guias/guia-de-contribuicao">Guia de Contribuição</a> para aprender o passo a passo.</p>
-                        </div>
-                        <div class="step">
-                            <h3 class="step-title">3. Ajudando com o Código</h3>
-                            <p>Se você é um desenvolvedor, pode ajudar a melhorar o próprio site, seja corrigindo bugs, melhorando a acessibilidade, otimizando o CSS ou adicionando novas funcionalidades ao JavaScript. Explore as <a href="https://github.com/[SEU-USUARIO]/pitchutcha/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">issues para iniciantes</a>.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <footer class="article-footer">
-                    <div class="last-updated">
-                        Última atualização: <time datetime="2025-09-05">5 de Setembro de 2025</time>
-                    </div>
-                    <nav class="article-pagination" aria-label="Navegação de artigos">
-                        <a href="#" class="pagination-link prev" aria-label="Artigo anterior: Nenhum">
-                            </a>
-                        <a href="/fundacoes/historia-antiga" class="pagination-link next" aria-label="Próximo artigo: História Antiga e Precursores">
-                            <span class="pagination-label">Próximo</span>
-                            <span class="pagination-title">História Antiga e Precursores</span>
-                        </a>
-                    </nav>
-                </footer>
-            </article>
-        </main>
-        
-        <aside class="toc-sidebar" id="toc-sidebar">
-            <nav class="toc-nav" aria-labelledby="toc-heading">
-                <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
-                <ul class="toc-list">
-                    <li><a href="#sobre" class="toc-link">Sobre o Projeto Pitchutcha</a></li>
-                    <li><a href="#contribuir" class="toc-link">Como Contribuir</a></li>
                 </ul>
             </nav>
         </aside>
-    </div> <footer class="main-footer" id="main-footer">
+
+        <div class="content-and-toc-wrapper">
+            <main class="main-content" id="main-content" role="main" tabindex="-1">
+                <article class="content-article">
+                    <header class="article-header">
+                        <div class="breadcrumbs"><a href="/">Início</a></div>
+                        <h1 class="article-title">Bem-vindo ao Pitchutcha</h1>
+                        <p class="article-subtitle">Uma jornada profunda e detalhada através das eras da computação, desvendando as mentes, as máquinas e as ideias que moldaram o nosso mundo digital.</p>
+                    </header>
+                    <section class="article-body">
+                        <p>O Projeto Pitchutcha nasceu da ambição de criar um recurso centralizado, aberto e extremamente detalhado sobre a ciência da computação. Nossa missão é documentar não apenas o "como", mas o "porquê" e o "quem" por trás de cada avanço tecnológico, desde os conceitos matemáticos mais abstratos até as aplicações práticas que usamos todos os dias.</p>
+                        <div class="callout-box info">
+                            <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M11 7h2v2h-2V7zm0 4h2v6h-2v-6zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg></div>
+                            <div class="callout-content"><p><strong>Navegue pelo Conhecimento:</strong> Utilize o menu lateral para explorar as diferentes eras e disciplinas da computação. A busca no topo da página permite encontrar tópicos específicos rapidamente.</p></div>
+                        </div>
+                        <h2>Explore as Grandes Áreas</h2>
+                        <p>Para começar sua jornada, selecione uma das grandes áreas do conhecimento abaixo ou mergulhe diretamente em um tópico específico usando a navegação lateral.</p>
+                        <div class="quick-nav-grid">
+                            <a href="/fundacoes/" class="card-link"><div class="card"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 8v11h18V8L12 2zm0 2.236L18.053 8H5.947L12 4.236zM5 10h14v9H5v-9z M7 12v5h2v-5H7zm4 0v5h2v-5h-2zm4 0v5h2v-5h-2z"/></svg></div><h3 class="card-title">Fundações da Computação</h3><p class="card-description">Descubra as mentes brilhantes e as teorias que formaram a base de tudo que conhecemos hoje.</p></div></a>
+                            <a href="/mainframes/" class="card-link"><div class="card"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18H4V6h16v12zM4 4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4zm2 4h4v2H6V8zm0 4h4v2H6v-2zm6-4h6v2h-6V8zm0 4h6v2h-6v-2z"/></svg></div><h3 class="card-title">A Era dos Mainframes</h3><p class="card-description">Conheça as gigantescas máquinas que iniciaram a era do processamento de dados em larga escala.</p></div></a>
+                            <a href="/pc-revolution/" class="card-link"><div class="card"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg></div><h3 class="card-title">A Revolução do PC</h3><p class="card-description">Acompanhe a história da democratização da computação e a ascensão dos computadores pessoais.</p></div></a>
+                            <a href="/internet-era/" class="card-link"><div class="card"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div><h3 class="card-title">A Era da Internet e da Web</h3><p class="card-description">Navegue pela criação da rede que conectou o mundo e transformou a sociedade para sempre.</p></div></a>
+                        </div>
+                    </section>
+                    <section id="sobre" class="article-section">
+                        <h2 class="section-title">Sobre o Projeto Pitchutcha</h2>
+                        <p>Pitchutcha é mais do que um site de documentação; é um esforço colaborativo para construir a enciclopédia de ciência da computação mais abrangente e acessível do mundo. Acreditamos que o conhecimento sobre as ferramentas que moldam nosso mundo deve ser livre, detalhado e compreensível para todos, desde estudantes curiosos até profissionais experientes.</p>
+                        <p>Nossos princípios fundamentais são:</p>
+                        <ul>
+                            <li><strong>Profundidade e Precisão:</strong> Vamos além do superficial, conectando teorias, pessoas e eventos para criar uma narrativa coesa e precisa.</li>
+                            <li><strong>Código Aberto e Colaborativo:</strong> Todo o conteúdo e o código do site são abertos. Acreditamos no poder da comunidade para criar um recurso melhor para todos.</li>
+                            <li><strong>Acessibilidade Universal:</strong> O design e a estrutura são pensados desde o início para serem acessíveis a pessoas com diferentes habilidades e necessidades, seguindo as diretrizes do WCAG.</li>
+                            <li><strong>Design Focado na Leitura:</strong> A experiência do usuário é otimizada para longas sessões de leitura, com tipografia clara, temas adaptáveis e uma interface livre de distrações.</li>
+                        </ul>
+                    </section>
+                    <section id="contribuir" class="article-section">
+                        <h2 class="section-title">Como Contribuir</h2>
+                        <p>Este projeto é construído pela comunidade, para a comunidade. Existem muitas maneiras de ajudar, independentemente do seu nível de habilidade técnica:</p>
+                        <div class="contribution-steps">
+                            <div class="step">
+                                <h3 class="step-title">1. Reportando Erros e Sugerindo Melhorias</h3>
+                                <p>Encontrou um erro de digitação, uma informação imprecisa ou tem uma ideia para um novo tópico? <a href="https://github.com/[SEU-USUARIO]/pitchutcha/issues">Abra uma "Issue"</a> em nosso repositório no GitHub. Esta é uma das formas mais valiosas de contribuição.</p>
+                            </div>
+                            <div class="step">
+                                <h3 class="step-title">2. Escrevendo e Editando Conteúdo</h3>
+                                <p>Se você tem conhecimento em uma área específica, pode contribuir diretamente com o conteúdo. O processo é feito através de "Pull Requests" no GitHub. Consulte nosso <a href="/guias/guia-de-contribuicao">Guia de Contribuição</a> para aprender o passo a passo.</p>
+                            </div>
+                            <div class="step">
+                                <h3 class="step-title">3. Ajudando com o Código</h3>
+                                <p>Se você é um desenvolvedor, pode ajudar a melhorar o próprio site, seja corrigindo bugs, melhorando a acessibilidade, otimizando o CSS ou adicionando novas funcionalidades ao JavaScript. Explore as <a href="https://github.com/[SEU-USUARIO]/pitchutcha/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">issues para iniciantes</a>.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="article-footer">
+                        <div class="last-updated">Última atualização: <time datetime="2025-09-05">5 de Setembro de 2025</time></div>
+                        <nav class="article-pagination" aria-label="Navegação de artigos">
+                            <a href="#" class="pagination-link prev" aria-label="Artigo anterior: Nenhum"></a>
+                            <a href="/fundacoes/historia-antiga" class="pagination-link next" aria-label="Próximo artigo: História Antiga e Precursores"><span class="pagination-label">Próximo</span><span class="pagination-title">História Antiga e Precursores</span></a>
+                        </nav>
+                    </footer>
+                </article>
+            </main>
+            
+            <aside class="toc-sidebar" id="toc-sidebar">
+                <nav class="toc-nav" aria-labelledby="toc-heading">
+                    <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+                    <ul class="toc-list">
+                        <li><a href="#sobre" class="toc-link">Sobre o Projeto Pitchutcha</a></li>
+                        <li><a href="#contribuir" class="toc-link">Como Contribuir</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+    </div>
+
+    <footer class="main-footer" id="main-footer">
         <div class="footer-container">
             <div class="footer-column">
                 <span class="logo-text">Pitchutcha</span>
