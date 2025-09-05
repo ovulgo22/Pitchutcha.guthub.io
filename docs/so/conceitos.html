@@ -1,0 +1,61 @@
+<div class="content-and-toc-wrapper">
+    <main class="main-content" id="main-content" tabindex="-1">
+        <article class="content-article">
+            <header class="article-header">
+                <div class="breadcrumbs"><a href="/">Início</a> / <a href="/so/">Sistemas Operacionais</a></div>
+                <h1 class="article-title" id="page-title">Conceitos Fundamentais de Sistemas Operacionais</h1>
+                <p class="article-subtitle">O software que atua como o maestro da orquestra de hardware, gerenciando todos os recursos do computador e fornecendo a base para a execução de todos os outros programas.</p>
+            </header>
+
+            <section class="article-body">
+                <p>Um Sistema Operacional (SO) é a camada de software que fica entre o hardware físico e os aplicativos que usamos. Sem um SO, cada programa precisaria saber como operar cada componente de hardware específico — uma tarefa impossivelmente complexa. O SO cria uma camada de abstração, tornando o computador utilizável.</p>
+                
+                <h2 id="duas-funcoes-principais">As Duas Funções Principais</h2>
+                <p>O papel de um SO pode ser dividido em duas funções principais:</p>
+                <ol>
+                    <li><strong>Máquina Estendida (Abstração):</strong> O SO esconde a complexidade do hardware e apresenta ao programador e ao usuário uma interface limpa e simples. Ele transforma o hardware bruto em um conjunto elegante de serviços, como um sistema de arquivos organizado em vez de blocos brutos no disco.</li>
+                    <li><strong>Gerenciador de Recursos:</strong> O SO atua como um "governo" para os recursos do computador. Ele decide qual programa pode usar a CPU e por quanto tempo, aloca a memória RAM, gerencia o acesso a dispositivos de entrada e saída (teclado, mouse, impressora) e controla o armazenamento em disco.</li>
+                </ol>
+
+                <div class="callout-box info">
+                    <p><strong>O Kernel: O Coração do SO.</strong> A parte central do sistema operacional é chamada de <strong>kernel</strong>. É o primeiro programa carregado na inicialização do computador e ele permanece em execução o tempo todo. O kernel tem controle total sobre tudo no sistema, gerenciando as tarefas mais críticas e de baixo nível.</p>
+                </div>
+
+                <h2 id="conceitos-chave">Conceitos-Chave</h2>
+                <p>Para gerenciar os recursos, o SO lida com vários conceitos fundamentais:</p>
+                <ul>
+                    <li><strong>Processo:</strong> Um processo é simplesmente um programa em execução. O SO é responsável por criar, agendar, executar e encerrar processos, garantindo que eles não interfiram uns com os outros.</li>
+                    <li><strong>Gerenciamento de Memória:</strong> O SO aloca porções da memória RAM para cada processo. Ele utiliza técnicas como a memória virtual para dar a cada programa a ilusão de que tem seu próprio espaço de memória contínuo, mesmo que fisicamente esteja fragmentado.</li>
+                    <li><strong>Sistema de Arquivos:</strong> O SO organiza os dados em discos de armazenamento através de uma estrutura hierárquica de arquivos e diretórios, controlando quem pode acessar o quê (permissões).</li>
+                    <li><strong>Interface com o Usuário:</strong> É como interagimos com o SO. Pode ser uma <strong>Interface Gráfica do Usuário (GUI)</strong>, com janelas, ícones e um ponteiro do mouse, ou uma <strong>Interface de Linha de Comando (CLI)</strong>, baseada em texto.</li>
+                </ul>
+                <p>Entender esses conceitos é a base para explorar como os sistemas operacionais modernos, do Windows ao Linux e macOS, operam nos bastidores para tornar a computação possível.</p>
+
+            </section>
+        </article>
+
+        <footer class="article-footer">
+            <nav class="article-pagination" aria-label="Navegação de artigos">
+                <a href="/hardware/lei-de-moore.html" class="pagination-link prev">
+                    <span class="pagination-label">Anterior</span>
+                    <span class="pagination-title">A Lei de Moore</span>
+                </a>
+                <a href="/so/gerenciamento-processos.html" class="pagination-link next">
+                    <span class="pagination-label">Próximo</span>
+                    <span class="pagination-title">Gerenciamento de Processos</span>
+                </a>
+            </nav>
+        </footer>
+    </main>
+    
+    <aside class="toc-sidebar" id="toc-sidebar">
+        <nav class="toc-nav" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+            <ul class="toc-list">
+                <li><a href="#page-title" class="toc-link is-active">Introdução</a></li>
+                <li><a href="#duas-funcoes-principais" class="toc-link">As Duas Funções Principais</a></li>
+                <li><a href="#conceitos-chave" class="toc-link">Conceitos-Chave</a></li>
+            </ul>
+        </nav>
+    </aside>
+</div>
