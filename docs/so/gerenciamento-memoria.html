@@ -1,0 +1,62 @@
+<div class="content-and-toc-wrapper">
+    <main class="main-content" id="main-content" tabindex="-1">
+        <article class="content-article">
+            <header class="article-header">
+                <div class="breadcrumbs"><a href="">Início</a> / <a href="so/">Sistemas Operacionais</a></div>
+                <h1 class="article-title" id="page-title">Gerenciamento de Memória</h1>
+                <p class="article-subtitle">A arte de dividir e proteger o recurso finito da RAM entre múltiplos processos competidores, garantindo estabilidade e eficiência.</p>
+            </header>
+
+            <section class="article-body">
+                <p>O Gerenciador de Memória é um dos subsistemas mais complexos de um Sistema Operacional. Sua principal responsabilidade é alocar e desalocar o espaço da memória principal (RAM) para os processos que precisam dela. Um bom gerenciamento é crucial para a performance e, principalmente, para a estabilidade do sistema.</p>
+                
+                <h2 id="espaco-de-enderecamento">O Espaço de Endereçamento: A Abstração da Memória</h2>
+                <p>A primeira coisa que um SO faz é criar uma abstração da memória física. Em vez de permitir que os programas acessem diretamente os endereços físicos da RAM, o SO fornece a cada processo seu próprio <strong>espaço de endereçamento virtual</strong>.</p>
+                <p>Isso significa que cada processo "enxerga" a memória como um grande bloco contínuo, começando do endereço 0, como se ele fosse o único programa rodando no computador. Isso simplifica enormemente a vida dos programadores e é a base para a proteção de memória.</p>
+
+                <h2 id="memoria-virtual">Memória Virtual: Mais Memória do que Existe</h2>
+                <p>A técnica mais importante no gerenciamento de memória moderno é a <strong>memória virtual</strong>. Ela permite que o SO utilize o disco rígido ou SSD como uma extensão da RAM, possibilitando que um programa seja maior do que a memória física disponível.</p>
+                <h3>Paginação</h3>
+                <p>A implementação mais comum da memória virtual é através da <strong>paginação</strong>. O espaço de endereçamento virtual de um processo é dividido em blocos de tamanho fixo chamados <strong>páginas</strong>. A memória RAM física é dividida em blocos do mesmo tamanho, chamados <strong>frames</strong>. O SO mantém uma "tabela de páginas" para cada processo, que mapeia as páginas virtuais para os frames físicos.</p>
+                <p>Quando um processo tenta acessar uma página que não está na RAM (um "page fault"), o SO intervém, encontra a página no disco, a carrega em um frame livre na RAM (possivelmente removendo outra página menos usada) e permite que o processo continue, de forma transparente.</p>
+
+                <div class="callout-box info">
+                    <p><strong>Proteção de Memória:</strong> Como cada processo opera em seu próprio espaço de endereçamento virtual isolado, a memória virtual fornece uma proteção robusta. É impossível para um processo (como um navegador que travou) ler ou escrever acidentalmente na memória de outro processo (como seu gerenciador de senhas) ou do próprio kernel do SO. Isso é fundamental para a segurança e estabilidade dos sistemas modernos.</p>
+                </div>
+                
+                <h2 id="alocacao-de-memoria">Alocação de Memória</h2>
+                <p>Dentro de um processo, a memória é tipicamente dividida em seções:</p>
+                <ul>
+                    <li><strong>Stack (Pilha):</strong> Usada para armazenar variáveis locais e o fluxo de controle de funções. Cresce e encolhe automaticamente.</li>
+                    <li><strong>Heap (Monte):</strong> Usada para alocação dinâmica de memória, para dados cujo tamanho não é conhecido em tempo de compilação (como objetos, listas, etc.). O programador deve gerenciar explicitamente a alocação e liberação desta área.</li>
+                </ul>
+                <p>O SO gerencia essas alocações para garantir que a stack e o heap de um processo não colidam e que não haja vazamentos de memória (memória alocada que nunca é liberada), que podem esgotar os recursos do sistema ao longo do tempo.</p>
+            </section>
+        </article>
+
+        <footer class="article-footer">
+            <nav class="article-pagination" aria-label="Navegação de artigos">
+                <a href="so/gerenciamento-processos.html" class="pagination-link prev">
+                    <span class="pagination-label">Anterior</span>
+                    <span class="pagination-title">Gerenciamento de Processos</span>
+                </a>
+                <a href="so/sistemas-de-arquivos.html" class="pagination-link next">
+                    <span class="pagination-label">Próximo</span>
+                    <span class="pagination-title">Sistemas de Arquivos</span>
+                </a>
+            </nav>
+        </footer>
+    </main>
+    
+    <aside class="toc-sidebar" id="toc-sidebar">
+        <nav class="toc-nav" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+            <ul class="toc-list">
+                <li><a href="#page-title" class="toc-link is-active">Introdução</a></li>
+                <li><a href="#espaco-de-enderecamento" class="toc-link">Espaço de Endereçamento</a></li>
+                <li><a href="#memoria-virtual" class="toc-link">Memória Virtual</a></li>
+                <li><a href="#alocacao-de-memoria" class="toc-link">Alocação de Memória</a></li>
+            </ul>
+        </nav>
+    </aside>
+</div>
