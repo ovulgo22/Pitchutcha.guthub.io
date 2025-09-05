@@ -1,0 +1,64 @@
+<div class="content-and-toc-wrapper">
+    <main class="main-content" id="main-content" tabindex="-1">
+        <article class="content-article">
+            <header class="article-header">
+                <div class="breadcrumbs"><a href="/">Início</a> / <a href="/hardware/">Hardware e Arquitetura</a></div>
+                <h1 class="article-title" id="page-title">GPU e Computação Paralela</h1>
+                <p class="article-subtitle">De renderizar pixels em jogos a treinar inteligências artificiais, explore o poder do processamento massivamente paralelo da Unidade de Processamento Gráfico.</p>
+            </header>
+
+            <section class="article-body">
+                <p>A Unidade de Processamento Gráfico (GPU, do inglês Graphics Processing Unit) é um processador especializado projetado para acelerar a criação e renderização de imagens, vídeos e animações. Enquanto a CPU é um mestre em executar uma ou duas tarefas complexas de forma muito rápida (processamento serial), a GPU é projetada para executar milhares de tarefas mais simples ao mesmo tempo (processamento paralelo).</p>
+                
+                <h2 id="cpu-vs-gpu">Processamento Serial vs. Paralelo</h2>
+                <p>Para entender a genialidade da GPU, é crucial diferenciar as duas abordagens de processamento:</p>
+                <ul>
+                    <li><strong>CPU (Serial):</strong> É como um chef de cozinha altamente qualificado. Ele pode executar qualquer receita (tarefa) complexa, passo a passo, com extrema precisão e velocidade. No entanto, ele se concentra em uma ou poucas receitas de cada vez. É otimizada para baixa latência.</li>
+                    <li><strong>GPU (Paralelo):</strong> É como um exército de ajudantes de cozinha. Cada um pode não ser um chef mestre, mas todos podem executar a mesma tarefa simples (como cortar um legume) simultaneamente. Se você precisa cortar 10.000 legumes, o exército terminará o trabalho muito mais rápido que o único chef. É otimizada para alta vazão (throughput).</li>
+                </ul>
+                <p>Renderizar gráficos é uma tarefa inerentemente paralela. A cor de cada pixel na tela pode ser calculada de forma independente das outras. Uma GPU com milhares de núcleos pode calcular milhões de pixels simultaneamente, resultando em gráficos fluidos e realistas.</p>
+
+                <h2 id="gpgpu">GPGPU: A GPU para Propósitos Gerais</h2>
+                <p>No início dos anos 2000, pesquisadores perceberam que a arquitetura massivamente paralela das GPUs poderia ser usada para muito mais do que apenas gráficos. Isso deu origem ao conceito de <strong>GPGPU (General-Purpose computing on Graphics Processing Units)</strong>, o uso de GPUs para realizar cálculos de computação científica e de engenharia.</p>
+                
+                <div class="callout-box info">
+                    <p><strong>CUDA e o Boom da IA:</strong> Em 2007, a NVIDIA lançou a plataforma de computação paralela <strong>CUDA</strong>. Ela abriu a arquitetura da GPU para desenvolvedores de software de uma forma muito mais acessível, permitindo que eles escrevessem programas que rodassem diretamente nos milhares de núcleos da GPU. Isso foi o catalisador para a revolução moderna da inteligência artificial, já que o treinamento de redes neurais profundas (deep learning) é uma tarefa que se beneficia imensamente do processamento paralelo.</p>
+                </div>
+
+                <h2 id="aplicacoes-modernas">Aplicações Modernas</h2>
+                <p>Hoje, as GPUs são o coração de muitas das tecnologias mais avançadas do mundo:</p>
+                <ul>
+                    <li><strong>Inteligência Artificial e Machine Learning:</strong> Treinamento de modelos complexos de IA em horas ou dias, em vez de meses ou anos.</li>
+                    <li><strong>Computação Científica:</strong> Simulações de clima, modelagem molecular, análise de dados astronômicos e pesquisa genômica.</li>
+                    <li><strong>Mineração de Criptomoedas:</strong> Execução dos complexos cálculos de hash necessários para validar transações em blockchains como Bitcoin e Ethereum.</li>
+                    <li><strong>Renderização 3D e Efeitos Visuais:</strong> Produção de filmes de animação e efeitos especiais em Hollywood.</li>
+                </ul>
+            </section>
+        </article>
+
+        <footer class="article-footer">
+            <nav class="article-pagination" aria-label="Navegação de artigos">
+                <a href="/hardware/armazenamento.html" class="pagination-link prev">
+                    <span class="pagination-label">Anterior</span>
+                    <span class="pagination-title">Armazenamento (HDD, SSD)</span>
+                </a>
+                <a href="/hardware/lei-de-moore.html" class="pagination-link next">
+                    <span class="pagination-label">Próximo</span>
+                    <span class="pagination-title">A Lei de Moore</span>
+                </a>
+            </nav>
+        </footer>
+    </main>
+    
+    <aside class="toc-sidebar" id="toc-sidebar">
+        <nav class="toc-nav" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="toc-heading">Nesta Página</h2>
+            <ul class="toc-list">
+                <li><a href="#page-title" class="toc-link is-active">Introdução</a></li>
+                <li><a href="#cpu-vs-gpu" class="toc-link">Processamento Serial vs. Paralelo</a></li>
+                <li><a href="#gpgpu" class="toc-link">GPGPU: A GPU para Propósitos Gerais</a></li>
+                <li><a href="#aplicacoes-modernas" class="toc-link">Aplicações Modernas</a></li>
+            </ul>
+        </nav>
+    </aside>
+</div>
