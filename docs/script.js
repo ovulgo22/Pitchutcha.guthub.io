@@ -1,9 +1,9 @@
 /*
 ====================================================================================
-PROJETO: Pitchutcha (v3.0 - Reestruturação GitHub Docs)
+PROJETO: Pitchutcha (Versão Final)
 ARQUIVO: script.js
-DESCRIÇÃO: Script final para controlar toda a interatividade da nova interface,
-           incluindo menu móvel, troca de tema e "scroll spy" do TOC.
+DESCRIÇÃO: Script final para controlar toda a interatividade da interface
+           estilo GitHub Docs.
 ====================================================================================
 */
 
@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
             menuToggle.setAttribute('aria-expanded', !isExpanded);
+            menuToggle.classList.toggle('is-active');
             sidebar.classList.toggle('is-open');
         });
     })();
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (systemPrefersDark) {
                 applyTheme('dark');
             } else {
-                applyTheme('light'); // Padrão
+                applyTheme('light');
             }
         };
 
@@ -71,37 +72,35 @@ document.addEventListener('DOMContentLoaded', () => {
      * Destaca o link no TOC correspondente à seção visível na tela.
      */
     const tocScrollSpyModule = (() => {
-        const mainContent = document.querySelector('.main-content');
+        const mainContent = document.querySelector('.content-and-toc-wrapper');
         const tocLinks = document.querySelectorAll('.toc-link');
-        
-        // Mapeia os links do TOC para os elementos de cabeçalho que eles representam.
-        // O `href` do link deve ser o `id` do cabeçalho (ex: <a href="#titulo"> e <h2 id="titulo">)
-        const headingElements = Array.from(tocLinks).map(link => {
-            const id = link.getAttribute('href');
-            return document.querySelector(id);
-        }).filter(Boolean); // Filtra links que não encontraram um cabeçalho
+        const headingElements = Array.from(tocLinks)
+            .map(link => {
+                const id = link.getAttribute('href');
+                try {
+                    return document.querySelector(id);
+                } catch (e) {
+                    return null;
+                }
+            })
+            .filter(Boolean);
 
-        if (headingElements.length === 0 || tocLinks.length === 0) return;
+        if (headingElements.length === 0 || !mainContent) return;
 
         const observerOptions = {
-            root: mainContent, // Observa o scroll dentro do contêiner de conteúdo
-            rootMargin: '0px 0px -80% 0px', // Ativa quando o título está no topo da área visível
-            threshold: 1.0
+            root: mainContent,
+            rootMargin: '0px 0px -85% 0px',
         };
-
-        let activeLink = null;
 
         const observerCallback = (entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const link = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+                    const id = entry.target.getAttribute('id');
+                    const activeLink = document.querySelector(`.toc-link[href="#${id}"]`);
                     
-                    if (link && link !== activeLink) {
-                        // Remove a classe ativa de todos os links
-                        tocLinks.forEach(l => l.classList.remove('is-active'));
-                        // Adiciona a classe ativa ao link atual
-                        link.classList.add('is-active');
-                        activeLink = link;
+                    tocLinks.forEach(link => link.classList.remove('is-active'));
+                    if (activeLink) {
+                        activeLink.classList.add('is-active');
                     }
                 }
             });
@@ -111,5 +110,5 @@ document.addEventListener('DOMContentLoaded', () => {
         headingElements.forEach(header => observer.observe(header));
     })();
 
-    console.log("Pitchutcha v3.0 (GitHub Docs Style) Initialized.");
+    console.log("Pitchutcha (Final Version) Initialized.");
 });
