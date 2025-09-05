@@ -349,3 +349,162 @@ document.addEventListener('DOMContentLoaded', () => {
     customCursorModule.init();
     themeSwitcherModule.init();
 });
+/*
+==================================================================================================
+ARQUIVO: script.js (Parte 3 de 3 - Final)
+DESCRIÇÃO: Implementa funcionalidades avançadas: barra de progresso de leitura,
+           scroll horizontal e a lógica do modal de busca.
+==================================================================================================
+
+ADVANCED FRONT-END DEVELOPMENT & UX ENGINEERING:
+- A barra de progresso é calculada na mesma função de scroll do header para otimizar a performance,
+  evitando múltiplos listeners de 'scroll' que podem ser custosos. A fórmula usa as propriedades
+  scrollHeight, clientHeight e scrollY para determinar o progresso percentual.
+- A seção de scroll horizontal utiliza o evento 'wheel' para "sequestrar" o scroll vertical
+  do mouse e traduzi-lo em scroll horizontal (`scrollLeft`). `event.preventDefault()` é crucial
+  aqui para impedir que a página role para baixo simultaneamente.
+- O modal de busca segue as melhores práticas de acessibilidade (a11y): o foco é movido para
+  o campo de input quando aberto, e ele pode ser fechado com a tecla 'Escape', além do
+  botão de fechar e do clique no overlay.
+==================================================================================================
+*/
+
+/**
+ * MÓDULO: UI GERAL E SCROLL
+ * Combina lógicas relacionadas ao evento de scroll para otimização.
+ * Inclui o header dinâmico (da Parte 2) e a nova barra de progresso.
+ */
+const uiScrollModule = (() => {
+    const header = document.querySelector('.site-header');
+    const progressBar = document.querySelector('#reading-progress-bar');
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+
+        // Lógica do Header (da Parte 2)
+        if (currentScrollY > lastScrollY && currentScrollY > header.offsetHeight) {
+            header.classList.add('site-header--hidden');
+        } else {
+            header.classList.remove('site-header--hidden');
+        }
+        lastScrollY = currentScrollY;
+
+        // Lógica da Barra de Progresso
+        const scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollProgress = (currentScrollY / scrollableHeight) * 100;
+        
+        progressBar.style.width = `${scrollProgress}%`;
+    };
+
+    const init = () => {
+        // Um único listener para controlar tudo relacionado ao scroll.
+        window.addEventListener('scroll', handleScroll, { passive: true });
+    };
+
+    return {
+        init
+    };
+})();
+
+
+/**
+ * MÓDULO: SCROLL HORIZONTAL
+ * Controla a seção de linha do tempo com rolagem horizontal.
+ */
+const horizontalScrollModule = (() => {
+    const scrollSection = document.querySelector('.horizontal-scroll-section');
+
+    const handleWheelScroll = (event) => {
+        // Apenas interfere se houver um deltaY (scroll vertical do mouse)
+        if (event.deltaY !== 0) {
+            // Impede o scroll vertical padrão da página.
+            event.preventDefault();
+            // Adiciona o valor do scroll vertical ao scroll horizontal do container.
+            scrollSection.scrollLeft += event.deltaY;
+        }
+    };
+
+    const init = () => {
+        if (scrollSection) {
+            scrollSection.addEventListener('wheel', handleWheelScroll);
+        }
+    };
+
+    return {
+        init
+    };
+})();
+
+
+/**
+ * MÓDULO: MODAL DE BUSCA
+ * Gerencia a abertura, fechamento e acessibilidade do modal de busca.
+ */
+const searchModalModule = (() => {
+    const openButton = document.querySelector('#open-search-modal');
+    const closeButton = document.querySelector('#close-search-modal');
+    const searchModal = document.querySelector('#search-modal');
+    const searchInput = document.querySelector('#search-input');
+
+    const openModal = () => {
+        searchModal.classList.add('is-active');
+        // Acessibilidade: move o foco para o campo de input.
+        // O setTimeout garante que o foco seja aplicado após a transição do modal.
+        setTimeout(() => searchInput.focus(), 300); 
+    };
+
+    const closeModal = () => {
+        searchModal.classList.remove('is-active');
+    };
+
+    const handleKeyboard = (event) => {
+        // Fecha o modal se a tecla 'Escape' for pressionada.
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    };
+
+    const init = () => {
+        if (openButton && searchModal && closeButton && searchInput) {
+            openButton.addEventListener('click', openModal);
+            closeButton.addEventListener('click', closeModal);
+
+            // Fecha o modal ao clicar no overlay (fundo).
+            searchModal.addEventListener('click', (event) => {
+                if (event.target === searchModal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', handleKeyboard);
+        }
+    };
+
+    return {
+        init
+    };
+})();
+
+
+/**
+ * PONTO DE ENTRADA PRINCIPAL DA APLICAÇÃO (VERSÃO FINAL)
+ * Inicializa todos os módulos do projeto.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // Módulos da Parte 1
+    preloaderModule.init();
+    heroAnimationModule.init();
+    scrollAnimationModule.init();
+    
+    // Módulos da Parte 2 (uiScrollModule substitui headerModule)
+    customCursorModule.init();
+    themeSwitcherModule.init();
+
+    // Módulos da Parte 3
+    uiScrollModule.init(); // Substitui o antigo headerModule
+    horizontalScrollModule.init();
+    searchModalModule.init();
+
+    console.log("Pitchutcha Project Initialized Successfully.");
+});
