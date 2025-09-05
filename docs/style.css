@@ -817,3 +817,274 @@ details[open] > .nav-summary::before {
 
 
 /* FIM DA PARTE 2 do style.css */
+/*
+====================================================================================
+  CONTINUAÇÃO DA PARTE 2
+====================================================================================
+*/
+
+/*==================================================================
+  8. COMPONENTES FINAIS
+==================================================================*/
+
+/*-----------------------------------
+  Rodapé do Artigo
+------------------------------------*/
+.article-footer {
+    margin-top: var(--spacing-8);
+    padding-top: var(--spacing-5);
+    border-top: var(--border-width) solid var(--color-border);
+    font-size: var(--fs-sm);
+}
+
+.last-updated {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-5);
+}
+
+.article-pagination {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-4);
+}
+
+.pagination-link {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    padding: var(--spacing-4);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.pagination-link:hover {
+    background-color: var(--color-bg-tertiary);
+    border-color: var(--color-border-strong);
+    text-decoration: none;
+}
+
+.pagination-link.next {
+    text-align: right;
+}
+
+.pagination-label {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-1);
+}
+
+.pagination-title {
+    color: var(--color-primary);
+    font-weight: var(--fw-medium);
+}
+
+/*-----------------------------------
+  Rodapé Principal (Main Footer)
+------------------------------------*/
+
+.main-footer {
+    background-color: var(--color-bg-secondary);
+    border-top: var(--border-width) solid var(--color-border);
+    padding: var(--spacing-7) var(--container-padding);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-sm);
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-6);
+    max-width: calc(var(--sidebar-width) + var(--content-max-width) + var(--toc-width));
+    margin: 0 auto;
+}
+
+.footer-column h4 {
+    font-size: var(--fs-base);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-3) 0;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+
+.footer-links a {
+    color: var(--color-text-secondary);
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+.copyright {
+    font-size: var(--fs-xs);
+    margin-top: var(--spacing-3);
+}
+
+/*==================================================================
+  9. ESTILOS DE CONTEÚDO (MARKDOWN)
+==================================================================*/
+
+/*-----------------------------------
+  Código (Inline e Blocos)
+------------------------------------*/
+
+/* Código inline */
+code:not([class*="language-"]) {
+    font-family: var(--font-mono);
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    padding: 0.2em 0.4em;
+    font-size: 0.9em;
+    border-radius: var(--border-radius-sm);
+}
+
+/* Blocos de Código (com syntax highlighting) */
+pre {
+    background-color: var(--color-bg-secondary);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-5);
+    overflow-x: auto;
+    margin-bottom: var(--spacing-5);
+    font-size: var(--fs-sm);
+}
+
+pre code {
+    font-family: var(--font-mono);
+    background: none;
+    padding: 0;
+}
+
+/* Adicione aqui os estilos do seu tema de syntax highlight (ex: Prism.js, Highlight.js) */
+/* Exemplo de estilos básicos */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: var(--color-text-muted);
+}
+.token.punctuation {
+    color: var(--color-text-secondary);
+}
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #e91e63;
+}
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #4caf50;
+}
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #795548;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #3f51b5;
+}
+.token.function,
+.token.class-name {
+    color: #f44336;
+}
+.token.regex,
+.token.important,
+.token.variable {
+    color: #ff9800;
+}
+[data-theme="dark"] .token.selector,
+[data-theme="dark"] .token.attr-name,
+[data-theme="dark"] .token.string,
+[data-theme="dark"] .token.char,
+[data-theme="dark"] .token.builtin,
+[data-theme="dark"] .token.inserted {
+    color: #A5D6A7;
+}
+[data-theme="dark"] .token.property,
+[data-theme="dark"] .token.tag,
+[data-theme="dark"] .token.boolean,
+[data-theme="dark"] .token.number,
+[data-theme="dark"] .token.constant,
+[data-theme="dark"] .token.symbol,
+[data-theme="dark"] .token.deleted {
+    color: #F48FB1;
+}
+[data-theme="dark"] .token.keyword {
+    color: #90CAF9;
+}
+
+
+/*-----------------------------------
+  Blockquotes
+------------------------------------*/
+
+blockquote {
+    margin: var(--spacing-6) 0;
+    padding: var(--spacing-4) var(--spacing-5);
+    border-left: 4px solid var(--color-primary);
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+}
+
+blockquote p {
+    margin-bottom: 0;
+}
+
+
+/*==================================================================
+  10. AJUSTES FINOS E RESPONSIVIDADE
+==================================================================*/
+
+@media (max-width: 1200px) {
+    .content-and-toc-wrapper {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --fs-h1: 2rem;
+        --fs-h2: 1.5rem;
+    }
+
+    .main-content {
+        padding: var(--spacing-5);
+    }
+    
+    .header-nav {
+        display: none; /* Esconde navegação secundária no cabeçalho */
+    }
+
+    .quick-nav-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --sidebar-width: 240px;
+    }
+    .header-container {
+        padding: 0 var(--spacing-4);
+    }
+    .main-content {
+        padding: var(--spacing-4);
+    }
+}
+
+/* FIM DO ARQUIVO style.css */
