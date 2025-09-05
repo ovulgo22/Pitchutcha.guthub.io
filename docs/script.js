@@ -373,3 +373,161 @@ function initCustomCursor() {
 // PONTO DE ENTRADA PRINCIPAL
 // -----------------------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', init);
+/*
+==================================================================================================
+PROJETO: Pitchutcha - Uma Odisséia pela Computação
+ARQUIVO: script.js (Parte 3 de várias)
+DESCRIÇÃO: Integração da biblioteca GSAP e ScrollTrigger para animações avançadas,
+           como progressão de leitura, animações em cascata e scroll horizontal.
+==================================================================================================
+
+CREATIVE DEVELOPMENT & FRONT-END ANIMATION:
+- A GSAP é introduzida para orquestração de animações complexas. Sua performance e sintaxe
+  de timeline permitem criar sequências que seriam muito difíceis com CSS puro.
+- ScrollTrigger é o motor por trás dos novos efeitos. A propriedade `scrub: true` é a chave
+  para vincular o progresso de uma animação diretamente à posição da barra de rolagem.
+- A animação do diagrama de Von Neumann usa uma `gsap.timeline()` para garantir que cada parte
+  da animação aconteça na ordem correta, criando um fluxo visual lógico.
+- A seção de scroll horizontal usa `pin: true` para fixar a seção na tela enquanto o
+  conteúdo interno se move horizontalmente, um efeito premium e imersivo.
+==================================================================================================
+*/
+
+'use strict';
+
+// Ponto de entrada principal
+document.addEventListener('DOMContentLoaded', () => {
+    // Registra o plugin ScrollTrigger com a GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
+    init();
+});
+
+
+function init() {
+    // Funções existentes
+    initPreloader();
+    // initScrollAnimations(); // Substituiremos parte disso com GSAP
+    initHeaderScroll();
+    initFooterYear();
+    initSmoothScroll();
+    initHeroParallax();
+    initThemeToggle();
+    initCustomCursor();
+
+    // Novas Funções com GSAP
+    initReadingProgress();
+    initVonNeumannAnimation();
+    initHorizontalScroll();
+}
+
+// ... (Mantenha todas as funções das Partes 1 e 2 aqui, exceto initScrollAnimations que pode ser removida ou adaptada)
+// Por clareza, omitirei as funções antigas e focarei nas novas. Cole as antigas aqui no seu arquivo.
+
+// Funções antigas (para referência)
+function initPreloader() { /* ...código da Parte 2... */ }
+function initHeroAnimation() { /* ...código da Parte 2... */ }
+function initHeaderScroll() { /* ...código da Parte 2... */ }
+function initFooterYear() { /* ...código da Parte 2... */ }
+function initSmoothScroll() { /* ...código da Parte 2... */ }
+function initHeroParallax() { /* ...código da Parte 2... */ }
+function initThemeToggle() { /* ...código da Parte 2... */ }
+function initCustomCursor() { /* ...código da Parte 2... */ }
+// A função initScrollAnimations() com IntersectionObserver ainda é útil para animações simples,
+// mas vamos usar o ScrollTrigger para as mais complexas. Vamos mantê-la por enquanto.
+function initScrollAnimations() { 
+    gsap.utils.toArray('.section-title, .sub-section-title, .prose > *, .quote, figure, .interactive-list > li, .chapter-marker').forEach(elem => {
+        gsap.from(elem, {
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: elem,
+                start: 'top 90%',
+                toggleActions: 'play none none none',
+            }
+        });
+    });
+}
+
+
+// -----------------------------------------------------------------------------------------------
+// 6. BARRA DE PROGRESSO DE LEITURA (COM GSAP)
+// -----------------------------------------------------------------------------------------------
+function initReadingProgress() {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+
+    gsap.to(progressBar, {
+        scaleX: 1,
+        transformOrigin: 'left',
+        ease: 'none',
+        scrollTrigger: {
+            trigger: document.documentElement,
+            scrub: 0.2, // Suaviza a animação de scrub
+            start: 'top top',
+            end: 'bottom bottom'
+        }
+    });
+}
+
+// -----------------------------------------------------------------------------------------------
+// 7. ANIMAÇÃO DO DIAGRAMA DE VON NEUMANN (COM GSAP TIMELINE)
+// -----------------------------------------------------------------------------------------------
+function initVonNeumannAnimation() {
+    const diagram = document.getElementById('von-neumann-diagram');
+    if (!diagram) return;
+
+    // Usamos uma timeline para orquestrar a sequência de animações
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: diagram,
+            start: 'top 70%', // Inicia a animação quando o topo do diagrama atinge 70% da tela
+            toggleActions: 'play pause resume reset'
+        }
+    });
+
+    // Selecionamos os elementos dentro do diagrama (supondo que demos a eles IDs ou classes)
+    const cpu = diagram.querySelector('.cpu');
+    const memory = diagram.querySelector('.memory');
+    const io = diagram.querySelector('.io-devices');
+    const arrows = diagram.querySelectorAll('.diagram-arrow');
+
+    tl.from(diagram, { opacity: 0, scale: 0.95, duration: 0.5 })
+      .from([cpu, memory, io], { y: 30, opacity: 0, stagger: 0.2, duration: 0.5 }, "-=0.2")
+      .from(arrows, { scaleX: 0, transformOrigin: 'center', stagger: 0.3, duration: 0.7, ease: 'power2.inOut' });
+}
+
+
+// -----------------------------------------------------------------------------------------------
+// 8. SEÇÃO DE SCROLL HORIZONTAL (COM GSAP)
+// -----------------------------------------------------------------------------------------------
+function initHorizontalScroll() {
+    const horizontalSection = document.querySelector('.horizontal-scroll-section');
+    if (!horizontalSection) return;
+
+    const items = gsap.utils.toArray('.timeline-item');
+    const container = horizontalSection.querySelector('.timeline-container');
+
+    gsap.to(container, {
+        x: () => -(container.scrollWidth - document.documentElement.clientWidth) + "px",
+        ease: "none",
+        scrollTrigger: {
+            trigger: horizontalSection,
+            start: "top top",
+            end: () => "+=" + (container.scrollWidth - document.documentElement.clientWidth),
+            scrub: 0.5,
+            pin: true, // Fixa a seção enquanto o scroll horizontal acontece
+            invalidateOnRefresh: true,
+            anticipatePin: 1
+        }
+    });
+}
+
+
+// ... (O restante do seu script...)
+
+// Finalmente, inicializamos tudo quando o DOM está pronto.
+// document.addEventListener('DOMContentLoaded', init); // Já definido no topo
